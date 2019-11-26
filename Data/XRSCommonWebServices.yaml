@@ -65,7 +65,7 @@ XRS_Entity_Management_REST:
     get_vehicles_id: vehicles/{VEHICLESID}
     delete_vehicles: vehicles/{VEHICLESID}
 XRS_Form_Messaging_REST:
-  Form_Template Category_REST:
+  Form_Template_Category_REST:
     base_uri: FormTemplateCategoryWebService.svc
     post_form_categories: formcategories
     put_form_categories: formcategories

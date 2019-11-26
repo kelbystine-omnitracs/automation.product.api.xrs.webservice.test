@@ -15,3 +15,15 @@ ${XRS_WEB_SERVICE_SESSION} =  xrs_web_service_session
 Create XRS Web Services Session
     [Documentation]  Create a session with xrs web services
     Create Session  ${XRS_WEB_SERVICE_SESSION}  ${XRS_WEBSERVICES_URL}[${XRS_HOST_ENVIRONMENT}]  auth=${XRS_WEBSERVICES_AUTHORIZATION}
+
+Create XRS Web Services Session With No Authorization
+    [Documentation]  Create a session with xrs web services
+    Create Session  ${XRS_WEB_SERVICE_SESSION}  ${XRS_WEBSERVICES_URL}[${XRS_HOST_ENVIRONMENT}]
+
+Create AWS XRS Web Services Session
+    [Documentation]  Create a session with aws xrs web services without authorization
+    Create Session  ${XRS_WEB_SERVICE_SESSION}  ${XRS_AWS_WEBSERVICES_URL}[${XRS_HOST_ENVIRONMENT}]  verify=True  auth=${XRS_WEBSERVICES_AUTHORIZATION}
+
+Create AWS XRS Web Services Session With No Authorization
+    [Documentation]  Create a session with aws xrs web services without authorization
+    Create Session  ${XRS_WEB_SERVICE_SESSION}  ${XRS_AWS_WEBSERVICES_URL}[${XRS_HOST_ENVIRONMENT}]  verify=True

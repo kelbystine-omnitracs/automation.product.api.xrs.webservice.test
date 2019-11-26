@@ -1,0 +1,1237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.2 (Python 3.7.3 on win32)" generated="20191126 15:09:34.762" rpa="false">
+<suite id="s1" name="Tests" source="C:\Users\kstine\git\aws-api-gateway-tests\Tests">
+<suite id="s1-s1" name="AWS XRS WebServicesTests" source="C:\Users\kstine\git\aws-api-gateway-tests\Tests\AWS_XRS_WebServicesTests">
+<suite id="s1-s1-s1" name="ValidateAWSXRSWebServices" source="C:\Users\kstine\git\aws-api-gateway-tests\Tests\AWS_XRS_WebServicesTests\ValidateAWSXRSWebServices.robot">
+<kw name="Create AWS XRS Web Services Session with No Authorization" library="CommonWebService" type="setup">
+<doc>Create a session with xrs web services</doc>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${XRS_AWS_WEBSERVICES_URL}[${XRS_HOST_ENVIRONMENT}]</arg>
+<arg>verify=False</arg>
+</arguments>
+<msg timestamp="20191126 15:09:35.011" level="INFO">Creating Session using : alias=xrs_web_service_session, url=https://d3ws.xataxrs.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20191126 15:09:35.010" endtime="20191126 15:09:35.011"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:35.010" endtime="20191126 15:09:35.011"></status>
+</kw>
+<test id="s1-s1-s1-t1" name="Validate AWS XRS Webservices">
+<kw name="Verify 200 OK Response From XRS WebServices">
+<doc>Validates a 200 response from each xrs webservice</doc>
+<arguments>
+<arg>${XRS_Entity_Management_REST}</arg>
+</arguments>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>base_uri</arg>
+</arguments>
+<assign>
+<var>${base_uri}</var>
+</assign>
+<msg timestamp="20191126 15:09:35.012" level="INFO">${base_uri} = base_uri</msg>
+<status status="PASS" starttime="20191126 15:09:35.012" endtime="20191126 15:09:35.012"></status>
+</kw>
+<kw name="${e} IN [ @{xrs_web_service_dict} ]" type="for">
+<kw name="${e} = Device_REST" type="foritem">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${xrs_web_service_dict}[${e}][${base_uri}]</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191126 15:09:35.013" level="INFO">GET Request using : uri=DeviceWebService.svc, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191126 15:09:35.682" level="INFO">c:\users\kstine\.virtualenvs\aws-api-gateway-tests-akuzm_-c\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20191126 15:09:35.683" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:35.013" endtime="20191126 15:09:35.683"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191126 15:09:35.684" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:35.683" endtime="20191126 15:09:35.684"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:35.013" endtime="20191126 15:09:35.684"></status>
+</kw>
+<kw name="${e} = Driver_REST" type="foritem">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${xrs_web_service_dict}[${e}][${base_uri}]</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191126 15:09:35.685" level="INFO">GET Request using : uri=DriverWebService.svc, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191126 15:09:35.975" level="INFO">c:\users\kstine\.virtualenvs\aws-api-gateway-tests-akuzm_-c\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20191126 15:09:35.976" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:35.684" endtime="20191126 15:09:35.976"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191126 15:09:35.977" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:35.976" endtime="20191126 15:09:35.977"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:35.684" endtime="20191126 15:09:35.977"></status>
+</kw>
+<kw name="${e} = Organization_REST" type="foritem">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${xrs_web_service_dict}[${e}][${base_uri}]</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191126 15:09:35.977" level="INFO">GET Request using : uri=OrganizationWebService.svc, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191126 15:09:36.297" level="INFO">c:\users\kstine\.virtualenvs\aws-api-gateway-tests-akuzm_-c\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20191126 15:09:36.297" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:35.977" endtime="20191126 15:09:36.297"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191126 15:09:36.298" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:36.297" endtime="20191126 15:09:36.298"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:35.977" endtime="20191126 15:09:36.298"></status>
+</kw>
+<kw name="${e} = Resource_Group_REST" type="foritem">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${xrs_web_service_dict}[${e}][${base_uri}]</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191126 15:09:36.298" level="INFO">GET Request using : uri=ResourceGroupWebService.svc, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191126 15:09:36.601" level="INFO">c:\users\kstine\.virtualenvs\aws-api-gateway-tests-akuzm_-c\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20191126 15:09:36.602" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:36.298" endtime="20191126 15:09:36.602"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191126 15:09:36.602" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:36.602" endtime="20191126 15:09:36.603"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:36.298" endtime="20191126 15:09:36.603"></status>
+</kw>
+<kw name="${e} = Site_REST" type="foritem">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${xrs_web_service_dict}[${e}][${base_uri}]</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191126 15:09:36.603" level="INFO">GET Request using : uri=SiteWebService.svc, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191126 15:09:36.903" level="INFO">c:\users\kstine\.virtualenvs\aws-api-gateway-tests-akuzm_-c\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20191126 15:09:36.904" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:36.603" endtime="20191126 15:09:36.904"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191126 15:09:36.905" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:36.904" endtime="20191126 15:09:36.905"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:36.603" endtime="20191126 15:09:36.905"></status>
+</kw>
+<kw name="${e} = Trailer_REST" type="foritem">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${xrs_web_service_dict}[${e}][${base_uri}]</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191126 15:09:36.906" level="INFO">GET Request using : uri=TrailerWebService.svc, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191126 15:09:37.194" level="INFO">c:\users\kstine\.virtualenvs\aws-api-gateway-tests-akuzm_-c\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20191126 15:09:37.195" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:36.905" endtime="20191126 15:09:37.195"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191126 15:09:37.197" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:37.196" endtime="20191126 15:09:37.197"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:36.905" endtime="20191126 15:09:37.197"></status>
+</kw>
+<kw name="${e} = User_REST" type="foritem">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${xrs_web_service_dict}[${e}][${base_uri}]</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191126 15:09:37.199" level="INFO">GET Request using : uri=UserWebService.svc, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191126 15:09:37.499" level="INFO">c:\users\kstine\.virtualenvs\aws-api-gateway-tests-akuzm_-c\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20191126 15:09:37.503" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:37.198" endtime="20191126 15:09:37.505"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191126 15:09:37.507" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:37.505" endtime="20191126 15:09:37.507"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:37.197" endtime="20191126 15:09:37.507"></status>
+</kw>
+<kw name="${e} = Vehicle_REST" type="foritem">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${xrs_web_service_dict}[${e}][${base_uri}]</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191126 15:09:37.510" level="INFO">GET Request using : uri=VehicleWebService.svc, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191126 15:09:37.810" level="INFO">c:\users\kstine\.virtualenvs\aws-api-gateway-tests-akuzm_-c\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20191126 15:09:37.811" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:37.508" endtime="20191126 15:09:37.811"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191126 15:09:37.812" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:37.812" endtime="20191126 15:09:37.813"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:37.508" endtime="20191126 15:09:37.813"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:35.012" endtime="20191126 15:09:37.813"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:35.012" endtime="20191126 15:09:37.813"></status>
+</kw>
+<kw name="Verify 200 OK Response From XRS WebServices">
+<doc>Validates a 200 response from each xrs webservice</doc>
+<arguments>
+<arg>${XRS_Form_Messaging_REST}</arg>
+</arguments>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>base_uri</arg>
+</arguments>
+<assign>
+<var>${base_uri}</var>
+</assign>
+<msg timestamp="20191126 15:09:37.815" level="INFO">${base_uri} = base_uri</msg>
+<status status="PASS" starttime="20191126 15:09:37.815" endtime="20191126 15:09:37.815"></status>
+</kw>
+<kw name="${e} IN [ @{xrs_web_service_dict} ]" type="for">
+<kw name="${e} = Form_Template_Category_REST" type="foritem">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${xrs_web_service_dict}[${e}][${base_uri}]</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191126 15:09:37.816" level="INFO">GET Request using : uri=FormTemplateCategoryWebService.svc, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191126 15:09:38.115" level="INFO">c:\users\kstine\.virtualenvs\aws-api-gateway-tests-akuzm_-c\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20191126 15:09:38.115" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:37.816" endtime="20191126 15:09:38.115"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191126 15:09:38.116" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:38.116" endtime="20191126 15:09:38.116"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:37.815" endtime="20191126 15:09:38.116"></status>
+</kw>
+<kw name="${e} = Form_Template_Content_REST" type="foritem">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${xrs_web_service_dict}[${e}][${base_uri}]</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191126 15:09:38.117" level="INFO">GET Request using : uri=FormTemplateContentWebService.svc, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191126 15:09:38.418" level="INFO">c:\users\kstine\.virtualenvs\aws-api-gateway-tests-akuzm_-c\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20191126 15:09:38.418" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:38.116" endtime="20191126 15:09:38.419"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191126 15:09:38.419" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:38.419" endtime="20191126 15:09:38.419"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:38.116" endtime="20191126 15:09:38.419"></status>
+</kw>
+<kw name="${e} = Form_Template_Header_REST" type="foritem">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${xrs_web_service_dict}[${e}][${base_uri}]</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191126 15:09:38.420" level="INFO">GET Request using : uri=FormTemplateHeaderWebService.svc, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191126 15:09:38.717" level="INFO">c:\users\kstine\.virtualenvs\aws-api-gateway-tests-akuzm_-c\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20191126 15:09:38.718" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:38.419" endtime="20191126 15:09:38.718"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191126 15:09:38.719" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:38.718" endtime="20191126 15:09:38.719"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:38.419" endtime="20191126 15:09:38.719"></status>
+</kw>
+<kw name="${e} = Message_REST" type="foritem">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${xrs_web_service_dict}[${e}][${base_uri}]</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191126 15:09:38.720" level="INFO">GET Request using : uri=MessageWebService.svc, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191126 15:09:39.005" level="INFO">c:\users\kstine\.virtualenvs\aws-api-gateway-tests-akuzm_-c\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20191126 15:09:39.006" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:38.719" endtime="20191126 15:09:39.006"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191126 15:09:39.007" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:39.006" endtime="20191126 15:09:39.007"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:38.719" endtime="20191126 15:09:39.007"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:37.815" endtime="20191126 15:09:39.007"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:37.814" endtime="20191126 15:09:39.007"></status>
+</kw>
+<kw name="Verify 200 OK Response From XRS WebServices">
+<doc>Validates a 200 response from each xrs webservice</doc>
+<arguments>
+<arg>${XRS_Performance_REST}</arg>
+</arguments>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>base_uri</arg>
+</arguments>
+<assign>
+<var>${base_uri}</var>
+</assign>
+<msg timestamp="20191126 15:09:39.009" level="INFO">${base_uri} = base_uri</msg>
+<status status="PASS" starttime="20191126 15:09:39.009" endtime="20191126 15:09:39.009"></status>
+</kw>
+<kw name="${e} IN [ @{xrs_web_service_dict} ]" type="for">
+<kw name="${e} = Black_Box_REST" type="foritem">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${xrs_web_service_dict}[${e}][${base_uri}]</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191126 15:09:39.011" level="INFO">GET Request using : uri=BlackBoxWebService.svc, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191126 15:09:39.328" level="INFO">c:\users\kstine\.virtualenvs\aws-api-gateway-tests-akuzm_-c\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20191126 15:09:39.329" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:39.010" endtime="20191126 15:09:39.329"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191126 15:09:39.329" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:39.329" endtime="20191126 15:09:39.329"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:39.010" endtime="20191126 15:09:39.329"></status>
+</kw>
+<kw name="${e} = Critical_Events_REST" type="foritem">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${xrs_web_service_dict}[${e}][${base_uri}]</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191126 15:09:39.330" level="INFO">GET Request using : uri=CriticalEventWebService.svc, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191126 15:09:39.626" level="INFO">c:\users\kstine\.virtualenvs\aws-api-gateway-tests-akuzm_-c\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20191126 15:09:39.627" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:39.330" endtime="20191126 15:09:39.627"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191126 15:09:39.627" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:39.627" endtime="20191126 15:09:39.628"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:39.329" endtime="20191126 15:09:39.628"></status>
+</kw>
+<kw name="${e} = Daily_Detail_REST" type="foritem">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${xrs_web_service_dict}[${e}][${base_uri}]</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191126 15:09:39.628" level="INFO">GET Request using : uri=DailyDetailWebService.svc, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191126 15:09:39.945" level="INFO">c:\users\kstine\.virtualenvs\aws-api-gateway-tests-akuzm_-c\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20191126 15:09:39.946" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:39.628" endtime="20191126 15:09:39.946"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191126 15:09:39.947" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:39.946" endtime="20191126 15:09:39.947"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:39.628" endtime="20191126 15:09:39.947"></status>
+</kw>
+<kw name="${e} = Fault_Code_REST" type="foritem">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${xrs_web_service_dict}[${e}][${base_uri}]</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191126 15:09:39.948" level="INFO">GET Request using : uri=FaultCodeWebService.svc, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191126 15:09:40.240" level="INFO">c:\users\kstine\.virtualenvs\aws-api-gateway-tests-akuzm_-c\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20191126 15:09:40.241" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:39.948" endtime="20191126 15:09:40.241"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191126 15:09:40.241" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:40.241" endtime="20191126 15:09:40.242"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:39.947" endtime="20191126 15:09:40.242"></status>
+</kw>
+<kw name="${e} = Operation_REST" type="foritem">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${xrs_web_service_dict}[${e}][${base_uri}]</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191126 15:09:40.242" level="INFO">GET Request using : uri=OperationWebService.svc, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191126 15:09:40.530" level="INFO">c:\users\kstine\.virtualenvs\aws-api-gateway-tests-akuzm_-c\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20191126 15:09:40.530" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:40.242" endtime="20191126 15:09:40.530"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191126 15:09:40.531" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:40.530" endtime="20191126 15:09:40.531"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:40.242" endtime="20191126 15:09:40.531"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:39.009" endtime="20191126 15:09:40.531"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:39.008" endtime="20191126 15:09:40.531"></status>
+</kw>
+<kw name="Verify 200 OK Response From XRS WebServices">
+<doc>Validates a 200 response from each xrs webservice</doc>
+<arguments>
+<arg>${XRS_Routing_Dispatch_REST}</arg>
+</arguments>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>base_uri</arg>
+</arguments>
+<assign>
+<var>${base_uri}</var>
+</assign>
+<msg timestamp="20191126 15:09:40.532" level="INFO">${base_uri} = base_uri</msg>
+<status status="PASS" starttime="20191126 15:09:40.532" endtime="20191126 15:09:40.532"></status>
+</kw>
+<kw name="${e} IN [ @{xrs_web_service_dict} ]" type="for">
+<kw name="${e} = Delay_Detail_Report_REST" type="foritem">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${xrs_web_service_dict}[${e}][${base_uri}]</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191126 15:09:40.533" level="INFO">GET Request using : uri=DelayDetailReportWebService.svc, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191126 15:09:40.819" level="INFO">c:\users\kstine\.virtualenvs\aws-api-gateway-tests-akuzm_-c\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20191126 15:09:40.821" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:40.533" endtime="20191126 15:09:40.821"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191126 15:09:40.823" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:40.822" endtime="20191126 15:09:40.823"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:40.532" endtime="20191126 15:09:40.823"></status>
+</kw>
+<kw name="${e} = Delay_Summary_Report_REST" type="foritem">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${xrs_web_service_dict}[${e}][${base_uri}]</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191126 15:09:40.824" level="INFO">GET Request using : uri=DelaySummaryReportWebService.svc, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191126 15:09:41.113" level="INFO">c:\users\kstine\.virtualenvs\aws-api-gateway-tests-akuzm_-c\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20191126 15:09:41.114" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:40.823" endtime="20191126 15:09:41.114"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191126 15:09:41.114" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:41.114" endtime="20191126 15:09:41.114"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:40.823" endtime="20191126 15:09:41.114"></status>
+</kw>
+<kw name="${e} = Out_Of_Route_REST" type="foritem">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${xrs_web_service_dict}[${e}][${base_uri}]</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191126 15:09:41.115" level="INFO">GET Request using : uri=OutOfRouteWebService.svc, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191126 15:09:41.408" level="INFO">c:\users\kstine\.virtualenvs\aws-api-gateway-tests-akuzm_-c\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20191126 15:09:41.408" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:41.115" endtime="20191126 15:09:41.408"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191126 15:09:41.409" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:41.408" endtime="20191126 15:09:41.409"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:41.114" endtime="20191126 15:09:41.409"></status>
+</kw>
+<kw name="${e} = Plan_Vs_Actual_REST" type="foritem">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${xrs_web_service_dict}[${e}][${base_uri}]</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191126 15:09:41.409" level="INFO">GET Request using : uri=PlanVsActualWebService.svc, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191126 15:09:41.736" level="INFO">c:\users\kstine\.virtualenvs\aws-api-gateway-tests-akuzm_-c\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20191126 15:09:41.737" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:41.409" endtime="20191126 15:09:41.737"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191126 15:09:41.738" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:41.737" endtime="20191126 15:09:41.738"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:41.409" endtime="20191126 15:09:41.738"></status>
+</kw>
+<kw name="${e} = Route_REST" type="foritem">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${xrs_web_service_dict}[${e}][${base_uri}]</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191126 15:09:41.739" level="INFO">GET Request using : uri=RouteWebService.svc, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191126 15:09:42.036" level="INFO">c:\users\kstine\.virtualenvs\aws-api-gateway-tests-akuzm_-c\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20191126 15:09:42.037" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:41.739" endtime="20191126 15:09:42.038"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191126 15:09:42.038" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:42.038" endtime="20191126 15:09:42.039"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:41.738" endtime="20191126 15:09:42.039"></status>
+</kw>
+<kw name="${e} = Route_Status_REST" type="foritem">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${xrs_web_service_dict}[${e}][${base_uri}]</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191126 15:09:42.040" level="INFO">GET Request using : uri=RouteStatusWebService.svc, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191126 15:09:42.353" level="INFO">c:\users\kstine\.virtualenvs\aws-api-gateway-tests-akuzm_-c\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20191126 15:09:42.353" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:42.039" endtime="20191126 15:09:42.353"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191126 15:09:42.354" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:42.354" endtime="20191126 15:09:42.354"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:42.039" endtime="20191126 15:09:42.354"></status>
+</kw>
+<kw name="${e} = Site_Activity_REST" type="foritem">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${xrs_web_service_dict}[${e}][${base_uri}]</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191126 15:09:42.355" level="INFO">GET Request using : uri=SiteActivityWebService.svc, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191126 15:09:42.643" level="INFO">c:\users\kstine\.virtualenvs\aws-api-gateway-tests-akuzm_-c\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20191126 15:09:42.643" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:42.354" endtime="20191126 15:09:42.643"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191126 15:09:42.644" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:42.644" endtime="20191126 15:09:42.644"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:42.354" endtime="20191126 15:09:42.644"></status>
+</kw>
+<kw name="${e} = Trip_REST" type="foritem">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${xrs_web_service_dict}[${e}][${base_uri}]</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191126 15:09:42.645" level="INFO">GET Request using : uri=TripWebService.svc, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191126 15:09:43.002" level="INFO">c:\users\kstine\.virtualenvs\aws-api-gateway-tests-akuzm_-c\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20191126 15:09:43.002" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:42.644" endtime="20191126 15:09:43.002"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191126 15:09:43.003" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:43.002" endtime="20191126 15:09:43.003"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:42.644" endtime="20191126 15:09:43.003"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:40.532" endtime="20191126 15:09:43.003"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:40.531" endtime="20191126 15:09:43.003"></status>
+</kw>
+<kw name="Verify 200 OK Response From XRS WebServices">
+<doc>Validates a 200 response from each xrs webservice</doc>
+<arguments>
+<arg>${XRS_Status_REST}</arg>
+</arguments>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>base_uri</arg>
+</arguments>
+<assign>
+<var>${base_uri}</var>
+</assign>
+<msg timestamp="20191126 15:09:43.004" level="INFO">${base_uri} = base_uri</msg>
+<status status="PASS" starttime="20191126 15:09:43.004" endtime="20191126 15:09:43.004"></status>
+</kw>
+<kw name="${e} IN [ @{xrs_web_service_dict} ]" type="for">
+<kw name="${e} = Driver_Status_REST" type="foritem">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${xrs_web_service_dict}[${e}][${base_uri}]</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191126 15:09:43.005" level="INFO">GET Request using : uri=DriverStatusWebService.svc, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191126 15:09:43.302" level="INFO">c:\users\kstine\.virtualenvs\aws-api-gateway-tests-akuzm_-c\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20191126 15:09:43.302" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:43.004" endtime="20191126 15:09:43.302"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191126 15:09:43.303" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:43.303" endtime="20191126 15:09:43.303"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:43.004" endtime="20191126 15:09:43.303"></status>
+</kw>
+<kw name="${e} = Vehicle_Status_REST" type="foritem">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${xrs_web_service_dict}[${e}][${base_uri}]</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191126 15:09:43.304" level="INFO">GET Request using : uri=VehicleStatusWebService.svc, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191126 15:09:43.589" level="INFO">c:\users\kstine\.virtualenvs\aws-api-gateway-tests-akuzm_-c\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20191126 15:09:43.590" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:43.303" endtime="20191126 15:09:43.590"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191126 15:09:43.591" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:43.590" endtime="20191126 15:09:43.591"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:43.303" endtime="20191126 15:09:43.591"></status>
+</kw>
+<kw name="${e} = Vehicle_Breadcrumb_REST" type="foritem">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${xrs_web_service_dict}[${e}][${base_uri}]</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191126 15:09:43.592" level="INFO">GET Request using : uri=VehicleBreadcrumbWebService.svc, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191126 15:09:43.877" level="INFO">c:\users\kstine\.virtualenvs\aws-api-gateway-tests-akuzm_-c\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20191126 15:09:43.878" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:43.591" endtime="20191126 15:09:43.878"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191126 15:09:43.879" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:43.879" endtime="20191126 15:09:43.879"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:43.591" endtime="20191126 15:09:43.879"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:43.004" endtime="20191126 15:09:43.879"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:43.003" endtime="20191126 15:09:43.880"></status>
+</kw>
+<kw name="Verify 200 OK Response From XRS WebServices">
+<doc>Validates a 200 response from each xrs webservice</doc>
+<arguments>
+<arg>${XRS_Compliance_REST}</arg>
+</arguments>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>base_uri</arg>
+</arguments>
+<assign>
+<var>${base_uri}</var>
+</assign>
+<msg timestamp="20191126 15:09:43.881" level="INFO">${base_uri} = base_uri</msg>
+<status status="PASS" starttime="20191126 15:09:43.881" endtime="20191126 15:09:43.881"></status>
+</kw>
+<kw name="${e} IN [ @{xrs_web_service_dict} ]" type="for">
+<kw name="${e} = Driver_Log_REST" type="foritem">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${xrs_web_service_dict}[${e}][${base_uri}]</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191126 15:09:43.883" level="INFO">GET Request using : uri=DriverLogWebService.svc, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191126 15:09:44.162" level="INFO">c:\users\kstine\.virtualenvs\aws-api-gateway-tests-akuzm_-c\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20191126 15:09:44.163" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:43.882" endtime="20191126 15:09:44.163"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191126 15:09:44.164" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:44.163" endtime="20191126 15:09:44.164"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:43.882" endtime="20191126 15:09:44.164"></status>
+</kw>
+<kw name="${e} = DVIR_REST" type="foritem">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${xrs_web_service_dict}[${e}][${base_uri}]</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191126 15:09:44.165" level="INFO">GET Request using : uri=DVIRWebService.svc, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191126 15:09:44.447" level="INFO">c:\users\kstine\.virtualenvs\aws-api-gateway-tests-akuzm_-c\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20191126 15:09:44.447" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:44.164" endtime="20191126 15:09:44.448"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191126 15:09:44.448" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:44.448" endtime="20191126 15:09:44.448"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:44.164" endtime="20191126 15:09:44.448"></status>
+</kw>
+<kw name="${e} = IFTA_REST" type="foritem">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${xrs_web_service_dict}[${e}][${base_uri}]</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191126 15:09:44.449" level="INFO">GET Request using : uri=IFTAWebService.svc, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191126 15:09:44.735" level="INFO">c:\users\kstine\.virtualenvs\aws-api-gateway-tests-akuzm_-c\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20191126 15:09:44.736" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:44.448" endtime="20191126 15:09:44.736"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191126 15:09:44.737" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:44.736" endtime="20191126 15:09:44.737"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:44.448" endtime="20191126 15:09:44.737"></status>
+</kw>
+<kw name="${e} = UVA_REST" type="foritem">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${xrs_web_service_dict}[${e}][${base_uri}]</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191126 15:09:44.738" level="INFO">GET Request using : uri=UnassignedVehicleActivityWebService.svc, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191126 15:09:45.029" level="INFO">c:\users\kstine\.virtualenvs\aws-api-gateway-tests-akuzm_-c\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20191126 15:09:45.030" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:44.738" endtime="20191126 15:09:45.030"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191126 15:09:45.031" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20191126 15:09:45.031" endtime="20191126 15:09:45.031"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:44.737" endtime="20191126 15:09:45.031"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:43.882" endtime="20191126 15:09:45.031"></status>
+</kw>
+<status status="PASS" starttime="20191126 15:09:43.880" endtime="20191126 15:09:45.032"></status>
+</kw>
+<doc>Initial test to verify that all AWS XRS Web Services are available</doc>
+<tags>
+<tag>awsxrswebservicevalidation</tag>
+</tags>
+<status status="PASS" starttime="20191126 15:09:35.011" endtime="20191126 15:09:45.033" critical="yes"></status>
+</test>
+<kw name="Delete All Sessions" library="RequestsLibrary" type="teardown">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20191126 15:09:45.036" level="INFO">Delete All Sessions</msg>
+<status status="PASS" starttime="20191126 15:09:45.036" endtime="20191126 15:09:45.036"></status>
+</kw>
+<doc>Validates the top level AWS XRS Web services</doc>
+<status status="PASS" starttime="20191126 15:09:34.806" endtime="20191126 15:09:45.037"></status>
+</suite>
+<status status="PASS" starttime="20191126 15:09:34.803" endtime="20191126 15:09:45.047"></status>
+</suite>
+<status status="PASS" starttime="20191126 15:09:34.763" endtime="20191126 15:09:45.056"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tests</stat>
+<stat pass="1" fail="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0">awsxrswebservicevalidation</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" id="s1" name="Tests">Tests</stat>
+<stat pass="1" fail="0" id="s1-s1" name="AWS XRS WebServicesTests">Tests.AWS XRS WebServicesTests</stat>
+<stat pass="1" fail="0" id="s1-s1-s1" name="ValidateAWSXRSWebServices">Tests.AWS XRS WebServicesTests.ValidateAWSXRSWebServices</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
