@@ -1,0 +1,1 @@
+Resources / Webservices folder contains the keyword libraries and page objects for Webservices.

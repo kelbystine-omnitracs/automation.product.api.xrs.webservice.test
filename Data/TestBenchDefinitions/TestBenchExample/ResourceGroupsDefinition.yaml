@@ -1,0 +1,38 @@
+# This file is used to store information about the Resource Groups
+# You can add more resource groups if needed
+DEFAULT_RESOURCE_GROUP:
+  RESOURCE_GROUP_NAME: Gnome Shipping
+  ORGANIZATION: Gnome Shipping D3
+  STATUS: Active
+  SHARED_RESOURCE_GROUP: No
+  SELECT_USERS:
+    - Operations Stine (operstine)
+    - admin admin (admin)
+    - ann j (annj)
+  SELECT_VEHICLES:
+    - null
+  SELECT_DRIVERS:
+    - null
+  SELECT_TRAILERS:
+    - null
+  SELECT_DEVICES:
+    - null
+  SELECT_SITES:
+    - null
+RESOURCE_GROUP_EXAMPLE_ADD_ON:
+  RESOURCE_GROUP_NAME: null
+  ORGANIZATION: null
+  STATUS: Active
+  SHARED_RESOURCE_GROUP: No
+  SELECT_USERS:
+    - null
+  SELECT_VEHICLES:
+    - null
+  SELECT_DRIVERS:
+    - null
+  SELECT_TRAILERS:
+    - null
+  SELECT_DEVICES:
+    - null
+  SELECT_SITES:
+    - null

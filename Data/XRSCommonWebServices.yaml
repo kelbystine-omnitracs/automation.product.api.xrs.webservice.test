@@ -1,0 +1,221 @@
+XRS_Entity_Management_REST:
+  Device_REST:
+    base_uri: DeviceWebService.svc
+    get_device: device/{PHONENUMBER}
+    delete_device: device/{PHONENUMBER}
+    post_devices: devices
+    put_devices: devices
+    get_devices: devices/?OrganizationID={ORGANIZATIONID}&ResourceGroupID={RESOURCEGROUPID}&IsActive={ISACTIVE}&AsOfDateTime={ASOFDATETIME}&Limit={LIMIT}&Offset={OFFSET}
+  Driver_REST:
+    base_uri: DriverWebService.svc
+    get_driver: driver/{DRIVERID}
+    delete_driver: driver/{DRIVERID}
+    post_drivers: drivers
+    put_drivers: drivers
+    get_drivers_params: drivers/?OrganizationSID={ORGANIZATIONSID}&ResourceGroupSID={RESOURCEGROUPSID}&IsActive={ISACTIVE}&AsOfDateTime={ASOFDATETIME}&Limit={LIMIT}&Offset={OFFSET}&OrganizationID={ORGANIZATIONID}&ResourceGroupID={RESOURCEGROUPID}
+    get_drivers_id: drivers/{DRIVERSID}
+    delete_drivers: drivers/{DRIVERSID}
+  Organization_REST:
+    base_uri: OrganizationWebService.svc
+    get_organization: organization/{SID}
+    post_organizations: organizations
+    get_organizations_params: organizations/?OrganizationSid={ORGANIZATIONSID}&Status={ISACTIVE}&AsOfDateTime={ASOFDATETIME}&Limit={LIMIT}&Offset={OFFSET}&OrganizationId={ORGANIZATIONID}
+    get_organizations_id: organizations/{ID}
+    get_organizations_id_performance: organizations/{ID}/performance
+    put_organizations_id_performance: organizations/{ID}/performance
+    get_organizations_performance: organizations/performance/?OrganizationId={ORGANIZATIONID}&ResourceGroupId={RESOURCEGROUPID}&Status={ISACTIVE}&AsOfDateTime={ASOFDATETIME}&Limit={LIMIT}&Offset={OFFSET}&Recurse={RECURSE}
+    put_organizations_update: organizations/update
+  Resource_Group_REST:
+    base_uri: ResourceGroupWebService.svc
+    get_resource_group: resourcegroup/{RESOURCEGROUPID}
+    get_resource_groups_params: resourcegroups/?OrganizationSID={ORGANIZATIONSID}&ResourceGroupSID={RESOURCEGROUPSID}&IsActive={ISACTIVE}&AsOfDateTime={ASOFDATETIME}&Limit={LIMIT}&Offset={OFFSET}&OrganizationID={ORGANIZATIONID}&ResourceGroupID={RESOURCEGROUPID}
+    get_resource_groups_id: resourcegroups/{RESOURCEGROUPSID}
+  Site_REST:
+    base_uri: SiteWebService.svc
+    post_sites: sites
+    put_sites: sites
+    get_sites_params: sites/?OrganizationID={ORGANIZATIONID}&ResourceGroupID={RESOURCEGROUPID}&AsOfDateTime={ASOFDATETIME}&Limit={LIMIT}&Offset={OFFSET}&Recurse={RECURSE}
+    get_sites_id: sites/{SITEID}
+    delete_sites: sites/{SITEID}
+  Trailer_REST:
+    base_uri: TrailerWebService.svc
+    get_trailer: trailer/{TRAILERID}
+    delete_trailer: trailer/{TRAILERID}
+    get_trailers: trailers?OrganizationID={ORGANIZATIONID}&ResourceGroupID={RESOURCEGROUPID}&Status={STATUS}&asOfDateTime={ASOFDATETIME}&Limit={LIMIT}&Offset={OFFSET}&Recurse={RECURSE}
+    post_trailers: trailers
+    put_trailers: trailers
+    get_trailer_v2: v2/trailer/{TRAILERID}
+    get_trailers_v2: v2/trailers?OrganizationID={ORGANIZATIONID}&ResourceGroupID={RESOURCEGROUPID}&Status={STATUS}&asOfDateTime={ASOFDATETIME}&Limit={LIMIT}&Offset={OFFSET}&Recurse={RECURSE}
+    post_trailers_v2: v2/trailers
+    put_trailers_v2: v2/trailers
+  User_REST:
+    base_uri: UserWebService.svc
+    post_users: users
+    put_users: users
+    get_users_params: users/?OrganizationID={ORGANIZATIONID}&ResourceGroupID={RESOURCEGROUPID}&IsActive={ISACTIVE}&AsOfDateTime={ASOFDATETIME}&Limit={LIMIT}&Offset={OFFSET}
+    get_users_id: users/{USERID}
+    delete_users: users/{USERID}
+  Vehicle_REST:
+    base_uri: VehicleWebService.svc
+    get_vehicle: vehicle/{VEHICLEID}
+    delete_vehicle: vehicle/{VEHICLEID}
+    post_vehicles: vehicles
+    put_vehicles: vehicles
+    get_vehicles_params: vehicles/?OrganizationSID={ORGANIZATIONSID}&ResourceGroupSID={RESOURCEGROUPSID}&IsActive={ISACTIVE}&AsOfDateTime={ASOFDATETIME}&Limit={LIMIT}&Offset={OFFSET}&OrganizationID={ORGANIZATIONID}&ResourceGroupID={RESOURCEGROUPID}
+    get_vehicles_id: vehicles/{VEHICLESID}
+    delete_vehicles: vehicles/{VEHICLESID}
+XRS_Form_Messaging_REST:
+  Form_Template Category_REST:
+    base_uri: FormTemplateCategoryWebService.svc
+    post_form_categories: formcategories
+    put_form_categories: formcategories
+    get_form_categories: formcategories/?Limit={LIMIT}&Offset={OFFSET}
+    get_form_categories_id: formcategories/{FORMTEMPLATECATEGORYSID}
+    delete_form_categories_id: formcategories/{FORMTEMPLATECATEGORYSID}
+    get_form_category_id: formcategory/{FORMTEMPLATECATEGORYSID}
+    delete_form_category_id: formcategory/{FORMTEMPLATECATEGORYSID}
+  Form_Template_Content_REST:
+    base_uri: FormTemplateContentWebService.svc
+    get_form_template_content: formtemplatecontent/?FormCategorySID={FORMCATEGORYSID}&InProduction={INPRODUCTION}&IsActive={ISACTIVE}&AsOfDateTime={ASOFDATETIME}&Limit={LIMIT}&Offset={OFFSET}&FormCategoryID={FORMCATEGORYID}
+    post_form_template_content: formtemplatecontent/?NewVersion={NEWVERSION}
+    get_form_template_content_number: formtemplatecontent/{FORMNUMBER}
+    delete_form_template_content_number: formtemplatecontent/{FORMNUMBER}
+  Form_Template_Header_REST:
+    base_uri: FormTemplateHeaderWebService.svc
+    put_form_template_header: formtemplateheader
+    get_form_template_header: formtemplateheader/?FormCategorySID={FORMCATEGORYSID}&InProduction={INPRODUCTION}&IsActive={ISACTIVE}&AsOfDateTime={ASOFDATETIME}&Limit={LIMIT}&Offset={OFFSET}&FormCategoryID={FORMCATEGORYID}
+    post_form_template_header: formtemplateheader/?NewVersion={NEWVERSION}
+    get_form_template_header_number: formtemplateheader/{FORMNUMBER}
+    delete_form_template_header_number: formtemplateheader/{FORMNUMBER}
+  Message_REST:
+    base_uri: MessageWebService.svc
+    post_messages: messages
+    get_messages_params: messages/?MessageType={MESSAGETYPE}&FormNumber={FORMNUMBER}&IncludeImageData={INCLUDEIMAGEDATA}&AsOfDateTime={ASOFDATETIME}&Limit={LIMIT}&Offset={OFFSET}&OrderDirection={ORDERDIRECTION}&StartDateTime={STARTDATETIME}&EndDateTime={ENDDATETIME}&OrganizationID={ORGANIZATIONID}
+    get_messages_id: messages/{MESSAGESID}?IncludeImageData={INCLUDEIMAGEDATA}
+    get_messages_id_attach_image: messages/{MESSAGESID}/attachment/{IMAGESID}
+    get_messages_id_signature_image: messages/{MESSAGESID}/signature/{IMAGESID}
+    get_messages_read: messages/read?MessageType={MESSAGETYPE}&FormNumber={FORMNUMBER}&IncludeImageData={INCLUDEIMAGEDATA}&AsOfDateTime={ASOFDATETIME}&Limit={LIMIT}&Offset={OFFSET}&OrderDirection={ORDERDIRECTION}&MessageSID={MESSAGESID}&ImageSID={IMAGESID}&StartDateTime={STARTDATETIME}&EndDateTime={ENDDATETIME}
+    post_messages_recall: messages/recall
+    post_messages_recall_id: messages/recall/{MESSAGESID}
+    get_messages_status: messages/status/?MessageType={MESSAGETYPE}&FormNumber={FORMNUMBER}&AsOfDateTime={ASOFDATETIME}&Limit={LIMIT}&Offset={OFFSET}
+    get_messages_status_id: messages/status/{MESSAGESID}
+    put_messages_update: messages/update/{MESSAGESID}
+XRS_Performance_REST:
+  Black_Box_REST:
+    base_uri: BlackBoxWebService.svc
+    get_black_box_summary: blackboxsummary/?OrganizationID={ORGANIZATIONID}&StartDate={STARTDATE}&EndDate={ENDDATE}&AsOfDateTime={ASOFDATETIME}&IncludeHistory={INCLUDEHISTORY}&OnlyShowEventsWithVideo={ONLYSHOWEVENTSWITHVIDEO}&OrderDirection={ORDERDIRECTION}&Limit={LIMIT}&Offset={OFFSET}
+    get_black_box_summary_driver: blackboxsummary/driver/{DRIVERID}?StartDate={STARTDATE}&EndDate={ENDDATE}&AsOfDateTime={ASOFDATETIME}&IncludeHistory={INCLUDEHISTORY}&OnlyShowEventsWithVideo={ONLYSHOWEVENTSWITHVIDEO}&OrderDirection={ORDERDIRECTION}&Limit={LIMIT}&Offset={OFFSET}
+    get_black_box_summary_vehicle: blackboxsummary/vehicle/{VEHICLEID}?StartDate={STARTDATE}&EndDate={ENDDATE}&AsOfDateTime={ASOFDATETIME}&IncludeHistory={INCLUDEHISTORY}&OnlyShowEventsWithVideo={ONLYSHOWEVENTSWITHVIDEO}&OrderDirection={ORDERDIRECTION}&Limit={LIMIT}&Offset={OFFSET}
+  Critical_Events_REST:
+    base_uri: CriticalEventWebService.svc
+    get_critical_event_summary: criticaleventsummary/?OrganizationID={ORGANIZATIONID}&StartDate={STARTDATE}&EndDate={ENDDATE}&AsOfDateTime={ASOFDATETIME}&IncludeHistory={INCLUDEHISTORY}&OnlyShowEventsWithVideo={ONLYSHOWEVENTSWITHVIDEO}&OrderDirection={ORDERDIRECTION}&Limit={LIMIT}&Offset={OFFSET}
+    get_critical_event_summary_driver: criticaleventsummary/driver/{DRIVERID}?StartDate={STARTDATE}&EndDate={ENDDATE}&AsOfDateTime={ASOFDATETIME}&IncludeHistory={INCLUDEHISTORY}&OnlyShowEventsWithVideo={ONLYSHOWEVENTSWITHVIDEO}&OrderDirection={ORDERDIRECTION}&Limit={LIMIT}&Offset={OFFSET}
+    get_critical_event_summary_vehicle: criticaleventsummary/vehicle/{VEHICLEID}?StartDate={STARTDATE}&EndDate={ENDDATE}&AsOfDateTime={ASOFDATETIME}&IncludeHistory={INCLUDEHISTORY}&OnlyShowEventsWithVideo={ONLYSHOWEVENTSWITHVIDEO}&OrderDirection={ORDERDIRECTION}&Limit={LIMIT}&Offset={OFFSET}
+  Daily_Detail_REST:
+    base_uri: DailyDetailWebService.svc
+    get_daily_detail: DailyDetail?OrganizationID={ORGANIZATIONID}&StartDate={STARTDATE}&EndDate={ENDDATE}&AsOfDateTime={ASOFDATETIME}&ResourceGroupID={RESOURCEGROUPID}&IncludeHistory={INCLUDEHISTORY}&Limit={LIMIT}&Offset={OFFSET}&GroupBy={GROUPBY}
+    get_daily_detail_driver: DailyDetail/drivers/{DRIVERID}/?StartDate={STARTDATE}&EndDate={ENDDATE}&AsOfDateTime={ASOFDATETIME}&IncludeHistory={INCLUDEHISTORY}&Limit={LIMIT}&Offset={OFFSET}
+    get_daily_detail_vehicle: DailyDetail/vehicles/{VEHICLEID}/?StartDate={STARTDATE}&EndDate={ENDDATE}&AsOfDateTime={ASOFDATETIME}&IncludeHistory={INCLUDEHISTORY}&Limit={LIMIT}&Offset={OFFSET}
+  Fault_Code_REST:
+    base_uri: FaultCodeWebService.svc
+    get_fault_codes: FaultCodes/?OrganizationID={ORGANIZATIONID}&StartDate={STARTDATE}&EndDate={ENDDATE}&AsOfDateTime={ASOFDATETIME}&Limit={LIMIT}&Offset={OFFSET}
+    get_fault_codes_vehicle: FaultCodes/vehicle/{VEHICLEID}?StartDate={STARTDATE}&EndDate={ENDDATE}&AsOfDateTime={ASOFDATETIME}&Limit={LIMIT}&Offset={OFFSET}
+  Operation_REST:
+    base_uri: OperationWebService.svc
+    get_profile: Profile/?GroupBy={ASSETTYPE}&OrganizationID={ORGANIZATIONID}&IsActive={ISACTIVE}&IncludeHistory={INCLUDEHISTORY}&StartDate={STARTDATE}&EndDate={ENDDATE}&AsOfDateTime={ASOFDATETIME}&Limit={LIMIT}&Offset={OFFSET}
+    get_profile_driver: Profile/driver/{DRIVERID}?StartDate={STARTDATE}&EndDate={ENDDATE}&AsOfDateTime={ASOFDATETIME}
+    get_profile_vehicle: Profile/vehicle/{VEHICLEID}?StartDate={STARTDATE}&EndDate={ENDDATE}&AsOfDateTime={ASOFDATETIME}
+    get_summary: Summary/?GroupBy={ASSETTYPE}&OrganizationID={ORGANIZATIONID}&IsActive={ISACTIVE}&IncludeHistory={INCLUDEHISTORY}&StartDate={STARTDATE}&EndDate={ENDDATE}&AsOfDateTime={ASOFDATETIME}&Limit={LIMIT}&Offset={OFFSET}
+    get_summary_driver: Summary/driver/{DRIVERID}?StartDate={STARTDATE}&EndDate={ENDDATE}&AsOfDateTime={ASOFDATETIME}
+    get_summary_vehicle: Summary/vehicle/{VEHICLEID}?StartDate={STARTDATE}&EndDate={ENDDATE}&AsOfDateTime={ASOFDATETIME}
+XRS_Routing_Dispatch_REST:
+  Delay_Detail_Report_REST:
+    base_uri: DelayDetailReportWebService.svc
+    get_delay_detail: DelayDetail/?OrganizationID={ORGANIZATIONID}&ResourceGroupID={RESOURCEGROUPID}&DriverID={DRIVERID}&RouteID={ROUTEID}&DelayReason={DELAYREASON}&StartDateTime={STARTDATETIME}&EndDateTime={ENDDATETIME}&AsOfDateTime={ASOFDATETIME}&Limit={LIMIT}&Offset={OFFSET}&Recurse={RECURSE}
+  Delay_Summary_Report_REST:
+    base_uri: DelaySummaryReportWebService.svc
+    get_delay_summary: DelaySummary/?OrganizationID={ORGANIZATIONID}&ResourceGroupID={RESOURCEGROUPID}&DriverID={DRIVERID}&RouteID={ROUTEID}&DelayReason={DELAYREASON}&StartDateTime={STARTDATETIME}&EndDateTime={ENDDATETIME}&AsOfDateTime={ASOFDATETIME}&Limit={LIMIT}&Offset={OFFSET}&Recurse={RECURSE}
+  Out_Of_Route_REST:
+    base_uri: OutOfRouteWebService.svc
+    get_oorr: OORR/?OrganizationID={ORGANIZATIONID}&ResourceGroupID={RESOURCEGROUPID}&FromDate={FROMDATE}&ToDate={TODATE}&Limit={LIMIT}&Offset={OFFSET}&Recurse={RECURSE}
+  Plan_Vs_Actual_REST:
+    base_uri: PlanVsActualWebService.svc
+    get_pvar: PVAR/?OrganizationID={ORGANIZATIONID}&ResourceGroupID={RESOURCEGROUPID}&FromDate={FROMDATE}&ToDate={TODATE}&Limit={LIMIT}&Offset={OFFSET}&Recurse={RECURSE}
+    get_pvavlsr: PVAVLSR/?OrganizationID={ORGANIZATIONID}&ResourceGroupID={RESOURCEGROUPID}&DriverID={DRIVERID}&VehicleID={VEHICLEID}&FromDate={FROMDATE}&ToDate={TODATE}&Limit={LIMIT}&Offset={OFFSET}&Recurse={RECURSE}
+  Route_REST:
+    base_uri: RouteWebService.svc
+    get_route: route?organizationId={ORGANIZATIONID}&resourceGroupID={RESOURCEGROUPID}&asOfDateTime={ASOFDATETIME}&limit={LIMIT}&offset={OFFSET}&recurse={RECURSE}
+    get_route_orgid_id: route/{ORGANIZATIONID}/{ROUTEID}
+    delete_route_orgid_id: route/{ORGANIZATIONID}/{ROUTEID}
+    get_route_orgid_id_tripid: route/{ORGANIZATIONID}/{ROUTEID}/{TRIPID}
+    delete_route_orgid_id_tripid: route/{ORGANIZATIONID}/{ROUTEID}/{TRIPID}
+    post_routes: Routes
+    put_routes: Routes
+    get_route_v2: v2/route?organizationId={ORGANIZATIONID}&resourceGroupID={RESOURCEGROUPID}&asOfDateTime={ASOFDATETIME}&limit={LIMIT}&offset={OFFSET}&recurse={RECURSE}
+    get_route_orgid_id_v2: v2/route/{ORGANIZATIONID}/{ROUTEID}
+    get_route_orgid_id_tripid_v2: v2/route/{ORGANIZATIONID}/{ROUTEID}/{TRIPID}
+    post_routes_v2: v2/Routes
+    put_routes_v2: v2/Routes
+  Route_Status_REST:
+    base_uri: RouteStatusWebService.svc
+    get_rstr: RSTR/?OrganizationID={ORGANIZATIONID}&ResourceGroupID={RESOURCEGROUPID}&FromDate={FROMDATE}&ToDate={TODATE}&Limit={LIMIT}&Offset={OFFSET}&Recurse={RECURSE}
+  Site_Activity_REST:
+    base_uri: SiteActivityWebService.svc
+    get_sitr: SITR/?OrganizationID={ORGANIZATIONID}&ResourceGroupID={RESOURCEGROUPID}&FromDate={FROMDATE}&ToDate={TODATE}&Limit={LIMIT}&Offset={OFFSET}&Recurse={RECURSE}
+  Trip_REST:
+    base_uri: TripWebService.svc
+    get_trip: trip?OrganizationID={ORGANIZATIONID}&ResourceGroupID={RESOURCEGROUPID}&RouteID={ROUTEID}&TripID={TRIPID}&asOfDateTime={ASOFDATETIME}&FromDateTime={FROMDATETIME}&ToDateTime={TODATETIME}&Limit={LIMIT}&Offset={OFFSET}&Recurse={RECURSE}
+    post_trip: trip
+    get_trip_orgid_routeid_id: trip/{ORGANIZATIONID}/{ROUTEID}/{TRIPID}
+    delete_trip_orgid_routeid_id: trip/{ORGANIZATIONID}/{ROUTEID}/{TRIPID}
+    get_trip_v2: tripV2?OrganizationID={ORGANIZATIONID}&ResourceGroupID={RESOURCEGROUPID}&RouteID={ROUTEID}&TripID={TRIPID}&asOfDateTime={ASOFDATETIME}&FromDateTime={FROMDATETIME}&ToDateTime={TODATETIME}&Limit={LIMIT}&Offset={OFFSET}&TripStatus={TRIPSTATUS}&StopStatus={STOPSTATUS}&ChangesOnly={CHANGESONLY}&Recurse={RECURSE}
+XRS_Status_REST:
+  Driver_Status_REST:
+    base_uri: DriverStatusWebService.svc
+    get_driver_state_id: driverstate/{DRIVERID}?AsOfDateTime={ASOFDATETIME}&Events={EVENTS}
+    get_driver_status: driverstatus/?OrganizationSID={ORGANIZATIONSID}&ResourceGroupSID={RESOURCEGROUPSID}&AsOfDateTime={ASOFDATETIME}&Limit={LIMIT}&Offset={OFFSET}&OrganizationID={ORGANIZATIONID}&ResourceGroupID={RESOURCEGROUPID}&Options={OPTIONS}&Events={EVENTS}
+    get_driver_status_id: driverstatus/{DRIVERSID}?AsOfDateTime={ASOFDATETIME}&Events={EVENTS}
+  Vehicle_Status_REST:
+    base_uri: VehicleStatusWebService.svc
+    get_vehicle_state_id: vehiclestate/{VEHICLEID}?AsOfDateTime={ASOFDATETIME}
+    get_vehicle_status: vehiclestatus/?OrganizationSID={ORGANIZATIONSID}&ResourceGroupSID={RESOURCEGROUPSID}&AsOfDateTime={ASOFDATETIME}&Limit={LIMIT}&Offset={OFFSET}&OrganizationID={ORGANIZATIONID}&ResourceGroupID={RESOURCEGROUPID}
+    get_vehicle_status_id: vehiclestatus/{VEHICLESID}?AsOfDateTime={ASOFDATETIME}
+  Vehicle_Breadcrumb_REST:
+    base_uri: VehicleBreadcrumbWebService.svc
+    get_vehicle_bread_crumb: vehiclebreadcrumb/?OrganizationSID={ORGANIZATIONSID}&ResourceGroupSID={RESOURCEGROUPSID}&IsActive={ISACTIVE}&AsOfDateTime={ASOFDATETIME}&StartDateTime={STARTDATETIME}&EndDateTime={ENDDATETIME}&Limit={LIMIT}&Offset={OFFSET}&OrganizationID={ORGANIZATIONID}&ResourceGroupID={RESOURCEGROUPID}
+    get_vehicle_bread_crumb_id: vehiclebreadcrumb/{VEHICLESID}?AsOfDateTime={ASOFDATETIME}&StartDateTime={STARTDATETIME}&EndDateTime={ENDDATETIME}&Limit={LIMIT}&Offset={OFFSET}
+    get_vehicle_bread_crumbs_id: vehiclebreadcrumbs/{VEHICLEID}?AsOfDateTime={ASOFDATETIME}&StartDateTime={STARTDATETIME}&EndDateTime={ENDDATETIME}&Limit={LIMIT}&Offset={OFFSET}
+XRS_Compliance_REST:
+  Driver_Log_REST:
+    base_uri: DriverLogWebService.svc
+    get_driver_log: driverlog/?OrganizationID={ORGANIZATIONID}&ResourceGroupID={RESOURCEGROUPID}&Edits={EDITS}&StartDate={STARTDATE}&EndDate={ENDDATE}&Limit={LIMIT}&Offset={OFFSET}
+    get_driver_log_id: driverlog/{DRIVERID}?Edits={EDITS}&StartDate={STARTDATE}&EndDate={ENDDATE}
+    get_driver_log_details: driverlogdetails/?OrganizationID={ORGANIZATIONID}&AsOfDateTime={ASOFDATETIME}&Limit={LIMIT}&Offset={OFFSET}
+    get_driver_log_details_id: driverlogdetails/{DRIVERID}?AsOfDateTime={ASOFDATETIME}
+    get_driver_log_details_v2: v2/driverlogdetails/?OrganizationID={ORGANIZATIONID}&AsOfDateTime={ASOFDATETIME}&Limit={LIMIT}&Offset={OFFSET}
+    post_driver_log_details_v2: v2/driverlogdetails/
+    put_driver_log_details_v2: v2/driverlogdetails/
+    get_driver_log_details_id_v2: v2/driverlogdetails/{DRIVERID}?AsOfDateTime={ASOFDATETIME}
+    get_driver_log_v3: v3/driverlog/?OrganizationID={ORGANIZATIONID}&ResourceGroupID={RESOURCEGROUPID}&Edits={EDITS}&StartDate={STARTDATE}&EndDate={ENDDATE}&Limit={LIMIT}&Offset={OFFSET}&Recurse={RECURSE}&IsActive={ISACTIVE}
+    get_driverLog_id_v3: v3/driverlog/{DRIVERID}?Edits={EDITS}&StartDate={STARTDATE}&EndDate={ENDDATE}
+  DVIR_REST:
+    base_uri: DVIRWebService.svc
+    get_dvir: DVIR/?OrganizationID={ORGANIZATIONID}&StartDate={STARTDATE}&EndDate={ENDDATE}&AsOfDateTime={ASOFDATETIME}&DriverID={DRIVERID}&AssetType={ASSETTYPE}&InspectionsWithDefectsOnly={DEFECTSONLY}&IncludeNonDefects={INCLUDENONDEFECTS}&Limit={LIMIT}&Offset={OFFSET}
+    put_dvir_certify: DVIR/certify
+    get_dvir_trailer: DVIR/trailer/{TRAILERID}?OrganizationID={ORGANIZATIONID}&StartDate={STARTDATE}&EndDate={ENDDATE}&AsOfDateTime={ASOFDATETIME}&DriverID={DRIVERID}&InspectionsWithDefectsOnly={DEFECTSONLY}&IncludeNonDefects={INCLUDENONDEFECTS}&Limit={LIMIT}&Offset={OFFSET}
+    get_dvir_vehicle: DVIR/vehicle/{VEHICLEID}?OrganizationID={ORGANIZATIONID}&StartDate={STARTDATE}&EndDate={ENDDATE}&AsOfDateTime={ASOFDATETIME}&DriverID={DRIVERID}&InspectionsWithDefectsOnly={DEFECTSONLY}&IncludeNonDefects={INCLUDENONDEFECTS}&Limit={LIMIT}&Offset={OFFSET}
+  IFTA_REST:
+    base_uri: IFTAWebService.svc
+    post_distances: Distances
+    get_distances: Distances/?OrganizationID={ORGANIZATIONID}&StartDateTime={STARTDATE}&EndDateTime={ENDDATE}&AsOfDateTime={ASOFDATETIME}&StateProvince={STATEPROVINCE}&Limit={LIMIT}&Offset={OFFSET}
+    get_distances_vehicleid: Distances/{VEHICLEID}?StartDateTime={STARTDATE}&EndDateTime={ENDDATE}&AsOfDateTime={ASOFDATETIME}&Limit={LIMIT}&Offset={OFFSET}
+    post_fuel_receipts: FuelReceipts
+    get_fuel_receipts: FuelReceipts/?OrganizationId={ORGANIZATIONID}&StartDate={STARTDATE}&EndDate={ENDDATE}&AsOfDateTime={ASOFDATETIME}&StateProvince={STATEPROVINCE}&Vendor={VENDOR}&Limit={LIMIT}&Offset={OFFSET}
+    get_fuel_receipts_vehicleid: FuelReceipts/{VEHICLEID}?StartDate={STARTDATE}&EndDate={ENDDATE}&AsOfDateTime={ASOFDATETIME}&Limit={LIMIT}&Offset={OFFSET}
+    get_jurisdiction_crossings: JurisdictionCrossings/?OrganizationId={ORGANIZATIONID}&StartDateTime={STARTDATETIME}&EndDateTime={ENDDATETIME}&AsOfDateTime={ASOFDATETIME}&Limit={LIMIT}&Offset={OFFSET}
+    get_jurisdiction_crossings_vehcileid: JurisdictionCrossings/{VEHICLEID}?StartDateTime={STARTDATETIME}&EndDateTime={ENDDATETIME}&AsOfDateTime={ASOFDATETIME}&Limit={LIMIT}&Offset={OFFSET}
+  UVA_REST:
+    base_uri: UnassignedVehicleActivityWebService.svc
+    get_uva: UVA/?OrganizationID={ORGANIZATIONID}&ResourceGroupID={RESOURCEGROUPID}&StartDate={STARTDATE}&EndDate={ENDDATE}&Status={STATUS}&Limit={LIMIT}&Offset={OFFSET}
+    put_uva_segment: UVA/segment/{SEGMENTSID}/classification/
+    get_uva_vehicle: UVA/vehicle/{VEHICLEID}?OrganizationID={ORGANIZATIONID}&ResourceGroupID={RESOURCEGROUPID}&StartDate={STARTDATE}&EndDate={ENDDATE}&Status={STATUS}&Limit={LIMIT}&Offset={OFFSET}

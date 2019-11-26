@@ -1,0 +1,119 @@
+XRS_HOST_ENVIRONMENT_URL:
+  prod: https://www.xataxrs.com
+  rdcprod: https://rdc-prod-web.aws.roadnet.com
+  beta: https://b1.xataxrs.com
+  alpha: https://a1.xataxrs.com
+  q1: https://q1.xataxrs.com
+  q2: https://q2.xataxrs.com
+  dev2: https://dev2.xataxrs.com
+  d3: https://d3.xataxrs.com
+  r1: https://r1.xataxrs.com
+  tedev: https://omni1-poc-xrs.aws.roadnet.com
+  teprod: https://rdc-te-prod-xrs.aws.roadnet.com
+  rdcsand: https://rdc-sb2-xrs.aws.roadnet.com
+  rdcsand2: https://rdc-sb2-xrs.aws.roadnet.com
+  p2: https://p2.xataxrs.com
+XRS_MASTER_ENVIRONMENT_URL:
+  prod: https://www.xataxrs.com/admin
+  rdcprod: https://rdc-prod-web.aws.roadnet.com/admin
+  beta: https://b1.xataxrs.com/admin
+  alpha: https://a1.xataxrs.com/admin
+  q1: https://q1.xataxrs.com/admin
+  q2: https://q2.xataxrs.com/admin
+  dev2: https://dev2.xataxrs.com/admin
+  d3: https://d3.xataxrs.com/admin
+  r1: https://r1.xataxrs.com/admin
+  tedev: https://omni1-poc-xrs.aws.roadnet.com/admin
+  teprod: https://rdc-te-prod-xrs.aws.roadnet.com/admin
+  rdcsand: https://rdc-sb2-xrs.aws.roadnet.com/admin
+  rdcsand2: https://rdc-sb2-xrs.aws.roadnet.com/admin
+  p2: https://p2.xataxrs.com/admin
+XRS_TIME_CLOCK_ENVIRONMENT_URL:
+  prod: https://tc.xataxrs.com
+  rdcprod: https://rdc-prod-tc.aws.roadnet.com
+  beta: https://b1tc.xataxrs.com
+  alpha: https://a1tc.xataxrs.com
+  q1: https://q1tc.xataxrs.com
+  q2: https://q2tc.xataxrs.com
+  dev2: https://dev2tc.xataxrs.com
+  d3: https://d3tc.xataxrs.com
+  r1: https://r1tc.xataxrs.com
+  tedev: https://omni1-poc-xrstc.aws.roadnet.com
+  teprod: https://rdc-te-prod-xrstc.aws.roadnet.com
+  rdcsand: https://rdc-sandbox-xrstc.aws.roadnet.com
+  rdcsand2: https://rdc-sb2-xrstc.aws.roadnet.com
+  p2: https://p2tc.xataxrs.com
+XRS_WEBSERVICES_URL:
+  prod: http://ws.xataxrs.com
+  rdcprod: https://rdc-prod-ws.aws.roadnet.com
+  beta: http://b1ws.xataxrs.com
+  alpha: http://a1ws.xataxrs.com
+  q1: http://q1ws.xataxrs.com
+  q2: http://q2ws.xataxrs.com
+  dev2: http://dev2ws.xataxrs.com
+  d3: http://d3ws.xataxrs.com
+  r1: http://r1ws.xataxrs.com
+  tedev: http://omni1-poc-xrsws.aws.roadnet.com
+  teprod: http://rdc-te-prod-xrsws.aws.roadnet.com
+  rdcsand: http://rdc-sandbox-xrsws.aws.roadnet.com
+  rdcsand2: http://rdc-sb2-xrsws.aws.roadnet.com
+  p2: http://p2ws.xataxrs.com
+XRS_AWS_WEBSERVICES_URL:
+  prod: https://ws.xataxrs.com  # Not yet upgraded to aws
+  rdcprod: https://rdc-prod-ws.aws.roadnet.com  # Preexisting aws webservices
+  beta: https://b1ws.xataxrs.com  # Not yet upgraded to aws
+  alpha: https://a1ws.xataxrs.com  # Not yet upgraded to aws
+  q1: https://q1ws.xataxrs.com  # Not yet upgraded to aws
+  q2: https://q2ws.xataxrs.com  # Not yet upgraded to aws
+  dev2: https://dev2ws.xataxrs.com  # Not yet upgraded to aws
+  d3: https://d3ws.xataxrs.com
+  r1: https://r1ws.xataxrs.com  # Not yet upgraded to aws
+  tedev: https://omni1-poc-xrsws.aws.roadnet.com  # Preexisting aws webservices
+  teprod: https://rdc-te-prod-xrsws.aws.roadnet.com  # Preexisting aws webservices
+  rdcsand: https://rdc-sandbox-xrsws.aws.roadnet.com  # Preexisting aws webservices
+  rdcsand2: https://rdc-sb2-xrsws.aws.roadnet.com  # Preexisting aws webservices
+XRS_MOBILE_ENVIRONMENT_URL:
+  prod: www.mc.xataxrs.com
+  rdcprod: rdc-prod-mc.aws.roadnet.com
+  beta: b1mc.xataxrs.com
+  alpha: a1mc.xataxrs.com
+  q1: q1mc.xataxrs.com
+  q2: q2mc.xataxrs.com
+  dev2: dev2mc.xataxrs.com
+  d3: d3mc.xataxrs.com
+  r1: r1mc.xataxrs.com
+  tedev: omni1-poc-xrs.aws.roadnet.com
+  teprod: rdc-te-prod-xrs.aws.roadnet.com
+  rdcsand: rdc-sandbox-xrs.aws.roadnet.com
+  rdcsand2: rdc-sb2-xrs.aws.roadnet.com
+  p2: p2mc.xataxrs.com
+XRS_MAINTENANCE_TOOLS_ENVIRONMENT_URL:
+  prod: http://xrs2tools.xrssaas.local
+  rdcprod: http://tools.rnaz-prod.local
+  beta: http://b1tools.xrssaas.local
+  alpha: http://a1tools.xrssaas.local
+  q1: http://q1tools.xrsdev.local
+  q2: http://q2tools.xrsdev.local
+  dev2: http://d2tools.xrsdev.local
+  d3: http://d3tools.xrsdev.local
+  r1: http://r1tools.xrsdev.local
+  tedev: omni1-poc-tools-xrs.aws.roadnet.com
+  teprod: rdc-te-prod-tools-xrs.aws.roadnet.com
+  rdcsand: rdc-sandbox-xrs-tools.aws.roadnet.com
+  rdcsand2: rdc-sb2-xrs-tools.aws.roadnet.com
+  p2: http://p2tools.xrsdev.local
+XRS_ERODS:
+  prod: true
+  rdcprod: true
+  beta: true
+  alpha: true
+  q1: true
+  q2: false
+  dev2: false
+  d3: true
+  r1: false
+  tedev: true
+  teprod: true
+  rdcsand: false
+  rdcsand2: false
+  p2: false

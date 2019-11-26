@@ -1,0 +1,3 @@
+# This file is designed to contain common project variables.
+# These variables are set up to be changed in the command line if needed.
+XRS_HOST_ENVIRONMENT: q1  # This is the default environment
