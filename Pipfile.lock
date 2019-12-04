@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "d6ffcf6888b1e9dc4b964b4aa88960305c7b0f6a02f6d2262517439c6499e370"
+            "sha256": "b0d67af22ca86eae560c95669d0e5e50f83ee4b12b87724074d70ce8f75ff0df"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -18,10 +18,10 @@
     "default": {
         "certifi": {
             "hashes": [
-                "sha256:e4f3620cfea4f83eedc95b24abd9cd56f3c4b146dd0177e83a21b4eb49e21e50",
-                "sha256:fd7c7c74727ddcf00e9acd26bba8da604ffec95bf1c2144e67aff7a8b50e6cef"
+                "sha256:017c25db2a153ce562900032d5bc68e9f191e44e9a0f762f373977de9df1fbb3",
+                "sha256:25b64c7da4cd7479594d035c08c2d809eb4aab3a26e5a990ea98cc450c320f1f"
             ],
-            "version": "==2019.9.11"
+            "version": "==2019.11.28"
         },
         "chardet": {
             "hashes": [
@@ -71,6 +71,13 @@
             "index": "pypi",
             "version": "==3.1.2"
         },
+        "robotframework-pabot": {
+            "hashes": [
+                "sha256:a6101f48f16d89ccde7d73e7ada9d50b254a401223206387d7809eb2b2fa165e"
+            ],
+            "index": "pypi",
+            "version": "==0.91"
+        },
         "robotframework-requests": {
             "hashes": [
                 "sha256:30669de238f7efd171ccab1c19c7f30ed6b77f43db534c173c1fa1568194d4cb"
@@ -85,6 +92,13 @@
             ],
             "index": "pypi",
             "version": "==1.0"
+        },
+        "robotremoteserver": {
+            "hashes": [
+                "sha256:1d78ebc63738838a638042407c1da472811853892d64498fd89e061f7f15addd",
+                "sha256:b95e75d5de49f4ba5eefb985469ee6dd3604042faed7198d2a77be35e56aea9e"
+            ],
+            "version": "==1.1"
         },
         "suds-jurko": {
             "hashes": [

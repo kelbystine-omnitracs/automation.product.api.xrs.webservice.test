@@ -10,6 +10,13 @@ robotframework = "*"
 robotframework-sudslibrary3 = "*"
 robotframework-requests = "*"
 pyyaml = "*"
+robotframework-pabot = "*"
+configparser = "*"
+setuptools = "*"
+hashlib = "*"
+httpserver = "*"
+pillow = "*"
+psutil = "*"
 
 [requires]
 python_version = "3.7"

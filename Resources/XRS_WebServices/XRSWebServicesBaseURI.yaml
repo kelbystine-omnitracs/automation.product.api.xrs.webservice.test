@@ -1,0 +1,38 @@
+XRS_Entity_Management_Base_URI:
+  Device: DeviceWebService.svc
+  Driver: DriverWebService.svc
+  Organization: OrganizationWebService.svc
+  Resource_Group: ResourceGroupWebService.svc
+  Site: SiteWebService.svc
+  Trailer: TrailerWebService.svc
+  User: UserWebService.svc
+  Vehicle: VehicleWebService.svc  
+XRS_Form_Messaging_Base_URI:
+  Form_Template_Category: FormTemplateCategoryWebService.svc
+  Form_Template_Content: FormTemplateContentWebService.svc
+  Form_Template_Header: FormTemplateHeaderWebService.svc
+  Message: MessageWebService.svc
+XRS_Performance_Base_URI:
+  Black_Box: BlackBoxWebService.svc
+  Critical_Events: CriticalEventWebService.svc
+  Daily_Detail: DailyDetailWebService.svc
+  Fault_Code: FaultCodeWebService.svc
+  Operation: OperationWebService.svc
+XRS_Routing_Dispatch_Base_URI:
+  Delay_Detail_Report: DelayDetailReportWebService.svc
+  Delay_Summary_Report: DelaySummaryReportWebService.svc
+  Out_Of_Route: OutOfRouteWebService.svc
+  Plan_Vs_Actual: PlanVsActualWebService.svc
+  Route: RouteWebService.svc
+  Route_Status: RouteStatusWebService.svc
+  Site_Activity: SiteActivityWebService.svc
+  Trip: TripWebService.svc
+XRS_Status_Base_URI:
+  Driver_Status: DriverStatusWebService.svc
+  Vehicle_Status: VehicleStatusWebService.svc
+  Vehicle_Breadcrumb: VehicleBreadcrumbWebService.svc
+XRS_Compliance_Base_URI:
+  Driver_Log: DriverLogWebService.svc
+  DVIR: DVIRWebService.svc
+  IFTA: IFTAWebService.svc
+  UVA: UnassignedVehicleActivityWebService.svc

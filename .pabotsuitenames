@@ -1,0 +1,5 @@
+datasources:0ad2e8098ca8891f30c859254b892b43a1d20321
+commandlineoptions:f8a5a02cc4494941dfe6a416dd75dcf620f2f35e
+suitesfrom:no-suites-from-option
+file:33b00554cd8947625ae684aed91be928dd6171e3
+--suite Suites.Aws-Api-Gateway-Tests.Tests.AWS XRS WebServicesTests.ValidateAWSXRSDeviceWebServices

@@ -130,3 +130,6 @@ dmypy.json
 
 # Untracked Folders
 Results/*
+rfswarm-master/*
+rfswarmagent/*
+pabot_results/*
