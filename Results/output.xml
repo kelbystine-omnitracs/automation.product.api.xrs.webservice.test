@@ -1,147 +1,381 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.1.2 (Python 3.7.3 on win32)" generated="20191203 16:19:18.190" rpa="false">
+<robot generator="Robot 3.1.2 (Python 3.7.3 on win32)" generated="20191205 14:53:02.215" rpa="false">
 <suite id="s1" name="Tests" source="C:\Users\kstine\git\aws-api-gateway-tests\Tests">
 <suite id="s1-s1" name="AWS XRS WebServicesTests" source="C:\Users\kstine\git\aws-api-gateway-tests\Tests\AWS_XRS_WebServicesTests">
 <suite id="s1-s1-s1" name="ValidateAWSXRSDeviceWebServices" source="C:\Users\kstine\git\aws-api-gateway-tests\Tests\AWS_XRS_WebServicesTests\ValidateAWSXRSDeviceWebServices.robot">
 <kw name="Create AWS XRS Web Services Session" library="XRSCommonWebService" type="setup">
-<doc>Create a session with aws xrs web services without authorization</doc>
-<msg timestamp="20191203 16:19:18.416" level="TRACE">Arguments: [  ]</msg>
+<doc>Create a session with aws xrs web services</doc>
+<msg timestamp="20191205 14:53:02.426" level="TRACE">Arguments: [  ]</msg>
 <kw name="Create Session" library="RequestsLibrary">
 <doc>Create Session: create a HTTP session to a server</doc>
 <arguments>
-<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${XRS_WEB_SERVICE_SESSION_ALIAS}</arg>
 <arg>${XRS_AWS_WEBSERVICES_URL}[${XRS_HOST_ENVIRONMENT}]</arg>
 <arg>verify=True</arg>
 <arg>auth=${XRS_WEBSERVICES_AUTHORIZATION}</arg>
 </arguments>
-<msg timestamp="20191203 16:19:18.416" level="TRACE">Arguments: [ 'xrs_web_service_session' | 'https://d3ws.xataxrs.com' | verify=True | auth=['GnomeShippingD3|admin', 'xrs123'] ]</msg>
-<msg timestamp="20191203 16:19:18.416" level="INFO">Creating Session using : alias=xrs_web_service_session, url=https://d3ws.xataxrs.com, headers={},                     cookies={}, auth=&lt;requests.auth.HTTPBasicAuth object at 0x0000025271D8DD68&gt;, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
-<msg timestamp="20191203 16:19:18.417" level="DEBUG">Creating session: xrs_web_service_session</msg>
-<msg timestamp="20191203 16:19:18.417" level="DEBUG">Argument types are:
+<msg timestamp="20191205 14:53:02.427" level="TRACE">Arguments: [ 'xrs_web_service_session' | 'https://d3ws.xataxrs.com' | verify=True | auth=['GnomeShippingD3|admin', 'xrs123'] ]</msg>
+<msg timestamp="20191205 14:53:02.427" level="INFO">Creating Session using : alias=xrs_web_service_session, url=https://d3ws.xataxrs.com, headers={},                     cookies={}, auth=&lt;requests.auth.HTTPBasicAuth object at 0x000001FDC0326198&gt;, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<msg timestamp="20191205 14:53:02.427" level="DEBUG">Creating session: xrs_web_service_session</msg>
+<msg timestamp="20191205 14:53:02.427" level="DEBUG">Argument types are:
 &lt;class 'bool'&gt;</msg>
-<msg timestamp="20191203 16:19:18.417" level="TRACE">Return: &lt;requests.sessions.Session object at 0x0000025271D8DB00&gt;</msg>
-<status status="PASS" starttime="20191203 16:19:18.416" endtime="20191203 16:19:18.417"></status>
+<msg timestamp="20191205 14:53:02.427" level="TRACE">Return: &lt;requests.sessions.Session object at 0x000001FDC0326208&gt;</msg>
+<status status="PASS" starttime="20191205 14:53:02.427" endtime="20191205 14:53:02.427"></status>
 </kw>
-<msg timestamp="20191203 16:19:18.417" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20191203 16:19:18.416" endtime="20191203 16:19:18.417"></status>
+<msg timestamp="20191205 14:53:02.428" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20191205 14:53:02.426" endtime="20191205 14:53:02.428"></status>
 </kw>
-<test id="s1-s1-s1-t1" name="Validate AWS XRS Device REST Webservices">
-<kw name="Verify Post Devices">
-<msg timestamp="20191203 16:19:18.418" level="TRACE">Arguments: [  ]</msg>
-<kw name="Create Dictionary" library="BuiltIn">
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<test id="s1-s1-s1-t1" name="Validate AWS XRS Get Device REST Web Services Returns 400 Error">
+<kw name="Get Device With Phone Number" library="Device">
+<doc>This will get device information for a particular device using the phone number</doc>
 <arguments>
-<arg>PhoneNumber=1234567896</arg>
-<arg>DeviceType=Nexus</arg>
-<arg>CarrierDisplayName=Sprint</arg>
-<arg>OrganizationName=Gnome Shipping D3</arg>
-</arguments>
-<assign>
-<var>&amp;{data}</var>
-</assign>
-<msg timestamp="20191203 16:19:18.419" level="TRACE">Arguments: [ 'PhoneNumber=1234567896' | 'DeviceType=Nexus' | 'CarrierDisplayName=Sprint' | 'OrganizationName=Gnome Shipping D3' ]</msg>
-<msg timestamp="20191203 16:19:18.419" level="TRACE">Return: {'CarrierDisplayName': 'Sprint',
- 'DeviceType': 'Nexus',
- 'OrganizationName': 'Gnome Shipping D3',
- 'PhoneNumber': '1234567896'}</msg>
-<msg timestamp="20191203 16:19:18.419" level="INFO">&amp;{data} = { PhoneNumber=1234567896 | DeviceType=Nexus | CarrierDisplayName=Sprint | OrganizationName=Gnome Shipping D3 }</msg>
-<status status="PASS" starttime="20191203 16:19:18.419" endtime="20191203 16:19:18.419"></status>
-</kw>
-<kw name="Post Devices" library="Device">
-<doc>This will post device information.</doc>
-<arguments>
-<arg>PhoneNumber=1234567896</arg>
-<arg>DeviceType=Nexus</arg>
-<arg>CarrierDisplayName=Sprint</arg>
-<arg>OrganizationName=Gnome Shipping D3</arg>
+<arg>${XRS_WEB_SERVICES_TEST_DEVICE_1.PhoneNumber}</arg>
 </arguments>
 <assign>
 <var>${response}</var>
 </assign>
-<msg timestamp="20191203 16:19:18.419" level="TRACE">Arguments: [ &amp;{data}={'CarrierDisplayName': 'Sprint',
- 'DeviceType': 'Nexus',
- 'OrganizationName': 'Gnome Shipping D3',
- 'PhoneNumber': '1234567896'} ]</msg>
+<msg timestamp="20191205 14:53:02.429" level="TRACE">Arguments: [ ${phone_number}=1201201212 ]</msg>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
 <arguments>
-<arg>${XRS_Entity_Management_Base_URI.Device}/devices</arg>
+<arg>${XRS_Entity_Management_Base_URI.Device}${ENTITY_MANAGEMENT_WEBSERVICE_GET_DELETE_DEVICE_WITH_NUMBER}/${phone_number}</arg>
 </arguments>
 <assign>
 <var>${uri}</var>
 </assign>
-<msg timestamp="20191203 16:19:18.420" level="TRACE">Arguments: [ 'DeviceWebService.svc/devices' ]</msg>
-<msg timestamp="20191203 16:19:18.420" level="TRACE">Return: 'DeviceWebService.svc/devices'</msg>
-<msg timestamp="20191203 16:19:18.420" level="INFO">${uri} = DeviceWebService.svc/devices</msg>
-<status status="PASS" starttime="20191203 16:19:18.420" endtime="20191203 16:19:18.420"></status>
+<msg timestamp="20191205 14:53:02.429" level="TRACE">Arguments: [ 'DeviceWebService.svc/device/1201201212' ]</msg>
+<msg timestamp="20191205 14:53:02.429" level="TRACE">Return: 'DeviceWebService.svc/device/1201201212'</msg>
+<msg timestamp="20191205 14:53:02.429" level="INFO">${uri} = DeviceWebService.svc/device/1201201212</msg>
+<status status="PASS" starttime="20191205 14:53:02.429" endtime="20191205 14:53:02.429"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION_ALIAS}</arg>
+<arg>${uri}</arg>
+<arg>headers=${XRS_WEBSERVICES_JSON_HEADER}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191205 14:53:02.430" level="TRACE">Arguments: [ 'xrs_web_service_session' | 'DeviceWebService.svc/device/1201201212' | headers={'Accept': 'application/json',
+ 'Accept-Encoding': 'gzip, deflate',
+ 'Content-Type': 'application/json'} ]</msg>
+<msg timestamp="20191205 14:53:02.430" level="INFO">GET Request using : uri=DeviceWebService.svc/device/1201201212, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191205 14:53:02.432" level="DEBUG">Starting new HTTPS connection (1): d3ws.xataxrs.com:443</msg>
+<msg timestamp="20191205 14:53:05.878" level="DEBUG">https://d3ws.xataxrs.com:443 "GET /DeviceWebService.svc/device/1201201212 HTTP/1.1" 400 120</msg>
+<msg timestamp="20191205 14:53:05.879" level="DEBUG">GET Response : status=400, reason=Bad Request
+{"ErrorMessage":"The request failed to return any devices.","EventCode":3460453578429169664,"Parameters":["1201201212"]}</msg>
+<msg timestamp="20191205 14:53:05.879" level="TRACE">Return: &lt;Response [400]&gt;</msg>
+<msg timestamp="20191205 14:53:05.879" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20191205 14:53:02.429" endtime="20191205 14:53:05.879"></status>
+</kw>
+<msg timestamp="20191205 14:53:05.879" level="TRACE">Return: &lt;Response [400]&gt;</msg>
+<msg timestamp="20191205 14:53:05.879" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20191205 14:53:02.428" endtime="20191205 14:53:05.879"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>400</arg>
+</arguments>
+<msg timestamp="20191205 14:53:05.880" level="TRACE">Arguments: [ 400 | '400' ]</msg>
+<msg timestamp="20191205 14:53:05.881" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<msg timestamp="20191205 14:53:05.881" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20191205 14:53:05.880" endtime="20191205 14:53:05.881"></status>
+</kw>
+<doc>Verifies that a device with a specific number does not exist</doc>
+<tags>
+<tag>awsxrsdevicerestwebservicevalidation</tag>
+</tags>
+<status status="PASS" starttime="20191205 14:53:02.428" endtime="20191205 14:53:05.882" critical="yes"></status>
+</test>
+<test id="s1-s1-s1-t2" name="Validate AWS XRS Post Device REST Web Services Returns Code 201">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>CarrierDisplayName=${XRS_WEB_SERVICES_TEST_DEVICE_1.CarrierDisplayName}</arg>
+<arg>Description=${XRS_WEB_SERVICES_TEST_DEVICE_1.Description}</arg>
+<arg>DeviceType=${XRS_WEB_SERVICES_TEST_DEVICE_1.DeviceType}</arg>
+<arg>FixedDisplay=${XRS_WEB_SERVICES_TEST_DEVICE_1.FixedDisplay}</arg>
+<arg>OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}</arg>
+<arg>PhoneNumber=${XRS_WEB_SERVICES_TEST_DEVICE_1.PhoneNumber}</arg>
+<arg>SendInstallLink=${XRS_WEB_SERVICES_TEST_DEVICE_1.SendInstallLink}</arg>
+<arg>Status=${XRS_WEB_SERVICES_TEST_DEVICE_1.Status}</arg>
+</arguments>
+<assign>
+<var>&amp;{test_device_data}</var>
+</assign>
+<msg timestamp="20191205 14:53:05.885" level="TRACE">Arguments: [ 'CarrierDisplayName=${XRS_WEB_SERVICES_TEST_DEVICE_1.CarrierDisplayName}' | 'Description=${XRS_WEB_SERVICES_TEST_DEVICE_1.Description}' | 'DeviceType=${XRS_WEB_SERVICES_TEST_DEVICE_1.DeviceType}' | 'FixedDisplay=${XRS_WEB_SERVICES_TEST_DEVICE_1.FixedDisplay}' | 'OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}' | 'PhoneNumber=${XRS_WEB_SERVICES_TEST_DEVICE_1.PhoneNumber}' | 'SendInstallLink=${XRS_WEB_SERVICES_TEST_DEVICE_1.SendInstallLink}' | 'Status=${XRS_WEB_SERVICES_TEST_DEVICE_1.Status}' ]</msg>
+<msg timestamp="20191205 14:53:05.887" level="TRACE">Return: {'CarrierDisplayName': 'Sprint',
+ 'Description': 'Test Device 1',
+ 'DeviceType': 'Other - Android',
+ 'FixedDisplay': False,
+ 'OrganizationID': 46663,
+ 'PhoneNumber': 1201201212,
+ 'SendInstallLink': False,
+ 'Status': 'Active'}</msg>
+<msg timestamp="20191205 14:53:05.887" level="INFO">&amp;{test_device_data} = { CarrierDisplayName=Sprint | Description=Test Device 1 | DeviceType=Other - Android | FixedDisplay=False | OrganizationID=46663 | PhoneNumber=1201201212 | SendInstallLink=False | Status=Active }</msg>
+<status status="PASS" starttime="20191205 14:53:05.885" endtime="20191205 14:53:05.888"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${test_device_data}</arg>
+</arguments>
+<assign>
+<var>@{device_data_list}</var>
+</assign>
+<msg timestamp="20191205 14:53:05.889" level="TRACE">Arguments: [ {'CarrierDisplayName': 'Sprint',
+ 'Description': 'Test Device 1',
+ 'DeviceType': 'Other - Android',
+ 'FixedDisplay': False,
+ 'OrganizationID': 46663,
+ 'PhoneNumber': 1201201212,
+ 'SendInstallLink': False,
+ 'Status': 'Active'} ]</msg>
+<msg timestamp="20191205 14:53:05.889" level="TRACE">Return: [{'CarrierDisplayName': 'Sprint',
+  'Description': 'Test Device 1',
+  'DeviceType': 'Other - Android',
+  'FixedDisplay': False,
+  'OrganizationID': 46663,
+  'PhoneNumber': 1201201212,
+  'SendInstallLink': False,
+  'Status': 'Active'}]</msg>
+<msg timestamp="20191205 14:53:05.890" level="INFO">@{device_data_list} = [ {'CarrierDisplayName': 'Sprint', 'Description': 'Test Device 1', 'DeviceType': 'Other - Android', 'FixedDisplay': False, 'OrganizationID': 46663, 'PhoneNumber': 1201201212, 'SendInstallLink': False,...</msg>
+<status status="PASS" starttime="20191205 14:53:05.888" endtime="20191205 14:53:05.890"></status>
+</kw>
+<kw name="Post Devices" library="Device">
+<doc>This will post device information.
+Accepts a list of json objects
+Json field definitions:
+BelongsToResourceGroups
+Indicates the set of ResourceGroupIDs to which the device belongs.
+If a resource group is not provided in a Post call,
+the new Device is to be placed in the default resource group for the organization to which the new Device is being added.
+BluetoothAddress
+Read only field indicating the Bluetooth address of the device.
+For Windows Mobile devices and devices using Android 5.0 or earlier, this field displays the device's unique Bluetooth address.
+For devices using Android 6.0 or later, this field displays a static value of "02:00:00:00:00:00."
+CarrierDisplayName
+The name of the Carrier.
+CompanyName
+A read only field that indicates the date and time the device was created.
+CreateDate
+A read only field that indicates the date and time the device was created.
+Description
+A description of the device.
+DeviceType
+Indicates the manufacturer and model of the device.
+FixedDisplay
+Indicates if this device will always be associated to a particular vehicle.
+If set to true this will change the mobile behavior such that it remembers the last vehicle it was associated to.
+IsChanged
+A read only field indicating if there were any changes to the device since the value in the AsOfDateTime query parameter.
+LastCommunication
+A read only field indicating the date and time the device last communicated with the host.
+LastDriverID
+A read only field indicating the ID of the last driver which logged into the device.
+LastDriverName
+A read only field indicating the name of the last driver which logged into the device.
+LastVehicleID
+A read only field indicating the ID of the last vehicle to which the device was associated via Bluetooth.
+ModifiedBy
+A read only field indicating the ID of the last person to modify the driver record.
+From AC: CreateDate, ModifiedDate and ModifiedBy data fields will be initialized by system.
+ModifiedDate
+A read only field indicating the date and time the device was last modified.
+OrganizationID
+The user-defined ID of the organization.
+OrganizationName
+A read-only field containing the name of the organization to which the device is assigned.
+PhoneNumber
+The 10 digit phone number of the device
+SendInstallLink
+Indicates if an installation link will be sent to the device.
+Status
+Identifies if a device is active or inactive in Omnitracs XRS. The value of this field must be Active or Inactive.
+StoreGNISFileOnMobile
+A read only field indicating whether the GNIS file will be stored on the mobile.
+UserDefinedField1
+User-defined field #1
+UserDefinedField2
+User-defined field #2
+UserDefinedField3
+User-defined field #3
+UserDefinedField4
+User-defined field #4
+UserDefinedField5
+User-defined field #5</doc>
+<arguments>
+<arg>@{device_data_list}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191205 14:53:05.891" level="TRACE">Arguments: [ @{list_data}=[{'CarrierDisplayName': 'Sprint',
+  'Description': 'Test Device 1',
+  'DeviceType': 'Other - Android',
+  'FixedDisplay': False,
+  'OrganizationID': 46663,
+  'PhoneNumber': 1201201212,
+  'SendInstallLink': False,
+  'Status': 'Active'}] ]</msg>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${XRS_Entity_Management_Base_URI.Device}${ENTITY_MANAGEMENT_WEBSERVICE_POST_PUT_GET_DEVICES}</arg>
+</arguments>
+<assign>
+<var>${uri}</var>
+</assign>
+<msg timestamp="20191205 14:53:05.892" level="TRACE">Arguments: [ 'DeviceWebService.svc/devices' ]</msg>
+<msg timestamp="20191205 14:53:05.893" level="TRACE">Return: 'DeviceWebService.svc/devices'</msg>
+<msg timestamp="20191205 14:53:05.893" level="INFO">${uri} = DeviceWebService.svc/devices</msg>
+<status status="PASS" starttime="20191205 14:53:05.892" endtime="20191205 14:53:05.893"></status>
 </kw>
 <kw name="Post Request" library="RequestsLibrary">
 <doc>Send a POST request on the session object found using the
 given `alias`</doc>
 <arguments>
-<arg>${XRS_WEB_SERVICE_SESSION}</arg>
+<arg>${XRS_WEB_SERVICE_SESSION_ALIAS}</arg>
 <arg>${uri}</arg>
-<arg>json=${data} headers=${XRS_WEBSERVICES_HEADER}</arg>
+<arg>json=${list_data}</arg>
+<arg>headers=${XRS_WEBSERVICES_JSON_HEADER}</arg>
 </arguments>
 <assign>
 <var>${response}</var>
 </assign>
-<msg timestamp="20191203 16:19:18.421" level="TRACE">Arguments: [ 'xrs_web_service_session' | 'DeviceWebService.svc/devices' | json="{'PhoneNumber': '1234567896', 'DeviceType': 'Nexus', 'CarrierDisplayName': 'Sprint', 'OrganizationName': 'Gnome Shipping D3'} headers={'Content-Type': 'application/json', 'Accept': 'application/json'}" ]</msg>
-<msg timestamp="20191203 16:19:18.421" level="INFO">POST Request using : uri=DeviceWebService.svc/devices, params=None, files=None, allow_redirects=True, timeout=None
-headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+<msg timestamp="20191205 14:53:05.893" level="TRACE">Arguments: [ 'xrs_web_service_session' | 'DeviceWebService.svc/devices' | json=[{'CarrierDisplayName': 'Sprint',
+  'Description': 'Test Device 1',
+  'DeviceType': 'Other - Android',
+  'FixedDisplay': False,
+  'OrganizationID': 46663,
+  'PhoneNumber': 1201201212,
+  'SendInstallLink': False,
+  'Status': 'Active'}] | headers={'Accept': 'application/json',
+ 'Accept-Encoding': 'gzip, deflate',
+ 'Content-Type': 'application/json'} ]</msg>
+<msg timestamp="20191205 14:53:05.894" level="INFO">POST Request using : uri=DeviceWebService.svc/devices, params=None, files=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
 data=None 
-json={'PhoneNumber': '1234567896', 'DeviceType': 'Nexus', 'CarrierDisplayName': 'Sprint', 'OrganizationName': 'Gnome Shipping D3'} headers={'Content-Type': 'application/json', 'Accept': 'application/json'}</msg>
-<msg timestamp="20191203 16:19:18.423" level="DEBUG">Starting new HTTPS connection (1): d3ws.xataxrs.com:443</msg>
-<msg timestamp="20191203 16:19:24.001" level="DEBUG">https://d3ws.xataxrs.com:443 "POST /DeviceWebService.svc/devices HTTP/1.1" 400 4483</msg>
-<msg timestamp="20191203 16:19:24.002" level="DEBUG">POST Response : status=400, reason=Bad Request
-ï»¿&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
-&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
-  &lt;head&gt;
-    &lt;title&gt;Request Error&lt;/title&gt;
-    &lt;style&gt;BODY { color: #000000; background-color: white; font-family: Verdana; margin-left: 0px; margin-top: 0px; } #content { margin-left: 30px; font-size: .70em; padding-bottom: 2em; } A:link { color: #336699; font-weight: bold; text-decoration: underline; } A:visited { color: #6699cc; font-weight: bold; text-decoration: underline; } A:active { color: #336699; font-weight: bold; text-decoration: underline; } .heading1 { background-color: #003366; border-bottom: #336699 6px solid; color: #ffffff; font-family: Tahoma; font-size: 26px; font-weight: normal;margin: 0em 0em 10px -20px; padding-bottom: 8px; padding-left: 30px;padding-top: 16px;} pre { font-size:small; background-color: #e5e5cc; padding: 5px; font-family: Courier New; margin-top: 0px; border: 1px #f0f0e0 solid; white-space: pre-wrap; white-space: -pre-wrap; word-wrap: break-word; } table { border-collapse: collapse; border-spacing: 0px; font-family: Verdana;} table th { border-right: 2px white solid; border-bottom: 2px white solid; font-weight: bold; background-color: #cecf9c;} table td { border-right: 2px white solid; border-bottom: 2px white solid; background-color: #e5e5cc;}&lt;/style&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;div id="content"&gt;
-      &lt;p class="heading1"&gt;Request Error&lt;/p&gt;
-      &lt;p xmlns=""&gt;The server encountered an error processing the request. Please see the &lt;a rel="help-page" href="http://xrs-apigw-ws-2a944cb0887450de.elb.us-east-1.amazonaws.com/DeviceWebService.svc/help"&gt;service help page&lt;/a&gt; for constructing valid requests to the service. The exception message is 'Expecting state 'Element'.. Encountered 'Text'  with name '', namespace ''. '. See server logs for more details. The exception stack trace is: &lt;/p&gt;
-      &lt;p&gt;   at ReadArrayOfDeviceFromJson(XmlReaderDelegator , XmlObjectSerializerReadContextComplexJson , XmlDictionaryString , XmlDictionaryString , CollectionDataContract )
-   at System.Runtime.Serialization.Json.JsonCollectionDataContract.ReadJsonValueCore(XmlReaderDelegator jsonReader, XmlObjectSerializerReadContextComplexJson context)
-   at System.Runtime.Serialization.Json.JsonDataContract.ReadJsonValue(XmlReaderDelegator jsonReader, XmlObjectSerializerReadContextComplexJson context)
-   at System.Runtime.Serialization.Json.XmlObjectSerializerReadContextComplexJson.ReadDataContractValue(DataContract dataContract, XmlReaderDelegator reader)
-   at System.Runtime.Serialization.XmlObjectSerializerReadContext.InternalDeserialize(XmlReaderDelegator reader, String name, String ns, Type declaredType, DataContract&amp;amp; dataContract)
-   at System.Runtime.Serialization.XmlObjectSerializerReadContextComplex.InternalDeserialize(XmlReaderDelegator xmlReader, Type declaredType, DataContract dataContract, String name, String ns)
-   at System.Runtime.Serialization.Json.DataContractJsonSerializer.InternalReadObject(XmlReaderDelegator xmlReader, Boolean verifyObjectName)
-   at System.Runtime.Serialization.XmlObjectSerializer.ReadObjectHandleExceptions(XmlReaderDelegator reader, Boolean verifyObjectName, DataContractResolver dataContractResolver)
-   at System.Runtime.Serialization.Json.DataContractJsonSerializer.ReadObject(XmlDictionaryReader reader, Boolean verifyObjectName)
-   at System.ServiceModel.Dispatcher.SingleBodyParameterDataContractMessageFormatter.ReadObject(Message message)
-   at System.ServiceModel.Dispatcher.SingleBodyParameterMessageFormatter.DeserializeRequest(Message message, Object[] parameters)
-   at System.ServiceModel.Dispatcher.DemultiplexingDispatchMessageFormatter.DeserializeRequest(Message message, Object[] parameters)
-   at System.ServiceModel.Dispatcher.UriTemplateDispatchFormatter.DeserializeRequest(Message message, Object[] parameters)
-   at System.ServiceModel.Dispatcher.DispatchOperationRuntime.DeserializeInputs(MessageRpc&amp;amp; rpc)
-   at System.ServiceModel.Dispatcher.DispatchOperationRuntime.InvokeBegin(MessageRpc&amp;amp; rpc)
-   at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage5(MessageRpc&amp;amp; rpc)
-   at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage11(MessageRpc&amp;amp; rpc)
-   at System.ServiceModel.Dispatcher.MessageRpc.Process(Boolean isOperationContextSet)&lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/body&gt;
-&lt;/html&gt;</msg>
-<msg timestamp="20191203 16:19:24.002" level="TRACE">Return: &lt;Response [400]&gt;</msg>
-<msg timestamp="20191203 16:19:24.002" level="INFO">${response} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20191203 16:19:18.420" endtime="20191203 16:19:24.003"></status>
+json=[{'CarrierDisplayName': 'Sprint', 'Description': 'Test Device 1', 'DeviceType': 'Other - Android', 'FixedDisplay': False, 'OrganizationID': 46663, 'PhoneNumber': 1201201212, 'SendInstallLink': False, 'Status': 'Active'}]</msg>
+<msg timestamp="20191205 14:53:06.639" level="DEBUG">https://d3ws.xataxrs.com:443 "POST /DeviceWebService.svc/devices HTTP/1.1" 200 150</msg>
+<msg timestamp="20191205 14:53:06.640" level="DEBUG">POST Response : status=200, reason=OK
+[{"Caption":"Created","Code":"201","Description":"Device added successfully.","Id":"1201201212","ObjectName":"Device","SID":0,"Title":"DeviceAdded."}]</msg>
+<msg timestamp="20191205 14:53:06.641" level="TRACE">Return: &lt;Response [200]&gt;</msg>
+<msg timestamp="20191205 14:53:06.641" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191205 14:53:05.893" endtime="20191205 14:53:06.641"></status>
 </kw>
-<msg timestamp="20191203 16:19:24.003" level="TRACE">Return: &lt;Response [400]&gt;</msg>
-<msg timestamp="20191203 16:19:24.003" level="INFO">${response} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20191203 16:19:18.419" endtime="20191203 16:19:24.003"></status>
+<msg timestamp="20191205 14:53:06.641" level="TRACE">Return: &lt;Response [200]&gt;</msg>
+<msg timestamp="20191205 14:53:06.642" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191205 14:53:05.891" endtime="20191205 14:53:06.642"></status>
 </kw>
-<kw name="Log To Console" library="BuiltIn">
-<doc>Logs the given message to the console.</doc>
+<kw name="To Json" library="RequestsLibrary">
+<doc>Convert a string to a JSON object</doc>
 <arguments>
 <arg>${response.content}</arg>
 </arguments>
-<msg timestamp="20191203 16:19:24.004" level="TRACE">Arguments: [ b'\xef\xbb\xbf&lt;?xml version="1.0" encoding="utf-8"?&gt;\r\n&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;\r\n&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;\r\n  &lt;head&gt;\r\n    &lt;title&gt;Request Error&lt;/title&gt;\r\n    &lt;style&gt;BODY { color: #000000; background-color: white; font-family: Verdana; margin-left: 0px; margin-top: 0px; } #content { margin-left: 30px; font-size: .70em; padding-bottom: 2em; } A:link { color: #336699; font-weight: bold; text-decoration: underline; } A:visited { color: #6699cc; font-weight: bold; text-decoration: underline; } A:active { color: #336699; font-weight: bold; text-decoration: underline; } .heading1 { background-color: #003366; border-bottom: #336699 6px solid; color: #ffffff; font-family: Tahoma; font-size: 26px; font-weight: normal;margin: 0em 0em 10px -20px; padding-bottom: 8px; padding-left: 30px;padding-top: 16px;} pre { font-size:small; background-color: #e5e5cc; padding: 5px; font-family: Courier New; margin-top: 0px; border: 1px #f0f0e0 solid; white-space: pre-wrap; white-space: -pre-wrap; word-wrap: break-word; } table { border-collapse: collapse; border-spacing: 0px; font-family: Verdana;} table th { border-right: 2px white solid; border-bottom: 2px white solid; font-weight: bold; background-color: #cecf9c;} table td { border-right: 2px white solid; border-bottom: 2px white solid; background-color: #e5e5cc;}&lt;/style&gt;\r\n  &lt;/head&gt;\r\n  &lt;body&gt;\r\n    &lt;div id="content"&gt;\r\n      &lt;p class="heading1"&gt;Request Error&lt;/p&gt;\r\n      &lt;p xmlns=""&gt;The server encountered an error processing the request. Please see the &lt;a rel="help-page" href="http://xrs-apigw-ws-2a944cb0887450de.elb.us-east-1.amazonaws.com/DeviceWebService.svc/help"&gt;service help page&lt;/a&gt; for constructing valid requests to the service. The exception message is \'Expecting state \'Element\'.. Encountered \'Text\'  with name \'\', namespace \'\'. \'. See server logs for more details. The exception stack trace is: &lt;/p&gt;\r\n      &lt;p&gt;   at ReadArrayOfDeviceFromJson(XmlReaderDelegator , XmlObjectSerializerReadContextComplexJson , XmlDictionaryString , XmlDictionaryString , CollectionDataContract )\r\n   at System.Runtime.Serialization.Json.JsonCollectionDataContract.ReadJsonValueCore(XmlReaderDelegator jsonReader, XmlObjectSerializerReadContextComplexJson context)\r\n   at System.Runtime.Serialization.Json.JsonDataContract.ReadJsonValue(XmlReaderDelegator jsonReader, XmlObjectSerializerReadContextComplexJson context)\r\n   at System.Runtime.Serialization.Json.XmlObjectSerializerReadContextComplexJson.ReadDataContractValue(DataContract dataContract, XmlReaderDelegator reader)\r\n   at System.Runtime.Serialization.XmlObjectSerializerReadContext.InternalDeserialize(XmlReaderDelegator reader, String name, String ns, Type declaredType, DataContract&amp;amp; dataContract)\r\n   at System.Runtime.Serialization.XmlObjectSerializerReadContextComplex.InternalDeserialize(XmlReaderDelegator xmlReader, Type declaredType, DataContract dataContract, String name, String ns)\r\n   at System.Runtime.Serialization.Json.DataContractJsonSerializer.InternalReadObject(XmlReaderDelegator xmlReader, Boolean verifyObjectName)\r\n   at System.Runtime.Serialization.XmlObjectSerializer.ReadObjectHandleExceptions(XmlReaderDelegator reader, Boolean verifyObjectName, DataContractResolver dataContractResolver)\r\n   at System.Runtime.Serialization.Json.DataContractJsonSerializer.ReadObject(XmlDictionaryReader reader, Boolean verifyObjectName)\r\n   at System.ServiceModel.Dispatcher.SingleBodyParameterDataContractMessageFormatter.ReadObject(Message message)\r\n   at System.ServiceModel.Dispatcher.SingleBodyParameterMessageFormatter.DeserializeRequest(Message message, Object[] parameters)\r\n   at System.ServiceModel.Dispatcher.DemultiplexingDispatchMessageFormatter.DeserializeRequest(Message message, Object[] parameters)\r\n   at System.ServiceModel.Dispatcher.UriTemplateDispatchFormatter.DeserializeRequest(Message message, Object[] parameters)\r\n   at System.ServiceModel.Dispatcher.DispatchOperationRuntime.DeserializeInputs(MessageRpc&amp;amp; rpc)\r\n   at System.ServiceModel.Dispatcher.DispatchOperationRuntime.InvokeBegin(MessageRpc&amp;amp; rpc)\r\n   at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage5(MessageRpc&amp;amp; rpc)\r\n   at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage11(MessageRpc&amp;amp; rpc)\r\n   at System.ServiceModel.Dispatcher.MessageRpc.Process(Boolean isOperationContextSet)&lt;/p&gt;\r\n    &lt;/div&gt;\r\n  &lt;/body&gt;\r\n&lt;/html&gt;' ]</msg>
-<msg timestamp="20191203 16:19:24.010" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20191203 16:19:24.003" endtime="20191203 16:19:24.010"></status>
+<assign>
+<var>${json_response}</var>
+</assign>
+<msg timestamp="20191205 14:53:06.643" level="TRACE">Arguments: [ b'[{"Caption":"Created","Code":"201","Description":"Device added successfully.","Id":"1201201212","ObjectName":"Device","SID":0,"Title":"DeviceAdded."}]' ]</msg>
+<msg timestamp="20191205 14:53:06.643" level="INFO">To JSON using : content=[{"Caption":"Created","Code":"201","Description":"Device added successfully.","Id":"1201201212","ObjectName":"Device","SID":0,"Title":"DeviceAdded."}] </msg>
+<msg timestamp="20191205 14:53:06.644" level="INFO">To JSON using : pretty_print=False </msg>
+<msg timestamp="20191205 14:53:06.644" level="TRACE">Return: [{'Caption': 'Created',
+  'Code': '201',
+  'Description': 'Device added successfully.',
+  'Id': '1201201212',
+  'ObjectName': 'Device',
+  'SID': 0,
+  'Title': 'DeviceAdded.'}]</msg>
+<msg timestamp="20191205 14:53:06.644" level="INFO">${json_response} = [{'Caption': 'Created', 'Code': '201', 'Description': 'Device added successfully.', 'Id': '1201201212', 'ObjectName': 'Device', 'SID': 0, 'Title': 'DeviceAdded.'}]</msg>
+<status status="PASS" starttime="20191205 14:53:06.643" endtime="20191205 14:53:06.644"></status>
+</kw>
+<kw name="${r} IN [ @{json_response} ]" type="for">
+<kw name="${r} = {'Caption': 'Created', 'Code': '201', 'Description': 'Device added successfully.', 'Id': '1201201212', 'ObjectName': 'Device', 'SID': 0, 'Title': 'DeviceAdded.'}" type="foritem">
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${r}[Code]</arg>
+<arg>201</arg>
+</arguments>
+<msg timestamp="20191205 14:53:06.646" level="TRACE">Arguments: [ '201' | '201' ]</msg>
+<msg timestamp="20191205 14:53:06.646" level="DEBUG">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<msg timestamp="20191205 14:53:06.646" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20191205 14:53:06.646" endtime="20191205 14:53:06.647"></status>
+</kw>
+<status status="PASS" starttime="20191205 14:53:06.646" endtime="20191205 14:53:06.647"></status>
+</kw>
+<status status="PASS" starttime="20191205 14:53:06.645" endtime="20191205 14:53:06.647"></status>
+</kw>
+<doc>Posts a device and expects a Code value of 201</doc>
+<tags>
+<tag>awsxrsdevicerestwebservicevalidation</tag>
+<tag>postdevice</tag>
+</tags>
+<status status="PASS" starttime="20191205 14:53:05.883" endtime="20191205 14:53:06.648" critical="yes"></status>
+</test>
+<test id="s1-s1-s1-t3" name="Validate AWS XRS Get Device REST Web Services Returns 200 OK">
+<kw name="Get Device With Phone Number" library="Device">
+<doc>This will get device information for a particular device using the phone number</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICES_TEST_DEVICE_1.PhoneNumber}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191205 14:53:06.652" level="TRACE">Arguments: [ ${phone_number}=1201201212 ]</msg>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${XRS_Entity_Management_Base_URI.Device}${ENTITY_MANAGEMENT_WEBSERVICE_GET_DELETE_DEVICE_WITH_NUMBER}/${phone_number}</arg>
+</arguments>
+<assign>
+<var>${uri}</var>
+</assign>
+<msg timestamp="20191205 14:53:06.653" level="TRACE">Arguments: [ 'DeviceWebService.svc/device/1201201212' ]</msg>
+<msg timestamp="20191205 14:53:06.653" level="TRACE">Return: 'DeviceWebService.svc/device/1201201212'</msg>
+<msg timestamp="20191205 14:53:06.653" level="INFO">${uri} = DeviceWebService.svc/device/1201201212</msg>
+<status status="PASS" starttime="20191205 14:53:06.653" endtime="20191205 14:53:06.653"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION_ALIAS}</arg>
+<arg>${uri}</arg>
+<arg>headers=${XRS_WEBSERVICES_JSON_HEADER}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191205 14:53:06.654" level="TRACE">Arguments: [ 'xrs_web_service_session' | 'DeviceWebService.svc/device/1201201212' | headers={'Accept': 'application/json',
+ 'Accept-Encoding': 'gzip, deflate',
+ 'Content-Type': 'application/json'} ]</msg>
+<msg timestamp="20191205 14:53:06.655" level="INFO">GET Request using : uri=DeviceWebService.svc/device/1201201212, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191205 14:53:07.228" level="DEBUG">https://d3ws.xataxrs.com:443 "GET /DeviceWebService.svc/device/1201201212 HTTP/1.1" 200 722</msg>
+<msg timestamp="20191205 14:53:07.230" level="DEBUG">GET Response : status=200, reason=OK
+{"BelongsToDeviceResourceGroups":["Gnome Shipping D3"],"BluetoothAddress":"00:00:00:00:00:00","CarrierDisplayName":"Sprint","CompanyName":"Gnome Shipping D3","CreateDate":"12\/5\/2019 8:53:07 PM","Description":"Test Device 1","DeviceType":"Other - Android","FixedDisplay":"False","IsChanged":"False","LastCommunication":"","LastDriverID":"","LastDriverName":"","LastVehicleID":"","ModifiedBy":"5412","ModifiedDate":"12\/5\/2019 8:53:07 PM","OrganizationID":"46663","OrganizationName":"Gnome Shipping D3","PhoneNumber":"1201201212","SendInstallLink":"False","Status":"Active","StoreGNISFileOnMobile":"False","UserDefinedField1":"","UserDefinedField2":"","UserDefinedField3":"","UserDefinedField4":"","UserDefinedField5":""}</msg>
+<msg timestamp="20191205 14:53:07.230" level="TRACE">Return: &lt;Response [200]&gt;</msg>
+<msg timestamp="20191205 14:53:07.230" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191205 14:53:06.654" endtime="20191205 14:53:07.231"></status>
+</kw>
+<msg timestamp="20191205 14:53:07.231" level="TRACE">Return: &lt;Response [200]&gt;</msg>
+<msg timestamp="20191205 14:53:07.231" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191205 14:53:06.652" endtime="20191205 14:53:07.232"></status>
 </kw>
 <kw name="Should Be Equal As Strings" library="BuiltIn">
 <doc>Fails if objects are unequal after converting them to strings.</doc>
@@ -149,49 +383,502 @@ json={'PhoneNumber': '1234567896', 'DeviceType': 'Nexus', 'CarrierDisplayName': 
 <arg>${response.status_code}</arg>
 <arg>200</arg>
 </arguments>
-<msg timestamp="20191203 16:19:24.011" level="TRACE">Arguments: [ 400 | '200' ]</msg>
-<msg timestamp="20191203 16:19:24.011" level="INFO">Argument types are:
+<msg timestamp="20191205 14:53:07.235" level="TRACE">Arguments: [ 200 | '200' ]</msg>
+<msg timestamp="20191205 14:53:07.235" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;type 'unicode'&gt;</msg>
-<msg timestamp="20191203 16:19:24.011" level="FAIL">400 != 200</msg>
-<msg timestamp="20191203 16:19:24.011" level="DEBUG">Traceback (most recent call last):
-  None</msg>
-<status status="FAIL" starttime="20191203 16:19:24.010" endtime="20191203 16:19:24.011"></status>
+<msg timestamp="20191205 14:53:07.235" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20191205 14:53:07.234" endtime="20191205 14:53:07.236"></status>
 </kw>
-<status status="FAIL" starttime="20191203 16:19:18.418" endtime="20191203 16:19:24.012"></status>
+<doc>Verifies that a posted device now exists</doc>
+<tags>
+<tag>awsxrsdevicerestwebservicevalidation</tag>
+</tags>
+<status status="PASS" starttime="20191205 14:53:06.650" endtime="20191205 14:53:07.237" critical="yes"></status>
+</test>
+<test id="s1-s1-s1-t4" name="Validate AWS XRS Put Device REST Web Services Modifies Description Successfully">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>CarrierDisplayName=${XRS_WEB_SERVICES_TEST_DEVICE_1.CarrierDisplayName}</arg>
+<arg>Description=${XRS_WEB_SERVICES_TEST_DEVICE_1.Description}${SPACE}Mod</arg>
+<arg>DeviceType=${XRS_WEB_SERVICES_TEST_DEVICE_1.DeviceType}</arg>
+<arg>FixedDisplay=${XRS_WEB_SERVICES_TEST_DEVICE_1.FixedDisplay}</arg>
+<arg>OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}</arg>
+<arg>PhoneNumber=${XRS_WEB_SERVICES_TEST_DEVICE_1.PhoneNumber}</arg>
+<arg>SendInstallLink=${XRS_WEB_SERVICES_TEST_DEVICE_1.SendInstallLink}</arg>
+<arg>Status=${XRS_WEB_SERVICES_TEST_DEVICE_1.Status}</arg>
+</arguments>
+<assign>
+<var>&amp;{test_device_data}</var>
+</assign>
+<msg timestamp="20191205 14:53:07.242" level="TRACE">Arguments: [ 'CarrierDisplayName=${XRS_WEB_SERVICES_TEST_DEVICE_1.CarrierDisplayName}' | 'Description=${XRS_WEB_SERVICES_TEST_DEVICE_1.Description}${SPACE}Mod' | 'DeviceType=${XRS_WEB_SERVICES_TEST_DEVICE_1.DeviceType}' | 'FixedDisplay=${XRS_WEB_SERVICES_TEST_DEVICE_1.FixedDisplay}' | 'OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}' | 'PhoneNumber=${XRS_WEB_SERVICES_TEST_DEVICE_1.PhoneNumber}' | 'SendInstallLink=${XRS_WEB_SERVICES_TEST_DEVICE_1.SendInstallLink}' | 'Status=${XRS_WEB_SERVICES_TEST_DEVICE_1.Status}' ]</msg>
+<msg timestamp="20191205 14:53:07.244" level="TRACE">Return: {'CarrierDisplayName': 'Sprint',
+ 'Description': 'Test Device 1 Mod',
+ 'DeviceType': 'Other - Android',
+ 'FixedDisplay': False,
+ 'OrganizationID': 46663,
+ 'PhoneNumber': 1201201212,
+ 'SendInstallLink': False,
+ 'Status': 'Active'}</msg>
+<msg timestamp="20191205 14:53:07.245" level="INFO">&amp;{test_device_data} = { CarrierDisplayName=Sprint | Description=Test Device 1 Mod | DeviceType=Other - Android | FixedDisplay=False | OrganizationID=46663 | PhoneNumber=1201201212 | SendInstallLink=False | Status=Active }</msg>
+<status status="PASS" starttime="20191205 14:53:07.242" endtime="20191205 14:53:07.245"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${test_device_data}</arg>
+</arguments>
+<assign>
+<var>@{device_data_list}</var>
+</assign>
+<msg timestamp="20191205 14:53:07.246" level="TRACE">Arguments: [ {'CarrierDisplayName': 'Sprint',
+ 'Description': 'Test Device 1 Mod',
+ 'DeviceType': 'Other - Android',
+ 'FixedDisplay': False,
+ 'OrganizationID': 46663,
+ 'PhoneNumber': 1201201212,
+ 'SendInstallLink': False,
+ 'Status': 'Active'} ]</msg>
+<msg timestamp="20191205 14:53:07.246" level="TRACE">Return: [{'CarrierDisplayName': 'Sprint',
+  'Description': 'Test Device 1 Mod',
+  'DeviceType': 'Other - Android',
+  'FixedDisplay': False,
+  'OrganizationID': 46663,
+  'PhoneNumber': 1201201212,
+  'SendInstallLink': False,
+  'Status': 'Active'}]</msg>
+<msg timestamp="20191205 14:53:07.247" level="INFO">@{device_data_list} = [ {'CarrierDisplayName': 'Sprint', 'Description': 'Test Device 1 Mod', 'DeviceType': 'Other - Android', 'FixedDisplay': False, 'OrganizationID': 46663, 'PhoneNumber': 1201201212, 'SendInstallLink': Fa...</msg>
+<status status="PASS" starttime="20191205 14:53:07.246" endtime="20191205 14:53:07.247"></status>
+</kw>
+<kw name="Put Devices" library="Device">
+<doc>This will post device information.
+Accepts a list of json objects
+See Json field definitions in the "Post Devices" Keyword</doc>
+<arguments>
+<arg>@{device_data_list}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191205 14:53:07.248" level="TRACE">Arguments: [ @{list_data}=[{'CarrierDisplayName': 'Sprint',
+  'Description': 'Test Device 1 Mod',
+  'DeviceType': 'Other - Android',
+  'FixedDisplay': False,
+  'OrganizationID': 46663,
+  'PhoneNumber': 1201201212,
+  'SendInstallLink': False,
+  'Status': 'Active'}] ]</msg>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${XRS_Entity_Management_Base_URI.Device}${ENTITY_MANAGEMENT_WEBSERVICE_POST_PUT_GET_DEVICES}</arg>
+</arguments>
+<assign>
+<var>${uri}</var>
+</assign>
+<msg timestamp="20191205 14:53:07.249" level="TRACE">Arguments: [ 'DeviceWebService.svc/devices' ]</msg>
+<msg timestamp="20191205 14:53:07.249" level="TRACE">Return: 'DeviceWebService.svc/devices'</msg>
+<msg timestamp="20191205 14:53:07.249" level="INFO">${uri} = DeviceWebService.svc/devices</msg>
+<status status="PASS" starttime="20191205 14:53:07.249" endtime="20191205 14:53:07.250"></status>
+</kw>
+<kw name="Put Request" library="RequestsLibrary">
+<doc>Send a PUT request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION_ALIAS}</arg>
+<arg>${uri}</arg>
+<arg>json=${list_data}</arg>
+<arg>headers=${XRS_WEBSERVICES_JSON_HEADER}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191205 14:53:07.250" level="TRACE">Arguments: [ 'xrs_web_service_session' | 'DeviceWebService.svc/devices' | json=[{'CarrierDisplayName': 'Sprint',
+  'Description': 'Test Device 1 Mod',
+  'DeviceType': 'Other - Android',
+  'FixedDisplay': False,
+  'OrganizationID': 46663,
+  'PhoneNumber': 1201201212,
+  'SendInstallLink': False,
+  'Status': 'Active'}] | headers={'Accept': 'application/json',
+ 'Accept-Encoding': 'gzip, deflate',
+ 'Content-Type': 'application/json'} ]</msg>
+<msg timestamp="20191205 14:53:07.251" level="INFO">PUT Request using : uri=DeviceWebService.svc/devices, params=None, files=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
+data=None 
+json=[{'CarrierDisplayName': 'Sprint', 'Description': 'Test Device 1 Mod', 'DeviceType': 'Other - Android', 'FixedDisplay': False, 'OrganizationID': 46663, 'PhoneNumber': 1201201212, 'SendInstallLink': False, 'Status': 'Active'}]</msg>
+<msg timestamp="20191205 14:53:08.170" level="DEBUG">https://d3ws.xataxrs.com:443 "PUT /DeviceWebService.svc/devices HTTP/1.1" 200 193</msg>
+<msg timestamp="20191205 14:53:08.170" level="DEBUG">PUT Response : status=200, reason=OK
+[{"Caption":"Device edited successfully.","Code":"200","Description":"Device edited successfully.","Id":"1201201212","ObjectName":"Device edited successfully.","SID":0,"Title":"DeviceEdited."}]</msg>
+<msg timestamp="20191205 14:53:08.172" level="TRACE">Return: &lt;Response [200]&gt;</msg>
+<msg timestamp="20191205 14:53:08.172" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191205 14:53:07.250" endtime="20191205 14:53:08.172"></status>
+</kw>
+<msg timestamp="20191205 14:53:08.172" level="TRACE">Return: &lt;Response [200]&gt;</msg>
+<msg timestamp="20191205 14:53:08.172" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191205 14:53:07.248" endtime="20191205 14:53:08.172"></status>
+</kw>
+<kw name="To Json" library="RequestsLibrary">
+<doc>Convert a string to a JSON object</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<assign>
+<var>${json_response}</var>
+</assign>
+<msg timestamp="20191205 14:53:08.175" level="TRACE">Arguments: [ b'[{"Caption":"Device edited successfully.","Code":"200","Description":"Device edited successfully.","Id":"1201201212","ObjectName":"Device edited successfully.","SID":0,"Title":"DeviceEdited."}]' ]</msg>
+<msg timestamp="20191205 14:53:08.176" level="INFO">To JSON using : content=[{"Caption":"Device edited successfully.","Code":"200","Description":"Device edited successfully.","Id":"1201201212","ObjectName":"Device edited successfully.","SID":0,"Title":"DeviceEdited."}] </msg>
+<msg timestamp="20191205 14:53:08.176" level="INFO">To JSON using : pretty_print=False </msg>
+<msg timestamp="20191205 14:53:08.176" level="TRACE">Return: [{'Caption': 'Device edited successfully.',
+  'Code': '200',
+  'Description': 'Device edited successfully.',
+  'Id': '1201201212',
+  'ObjectName': 'Device edited successfully.',
+  'SID': 0,
+  'Title': 'DeviceEdited.'}]</msg>
+<msg timestamp="20191205 14:53:08.177" level="INFO">${json_response} = [{'Caption': 'Device edited successfully.', 'Code': '200', 'Description': 'Device edited successfully.', 'Id': '1201201212', 'ObjectName': 'Device edited successfully.', 'SID': 0, 'Title': 'DeviceEdit...</msg>
+<status status="PASS" starttime="20191205 14:53:08.174" endtime="20191205 14:53:08.177"></status>
+</kw>
+<kw name="${r} IN [ @{json_response} ]" type="for">
+<kw name="${r} = {'Caption': 'Device edited successfully.', 'Code': '200', 'Description': 'Device edited successfully.', 'Id': '1201201212', 'ObjectName': 'Device edited successfully.', 'SID': 0, 'Title': 'DeviceEdite..." type="foritem">
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${r}[Description]</arg>
+<arg>Device edited successfully.</arg>
+</arguments>
+<msg timestamp="20191205 14:53:08.180" level="TRACE">Arguments: [ 'Device edited successfully.' | 'Device edited successfully.' ]</msg>
+<msg timestamp="20191205 14:53:08.180" level="DEBUG">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<msg timestamp="20191205 14:53:08.180" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20191205 14:53:08.180" endtime="20191205 14:53:08.181"></status>
+</kw>
+<status status="PASS" starttime="20191205 14:53:08.179" endtime="20191205 14:53:08.181"></status>
+</kw>
+<status status="PASS" starttime="20191205 14:53:08.179" endtime="20191205 14:53:08.181"></status>
+</kw>
+<doc>Posts a device and expects a Code value of 201</doc>
+<tags>
+<tag>awsxrsdevicerestwebservicevalidation</tag>
+</tags>
+<status status="PASS" starttime="20191205 14:53:07.240" endtime="20191205 14:53:08.182" critical="yes"></status>
+</test>
+<test id="s1-s1-s1-t5" name="Validate AWS XRS Get Devices REST Web Services Returns 200 OK">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}</arg>
+<arg>IsActive=True</arg>
+<arg>AsOfDateTime=11/01/2019</arg>
+</arguments>
+<assign>
+<var>&amp;{params}</var>
+</assign>
+<msg timestamp="20191205 14:53:08.187" level="TRACE">Arguments: [ 'OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}' | 'IsActive=True' | 'AsOfDateTime=11/01/2019' ]</msg>
+<msg timestamp="20191205 14:53:08.188" level="TRACE">Return: {'AsOfDateTime': '11/01/2019', 'IsActive': 'True', 'OrganizationID': 46663}</msg>
+<msg timestamp="20191205 14:53:08.188" level="INFO">&amp;{params} = { OrganizationID=46663 | IsActive=True | AsOfDateTime=11/01/2019 }</msg>
+<status status="PASS" starttime="20191205 14:53:08.187" endtime="20191205 14:53:08.188"></status>
+</kw>
+<kw name="Verify Get Devices With Forward Slash Returns 200 OK">
+<arguments>
+<arg>&amp;{params}</arg>
+</arguments>
+<msg timestamp="20191205 14:53:08.190" level="TRACE">Arguments: [ &amp;{params}={'AsOfDateTime': '11/01/2019', 'IsActive': 'True', 'OrganizationID': 46663} ]</msg>
+<kw name="Get Devices With URI Ending With Forward Slash" library="Device">
+<doc>This Keyword contains a modified URI that ends with a forward slash
+This will get devices that match the provided parameters.
+Params can be named individually or within a Dictionary
+Params:
+AsOfDateTime
+Tells the service to return only the data that changed since the specified date and time.
+IsActive
+Filters results to active drivers only.
+Valid Values: True False Both
+Limit
+Used in conjunction with the Offset parameter to implement paging.
+Limits the number of results to a specified number.
+System Limit: 10,000
+Offset
+Used in conjunction with the Limit parameter to implement paging.
+Represents a page number for the starting point of the return set.
+OrganizationID
+Limits results to devices in one or more organizations.
+PhoneNumber
+The following values can be specified:
+[No Filter] - Limits results to all device records within the Web Service users' OrganizationID and ResourceGroupID.
+10 character phone number - Limits results to the device record within the Web Service users' OrganizationID and ResourceGroupID
+Example value: 1234567890
+ResourceGroupID
+Limits results to devices in one or more resource groups.</doc>
+<arguments>
+<arg>&amp;{params}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191205 14:53:08.191" level="TRACE">Arguments: [ &amp;{params}={'AsOfDateTime': '11/01/2019', 'IsActive': 'True', 'OrganizationID': 46663} ]</msg>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${XRS_Entity_Management_Base_URI.Device}${ENTITY_MANAGEMENT_WEBSERVICE_POST_PUT_GET_DEVICES}/</arg>
+</arguments>
+<assign>
+<var>${uri}</var>
+</assign>
+<msg timestamp="20191205 14:53:08.193" level="TRACE">Arguments: [ 'DeviceWebService.svc/devices/' ]</msg>
+<msg timestamp="20191205 14:53:08.193" level="TRACE">Return: 'DeviceWebService.svc/devices/'</msg>
+<msg timestamp="20191205 14:53:08.193" level="INFO">${uri} = DeviceWebService.svc/devices/</msg>
+<status status="PASS" starttime="20191205 14:53:08.192" endtime="20191205 14:53:08.193"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION_ALIAS}</arg>
+<arg>${uri}</arg>
+<arg>headers=${XRS_WEBSERVICES_JSON_HEADER}</arg>
+<arg>params=${params}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191205 14:53:08.194" level="TRACE">Arguments: [ 'xrs_web_service_session' | 'DeviceWebService.svc/devices/' | headers={'Accept': 'application/json',
+ 'Accept-Encoding': 'gzip, deflate',
+ 'Content-Type': 'application/json'} | params={'AsOfDateTime': '11/01/2019', 'IsActive': 'True', 'OrganizationID': 46663} ]</msg>
+<msg timestamp="20191205 14:53:08.195" level="INFO">GET Request using : uri=DeviceWebService.svc/devices/, params={'OrganizationID': 46663, 'IsActive': 'True', 'AsOfDateTime': '11/01/2019'}, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191205 14:53:08.854" level="DEBUG">https://d3ws.xataxrs.com:443 "GET /DeviceWebService.svc/devices/?OrganizationID=46663&amp;IsActive=True&amp;AsOfDateTime=11%2F01%2F2019 HTTP/1.1" 200 1473</msg>
+<msg timestamp="20191205 14:53:08.855" level="DEBUG">GET Response : status=200, reason=OK
+[{"BelongsToDeviceResourceGroups":["Gnome Shipping D3"],"BluetoothAddress":"00:00:00:00:00:00","CarrierDisplayName":"Sprint","CompanyName":"Gnome Shipping D3","CreateDate":"12\/5\/2019 8:53:07 PM","Description":"Test Device 1 Mod","DeviceType":"Other - Android","FixedDisplay":"False","IsChanged":"False","LastCommunication":"","LastDriverID":"","LastDriverName":"","LastVehicleID":"","ModifiedBy":"5412","ModifiedDate":"12\/5\/2019 8:53:08 PM","OrganizationID":"46663","OrganizationName":"Gnome Shipping D3","PhoneNumber":"1201201212","SendInstallLink":"False","Status":"Active","StoreGNISFileOnMobile":"False","UserDefinedField1":"","UserDefinedField2":"","UserDefinedField3":"","UserDefinedField4":"","UserDefinedField5":""},{"BelongsToDeviceResourceGroups":["Gnome Shipping D3"],"BluetoothAddress":"00:00:00:00:00:00","CarrierDisplayName":"Other","CompanyName":"Gnome Shipping D3","CreateDate":"4\/19\/2019 10:19:30 PM","Description":"Gnomelet","DeviceType":"Samsung Galaxy Tab","FixedDisplay":"False","IsChanged":"False","LastCommunication":"11\/25\/2019 10:54:59 PM","LastDriverID":"","LastDriverName":"","LastVehicleID":"","ModifiedBy":"5685","ModifiedDate":"11\/26\/2019 5:29:39 PM","OrganizationID":"46663","OrganizationName":"Gnome Shipping D3","PhoneNumber":"9522227832","SendInstallLink":"False","Status":"Active","StoreGNISFileOnMobile":"True","UserDefinedField1":"","UserDefinedField2":"","UserDefinedField3":"","UserDefinedField4":"","UserDefinedField5":""}]</msg>
+<msg timestamp="20191205 14:53:08.855" level="TRACE">Return: &lt;Response [200]&gt;</msg>
+<msg timestamp="20191205 14:53:08.855" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191205 14:53:08.194" endtime="20191205 14:53:08.855"></status>
+</kw>
+<msg timestamp="20191205 14:53:08.856" level="TRACE">Return: &lt;Response [200]&gt;</msg>
+<msg timestamp="20191205 14:53:08.856" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191205 14:53:08.191" endtime="20191205 14:53:08.856"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191205 14:53:08.857" level="TRACE">Arguments: [ 200 | '200' ]</msg>
+<msg timestamp="20191205 14:53:08.857" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<msg timestamp="20191205 14:53:08.857" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20191205 14:53:08.856" endtime="20191205 14:53:08.857"></status>
+</kw>
+<msg timestamp="20191205 14:53:08.857" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20191205 14:53:08.189" endtime="20191205 14:53:08.857"></status>
+</kw>
+<kw name="Verify Get Devices Without Forward Slash Returns 200 OK">
+<arguments>
+<arg>&amp;{params}</arg>
+</arguments>
+<msg timestamp="20191205 14:53:08.860" level="TRACE">Arguments: [ &amp;{params}={'AsOfDateTime': '11/01/2019', 'IsActive': 'True', 'OrganizationID': 46663} ]</msg>
+<kw name="Get Devices With URI Ending Without Forward Slash" library="Device">
+<doc>This Keyword contains a modified URI that ends without a foward slash
+This will get devices that match the provided parameters.
+Params can be named individually or within a Dictionary
+Params:
+AsOfDateTime
+Tells the service to return only the data that changed since the specified date and time.
+IsActive
+Filters results to active drivers only.
+Valid Values: True False Both
+Limit
+Used in conjunction with the Offset parameter to implement paging.
+Limits the number of results to a specified number.
+System Limit: 10,000
+Offset
+Used in conjunction with the Limit parameter to implement paging.
+Represents a page number for the starting point of the return set.
+OrganizationID
+Limits results to devices in one or more organizations.
+PhoneNumber
+The following values can be specified:
+[No Filter] - Limits results to all device records within the Web Service users' OrganizationID and ResourceGroupID.
+10 character phone number - Limits results to the device record within the Web Service users' OrganizationID and ResourceGroupID
+Example value: 1234567890
+ResourceGroupID
+Limits results to devices in one or more resource groups.</doc>
+<arguments>
+<arg>&amp;{params}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191205 14:53:08.861" level="TRACE">Arguments: [ &amp;{params}={'AsOfDateTime': '11/01/2019', 'IsActive': 'True', 'OrganizationID': 46663} ]</msg>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${XRS_Entity_Management_Base_URI.Device}${ENTITY_MANAGEMENT_WEBSERVICE_POST_PUT_GET_DEVICES}</arg>
+</arguments>
+<assign>
+<var>${uri}</var>
+</assign>
+<msg timestamp="20191205 14:53:08.862" level="TRACE">Arguments: [ 'DeviceWebService.svc/devices' ]</msg>
+<msg timestamp="20191205 14:53:08.862" level="TRACE">Return: 'DeviceWebService.svc/devices'</msg>
+<msg timestamp="20191205 14:53:08.862" level="INFO">${uri} = DeviceWebService.svc/devices</msg>
+<status status="PASS" starttime="20191205 14:53:08.861" endtime="20191205 14:53:08.862"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION_ALIAS}</arg>
+<arg>${uri}</arg>
+<arg>headers=${XRS_WEBSERVICES_JSON_HEADER}</arg>
+<arg>params=${params}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191205 14:53:08.863" level="TRACE">Arguments: [ 'xrs_web_service_session' | 'DeviceWebService.svc/devices' | headers={'Accept': 'application/json',
+ 'Accept-Encoding': 'gzip, deflate',
+ 'Content-Type': 'application/json'} | params={'AsOfDateTime': '11/01/2019', 'IsActive': 'True', 'OrganizationID': 46663} ]</msg>
+<msg timestamp="20191205 14:53:08.863" level="INFO">GET Request using : uri=DeviceWebService.svc/devices, params={'OrganizationID': 46663, 'IsActive': 'True', 'AsOfDateTime': '11/01/2019'}, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191205 14:53:09.412" level="DEBUG">https://d3ws.xataxrs.com:443 "GET /DeviceWebService.svc/devices?OrganizationID=46663&amp;IsActive=True&amp;AsOfDateTime=11%2F01%2F2019 HTTP/1.1" 200 1473</msg>
+<msg timestamp="20191205 14:53:09.414" level="DEBUG">GET Response : status=200, reason=OK
+[{"BelongsToDeviceResourceGroups":["Gnome Shipping D3"],"BluetoothAddress":"00:00:00:00:00:00","CarrierDisplayName":"Sprint","CompanyName":"Gnome Shipping D3","CreateDate":"12\/5\/2019 8:53:07 PM","Description":"Test Device 1 Mod","DeviceType":"Other - Android","FixedDisplay":"False","IsChanged":"False","LastCommunication":"","LastDriverID":"","LastDriverName":"","LastVehicleID":"","ModifiedBy":"5412","ModifiedDate":"12\/5\/2019 8:53:08 PM","OrganizationID":"46663","OrganizationName":"Gnome Shipping D3","PhoneNumber":"1201201212","SendInstallLink":"False","Status":"Active","StoreGNISFileOnMobile":"False","UserDefinedField1":"","UserDefinedField2":"","UserDefinedField3":"","UserDefinedField4":"","UserDefinedField5":""},{"BelongsToDeviceResourceGroups":["Gnome Shipping D3"],"BluetoothAddress":"00:00:00:00:00:00","CarrierDisplayName":"Other","CompanyName":"Gnome Shipping D3","CreateDate":"4\/19\/2019 10:19:30 PM","Description":"Gnomelet","DeviceType":"Samsung Galaxy Tab","FixedDisplay":"False","IsChanged":"False","LastCommunication":"11\/25\/2019 10:54:59 PM","LastDriverID":"","LastDriverName":"","LastVehicleID":"","ModifiedBy":"5685","ModifiedDate":"11\/26\/2019 5:29:39 PM","OrganizationID":"46663","OrganizationName":"Gnome Shipping D3","PhoneNumber":"9522227832","SendInstallLink":"False","Status":"Active","StoreGNISFileOnMobile":"True","UserDefinedField1":"","UserDefinedField2":"","UserDefinedField3":"","UserDefinedField4":"","UserDefinedField5":""}]</msg>
+<msg timestamp="20191205 14:53:09.414" level="TRACE">Return: &lt;Response [200]&gt;</msg>
+<msg timestamp="20191205 14:53:09.415" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191205 14:53:08.862" endtime="20191205 14:53:09.415"></status>
+</kw>
+<msg timestamp="20191205 14:53:09.416" level="TRACE">Return: &lt;Response [200]&gt;</msg>
+<msg timestamp="20191205 14:53:09.416" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191205 14:53:08.860" endtime="20191205 14:53:09.417"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191205 14:53:09.418" level="TRACE">Arguments: [ 200 | '200' ]</msg>
+<msg timestamp="20191205 14:53:09.419" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<msg timestamp="20191205 14:53:09.419" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20191205 14:53:09.417" endtime="20191205 14:53:09.420"></status>
+</kw>
+<msg timestamp="20191205 14:53:09.420" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20191205 14:53:08.859" endtime="20191205 14:53:09.420"></status>
 </kw>
 <doc>Initial test to verify that all AWS XRS Web Services are available</doc>
 <tags>
-<tag>pooky</tag>
+<tag>awsxrsdevicerestwebservicevalidation</tag>
 </tags>
-<status status="FAIL" starttime="20191203 16:19:18.417" endtime="20191203 16:19:24.012" critical="yes">400 != 200</status>
+<status status="PASS" starttime="20191205 14:53:08.185" endtime="20191205 14:53:09.422" critical="yes"></status>
+</test>
+<test id="s1-s1-s1-t6" name="Validate AWS XRS Delete Device REST Web Services Returns 200 OK">
+<kw name="Delete Device With Phone Number" library="Device">
+<doc>This will delete device information for a particular device using the phone number</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICES_TEST_DEVICE_1.PhoneNumber}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191205 14:53:09.428" level="TRACE">Arguments: [ ${phone_number}=1201201212 ]</msg>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${XRS_Entity_Management_Base_URI.Device}${ENTITY_MANAGEMENT_WEBSERVICE_GET_DELETE_DEVICE_WITH_NUMBER}/${phone_number}</arg>
+</arguments>
+<assign>
+<var>${uri}</var>
+</assign>
+<msg timestamp="20191205 14:53:09.429" level="TRACE">Arguments: [ 'DeviceWebService.svc/device/1201201212' ]</msg>
+<msg timestamp="20191205 14:53:09.429" level="TRACE">Return: 'DeviceWebService.svc/device/1201201212'</msg>
+<msg timestamp="20191205 14:53:09.429" level="INFO">${uri} = DeviceWebService.svc/device/1201201212</msg>
+<status status="PASS" starttime="20191205 14:53:09.428" endtime="20191205 14:53:09.429"></status>
+</kw>
+<kw name="Delete Request" library="RequestsLibrary">
+<doc>Send a DELETE request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION_ALIAS}</arg>
+<arg>${uri}</arg>
+<arg>headers=${XRS_WEBSERVICES_JSON_HEADER}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191205 14:53:09.430" level="TRACE">Arguments: [ 'xrs_web_service_session' | 'DeviceWebService.svc/device/1201201212' | headers={'Accept': 'application/json',
+ 'Accept-Encoding': 'gzip, deflate',
+ 'Content-Type': 'application/json'} ]</msg>
+<msg timestamp="20191205 14:53:09.431" level="INFO">DELETE Request using : uri=DeviceWebService.svc/device/1201201212, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191205 14:53:10.178" level="DEBUG">https://d3ws.xataxrs.com:443 "DELETE /DeviceWebService.svc/device/1201201212 HTTP/1.1" 200 153</msg>
+<msg timestamp="20191205 14:53:10.178" level="DEBUG">DELETE Response : status=200, reason=OK
+{"Caption":"Deleted.","Code":"200","Description":"Device deleted successfully.","Id":"1201201212","ObjectName":"Device","SID":0,"Title":"DeviceDeleted."}</msg>
+<msg timestamp="20191205 14:53:10.179" level="TRACE">Return: &lt;Response [200]&gt;</msg>
+<msg timestamp="20191205 14:53:10.179" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191205 14:53:09.430" endtime="20191205 14:53:10.179"></status>
+</kw>
+<msg timestamp="20191205 14:53:10.179" level="TRACE">Return: &lt;Response [200]&gt;</msg>
+<msg timestamp="20191205 14:53:10.179" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191205 14:53:09.427" endtime="20191205 14:53:10.180"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191205 14:53:10.182" level="TRACE">Arguments: [ 200 | '200' ]</msg>
+<msg timestamp="20191205 14:53:10.182" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<msg timestamp="20191205 14:53:10.182" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20191205 14:53:10.181" endtime="20191205 14:53:10.182"></status>
+</kw>
+<doc>Verifies that created device is deleted</doc>
+<tags>
+<tag>awsxrsdevicerestwebservicevalidation</tag>
+</tags>
+<status status="PASS" starttime="20191205 14:53:09.425" endtime="20191205 14:53:10.183" critical="yes"></status>
 </test>
 <kw name="Delete All Sessions" library="RequestsLibrary" type="teardown">
 <doc>Removes all the session objects</doc>
-<msg timestamp="20191203 16:19:24.014" level="TRACE">Arguments: [  ]</msg>
-<msg timestamp="20191203 16:19:24.014" level="INFO">Delete All Sessions</msg>
-<msg timestamp="20191203 16:19:24.015" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20191203 16:19:24.014" endtime="20191203 16:19:24.015"></status>
+<msg timestamp="20191205 14:53:10.195" level="TRACE">Arguments: [  ]</msg>
+<msg timestamp="20191205 14:53:10.195" level="INFO">Delete All Sessions</msg>
+<msg timestamp="20191205 14:53:10.195" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20191205 14:53:10.195" endtime="20191205 14:53:10.196"></status>
 </kw>
-<doc>Validates</doc>
-<status status="FAIL" starttime="20191203 16:19:18.223" endtime="20191203 16:19:24.015"></status>
+<doc>Fundamental suite to test XRS AWS Device Entity Management Web Services</doc>
+<status status="PASS" starttime="20191205 14:53:02.244" endtime="20191205 14:53:10.196"></status>
 </suite>
-<status status="FAIL" starttime="20191203 16:19:18.220" endtime="20191203 16:19:24.017"></status>
+<status status="PASS" starttime="20191205 14:53:02.241" endtime="20191205 14:53:10.204"></status>
 </suite>
-<status status="FAIL" starttime="20191203 16:19:18.192" endtime="20191203 16:19:24.020"></status>
+<status status="PASS" starttime="20191205 14:53:02.217" endtime="20191205 14:53:10.209"></status>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="1">Critical Tests</stat>
-<stat pass="0" fail="1">All Tests</stat>
+<stat pass="6" fail="0">Critical Tests</stat>
+<stat pass="6" fail="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="0" fail="1">pooky</stat>
+<stat pass="6" fail="0">awsxrsdevicerestwebservicevalidation</stat>
+<stat pass="1" fail="0">postdevice</stat>
 </tag>
 <suite>
-<stat pass="0" fail="1" id="s1" name="Tests">Tests</stat>
-<stat pass="0" fail="1" id="s1-s1" name="AWS XRS WebServicesTests">Tests.AWS XRS WebServicesTests</stat>
-<stat pass="0" fail="1" id="s1-s1-s1" name="ValidateAWSXRSDeviceWebServices">Tests.AWS XRS WebServicesTests.ValidateAWSXRSDeviceWebServices</stat>
+<stat pass="6" fail="0" id="s1" name="Tests">Tests</stat>
+<stat pass="6" fail="0" id="s1-s1" name="AWS XRS WebServicesTests">Tests.AWS XRS WebServicesTests</stat>
+<stat pass="6" fail="0" id="s1-s1-s1" name="ValidateAWSXRSDeviceWebServices">Tests.AWS XRS WebServicesTests.ValidateAWSXRSDeviceWebServices</stat>
 </suite>
 </statistics>
 <errors>

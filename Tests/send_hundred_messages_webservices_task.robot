@@ -11,7 +11,7 @@ Variables         ../Data/EnvironmentData.yaml
 ${MESSAGES_WEBSERVICE_SESSION}    messages
 ${MESSAGING_WEBSERVICE_MESSAGES_EXT}    /MessageWebService.svc/messages
 
-*** Tasks ***
+*** Test Cases ***
 Send 100 Messages to a driver
     [Documentation]    This will send one hundred messages to a single driver using webservices
     [Tags]    messaging    webservices
