@@ -1,0 +1,37 @@
+XRS_WEB_SERVICES_TEST_DEVICE_1:
+  CarrierDisplayName: Sprint
+  Description: Test Device 1
+  DeviceType: Other - Android
+  FixedDisplay: false
+  OrganizationID:
+  PhoneNumber: 1201201212
+  SendInstallLink: No
+  Status: Active
+XRS_WEB_SERVICES_TEST_DEVICE_2:
+  BelongsToDeviceResourceGroups:
+    - Gnome Shipping D3
+  BluetoothAddress:
+  CarrierDisplayName: Verizon
+  CompanyName: Gnome Shipping D3
+  CreateDate:
+  Description: Test Device 2
+  DeviceType: Nexus
+  FixedDisplay: false
+  IsChanged: false
+  LastCommunication:
+  LastDriverID:
+  LastDriverName:
+  LastVehicleID:
+  ModifiedBy:
+  ModifiedDate:
+  OrganizationID: 46663
+  OrganizationName: Gnome Shipping D3
+  PhoneNumber: 2302302323
+  SendInstallLink: false
+  Status: active
+  StoreGNISFileOnMobile: true
+  UserDefinedField1:
+  UserDefinedField2:
+  UserDefinedField3:
+  UserDefinedField4:
+  UserDefinedField5:

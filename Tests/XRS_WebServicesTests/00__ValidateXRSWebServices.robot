@@ -27,6 +27,6 @@ Verify 200 OK Response From XRS WebServices
     [Arguments]  ${xrs_web_service_dict}
     ${base_uri} =  Set Variable  base_uri
     FOR  ${e}  IN  @{xrs_web_service_dict}
-        ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION}  ${xrs_web_service_dict}[${e}]
+        ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${xrs_web_service_dict}[${e}]
         Should Be Equal As Strings    ${response.status_code}    200
     END
