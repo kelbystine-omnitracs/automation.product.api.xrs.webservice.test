@@ -143,7 +143,7 @@ Get Organizations With URI Ending With ${ending_character} And Parameters ${para
   ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}  params=${params}
   [Return]  ${response}
 
-Get Organization By ID
+Get Organizations By ID
   [Arguments]  ${organization_id}
   [Documentation]  Get organizations by ID.
   ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Organization}${ENTITY_MANAGEMENT_WEBSERVICE_POST_GET_ORGANIZATIONS}/${organization_id}
@@ -151,7 +151,7 @@ Get Organization By ID
   [Return]  ${response}
 
 Get All Organizations
-    [Documentation]  Get attributes for all drivers.
-    ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Driver}${ENTITY_MANAGEMENT_WEBSERVICE_POST_GET_ORGANIZATIONS}
+    [Documentation]  Get attributes for all organizations.
+    ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Organization}${ENTITY_MANAGEMENT_WEBSERVICE_POST_GET_ORGANIZATIONS}
     ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
     [Return]  ${response}

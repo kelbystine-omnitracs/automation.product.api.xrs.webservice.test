@@ -60,8 +60,13 @@ Validate AWS XRS Get Organizations By Parameters REST Web Services Returns 200 O
   Verify Get Organizations Raw String URI With ? Returns 200 OK
 
 Validate AWS XRS Get Organizations By ID REST Web Services Returns 200 OK
-  [Documentation]
-  ${response} =  Get Organization By ID  ${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_1_DICT.OrganizationId}
+  [Documentation]  Get organization by ID returns 200 OK
+  ${response} =  Get Organizations By ID  ${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_1_DICT.OrganizationId}
+  Should Be Equal As Strings  ${response.status_code}  200
+
+Validate AWS XRS Get Organizations REST Web Services For All Organizations Returns 200 OK
+  [Documentation]  Gets all the Organizations
+  ${response} =  Get All Organizations
   Should Be Equal As Strings  ${response.status_code}  200
 
 *** Keywords ***
@@ -82,6 +87,7 @@ Test Data Setup For XRS AWS Organization Web Service Test Suite
   ...  ParentOrganizationId=${XRS_GENERAL_INFORMATION.Company.Company_ID}
   ...  ParentOrganizationSid=${XRS_GENERAL_INFORMATION.Company.ParentOrganizationSid}
   ...  TimeZone=CST
+  @{XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_LIST} =  Create List  ${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_1_DICT}
   Set Suite Variable  ${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_1_DICT}
   Set Suite Variable  @{XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_LIST}
   # Create put test organization 1 data.
@@ -90,7 +96,6 @@ Test Data Setup For XRS AWS Organization Web Service Test Suite
   ...  OrganizationId=${FAKE_TEST_ORGANIZATION_ID_1}
   ...  OrganizationName=${FAKE_TEST_ORGANIZATION_NAME_1}Modified
   ...  ParentOrganizationId=${XRS_GENERAL_INFORMATION.Company.Company_ID}
-  @{XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_LIST} =  Create List  ${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_1_DICT}
   @{XRS_AWS_WEBSERVICE_PUT_TEST_ORGANIZATION_LIST} =  Create List  ${XRS_AWS_WEBSERVICE_PUT_TEST_ORGANIZATION_1_DICT}
   Set Suite Variable  @{XRS_AWS_WEBSERVICE_PUT_TEST_ORGANIZATION_LIST}
 

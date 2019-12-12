@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.1.2 (Python 3.7.3 on win32)" generated="20191212 09:46:41.265" rpa="false">
+<robot generator="Robot 3.1.2 (Python 3.7.3 on win32)" generated="20191212 11:05:28.480" rpa="false">
 <suite id="s1" name="AWS XRS WebServicesTests" source="C:\Users\kstine\git\aws-api-gateway-tests\Tests\AWS_XRS_WebServicesTests">
 <suite id="s1-s1" name="ValidateAWSXRSOrganizationWebService" source="C:\Users\kstine\git\aws-api-gateway-tests\Tests\AWS_XRS_WebServicesTests\03__ValidateAWSXRSOrganizationWebService.robot">
 <kw name="Run Keywords" library="BuiltIn" type="setup">
@@ -9,10 +9,10 @@
 <arg>AND</arg>
 <arg>Test Data Setup For XRS AWS Organization Web Service Test Suite</arg>
 </arguments>
-<msg timestamp="20191212 09:46:41.822" level="TRACE">Arguments: [ 'Create AWS XRS Web Services Session' | 'AND' | 'Test Data Setup For XRS AWS Organization Web Service Test Suite' ]</msg>
+<msg timestamp="20191212 11:05:29.028" level="TRACE">Arguments: [ 'Create AWS XRS Web Services Session' | 'AND' | 'Test Data Setup For XRS AWS Organization Web Service Test Suite' ]</msg>
 <kw name="Create AWS XRS Web Services Session" library="XRSCommonWebService">
 <doc>Create a session with aws xrs web services</doc>
-<msg timestamp="20191212 09:46:41.823" level="TRACE">Arguments: [  ]</msg>
+<msg timestamp="20191212 11:05:29.029" level="TRACE">Arguments: [  ]</msg>
 <kw name="Create Session" library="RequestsLibrary">
 <doc>Create Session: create a HTTP session to a server</doc>
 <arguments>
@@ -21,39 +21,39 @@
 <arg>verify=True</arg>
 <arg>auth=${XRS_WEBSERVICES_AUTHORIZATION}</arg>
 </arguments>
-<msg timestamp="20191212 09:46:41.823" level="TRACE">Arguments: [ 'xrs_web_service_session' | 'https://d3ws.xataxrs.com' | verify=True | auth=['GnomeShippingD3|admin', 'xrs123'] ]</msg>
-<msg timestamp="20191212 09:46:41.823" level="INFO">Creating Session using : alias=xrs_web_service_session, url=https://d3ws.xataxrs.com, headers={},                     cookies={}, auth=&lt;requests.auth.HTTPBasicAuth object at 0x00000150B1A25B70&gt;, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
-<msg timestamp="20191212 09:46:41.823" level="DEBUG">Creating session: xrs_web_service_session</msg>
-<msg timestamp="20191212 09:46:41.824" level="DEBUG">Argument types are:
+<msg timestamp="20191212 11:05:29.029" level="TRACE">Arguments: [ 'xrs_web_service_session' | 'https://d3ws.xataxrs.com' | verify=True | auth=['GnomeShippingD3|admin', 'xrs123'] ]</msg>
+<msg timestamp="20191212 11:05:29.029" level="INFO">Creating Session using : alias=xrs_web_service_session, url=https://d3ws.xataxrs.com, headers={},                     cookies={}, auth=&lt;requests.auth.HTTPBasicAuth object at 0x000002474D55CCF8&gt;, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<msg timestamp="20191212 11:05:29.029" level="DEBUG">Creating session: xrs_web_service_session</msg>
+<msg timestamp="20191212 11:05:29.029" level="DEBUG">Argument types are:
 &lt;class 'bool'&gt;</msg>
-<msg timestamp="20191212 09:46:41.824" level="TRACE">Return: &lt;requests.sessions.Session object at 0x00000150B1A25F98&gt;</msg>
-<status status="PASS" starttime="20191212 09:46:41.823" endtime="20191212 09:46:41.824"></status>
+<msg timestamp="20191212 11:05:29.029" level="TRACE">Return: &lt;requests.sessions.Session object at 0x000002474D55CB00&gt;</msg>
+<status status="PASS" starttime="20191212 11:05:29.029" endtime="20191212 11:05:29.030"></status>
 </kw>
-<msg timestamp="20191212 09:46:41.824" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20191212 09:46:41.823" endtime="20191212 09:46:41.824"></status>
+<msg timestamp="20191212 11:05:29.030" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20191212 11:05:29.029" endtime="20191212 11:05:29.030"></status>
 </kw>
 <kw name="Test Data Setup For XRS AWS Organization Web Service Test Suite">
 <doc>Keyword for setting up a random organization for the organization test suite</doc>
-<msg timestamp="20191212 09:46:41.824" level="TRACE">Arguments: [  ]</msg>
+<msg timestamp="20191212 11:05:29.030" level="TRACE">Arguments: [  ]</msg>
 <kw name="Word" library="FakerLibrary">
 <doc>:returns: A random word, eg: 'lorem'</doc>
 <assign>
 <var>${FAKE_WORD1}</var>
 </assign>
-<msg timestamp="20191212 09:46:41.824" level="TRACE">Arguments: [  ]</msg>
-<msg timestamp="20191212 09:46:41.825" level="TRACE">Return: 'itself'</msg>
-<msg timestamp="20191212 09:46:41.825" level="INFO">${FAKE_WORD1} = itself</msg>
-<status status="PASS" starttime="20191212 09:46:41.824" endtime="20191212 09:46:41.825"></status>
+<msg timestamp="20191212 11:05:29.030" level="TRACE">Arguments: [  ]</msg>
+<msg timestamp="20191212 11:05:29.030" level="TRACE">Return: 'alone'</msg>
+<msg timestamp="20191212 11:05:29.030" level="INFO">${FAKE_WORD1} = alone</msg>
+<status status="PASS" starttime="20191212 11:05:29.030" endtime="20191212 11:05:29.031"></status>
 </kw>
 <kw name="Word" library="FakerLibrary">
 <doc>:returns: A random word, eg: 'lorem'</doc>
 <assign>
 <var>${FAKE_WORD2}</var>
 </assign>
-<msg timestamp="20191212 09:46:41.825" level="TRACE">Arguments: [  ]</msg>
-<msg timestamp="20191212 09:46:41.825" level="TRACE">Return: 'media'</msg>
-<msg timestamp="20191212 09:46:41.825" level="INFO">${FAKE_WORD2} = media</msg>
-<status status="PASS" starttime="20191212 09:46:41.825" endtime="20191212 09:46:41.825"></status>
+<msg timestamp="20191212 11:05:29.031" level="TRACE">Arguments: [  ]</msg>
+<msg timestamp="20191212 11:05:29.031" level="TRACE">Return: 'value'</msg>
+<msg timestamp="20191212 11:05:29.031" level="INFO">${FAKE_WORD2} = value</msg>
+<status status="PASS" starttime="20191212 11:05:29.031" endtime="20191212 11:05:29.031"></status>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
@@ -63,10 +63,10 @@
 <assign>
 <var>${FAKE_TEST_ORGANIZATION_ID_1}</var>
 </assign>
-<msg timestamp="20191212 09:46:41.826" level="TRACE">Arguments: [ 'itselfmedia' ]</msg>
-<msg timestamp="20191212 09:46:41.826" level="TRACE">Return: 'itselfmedia'</msg>
-<msg timestamp="20191212 09:46:41.826" level="INFO">${FAKE_TEST_ORGANIZATION_ID_1} = itselfmedia</msg>
-<status status="PASS" starttime="20191212 09:46:41.825" endtime="20191212 09:46:41.826"></status>
+<msg timestamp="20191212 11:05:29.031" level="TRACE">Arguments: [ 'alonevalue' ]</msg>
+<msg timestamp="20191212 11:05:29.031" level="TRACE">Return: 'alonevalue'</msg>
+<msg timestamp="20191212 11:05:29.032" level="INFO">${FAKE_TEST_ORGANIZATION_ID_1} = alonevalue</msg>
+<status status="PASS" starttime="20191212 11:05:29.031" endtime="20191212 11:05:29.032"></status>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
@@ -76,10 +76,10 @@
 <assign>
 <var>${FAKE_TEST_ORGANIZATION_NAME_1}</var>
 </assign>
-<msg timestamp="20191212 09:46:41.826" level="TRACE">Arguments: [ 'itself media' ]</msg>
-<msg timestamp="20191212 09:46:41.826" level="TRACE">Return: 'itself media'</msg>
-<msg timestamp="20191212 09:46:41.826" level="INFO">${FAKE_TEST_ORGANIZATION_NAME_1} = itself media</msg>
-<status status="PASS" starttime="20191212 09:46:41.826" endtime="20191212 09:46:41.826"></status>
+<msg timestamp="20191212 11:05:29.032" level="TRACE">Arguments: [ 'alone value' ]</msg>
+<msg timestamp="20191212 11:05:29.032" level="TRACE">Return: 'alone value'</msg>
+<msg timestamp="20191212 11:05:29.032" level="INFO">${FAKE_TEST_ORGANIZATION_NAME_1} = alone value</msg>
+<status status="PASS" starttime="20191212 11:05:29.032" endtime="20191212 11:05:29.032"></status>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
@@ -97,18 +97,67 @@
 <assign>
 <var>&amp;{XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_1_DICT}</var>
 </assign>
-<msg timestamp="20191212 09:46:41.826" level="TRACE">Arguments: [ 'CarrierName=${XRS_GENERAL_INFORMATION.Address.Carrier_Name}' | 'Country=${XRS_GENERAL_INFORMATION.Address.Country}' | 'DotNumber=${XRS_GENERAL_INFORMATION.Address.DOT_Number}' | 'Language=${XRS_GENERAL_INFORMATION.Localization.Language}' | 'OrganizationId=${FAKE_TEST_ORGANIZATION_ID_1}' | 'OrganizationName=${FAKE_TEST_ORGANIZATION_NAME_1}' | 'ParentOrganizationId=${XRS_GENERAL_INFORMATION.Company.Company_ID}' | 'ParentOrganizationSid=${XRS_GENERAL_INFORMATION.Company.ParentOrganizationSid}' | 'TimeZone=CST' ]</msg>
-<msg timestamp="20191212 09:46:41.827" level="TRACE">Return: {'CarrierName': 'Gnome Shipping D3',
+<msg timestamp="20191212 11:05:29.032" level="TRACE">Arguments: [ 'CarrierName=${XRS_GENERAL_INFORMATION.Address.Carrier_Name}' | 'Country=${XRS_GENERAL_INFORMATION.Address.Country}' | 'DotNumber=${XRS_GENERAL_INFORMATION.Address.DOT_Number}' | 'Language=${XRS_GENERAL_INFORMATION.Localization.Language}' | 'OrganizationId=${FAKE_TEST_ORGANIZATION_ID_1}' | 'OrganizationName=${FAKE_TEST_ORGANIZATION_NAME_1}' | 'ParentOrganizationId=${XRS_GENERAL_INFORMATION.Company.Company_ID}' | 'ParentOrganizationSid=${XRS_GENERAL_INFORMATION.Company.ParentOrganizationSid}' | 'TimeZone=CST' ]</msg>
+<msg timestamp="20191212 11:05:29.033" level="TRACE">Return: {'CarrierName': 'Gnome Shipping D3',
  'Country': 'USA',
  'DotNumber': 123456,
  'Language': 'English',
- 'OrganizationId': 'itselfmedia',
- 'OrganizationName': 'itself media',
+ 'OrganizationId': 'alonevalue',
+ 'OrganizationName': 'alone value',
  'ParentOrganizationId': 46663,
  'ParentOrganizationSid': 414,
  'TimeZone': 'CST'}</msg>
-<msg timestamp="20191212 09:46:41.828" level="INFO">&amp;{XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_1_DICT} = { CarrierName=Gnome Shipping D3 | Country=USA | DotNumber=123456 | Language=English | OrganizationId=itselfmedia | OrganizationName=itself media | ParentOrganizationId=46663 | ParentOrganizationSid=41...</msg>
-<status status="PASS" starttime="20191212 09:46:41.826" endtime="20191212 09:46:41.828"></status>
+<msg timestamp="20191212 11:05:29.033" level="INFO">&amp;{XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_1_DICT} = { CarrierName=Gnome Shipping D3 | Country=USA | DotNumber=123456 | Language=English | OrganizationId=alonevalue | OrganizationName=alone value | ParentOrganizationId=46663 | ParentOrganizationSid=414 ...</msg>
+<status status="PASS" starttime="20191212 11:05:29.032" endtime="20191212 11:05:29.033"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_1_DICT}</arg>
+</arguments>
+<assign>
+<var>@{XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_LIST}</var>
+</assign>
+<msg timestamp="20191212 11:05:29.034" level="TRACE">Arguments: [ {'CarrierName': 'Gnome Shipping D3',
+ 'Country': 'USA',
+ 'DotNumber': 123456,
+ 'Language': 'English',
+ 'OrganizationId': 'alonevalue',
+ 'OrganizationName': 'alone value',
+ 'ParentOrganizationId': 46663,
+ 'ParentOrganizationSid': 414,
+ 'TimeZone': 'CST'} ]</msg>
+<msg timestamp="20191212 11:05:29.034" level="TRACE">Return: [{'CarrierName': 'Gnome Shipping D3',
+  'Country': 'USA',
+  'DotNumber': 123456,
+  'Language': 'English',
+  'OrganizationId': 'alonevalue',
+  'OrganizationName': 'alone value',
+  'ParentOrganizationId': 46663,
+  'ParentOrganizationSid': 414,
+  'TimeZone': 'CST'}]</msg>
+<msg timestamp="20191212 11:05:29.034" level="INFO">@{XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_LIST} = [ {'CarrierName': 'Gnome Shipping D3', 'Country': 'USA', 'DotNumber': 123456, 'Language': 'English', 'OrganizationId': 'alonevalue', 'OrganizationName': 'alone value', 'ParentOrganizationId': 46663, '...</msg>
+<status status="PASS" starttime="20191212 11:05:29.033" endtime="20191212 11:05:29.034"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_1_DICT}</arg>
+</arguments>
+<msg timestamp="20191212 11:05:29.034" level="TRACE">Arguments: [ '${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_1_DICT}' ]</msg>
+<msg timestamp="20191212 11:05:29.035" level="INFO">${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_1_DICT} = {'CarrierName': 'Gnome Shipping D3', 'Country': 'USA', 'DotNumber': 123456, 'Language': 'English', 'OrganizationId': 'alonevalue', 'OrganizationName': 'alone value', 'ParentOrganizationId': 46663, 'Pa...</msg>
+<msg timestamp="20191212 11:05:29.035" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20191212 11:05:29.034" endtime="20191212 11:05:29.035"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>@{XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_LIST}</arg>
+</arguments>
+<msg timestamp="20191212 11:05:29.035" level="TRACE">Arguments: [ '@{XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_LIST}' ]</msg>
+<msg timestamp="20191212 11:05:29.035" level="INFO">@{XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_LIST} = [ {'CarrierName': 'Gnome Shipping D3', 'Country': 'USA', 'DotNumber': 123456, 'Language': 'English', 'OrganizationId': 'alonevalue', 'OrganizationName': 'alone value', 'ParentOrganizationId': 46663, '...</msg>
+<msg timestamp="20191212 11:05:29.035" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20191212 11:05:29.035" endtime="20191212 11:05:29.035"></status>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
@@ -121,42 +170,13 @@
 <assign>
 <var>&amp;{XRS_AWS_WEBSERVICE_PUT_TEST_ORGANIZATION_1_DICT}</var>
 </assign>
-<msg timestamp="20191212 09:46:41.828" level="TRACE">Arguments: [ 'Language=${XRS_GENERAL_INFORMATION.Localization.Language}' | 'OrganizationId=${FAKE_TEST_ORGANIZATION_ID_1}' | 'OrganizationName=${FAKE_TEST_ORGANIZATION_NAME_1}Modified' | 'ParentOrganizationId=${XRS_GENERAL_INFORMATION.Company.Company_ID}' ]</msg>
-<msg timestamp="20191212 09:46:41.828" level="TRACE">Return: {'Language': 'English',
- 'OrganizationId': 'itselfmedia',
- 'OrganizationName': 'itself mediaModified',
+<msg timestamp="20191212 11:05:29.035" level="TRACE">Arguments: [ 'Language=${XRS_GENERAL_INFORMATION.Localization.Language}' | 'OrganizationId=${FAKE_TEST_ORGANIZATION_ID_1}' | 'OrganizationName=${FAKE_TEST_ORGANIZATION_NAME_1}Modified' | 'ParentOrganizationId=${XRS_GENERAL_INFORMATION.Company.Company_ID}' ]</msg>
+<msg timestamp="20191212 11:05:29.036" level="TRACE">Return: {'Language': 'English',
+ 'OrganizationId': 'alonevalue',
+ 'OrganizationName': 'alone valueModified',
  'ParentOrganizationId': 46663}</msg>
-<msg timestamp="20191212 09:46:41.829" level="INFO">&amp;{XRS_AWS_WEBSERVICE_PUT_TEST_ORGANIZATION_1_DICT} = { Language=English | OrganizationId=itselfmedia | OrganizationName=itself mediaModified | ParentOrganizationId=46663 }</msg>
-<status status="PASS" starttime="20191212 09:46:41.828" endtime="20191212 09:46:41.829"></status>
-</kw>
-<kw name="Create List" library="BuiltIn">
-<doc>Returns a list containing given items.</doc>
-<arguments>
-<arg>${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_1_DICT}</arg>
-</arguments>
-<assign>
-<var>@{XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_LIST}</var>
-</assign>
-<msg timestamp="20191212 09:46:41.829" level="TRACE">Arguments: [ {'CarrierName': 'Gnome Shipping D3',
- 'Country': 'USA',
- 'DotNumber': 123456,
- 'Language': 'English',
- 'OrganizationId': 'itselfmedia',
- 'OrganizationName': 'itself media',
- 'ParentOrganizationId': 46663,
- 'ParentOrganizationSid': 414,
- 'TimeZone': 'CST'} ]</msg>
-<msg timestamp="20191212 09:46:41.829" level="TRACE">Return: [{'CarrierName': 'Gnome Shipping D3',
-  'Country': 'USA',
-  'DotNumber': 123456,
-  'Language': 'English',
-  'OrganizationId': 'itselfmedia',
-  'OrganizationName': 'itself media',
-  'ParentOrganizationId': 46663,
-  'ParentOrganizationSid': 414,
-  'TimeZone': 'CST'}]</msg>
-<msg timestamp="20191212 09:46:41.830" level="INFO">@{XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_LIST} = [ {'CarrierName': 'Gnome Shipping D3', 'Country': 'USA', 'DotNumber': 123456, 'Language': 'English', 'OrganizationId': 'itselfmedia', 'OrganizationName': 'itself media', 'ParentOrganizationId': 46663,...</msg>
-<status status="PASS" starttime="20191212 09:46:41.829" endtime="20191212 09:46:41.830"></status>
+<msg timestamp="20191212 11:05:29.036" level="INFO">&amp;{XRS_AWS_WEBSERVICE_PUT_TEST_ORGANIZATION_1_DICT} = { Language=English | OrganizationId=alonevalue | OrganizationName=alone valueModified | ParentOrganizationId=46663 }</msg>
+<status status="PASS" starttime="20191212 11:05:29.035" endtime="20191212 11:05:29.036"></status>
 </kw>
 <kw name="Create List" library="BuiltIn">
 <doc>Returns a list containing given items.</doc>
@@ -166,52 +186,32 @@
 <assign>
 <var>@{XRS_AWS_WEBSERVICE_PUT_TEST_ORGANIZATION_LIST}</var>
 </assign>
-<msg timestamp="20191212 09:46:41.830" level="TRACE">Arguments: [ {'Language': 'English',
- 'OrganizationId': 'itselfmedia',
- 'OrganizationName': 'itself mediaModified',
+<msg timestamp="20191212 11:05:29.036" level="TRACE">Arguments: [ {'Language': 'English',
+ 'OrganizationId': 'alonevalue',
+ 'OrganizationName': 'alone valueModified',
  'ParentOrganizationId': 46663} ]</msg>
-<msg timestamp="20191212 09:46:41.830" level="TRACE">Return: [{'Language': 'English',
-  'OrganizationId': 'itselfmedia',
-  'OrganizationName': 'itself mediaModified',
+<msg timestamp="20191212 11:05:29.036" level="TRACE">Return: [{'Language': 'English',
+  'OrganizationId': 'alonevalue',
+  'OrganizationName': 'alone valueModified',
   'ParentOrganizationId': 46663}]</msg>
-<msg timestamp="20191212 09:46:41.830" level="INFO">@{XRS_AWS_WEBSERVICE_PUT_TEST_ORGANIZATION_LIST} = [ {'Language': 'English', 'OrganizationId': 'itselfmedia', 'OrganizationName': 'itself mediaModified', 'ParentOrganizationId': 46663} ]</msg>
-<status status="PASS" starttime="20191212 09:46:41.830" endtime="20191212 09:46:41.830"></status>
-</kw>
-<kw name="Set Suite Variable" library="BuiltIn">
-<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
-<arguments>
-<arg>${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_1_DICT}</arg>
-</arguments>
-<msg timestamp="20191212 09:46:41.830" level="TRACE">Arguments: [ '${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_1_DICT}' ]</msg>
-<msg timestamp="20191212 09:46:41.830" level="INFO">${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_1_DICT} = {'CarrierName': 'Gnome Shipping D3', 'Country': 'USA', 'DotNumber': 123456, 'Language': 'English', 'OrganizationId': 'itselfmedia', 'OrganizationName': 'itself media', 'ParentOrganizationId': 46663, '...</msg>
-<msg timestamp="20191212 09:46:41.831" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20191212 09:46:41.830" endtime="20191212 09:46:41.831"></status>
-</kw>
-<kw name="Set Suite Variable" library="BuiltIn">
-<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
-<arguments>
-<arg>@{XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_LIST}</arg>
-</arguments>
-<msg timestamp="20191212 09:46:41.831" level="TRACE">Arguments: [ '@{XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_LIST}' ]</msg>
-<msg timestamp="20191212 09:46:41.831" level="INFO">@{XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_LIST} = [ {'CarrierName': 'Gnome Shipping D3', 'Country': 'USA', 'DotNumber': 123456, 'Language': 'English', 'OrganizationId': 'itselfmedia', 'OrganizationName': 'itself media', 'ParentOrganizationId': 46663,...</msg>
-<msg timestamp="20191212 09:46:41.831" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20191212 09:46:41.831" endtime="20191212 09:46:41.831"></status>
+<msg timestamp="20191212 11:05:29.037" level="INFO">@{XRS_AWS_WEBSERVICE_PUT_TEST_ORGANIZATION_LIST} = [ {'Language': 'English', 'OrganizationId': 'alonevalue', 'OrganizationName': 'alone valueModified', 'ParentOrganizationId': 46663} ]</msg>
+<status status="PASS" starttime="20191212 11:05:29.036" endtime="20191212 11:05:29.037"></status>
 </kw>
 <kw name="Set Suite Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current suite.</doc>
 <arguments>
 <arg>@{XRS_AWS_WEBSERVICE_PUT_TEST_ORGANIZATION_LIST}</arg>
 </arguments>
-<msg timestamp="20191212 09:46:41.831" level="TRACE">Arguments: [ '@{XRS_AWS_WEBSERVICE_PUT_TEST_ORGANIZATION_LIST}' ]</msg>
-<msg timestamp="20191212 09:46:41.831" level="INFO">@{XRS_AWS_WEBSERVICE_PUT_TEST_ORGANIZATION_LIST} = [ {'Language': 'English', 'OrganizationId': 'itselfmedia', 'OrganizationName': 'itself mediaModified', 'ParentOrganizationId': 46663} ]</msg>
-<msg timestamp="20191212 09:46:41.831" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20191212 09:46:41.831" endtime="20191212 09:46:41.832"></status>
+<msg timestamp="20191212 11:05:29.037" level="TRACE">Arguments: [ '@{XRS_AWS_WEBSERVICE_PUT_TEST_ORGANIZATION_LIST}' ]</msg>
+<msg timestamp="20191212 11:05:29.037" level="INFO">@{XRS_AWS_WEBSERVICE_PUT_TEST_ORGANIZATION_LIST} = [ {'Language': 'English', 'OrganizationId': 'alonevalue', 'OrganizationName': 'alone valueModified', 'ParentOrganizationId': 46663} ]</msg>
+<msg timestamp="20191212 11:05:29.037" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20191212 11:05:29.037" endtime="20191212 11:05:29.037"></status>
 </kw>
-<msg timestamp="20191212 09:46:41.832" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20191212 09:46:41.824" endtime="20191212 09:46:41.832"></status>
+<msg timestamp="20191212 11:05:29.037" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20191212 11:05:29.030" endtime="20191212 11:05:29.037"></status>
 </kw>
-<msg timestamp="20191212 09:46:41.832" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20191212 09:46:41.822" endtime="20191212 09:46:41.832"></status>
+<msg timestamp="20191212 11:05:29.037" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20191212 11:05:29.028" endtime="20191212 11:05:29.037"></status>
 </kw>
 <test id="s1-s1-t1" name="Validate AWS XRS Get Organization By SID REST Web Services Returns 200 OK With Parent Organization SID">
 <kw name="Get Organization With OrganizationSID" library="Organization">
@@ -222,7 +222,7 @@
 <assign>
 <var>${response}</var>
 </assign>
-<msg timestamp="20191212 09:46:41.833" level="TRACE">Arguments: [ ${organization_sid}=414 ]</msg>
+<msg timestamp="20191212 11:05:29.038" level="TRACE">Arguments: [ ${organization_sid}=414 ]</msg>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
 <arguments>
@@ -231,10 +231,10 @@
 <assign>
 <var>${uri}</var>
 </assign>
-<msg timestamp="20191212 09:46:41.833" level="TRACE">Arguments: [ 'OrganizationWebService.svc/organization/414' ]</msg>
-<msg timestamp="20191212 09:46:41.833" level="TRACE">Return: 'OrganizationWebService.svc/organization/414'</msg>
-<msg timestamp="20191212 09:46:41.834" level="INFO">${uri} = OrganizationWebService.svc/organization/414</msg>
-<status status="PASS" starttime="20191212 09:46:41.833" endtime="20191212 09:46:41.834"></status>
+<msg timestamp="20191212 11:05:29.039" level="TRACE">Arguments: [ 'OrganizationWebService.svc/organization/414' ]</msg>
+<msg timestamp="20191212 11:05:29.039" level="TRACE">Return: 'OrganizationWebService.svc/organization/414'</msg>
+<msg timestamp="20191212 11:05:29.039" level="INFO">${uri} = OrganizationWebService.svc/organization/414</msg>
+<status status="PASS" starttime="20191212 11:05:29.039" endtime="20191212 11:05:29.039"></status>
 </kw>
 <kw name="Get Request" library="RequestsLibrary">
 <doc>Send a GET request on the session object found using the
@@ -247,24 +247,24 @@ given `alias`</doc>
 <assign>
 <var>${response}</var>
 </assign>
-<msg timestamp="20191212 09:46:41.834" level="TRACE">Arguments: [ 'xrs_web_service_session' | 'OrganizationWebService.svc/organization/414' | headers={'Accept': 'application/json',
+<msg timestamp="20191212 11:05:29.039" level="TRACE">Arguments: [ 'xrs_web_service_session' | 'OrganizationWebService.svc/organization/414' | headers={'Accept': 'application/json',
  'Accept-Encoding': 'gzip, deflate',
  'Content-Type': 'application/json'} ]</msg>
-<msg timestamp="20191212 09:46:41.834" level="INFO">GET Request using : uri=OrganizationWebService.svc/organization/414, params=None, allow_redirects=True, timeout=None
+<msg timestamp="20191212 11:05:29.040" level="INFO">GET Request using : uri=OrganizationWebService.svc/organization/414, params=None, allow_redirects=True, timeout=None
 headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
 data=None 
 json=None</msg>
-<msg timestamp="20191212 09:46:41.835" level="DEBUG">Starting new HTTPS connection (1): d3ws.xataxrs.com:443</msg>
-<msg timestamp="20191212 09:46:42.689" level="DEBUG">https://d3ws.xataxrs.com:443 "GET /OrganizationWebService.svc/organization/414 HTTP/1.1" 200 657</msg>
-<msg timestamp="20191212 09:46:42.692" level="DEBUG">GET Response : status=200, reason=OK
+<msg timestamp="20191212 11:05:29.041" level="DEBUG">Starting new HTTPS connection (1): d3ws.xataxrs.com:443</msg>
+<msg timestamp="20191212 11:05:29.922" level="DEBUG">https://d3ws.xataxrs.com:443 "GET /OrganizationWebService.svc/organization/414 HTTP/1.1" 200 657</msg>
+<msg timestamp="20191212 11:05:29.925" level="DEBUG">GET Response : status=200, reason=OK
 {"Address1":"12900 Whitewater Dr","Address2":"Suite 300","AllowSharedResourceGroup":true,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"Minnetonka","Country":"USA","CreateDate":"\/Date(1537828533000-0700)\/","DotNumber":"123456","FleetViewRefresh":5,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1574816207411-0800)\/","OrganizationId":"46663","OrganizationName":"Gnome Shipping D3","OrganizationSid":414,"ParentOrganizationId":null,"ParentOrganizationSid":0,"PostalCode":"55343","State":"Minnesota","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"}</msg>
-<msg timestamp="20191212 09:46:42.692" level="TRACE">Return: &lt;Response [200]&gt;</msg>
-<msg timestamp="20191212 09:46:42.693" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20191212 09:46:41.834" endtime="20191212 09:46:42.693"></status>
+<msg timestamp="20191212 11:05:29.925" level="TRACE">Return: &lt;Response [200]&gt;</msg>
+<msg timestamp="20191212 11:05:29.926" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191212 11:05:29.039" endtime="20191212 11:05:29.926"></status>
 </kw>
-<msg timestamp="20191212 09:46:42.694" level="TRACE">Return: &lt;Response [200]&gt;</msg>
-<msg timestamp="20191212 09:46:42.695" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20191212 09:46:41.833" endtime="20191212 09:46:42.695"></status>
+<msg timestamp="20191212 11:05:29.927" level="TRACE">Return: &lt;Response [200]&gt;</msg>
+<msg timestamp="20191212 11:05:29.928" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191212 11:05:29.038" endtime="20191212 11:05:29.928"></status>
 </kw>
 <kw name="Should Be Equal As Strings" library="BuiltIn">
 <doc>Fails if objects are unequal after converting them to strings.</doc>
@@ -272,18 +272,18 @@ json=None</msg>
 <arg>${response.status_code}</arg>
 <arg>200</arg>
 </arguments>
-<msg timestamp="20191212 09:46:42.699" level="TRACE">Arguments: [ 200 | '200' ]</msg>
-<msg timestamp="20191212 09:46:42.699" level="INFO">Argument types are:
+<msg timestamp="20191212 11:05:29.932" level="TRACE">Arguments: [ 200 | '200' ]</msg>
+<msg timestamp="20191212 11:05:29.932" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;type 'unicode'&gt;</msg>
-<msg timestamp="20191212 09:46:42.700" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20191212 09:46:42.697" endtime="20191212 09:46:42.700"></status>
+<msg timestamp="20191212 11:05:29.933" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20191212 11:05:29.931" endtime="20191212 11:05:29.933"></status>
 </kw>
 <doc>Verifies that a Organization with a specific number does not exist</doc>
 <tags>
 <tag>awsxrsorganizationrestwebservicevalidation</tag>
 </tags>
-<status status="PASS" starttime="20191212 09:46:41.832" endtime="20191212 09:46:42.701" critical="yes"></status>
+<status status="PASS" starttime="20191212 11:05:29.037" endtime="20191212 11:05:29.934" critical="yes"></status>
 </test>
 <test id="s1-s1-t2" name="Validate AWS XRS Post Organization REST Web Services Returns Caption &quot;Request succeeded.&quot;">
 <kw name="Post Organizations" library="Organization">
@@ -359,12 +359,12 @@ Metric (KM/L)</doc>
 <assign>
 <var>${response}</var>
 </assign>
-<msg timestamp="20191212 09:46:42.708" level="TRACE">Arguments: [ @{list_data}=[{'CarrierName': 'Gnome Shipping D3',
+<msg timestamp="20191212 11:05:29.941" level="TRACE">Arguments: [ @{list_data}=[{'CarrierName': 'Gnome Shipping D3',
   'Country': 'USA',
   'DotNumber': 123456,
   'Language': 'English',
-  'OrganizationId': 'itselfmedia',
-  'OrganizationName': 'itself media',
+  'OrganizationId': 'alonevalue',
+  'OrganizationName': 'alone value',
   'ParentOrganizationId': 46663,
   'ParentOrganizationSid': 414,
   'TimeZone': 'CST'}] ]</msg>
@@ -376,10 +376,10 @@ Metric (KM/L)</doc>
 <assign>
 <var>${uri}</var>
 </assign>
-<msg timestamp="20191212 09:46:42.710" level="TRACE">Arguments: [ 'OrganizationWebService.svc/organizations' ]</msg>
-<msg timestamp="20191212 09:46:42.710" level="TRACE">Return: 'OrganizationWebService.svc/organizations'</msg>
-<msg timestamp="20191212 09:46:42.710" level="INFO">${uri} = OrganizationWebService.svc/organizations</msg>
-<status status="PASS" starttime="20191212 09:46:42.709" endtime="20191212 09:46:42.710"></status>
+<msg timestamp="20191212 11:05:29.942" level="TRACE">Arguments: [ 'OrganizationWebService.svc/organizations' ]</msg>
+<msg timestamp="20191212 11:05:29.942" level="TRACE">Return: 'OrganizationWebService.svc/organizations'</msg>
+<msg timestamp="20191212 11:05:29.942" level="INFO">${uri} = OrganizationWebService.svc/organizations</msg>
+<status status="PASS" starttime="20191212 11:05:29.942" endtime="20191212 11:05:29.942"></status>
 </kw>
 <kw name="Post Request" library="RequestsLibrary">
 <doc>Send a POST request on the session object found using the
@@ -393,31 +393,31 @@ given `alias`</doc>
 <assign>
 <var>${response}</var>
 </assign>
-<msg timestamp="20191212 09:46:42.711" level="TRACE">Arguments: [ 'xrs_web_service_session' | 'OrganizationWebService.svc/organizations' | json=[{'CarrierName': 'Gnome Shipping D3',
+<msg timestamp="20191212 11:05:29.943" level="TRACE">Arguments: [ 'xrs_web_service_session' | 'OrganizationWebService.svc/organizations' | json=[{'CarrierName': 'Gnome Shipping D3',
   'Country': 'USA',
   'DotNumber': 123456,
   'Language': 'English',
-  'OrganizationId': 'itselfmedia',
-  'OrganizationName': 'itself media',
+  'OrganizationId': 'alonevalue',
+  'OrganizationName': 'alone value',
   'ParentOrganizationId': 46663,
   'ParentOrganizationSid': 414,
   'TimeZone': 'CST'}] | headers={'Accept': 'application/json',
  'Accept-Encoding': 'gzip, deflate',
  'Content-Type': 'application/json'} ]</msg>
-<msg timestamp="20191212 09:46:42.711" level="INFO">POST Request using : uri=OrganizationWebService.svc/organizations, params=None, files=None, allow_redirects=True, timeout=None
+<msg timestamp="20191212 11:05:29.944" level="INFO">POST Request using : uri=OrganizationWebService.svc/organizations, params=None, files=None, allow_redirects=True, timeout=None
 headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
 data=None 
-json=[{'CarrierName': 'Gnome Shipping D3', 'Country': 'USA', 'DotNumber': 123456, 'Language': 'English', 'OrganizationId': 'itselfmedia', 'OrganizationName': 'itself media', 'ParentOrganizationId': 46663, 'ParentOrganizationSid': 414, 'TimeZone': 'CST'}]</msg>
-<msg timestamp="20191212 09:46:44.401" level="DEBUG">https://d3ws.xataxrs.com:443 "POST /OrganizationWebService.svc/organizations HTTP/1.1" 200 199</msg>
-<msg timestamp="20191212 09:46:44.404" level="DEBUG">POST Response : status=200, reason=OK
-[{"Caption":"Request succeeded.","Code":"12538021530103185408","Description":"Organization Added Successfully.","Id":"itselfmedia","ObjectName":"Organization","SID":511,"Title":"Request succeeded."}]</msg>
-<msg timestamp="20191212 09:46:44.405" level="TRACE">Return: &lt;Response [200]&gt;</msg>
-<msg timestamp="20191212 09:46:44.406" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20191212 09:46:42.710" endtime="20191212 09:46:44.406"></status>
+json=[{'CarrierName': 'Gnome Shipping D3', 'Country': 'USA', 'DotNumber': 123456, 'Language': 'English', 'OrganizationId': 'alonevalue', 'OrganizationName': 'alone value', 'ParentOrganizationId': 46663, 'ParentOrganizationSid': 414, 'TimeZone': 'CST'}]</msg>
+<msg timestamp="20191212 11:05:31.948" level="DEBUG">https://d3ws.xataxrs.com:443 "POST /OrganizationWebService.svc/organizations HTTP/1.1" 200 198</msg>
+<msg timestamp="20191212 11:05:31.949" level="DEBUG">POST Response : status=200, reason=OK
+[{"Caption":"Request succeeded.","Code":"12538021530103185408","Description":"Organization Added Successfully.","Id":"alonevalue","ObjectName":"Organization","SID":516,"Title":"Request succeeded."}]</msg>
+<msg timestamp="20191212 11:05:31.949" level="TRACE">Return: &lt;Response [200]&gt;</msg>
+<msg timestamp="20191212 11:05:31.949" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191212 11:05:29.943" endtime="20191212 11:05:31.949"></status>
 </kw>
-<msg timestamp="20191212 09:46:44.407" level="TRACE">Return: &lt;Response [200]&gt;</msg>
-<msg timestamp="20191212 09:46:44.407" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20191212 09:46:42.708" endtime="20191212 09:46:44.408"></status>
+<msg timestamp="20191212 11:05:31.949" level="TRACE">Return: &lt;Response [200]&gt;</msg>
+<msg timestamp="20191212 11:05:31.949" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191212 11:05:29.940" endtime="20191212 11:05:31.949"></status>
 </kw>
 <kw name="To Json" library="RequestsLibrary">
 <doc>Convert a string to a JSON object</doc>
@@ -427,33 +427,33 @@ json=[{'CarrierName': 'Gnome Shipping D3', 'Country': 'USA', 'DotNumber': 123456
 <assign>
 <var>${json_response}</var>
 </assign>
-<msg timestamp="20191212 09:46:44.411" level="TRACE">Arguments: [ b'[{"Caption":"Request succeeded.","Code":"12538021530103185408","Description":"Organization Added Successfully.","Id":"itselfmedia","ObjectName":"Organization","SID":511,"Title":"Request succeeded."}]' ]</msg>
-<msg timestamp="20191212 09:46:44.412" level="INFO">To JSON using : content=[{"Caption":"Request succeeded.","Code":"12538021530103185408","Description":"Organization Added Successfully.","Id":"itselfmedia","ObjectName":"Organization","SID":511,"Title":"Request succeeded."}] </msg>
-<msg timestamp="20191212 09:46:44.412" level="INFO">To JSON using : pretty_print=False </msg>
-<msg timestamp="20191212 09:46:44.413" level="TRACE">Return: [{'Caption': 'Request succeeded.',
+<msg timestamp="20191212 11:05:31.950" level="TRACE">Arguments: [ b'[{"Caption":"Request succeeded.","Code":"12538021530103185408","Description":"Organization Added Successfully.","Id":"alonevalue","ObjectName":"Organization","SID":516,"Title":"Request succeeded."}]' ]</msg>
+<msg timestamp="20191212 11:05:31.950" level="INFO">To JSON using : content=[{"Caption":"Request succeeded.","Code":"12538021530103185408","Description":"Organization Added Successfully.","Id":"alonevalue","ObjectName":"Organization","SID":516,"Title":"Request succeeded."}] </msg>
+<msg timestamp="20191212 11:05:31.950" level="INFO">To JSON using : pretty_print=False </msg>
+<msg timestamp="20191212 11:05:31.950" level="TRACE">Return: [{'Caption': 'Request succeeded.',
   'Code': '12538021530103185408',
   'Description': 'Organization Added Successfully.',
-  'Id': 'itselfmedia',
+  'Id': 'alonevalue',
   'ObjectName': 'Organization',
-  'SID': 511,
+  'SID': 516,
   'Title': 'Request succeeded.'}]</msg>
-<msg timestamp="20191212 09:46:44.414" level="INFO">${json_response} = [{'Caption': 'Request succeeded.', 'Code': '12538021530103185408', 'Description': 'Organization Added Successfully.', 'Id': 'itselfmedia', 'ObjectName': 'Organization', 'SID': 511, 'Title': 'Request s...</msg>
-<status status="PASS" starttime="20191212 09:46:44.410" endtime="20191212 09:46:44.414"></status>
+<msg timestamp="20191212 11:05:31.951" level="INFO">${json_response} = [{'Caption': 'Request succeeded.', 'Code': '12538021530103185408', 'Description': 'Organization Added Successfully.', 'Id': 'alonevalue', 'ObjectName': 'Organization', 'SID': 516, 'Title': 'Request su...</msg>
+<status status="PASS" starttime="20191212 11:05:31.950" endtime="20191212 11:05:31.951"></status>
 </kw>
 <kw name="${r} IN [ @{json_response} ]" type="for">
-<kw name="${r} = {'Caption': 'Request succeeded.', 'Code': '12538021530103185408', 'Description': 'Organization Added Successfully.', 'Id': 'itselfmedia', 'ObjectName': 'Organization', 'SID': 511, 'Title': 'Request su..." type="foritem">
+<kw name="${r} = {'Caption': 'Request succeeded.', 'Code': '12538021530103185408', 'Description': 'Organization Added Successfully.', 'Id': 'alonevalue', 'ObjectName': 'Organization', 'SID': 516, 'Title': 'Request suc..." type="foritem">
 <kw name="Should Be Equal As Strings" library="BuiltIn">
 <doc>Fails if objects are unequal after converting them to strings.</doc>
 <arguments>
 <arg>${r}[Caption]</arg>
 <arg>Request succeeded.</arg>
 </arguments>
-<msg timestamp="20191212 09:46:44.417" level="TRACE">Arguments: [ 'Request succeeded.' | 'Request succeeded.' ]</msg>
-<msg timestamp="20191212 09:46:44.417" level="DEBUG">Argument types are:
+<msg timestamp="20191212 11:05:31.952" level="TRACE">Arguments: [ 'Request succeeded.' | 'Request succeeded.' ]</msg>
+<msg timestamp="20191212 11:05:31.952" level="DEBUG">Argument types are:
 &lt;type 'unicode'&gt;
 &lt;type 'unicode'&gt;</msg>
-<msg timestamp="20191212 09:46:44.417" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20191212 09:46:44.416" endtime="20191212 09:46:44.418"></status>
+<msg timestamp="20191212 11:05:31.952" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20191212 11:05:31.952" endtime="20191212 11:05:31.952"></status>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
@@ -463,30 +463,30 @@ json=[{'CarrierName': 'Gnome Shipping D3', 'Country': 'USA', 'DotNumber': 123456
 <assign>
 <var>${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_SID}</var>
 </assign>
-<msg timestamp="20191212 09:46:44.419" level="TRACE">Arguments: [ 511 ]</msg>
-<msg timestamp="20191212 09:46:44.419" level="TRACE">Return: 511</msg>
-<msg timestamp="20191212 09:46:44.419" level="INFO">${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_SID} = 511</msg>
-<status status="PASS" starttime="20191212 09:46:44.418" endtime="20191212 09:46:44.419"></status>
+<msg timestamp="20191212 11:05:31.953" level="TRACE">Arguments: [ 516 ]</msg>
+<msg timestamp="20191212 11:05:31.953" level="TRACE">Return: 516</msg>
+<msg timestamp="20191212 11:05:31.953" level="INFO">${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_SID} = 516</msg>
+<status status="PASS" starttime="20191212 11:05:31.952" endtime="20191212 11:05:31.953"></status>
 </kw>
-<status status="PASS" starttime="20191212 09:46:44.416" endtime="20191212 09:46:44.419"></status>
+<status status="PASS" starttime="20191212 11:05:31.952" endtime="20191212 11:05:31.953"></status>
 </kw>
-<status status="PASS" starttime="20191212 09:46:44.416" endtime="20191212 09:46:44.419"></status>
+<status status="PASS" starttime="20191212 11:05:31.951" endtime="20191212 11:05:31.953"></status>
 </kw>
 <kw name="Set Suite Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current suite.</doc>
 <arguments>
 <arg>${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_SID}</arg>
 </arguments>
-<msg timestamp="20191212 09:46:44.421" level="TRACE">Arguments: [ '${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_SID}' ]</msg>
-<msg timestamp="20191212 09:46:44.421" level="INFO">${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_SID} = 511</msg>
-<msg timestamp="20191212 09:46:44.421" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20191212 09:46:44.421" endtime="20191212 09:46:44.421"></status>
+<msg timestamp="20191212 11:05:31.954" level="TRACE">Arguments: [ '${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_SID}' ]</msg>
+<msg timestamp="20191212 11:05:31.954" level="INFO">${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_SID} = 516</msg>
+<msg timestamp="20191212 11:05:31.954" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20191212 11:05:31.954" endtime="20191212 11:05:31.954"></status>
 </kw>
 <doc>Posts a Organization and expects a Caption value "Request succeeded."</doc>
 <tags>
 <tag>awsxrsorganizationrestwebservicevalidation</tag>
 </tags>
-<status status="PASS" starttime="20191212 09:46:42.705" endtime="20191212 09:46:44.423" critical="yes"></status>
+<status status="PASS" starttime="20191212 11:05:29.938" endtime="20191212 11:05:31.955" critical="yes"></status>
 </test>
 <test id="s1-s1-t3" name="Validate AWS XRS Get Organization By SID REST Web Services Returns 200 OK With New Organization">
 <kw name="Get Organization With OrganizationSID" library="Organization">
@@ -497,7 +497,7 @@ json=[{'CarrierName': 'Gnome Shipping D3', 'Country': 'USA', 'DotNumber': 123456
 <assign>
 <var>${response}</var>
 </assign>
-<msg timestamp="20191212 09:46:44.428" level="TRACE">Arguments: [ ${organization_sid}=511 ]</msg>
+<msg timestamp="20191212 11:05:31.958" level="TRACE">Arguments: [ ${organization_sid}=516 ]</msg>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
 <arguments>
@@ -506,10 +506,10 @@ json=[{'CarrierName': 'Gnome Shipping D3', 'Country': 'USA', 'DotNumber': 123456
 <assign>
 <var>${uri}</var>
 </assign>
-<msg timestamp="20191212 09:46:44.429" level="TRACE">Arguments: [ 'OrganizationWebService.svc/organization/511' ]</msg>
-<msg timestamp="20191212 09:46:44.429" level="TRACE">Return: 'OrganizationWebService.svc/organization/511'</msg>
-<msg timestamp="20191212 09:46:44.429" level="INFO">${uri} = OrganizationWebService.svc/organization/511</msg>
-<status status="PASS" starttime="20191212 09:46:44.428" endtime="20191212 09:46:44.429"></status>
+<msg timestamp="20191212 11:05:31.959" level="TRACE">Arguments: [ 'OrganizationWebService.svc/organization/516' ]</msg>
+<msg timestamp="20191212 11:05:31.959" level="TRACE">Return: 'OrganizationWebService.svc/organization/516'</msg>
+<msg timestamp="20191212 11:05:31.959" level="INFO">${uri} = OrganizationWebService.svc/organization/516</msg>
+<status status="PASS" starttime="20191212 11:05:31.958" endtime="20191212 11:05:31.959"></status>
 </kw>
 <kw name="Get Request" library="RequestsLibrary">
 <doc>Send a GET request on the session object found using the
@@ -522,23 +522,23 @@ given `alias`</doc>
 <assign>
 <var>${response}</var>
 </assign>
-<msg timestamp="20191212 09:46:44.430" level="TRACE">Arguments: [ 'xrs_web_service_session' | 'OrganizationWebService.svc/organization/511' | headers={'Accept': 'application/json',
+<msg timestamp="20191212 11:05:31.960" level="TRACE">Arguments: [ 'xrs_web_service_session' | 'OrganizationWebService.svc/organization/516' | headers={'Accept': 'application/json',
  'Accept-Encoding': 'gzip, deflate',
  'Content-Type': 'application/json'} ]</msg>
-<msg timestamp="20191212 09:46:44.430" level="INFO">GET Request using : uri=OrganizationWebService.svc/organization/511, params=None, allow_redirects=True, timeout=None
+<msg timestamp="20191212 11:05:31.960" level="INFO">GET Request using : uri=OrganizationWebService.svc/organization/516, params=None, allow_redirects=True, timeout=None
 headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
 data=None 
 json=None</msg>
-<msg timestamp="20191212 09:46:44.905" level="DEBUG">https://d3ws.xataxrs.com:443 "GET /OrganizationWebService.svc/organization/511 HTTP/1.1" 200 612</msg>
-<msg timestamp="20191212 09:46:44.908" level="DEBUG">GET Response : status=200, reason=OK
-{"Address1":"","Address2":"","AllowSharedResourceGroup":false,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"","Country":"USA","CreateDate":"\/Date(1576194403361-0800)\/","DotNumber":"123456","FleetViewRefresh":0,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576194403499-0800)\/","OrganizationId":"itselfmedia","OrganizationName":"itself media","OrganizationSid":511,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"","State":"","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"}</msg>
-<msg timestamp="20191212 09:46:44.908" level="TRACE">Return: &lt;Response [200]&gt;</msg>
-<msg timestamp="20191212 09:46:44.909" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20191212 09:46:44.429" endtime="20191212 09:46:44.909"></status>
+<msg timestamp="20191212 11:05:32.383" level="DEBUG">https://d3ws.xataxrs.com:443 "GET /OrganizationWebService.svc/organization/516 HTTP/1.1" 200 610</msg>
+<msg timestamp="20191212 11:05:32.386" level="DEBUG">GET Response : status=200, reason=OK
+{"Address1":"","Address2":"","AllowSharedResourceGroup":false,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"","Country":"USA","CreateDate":"\/Date(1576199130592-0800)\/","DotNumber":"123456","FleetViewRefresh":0,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576199130747-0800)\/","OrganizationId":"alonevalue","OrganizationName":"alone value","OrganizationSid":516,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"","State":"","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"}</msg>
+<msg timestamp="20191212 11:05:32.387" level="TRACE">Return: &lt;Response [200]&gt;</msg>
+<msg timestamp="20191212 11:05:32.388" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191212 11:05:31.959" endtime="20191212 11:05:32.388"></status>
 </kw>
-<msg timestamp="20191212 09:46:44.910" level="TRACE">Return: &lt;Response [200]&gt;</msg>
-<msg timestamp="20191212 09:46:44.910" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20191212 09:46:44.427" endtime="20191212 09:46:44.911"></status>
+<msg timestamp="20191212 11:05:32.389" level="TRACE">Return: &lt;Response [200]&gt;</msg>
+<msg timestamp="20191212 11:05:32.390" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191212 11:05:31.957" endtime="20191212 11:05:32.390"></status>
 </kw>
 <kw name="Should Be Equal As Strings" library="BuiltIn">
 <doc>Fails if objects are unequal after converting them to strings.</doc>
@@ -546,18 +546,18 @@ json=None</msg>
 <arg>${response.status_code}</arg>
 <arg>200</arg>
 </arguments>
-<msg timestamp="20191212 09:46:44.914" level="TRACE">Arguments: [ 200 | '200' ]</msg>
-<msg timestamp="20191212 09:46:44.915" level="INFO">Argument types are:
+<msg timestamp="20191212 11:05:32.392" level="TRACE">Arguments: [ 200 | '200' ]</msg>
+<msg timestamp="20191212 11:05:32.393" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;type 'unicode'&gt;</msg>
-<msg timestamp="20191212 09:46:44.915" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20191212 09:46:44.913" endtime="20191212 09:46:44.916"></status>
+<msg timestamp="20191212 11:05:32.393" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20191212 11:05:32.391" endtime="20191212 11:05:32.393"></status>
 </kw>
 <doc>Verifies that a posted Organization now exists</doc>
 <tags>
 <tag>awsxrsorganizationrestwebservicevalidation</tag>
 </tags>
-<status status="PASS" starttime="20191212 09:46:44.426" endtime="20191212 09:46:44.918" critical="yes"></status>
+<status status="PASS" starttime="20191212 11:05:31.956" endtime="20191212 11:05:32.394" critical="yes"></status>
 </test>
 <test id="s1-s1-t4" name="Validate AWS XRS Put Organization REST Web Services Modifies Description Successfully">
 <kw name="Put Organizations" library="Organization">
@@ -570,9 +570,9 @@ See Json field definitions in the "Post Organizations" Keyword</doc>
 <assign>
 <var>${response}</var>
 </assign>
-<msg timestamp="20191212 09:46:44.928" level="TRACE">Arguments: [ @{list_data}=[{'Language': 'English',
-  'OrganizationId': 'itselfmedia',
-  'OrganizationName': 'itself mediaModified',
+<msg timestamp="20191212 11:05:32.400" level="TRACE">Arguments: [ @{list_data}=[{'Language': 'English',
+  'OrganizationId': 'alonevalue',
+  'OrganizationName': 'alone valueModified',
   'ParentOrganizationId': 46663}] ]</msg>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
@@ -582,10 +582,10 @@ See Json field definitions in the "Post Organizations" Keyword</doc>
 <assign>
 <var>${uri}</var>
 </assign>
-<msg timestamp="20191212 09:46:44.930" level="TRACE">Arguments: [ 'OrganizationWebService.svc/organizations/update' ]</msg>
-<msg timestamp="20191212 09:46:44.931" level="TRACE">Return: 'OrganizationWebService.svc/organizations/update'</msg>
-<msg timestamp="20191212 09:46:44.931" level="INFO">${uri} = OrganizationWebService.svc/organizations/update</msg>
-<status status="PASS" starttime="20191212 09:46:44.930" endtime="20191212 09:46:44.931"></status>
+<msg timestamp="20191212 11:05:32.402" level="TRACE">Arguments: [ 'OrganizationWebService.svc/organizations/update' ]</msg>
+<msg timestamp="20191212 11:05:32.402" level="TRACE">Return: 'OrganizationWebService.svc/organizations/update'</msg>
+<msg timestamp="20191212 11:05:32.403" level="INFO">${uri} = OrganizationWebService.svc/organizations/update</msg>
+<status status="PASS" starttime="20191212 11:05:32.401" endtime="20191212 11:05:32.403"></status>
 </kw>
 <kw name="Put Request" library="RequestsLibrary">
 <doc>Send a PUT request on the session object found using the
@@ -599,26 +599,26 @@ given `alias`</doc>
 <assign>
 <var>${response}</var>
 </assign>
-<msg timestamp="20191212 09:46:44.932" level="TRACE">Arguments: [ 'xrs_web_service_session' | 'OrganizationWebService.svc/organizations/update' | json=[{'Language': 'English',
-  'OrganizationId': 'itselfmedia',
-  'OrganizationName': 'itself mediaModified',
+<msg timestamp="20191212 11:05:32.404" level="TRACE">Arguments: [ 'xrs_web_service_session' | 'OrganizationWebService.svc/organizations/update' | json=[{'Language': 'English',
+  'OrganizationId': 'alonevalue',
+  'OrganizationName': 'alone valueModified',
   'ParentOrganizationId': 46663}] | headers={'Accept': 'application/json',
  'Accept-Encoding': 'gzip, deflate',
  'Content-Type': 'application/json'} ]</msg>
-<msg timestamp="20191212 09:46:44.933" level="INFO">PUT Request using : uri=OrganizationWebService.svc/organizations/update, params=None, files=None, allow_redirects=True, timeout=None
+<msg timestamp="20191212 11:05:32.405" level="INFO">PUT Request using : uri=OrganizationWebService.svc/organizations/update, params=None, files=None, allow_redirects=True, timeout=None
 headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
 data=None 
-json=[{'Language': 'English', 'OrganizationId': 'itselfmedia', 'OrganizationName': 'itself mediaModified', 'ParentOrganizationId': 46663}]</msg>
-<msg timestamp="20191212 09:46:45.485" level="DEBUG">https://d3ws.xataxrs.com:443 "PUT /OrganizationWebService.svc/organizations/update HTTP/1.1" 200 200</msg>
-<msg timestamp="20191212 09:46:45.485" level="DEBUG">PUT Response : status=200, reason=OK
-[{"Caption":"Request succeeded.","Code":"12538021530103185408","Description":"Organization Edited Successfully.","Id":"itselfmedia","ObjectName":"Organization","SID":511,"Title":"Request succeeded."}]</msg>
-<msg timestamp="20191212 09:46:45.485" level="TRACE">Return: &lt;Response [200]&gt;</msg>
-<msg timestamp="20191212 09:46:45.485" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20191212 09:46:44.931" endtime="20191212 09:46:45.485"></status>
+json=[{'Language': 'English', 'OrganizationId': 'alonevalue', 'OrganizationName': 'alone valueModified', 'ParentOrganizationId': 46663}]</msg>
+<msg timestamp="20191212 11:05:32.900" level="DEBUG">https://d3ws.xataxrs.com:443 "PUT /OrganizationWebService.svc/organizations/update HTTP/1.1" 200 199</msg>
+<msg timestamp="20191212 11:05:32.901" level="DEBUG">PUT Response : status=200, reason=OK
+[{"Caption":"Request succeeded.","Code":"12538021530103185408","Description":"Organization Edited Successfully.","Id":"alonevalue","ObjectName":"Organization","SID":516,"Title":"Request succeeded."}]</msg>
+<msg timestamp="20191212 11:05:32.902" level="TRACE">Return: &lt;Response [200]&gt;</msg>
+<msg timestamp="20191212 11:05:32.902" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191212 11:05:32.403" endtime="20191212 11:05:32.903"></status>
 </kw>
-<msg timestamp="20191212 09:46:45.485" level="TRACE">Return: &lt;Response [200]&gt;</msg>
-<msg timestamp="20191212 09:46:45.485" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20191212 09:46:44.928" endtime="20191212 09:46:45.485"></status>
+<msg timestamp="20191212 11:05:32.903" level="TRACE">Return: &lt;Response [200]&gt;</msg>
+<msg timestamp="20191212 11:05:32.904" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191212 11:05:32.399" endtime="20191212 11:05:32.904"></status>
 </kw>
 <kw name="To Json" library="RequestsLibrary">
 <doc>Convert a string to a JSON object</doc>
@@ -628,43 +628,43 @@ json=[{'Language': 'English', 'OrganizationId': 'itselfmedia', 'OrganizationName
 <assign>
 <var>${json_response}</var>
 </assign>
-<msg timestamp="20191212 09:46:45.486" level="TRACE">Arguments: [ b'[{"Caption":"Request succeeded.","Code":"12538021530103185408","Description":"Organization Edited Successfully.","Id":"itselfmedia","ObjectName":"Organization","SID":511,"Title":"Request succeeded."}]' ]</msg>
-<msg timestamp="20191212 09:46:45.486" level="INFO">To JSON using : content=[{"Caption":"Request succeeded.","Code":"12538021530103185408","Description":"Organization Edited Successfully.","Id":"itselfmedia","ObjectName":"Organization","SID":511,"Title":"Request succeeded."}] </msg>
-<msg timestamp="20191212 09:46:45.486" level="INFO">To JSON using : pretty_print=False </msg>
-<msg timestamp="20191212 09:46:45.486" level="TRACE">Return: [{'Caption': 'Request succeeded.',
+<msg timestamp="20191212 11:05:32.909" level="TRACE">Arguments: [ b'[{"Caption":"Request succeeded.","Code":"12538021530103185408","Description":"Organization Edited Successfully.","Id":"alonevalue","ObjectName":"Organization","SID":516,"Title":"Request succeeded."}]' ]</msg>
+<msg timestamp="20191212 11:05:32.910" level="INFO">To JSON using : content=[{"Caption":"Request succeeded.","Code":"12538021530103185408","Description":"Organization Edited Successfully.","Id":"alonevalue","ObjectName":"Organization","SID":516,"Title":"Request succeeded."}] </msg>
+<msg timestamp="20191212 11:05:32.910" level="INFO">To JSON using : pretty_print=False </msg>
+<msg timestamp="20191212 11:05:32.910" level="TRACE">Return: [{'Caption': 'Request succeeded.',
   'Code': '12538021530103185408',
   'Description': 'Organization Edited Successfully.',
-  'Id': 'itselfmedia',
+  'Id': 'alonevalue',
   'ObjectName': 'Organization',
-  'SID': 511,
+  'SID': 516,
   'Title': 'Request succeeded.'}]</msg>
-<msg timestamp="20191212 09:46:45.486" level="INFO">${json_response} = [{'Caption': 'Request succeeded.', 'Code': '12538021530103185408', 'Description': 'Organization Edited Successfully.', 'Id': 'itselfmedia', 'ObjectName': 'Organization', 'SID': 511, 'Title': 'Request ...</msg>
-<status status="PASS" starttime="20191212 09:46:45.486" endtime="20191212 09:46:45.486"></status>
+<msg timestamp="20191212 11:05:32.911" level="INFO">${json_response} = [{'Caption': 'Request succeeded.', 'Code': '12538021530103185408', 'Description': 'Organization Edited Successfully.', 'Id': 'alonevalue', 'ObjectName': 'Organization', 'SID': 516, 'Title': 'Request s...</msg>
+<status status="PASS" starttime="20191212 11:05:32.907" endtime="20191212 11:05:32.911"></status>
 </kw>
 <kw name="${r} IN [ @{json_response} ]" type="for">
-<kw name="${r} = {'Caption': 'Request succeeded.', 'Code': '12538021530103185408', 'Description': 'Organization Edited Successfully.', 'Id': 'itselfmedia', 'ObjectName': 'Organization', 'SID': 511, 'Title': 'Request s..." type="foritem">
+<kw name="${r} = {'Caption': 'Request succeeded.', 'Code': '12538021530103185408', 'Description': 'Organization Edited Successfully.', 'Id': 'alonevalue', 'ObjectName': 'Organization', 'SID': 516, 'Title': 'Request su..." type="foritem">
 <kw name="Should Be Equal As Strings" library="BuiltIn">
 <doc>Fails if objects are unequal after converting them to strings.</doc>
 <arguments>
 <arg>${r}[Description]</arg>
 <arg>Organization Edited Successfully.</arg>
 </arguments>
-<msg timestamp="20191212 09:46:45.488" level="TRACE">Arguments: [ 'Organization Edited Successfully.' | 'Organization Edited Successfully.' ]</msg>
-<msg timestamp="20191212 09:46:45.488" level="DEBUG">Argument types are:
+<msg timestamp="20191212 11:05:32.914" level="TRACE">Arguments: [ 'Organization Edited Successfully.' | 'Organization Edited Successfully.' ]</msg>
+<msg timestamp="20191212 11:05:32.915" level="DEBUG">Argument types are:
 &lt;type 'unicode'&gt;
 &lt;type 'unicode'&gt;</msg>
-<msg timestamp="20191212 09:46:45.488" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20191212 09:46:45.487" endtime="20191212 09:46:45.488"></status>
+<msg timestamp="20191212 11:05:32.915" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20191212 11:05:32.913" endtime="20191212 11:05:32.915"></status>
 </kw>
-<status status="PASS" starttime="20191212 09:46:45.487" endtime="20191212 09:46:45.488"></status>
+<status status="PASS" starttime="20191212 11:05:32.913" endtime="20191212 11:05:32.915"></status>
 </kw>
-<status status="PASS" starttime="20191212 09:46:45.487" endtime="20191212 09:46:45.488"></status>
+<status status="PASS" starttime="20191212 11:05:32.912" endtime="20191212 11:05:32.915"></status>
 </kw>
 <doc>Posts a Organization and expects a Code value of 201</doc>
 <tags>
 <tag>awsxrsorganizationrestwebservicevalidation</tag>
 </tags>
-<status status="PASS" starttime="20191212 09:46:44.925" endtime="20191212 09:46:45.489" critical="yes"></status>
+<status status="PASS" starttime="20191212 11:05:32.398" endtime="20191212 11:05:32.916" critical="yes"></status>
 </test>
 <test id="s1-s1-t5" name="Validate AWS XRS Get Organizations By Parameters REST Web Services Returns 200 OK">
 <kw name="Get Time" library="BuiltIn">
@@ -677,12 +677,12 @@ json=[{'Language': 'English', 'OrganizationId': 'itselfmedia', 'OrganizationName
 <var>${mm}</var>
 <var>${dd}</var>
 </assign>
-<msg timestamp="20191212 09:46:45.492" level="TRACE">Arguments: [ 'year,month,day' ]</msg>
-<msg timestamp="20191212 09:46:45.492" level="TRACE">Return: ['2019', '12', '12']</msg>
-<msg timestamp="20191212 09:46:45.492" level="INFO">${yyyy} = 2019</msg>
-<msg timestamp="20191212 09:46:45.492" level="INFO">${mm} = 12</msg>
-<msg timestamp="20191212 09:46:45.492" level="INFO">${dd} = 12</msg>
-<status status="PASS" starttime="20191212 09:46:45.492" endtime="20191212 09:46:45.492"></status>
+<msg timestamp="20191212 11:05:32.922" level="TRACE">Arguments: [ 'year,month,day' ]</msg>
+<msg timestamp="20191212 11:05:32.922" level="TRACE">Return: ['2019', '12', '12']</msg>
+<msg timestamp="20191212 11:05:32.922" level="INFO">${yyyy} = 2019</msg>
+<msg timestamp="20191212 11:05:32.923" level="INFO">${mm} = 12</msg>
+<msg timestamp="20191212 11:05:32.923" level="INFO">${dd} = 12</msg>
+<status status="PASS" starttime="20191212 11:05:32.922" endtime="20191212 11:05:32.923"></status>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
@@ -694,17 +694,17 @@ json=[{'Language': 'English', 'OrganizationId': 'itselfmedia', 'OrganizationName
 <assign>
 <var>&amp;{params}</var>
 </assign>
-<msg timestamp="20191212 09:46:45.493" level="TRACE">Arguments: [ 'OrganizationSid=${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_SID}' | 'IsActive=True' | 'AsOfDateTime=${mm}/${dd}/${yyyy}' ]</msg>
-<msg timestamp="20191212 09:46:45.493" level="TRACE">Return: {'AsOfDateTime': '12/12/2019', 'IsActive': 'True', 'OrganizationSid': 511}</msg>
-<msg timestamp="20191212 09:46:45.494" level="INFO">&amp;{params} = { OrganizationSid=511 | IsActive=True | AsOfDateTime=12/12/2019 }</msg>
-<status status="PASS" starttime="20191212 09:46:45.493" endtime="20191212 09:46:45.494"></status>
+<msg timestamp="20191212 11:05:32.924" level="TRACE">Arguments: [ 'OrganizationSid=${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_SID}' | 'IsActive=True' | 'AsOfDateTime=${mm}/${dd}/${yyyy}' ]</msg>
+<msg timestamp="20191212 11:05:32.924" level="TRACE">Return: {'AsOfDateTime': '12/12/2019', 'IsActive': 'True', 'OrganizationSid': 516}</msg>
+<msg timestamp="20191212 11:05:32.925" level="INFO">&amp;{params} = { OrganizationSid=516 | IsActive=True | AsOfDateTime=12/12/2019 }</msg>
+<status status="PASS" starttime="20191212 11:05:32.924" endtime="20191212 11:05:32.925"></status>
 </kw>
 <kw name="Verify Get Organizations With Forward Slash Returns 200 OK">
 <doc>Verify that using a '/' in the URI returns 200 OK</doc>
 <arguments>
 <arg>&amp;{params}</arg>
 </arguments>
-<msg timestamp="20191212 09:46:45.495" level="TRACE">Arguments: [ &amp;{params}={'AsOfDateTime': '12/12/2019', 'IsActive': 'True', 'OrganizationSid': 511} ]</msg>
+<msg timestamp="20191212 11:05:32.926" level="TRACE">Arguments: [ &amp;{params}={'AsOfDateTime': '12/12/2019', 'IsActive': 'True', 'OrganizationSid': 516} ]</msg>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
 <arguments>
@@ -713,10 +713,10 @@ json=[{'Language': 'English', 'OrganizationId': 'itselfmedia', 'OrganizationName
 <assign>
 <var>${ending_character}</var>
 </assign>
-<msg timestamp="20191212 09:46:45.495" level="TRACE">Arguments: [ '/' ]</msg>
-<msg timestamp="20191212 09:46:45.495" level="TRACE">Return: '/'</msg>
-<msg timestamp="20191212 09:46:45.495" level="INFO">${ending_character} = /</msg>
-<status status="PASS" starttime="20191212 09:46:45.495" endtime="20191212 09:46:45.495"></status>
+<msg timestamp="20191212 11:05:32.927" level="TRACE">Arguments: [ '/' ]</msg>
+<msg timestamp="20191212 11:05:32.927" level="TRACE">Return: '/'</msg>
+<msg timestamp="20191212 11:05:32.927" level="INFO">${ending_character} = /</msg>
+<status status="PASS" starttime="20191212 11:05:32.927" endtime="20191212 11:05:32.927"></status>
 </kw>
 <kw name="Get Organizations With URI Ending With ${ending_character} And Parameters &amp;{params}" library="Organization">
 <doc>This Keyword modifies character between the base uri and the parameters
@@ -726,7 +726,7 @@ See the Get Organizations Keyword for param definitions.</doc>
 <assign>
 <var>${response}</var>
 </assign>
-<msg timestamp="20191212 09:46:45.495" level="TRACE">Arguments: [ ${ending_character}='/' | ${params}={'AsOfDateTime': '12/12/2019', 'IsActive': 'True', 'OrganizationSid': 511} ]</msg>
+<msg timestamp="20191212 11:05:32.927" level="TRACE">Arguments: [ ${ending_character}='/' | ${params}={'AsOfDateTime': '12/12/2019', 'IsActive': 'True', 'OrganizationSid': 516} ]</msg>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
 <arguments>
@@ -735,10 +735,10 @@ See the Get Organizations Keyword for param definitions.</doc>
 <assign>
 <var>${uri}</var>
 </assign>
-<msg timestamp="20191212 09:46:45.496" level="TRACE">Arguments: [ 'OrganizationWebService.svc/organizations/' ]</msg>
-<msg timestamp="20191212 09:46:45.496" level="TRACE">Return: 'OrganizationWebService.svc/organizations/'</msg>
-<msg timestamp="20191212 09:46:45.496" level="INFO">${uri} = OrganizationWebService.svc/organizations/</msg>
-<status status="PASS" starttime="20191212 09:46:45.496" endtime="20191212 09:46:45.496"></status>
+<msg timestamp="20191212 11:05:32.928" level="TRACE">Arguments: [ 'OrganizationWebService.svc/organizations/' ]</msg>
+<msg timestamp="20191212 11:05:32.928" level="TRACE">Return: 'OrganizationWebService.svc/organizations/'</msg>
+<msg timestamp="20191212 11:05:32.928" level="INFO">${uri} = OrganizationWebService.svc/organizations/</msg>
+<status status="PASS" starttime="20191212 11:05:32.928" endtime="20191212 11:05:32.928"></status>
 </kw>
 <kw name="Get Request" library="RequestsLibrary">
 <doc>Send a GET request on the session object found using the
@@ -752,23 +752,23 @@ given `alias`</doc>
 <assign>
 <var>${response}</var>
 </assign>
-<msg timestamp="20191212 09:46:45.496" level="TRACE">Arguments: [ 'xrs_web_service_session' | 'OrganizationWebService.svc/organizations/' | headers={'Accept': 'application/json',
+<msg timestamp="20191212 11:05:32.929" level="TRACE">Arguments: [ 'xrs_web_service_session' | 'OrganizationWebService.svc/organizations/' | headers={'Accept': 'application/json',
  'Accept-Encoding': 'gzip, deflate',
- 'Content-Type': 'application/json'} | params={'AsOfDateTime': '12/12/2019', 'IsActive': 'True', 'OrganizationSid': 511} ]</msg>
-<msg timestamp="20191212 09:46:45.497" level="INFO">GET Request using : uri=OrganizationWebService.svc/organizations/, params={'OrganizationSid': 511, 'IsActive': 'True', 'AsOfDateTime': '12/12/2019'}, allow_redirects=True, timeout=None
+ 'Content-Type': 'application/json'} | params={'AsOfDateTime': '12/12/2019', 'IsActive': 'True', 'OrganizationSid': 516} ]</msg>
+<msg timestamp="20191212 11:05:32.929" level="INFO">GET Request using : uri=OrganizationWebService.svc/organizations/, params={'OrganizationSid': 516, 'IsActive': 'True', 'AsOfDateTime': '12/12/2019'}, allow_redirects=True, timeout=None
 headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
 data=None 
 json=None</msg>
-<msg timestamp="20191212 09:46:45.919" level="DEBUG">https://d3ws.xataxrs.com:443 "GET /OrganizationWebService.svc/organizations/?OrganizationSid=511&amp;IsActive=True&amp;AsOfDateTime=12%2F12%2F2019 HTTP/1.1" 200 614</msg>
-<msg timestamp="20191212 09:46:45.921" level="DEBUG">GET Response : status=200, reason=OK
-[{"Address1":"","Address2":"","AllowSharedResourceGroup":false,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"","Country":"USA","CreateDate":"\/Date(1576194403361-0800)\/","DotNumber":"123456","FleetViewRefresh":0,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576194403499-0800)\/","OrganizationId":"itselfmedia","OrganizationName":"itself media","OrganizationSid":511,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"","State":"","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"}]</msg>
-<msg timestamp="20191212 09:46:45.921" level="TRACE">Return: &lt;Response [200]&gt;</msg>
-<msg timestamp="20191212 09:46:45.921" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20191212 09:46:45.496" endtime="20191212 09:46:45.921"></status>
+<msg timestamp="20191212 11:05:33.347" level="DEBUG">https://d3ws.xataxrs.com:443 "GET /OrganizationWebService.svc/organizations/?OrganizationSid=516&amp;IsActive=True&amp;AsOfDateTime=12%2F12%2F2019 HTTP/1.1" 200 612</msg>
+<msg timestamp="20191212 11:05:33.348" level="DEBUG">GET Response : status=200, reason=OK
+[{"Address1":"","Address2":"","AllowSharedResourceGroup":false,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"","Country":"USA","CreateDate":"\/Date(1576199130592-0800)\/","DotNumber":"123456","FleetViewRefresh":0,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576199130747-0800)\/","OrganizationId":"alonevalue","OrganizationName":"alone value","OrganizationSid":516,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"","State":"","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"}]</msg>
+<msg timestamp="20191212 11:05:33.348" level="TRACE">Return: &lt;Response [200]&gt;</msg>
+<msg timestamp="20191212 11:05:33.348" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191212 11:05:32.929" endtime="20191212 11:05:33.348"></status>
 </kw>
-<msg timestamp="20191212 09:46:45.922" level="TRACE">Return: &lt;Response [200]&gt;</msg>
-<msg timestamp="20191212 09:46:45.922" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20191212 09:46:45.495" endtime="20191212 09:46:45.922"></status>
+<msg timestamp="20191212 11:05:33.348" level="TRACE">Return: &lt;Response [200]&gt;</msg>
+<msg timestamp="20191212 11:05:33.348" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191212 11:05:32.927" endtime="20191212 11:05:33.349"></status>
 </kw>
 <kw name="Should Be Equal As Strings" library="BuiltIn">
 <doc>Fails if objects are unequal after converting them to strings.</doc>
@@ -776,22 +776,22 @@ json=None</msg>
 <arg>${response.status_code}</arg>
 <arg>200</arg>
 </arguments>
-<msg timestamp="20191212 09:46:45.923" level="TRACE">Arguments: [ 200 | '200' ]</msg>
-<msg timestamp="20191212 09:46:45.923" level="INFO">Argument types are:
+<msg timestamp="20191212 11:05:33.349" level="TRACE">Arguments: [ 200 | '200' ]</msg>
+<msg timestamp="20191212 11:05:33.349" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;type 'unicode'&gt;</msg>
-<msg timestamp="20191212 09:46:45.924" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20191212 09:46:45.922" endtime="20191212 09:46:45.924"></status>
+<msg timestamp="20191212 11:05:33.349" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20191212 11:05:33.349" endtime="20191212 11:05:33.349"></status>
 </kw>
-<msg timestamp="20191212 09:46:45.924" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20191212 09:46:45.494" endtime="20191212 09:46:45.924"></status>
+<msg timestamp="20191212 11:05:33.350" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20191212 11:05:32.926" endtime="20191212 11:05:33.350"></status>
 </kw>
 <kw name="Verify Get Organizations Without Forward Slash Returns 200 OK">
 <doc>Verify that not using a '/' in the URI returns 200 OK</doc>
 <arguments>
 <arg>&amp;{params}</arg>
 </arguments>
-<msg timestamp="20191212 09:46:45.926" level="TRACE">Arguments: [ &amp;{params}={'AsOfDateTime': '12/12/2019', 'IsActive': 'True', 'OrganizationSid': 511} ]</msg>
+<msg timestamp="20191212 11:05:33.351" level="TRACE">Arguments: [ &amp;{params}={'AsOfDateTime': '12/12/2019', 'IsActive': 'True', 'OrganizationSid': 516} ]</msg>
 <kw name="Get Organizations" library="Organization">
 <doc>Call the Get Method on Organizations.
 This will get Organizations that match the provided parameters.
@@ -827,7 +827,7 @@ Limits results to Organizations in one or more resource groups.</doc>
 <assign>
 <var>${response}</var>
 </assign>
-<msg timestamp="20191212 09:46:45.927" level="TRACE">Arguments: [ &amp;{params}={'AsOfDateTime': '12/12/2019', 'IsActive': 'True', 'OrganizationSid': 511} ]</msg>
+<msg timestamp="20191212 11:05:33.352" level="TRACE">Arguments: [ &amp;{params}={'AsOfDateTime': '12/12/2019', 'IsActive': 'True', 'OrganizationSid': 516} ]</msg>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
 <arguments>
@@ -836,10 +836,10 @@ Limits results to Organizations in one or more resource groups.</doc>
 <assign>
 <var>${uri}</var>
 </assign>
-<msg timestamp="20191212 09:46:45.928" level="TRACE">Arguments: [ 'OrganizationWebService.svc/organizations' ]</msg>
-<msg timestamp="20191212 09:46:45.928" level="TRACE">Return: 'OrganizationWebService.svc/organizations'</msg>
-<msg timestamp="20191212 09:46:45.929" level="INFO">${uri} = OrganizationWebService.svc/organizations</msg>
-<status status="PASS" starttime="20191212 09:46:45.928" endtime="20191212 09:46:45.929"></status>
+<msg timestamp="20191212 11:05:33.353" level="TRACE">Arguments: [ 'OrganizationWebService.svc/organizations' ]</msg>
+<msg timestamp="20191212 11:05:33.353" level="TRACE">Return: 'OrganizationWebService.svc/organizations'</msg>
+<msg timestamp="20191212 11:05:33.353" level="INFO">${uri} = OrganizationWebService.svc/organizations</msg>
+<status status="PASS" starttime="20191212 11:05:33.352" endtime="20191212 11:05:33.353"></status>
 </kw>
 <kw name="Get Request" library="RequestsLibrary">
 <doc>Send a GET request on the session object found using the
@@ -853,23 +853,23 @@ given `alias`</doc>
 <assign>
 <var>${response}</var>
 </assign>
-<msg timestamp="20191212 09:46:45.930" level="TRACE">Arguments: [ 'xrs_web_service_session' | 'OrganizationWebService.svc/organizations' | headers={'Accept': 'application/json',
+<msg timestamp="20191212 11:05:33.354" level="TRACE">Arguments: [ 'xrs_web_service_session' | 'OrganizationWebService.svc/organizations' | headers={'Accept': 'application/json',
  'Accept-Encoding': 'gzip, deflate',
- 'Content-Type': 'application/json'} | params={'AsOfDateTime': '12/12/2019', 'IsActive': 'True', 'OrganizationSid': 511} ]</msg>
-<msg timestamp="20191212 09:46:45.930" level="INFO">GET Request using : uri=OrganizationWebService.svc/organizations, params={'OrganizationSid': 511, 'IsActive': 'True', 'AsOfDateTime': '12/12/2019'}, allow_redirects=True, timeout=None
+ 'Content-Type': 'application/json'} | params={'AsOfDateTime': '12/12/2019', 'IsActive': 'True', 'OrganizationSid': 516} ]</msg>
+<msg timestamp="20191212 11:05:33.354" level="INFO">GET Request using : uri=OrganizationWebService.svc/organizations, params={'OrganizationSid': 516, 'IsActive': 'True', 'AsOfDateTime': '12/12/2019'}, allow_redirects=True, timeout=None
 headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
 data=None 
 json=None</msg>
-<msg timestamp="20191212 09:46:46.372" level="DEBUG">https://d3ws.xataxrs.com:443 "GET /OrganizationWebService.svc/organizations?OrganizationSid=511&amp;IsActive=True&amp;AsOfDateTime=12%2F12%2F2019 HTTP/1.1" 200 614</msg>
-<msg timestamp="20191212 09:46:46.376" level="DEBUG">GET Response : status=200, reason=OK
-[{"Address1":"","Address2":"","AllowSharedResourceGroup":false,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"","Country":"USA","CreateDate":"\/Date(1576194403361-0800)\/","DotNumber":"123456","FleetViewRefresh":0,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576194403499-0800)\/","OrganizationId":"itselfmedia","OrganizationName":"itself media","OrganizationSid":511,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"","State":"","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"}]</msg>
-<msg timestamp="20191212 09:46:46.376" level="TRACE">Return: &lt;Response [200]&gt;</msg>
-<msg timestamp="20191212 09:46:46.376" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20191212 09:46:45.929" endtime="20191212 09:46:46.377"></status>
+<msg timestamp="20191212 11:05:33.765" level="DEBUG">https://d3ws.xataxrs.com:443 "GET /OrganizationWebService.svc/organizations?OrganizationSid=516&amp;IsActive=True&amp;AsOfDateTime=12%2F12%2F2019 HTTP/1.1" 200 612</msg>
+<msg timestamp="20191212 11:05:33.767" level="DEBUG">GET Response : status=200, reason=OK
+[{"Address1":"","Address2":"","AllowSharedResourceGroup":false,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"","Country":"USA","CreateDate":"\/Date(1576199130592-0800)\/","DotNumber":"123456","FleetViewRefresh":0,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576199130747-0800)\/","OrganizationId":"alonevalue","OrganizationName":"alone value","OrganizationSid":516,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"","State":"","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"}]</msg>
+<msg timestamp="20191212 11:05:33.767" level="TRACE">Return: &lt;Response [200]&gt;</msg>
+<msg timestamp="20191212 11:05:33.768" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191212 11:05:33.353" endtime="20191212 11:05:33.768"></status>
 </kw>
-<msg timestamp="20191212 09:46:46.377" level="TRACE">Return: &lt;Response [200]&gt;</msg>
-<msg timestamp="20191212 09:46:46.378" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20191212 09:46:45.926" endtime="20191212 09:46:46.378"></status>
+<msg timestamp="20191212 11:05:33.769" level="TRACE">Return: &lt;Response [200]&gt;</msg>
+<msg timestamp="20191212 11:05:33.769" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191212 11:05:33.351" endtime="20191212 11:05:33.769"></status>
 </kw>
 <kw name="Should Be Equal As Strings" library="BuiltIn">
 <doc>Fails if objects are unequal after converting them to strings.</doc>
@@ -877,26 +877,26 @@ json=None</msg>
 <arg>${response.status_code}</arg>
 <arg>200</arg>
 </arguments>
-<msg timestamp="20191212 09:46:46.381" level="TRACE">Arguments: [ 200 | '200' ]</msg>
-<msg timestamp="20191212 09:46:46.381" level="INFO">Argument types are:
+<msg timestamp="20191212 11:05:33.772" level="TRACE">Arguments: [ 200 | '200' ]</msg>
+<msg timestamp="20191212 11:05:33.773" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;type 'unicode'&gt;</msg>
-<msg timestamp="20191212 09:46:46.382" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20191212 09:46:46.379" endtime="20191212 09:46:46.382"></status>
+<msg timestamp="20191212 11:05:33.774" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20191212 11:05:33.770" endtime="20191212 11:05:33.774"></status>
 </kw>
-<msg timestamp="20191212 09:46:46.383" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20191212 09:46:45.925" endtime="20191212 09:46:46.383"></status>
+<msg timestamp="20191212 11:05:33.775" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20191212 11:05:33.350" endtime="20191212 11:05:33.775"></status>
 </kw>
 <doc>Get Organizations with basic parameters</doc>
 <tags>
 <tag>awsxrsorganizationrestwebservicevalidation</tag>
 </tags>
-<status status="PASS" starttime="20191212 09:46:45.491" endtime="20191212 09:46:46.385" critical="yes"></status>
+<status status="PASS" starttime="20191212 11:05:32.920" endtime="20191212 11:05:33.776" critical="yes"></status>
 </test>
 <test id="s1-s1-t6" name="Validate AWS XRS Get Organizations By Parameters REST Web Services Returns 200 OK With Raw String URI">
 <kw name="Verify Get Organizations Raw String URI With /? Returns 200 OK">
 <doc>Verify that using the given character string in the raw URI string returns 200 OK</doc>
-<msg timestamp="20191212 09:46:46.391" level="TRACE">Arguments: [ ${character_string}='/?' ]</msg>
+<msg timestamp="20191212 11:05:33.783" level="TRACE">Arguments: [ ${character_string}='/?' ]</msg>
 <kw name="Get Time" library="BuiltIn">
 <doc>Returns the given time in the requested format.</doc>
 <arguments>
@@ -907,12 +907,12 @@ json=None</msg>
 <var>${mm}</var>
 <var>${dd}</var>
 </assign>
-<msg timestamp="20191212 09:46:46.392" level="TRACE">Arguments: [ 'year,month,day' ]</msg>
-<msg timestamp="20191212 09:46:46.392" level="TRACE">Return: ['2019', '12', '12']</msg>
-<msg timestamp="20191212 09:46:46.392" level="INFO">${yyyy} = 2019</msg>
-<msg timestamp="20191212 09:46:46.393" level="INFO">${mm} = 12</msg>
-<msg timestamp="20191212 09:46:46.393" level="INFO">${dd} = 12</msg>
-<status status="PASS" starttime="20191212 09:46:46.392" endtime="20191212 09:46:46.393"></status>
+<msg timestamp="20191212 11:05:33.783" level="TRACE">Arguments: [ 'year,month,day' ]</msg>
+<msg timestamp="20191212 11:05:33.783" level="TRACE">Return: ['2019', '12', '12']</msg>
+<msg timestamp="20191212 11:05:33.784" level="INFO">${yyyy} = 2019</msg>
+<msg timestamp="20191212 11:05:33.784" level="INFO">${mm} = 12</msg>
+<msg timestamp="20191212 11:05:33.784" level="INFO">${dd} = 12</msg>
+<status status="PASS" starttime="20191212 11:05:33.783" endtime="20191212 11:05:33.784"></status>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
@@ -924,10 +924,10 @@ json=None</msg>
 <assign>
 <var>&amp;{params}</var>
 </assign>
-<msg timestamp="20191212 09:46:46.393" level="TRACE">Arguments: [ 'OrganizationSid=${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_SID}' | 'IsActive=True' | 'AsOfDateTime=${mm}/${dd}/${yyyy}' ]</msg>
-<msg timestamp="20191212 09:46:46.394" level="TRACE">Return: {'AsOfDateTime': '12/12/2019', 'IsActive': 'True', 'OrganizationSid': 511}</msg>
-<msg timestamp="20191212 09:46:46.395" level="INFO">&amp;{params} = { OrganizationSid=511 | IsActive=True | AsOfDateTime=12/12/2019 }</msg>
-<status status="PASS" starttime="20191212 09:46:46.393" endtime="20191212 09:46:46.395"></status>
+<msg timestamp="20191212 11:05:33.784" level="TRACE">Arguments: [ 'OrganizationSid=${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_SID}' | 'IsActive=True' | 'AsOfDateTime=${mm}/${dd}/${yyyy}' ]</msg>
+<msg timestamp="20191212 11:05:33.785" level="TRACE">Return: {'AsOfDateTime': '12/12/2019', 'IsActive': 'True', 'OrganizationSid': 516}</msg>
+<msg timestamp="20191212 11:05:33.785" level="INFO">&amp;{params} = { OrganizationSid=516 | IsActive=True | AsOfDateTime=12/12/2019 }</msg>
+<status status="PASS" starttime="20191212 11:05:33.784" endtime="20191212 11:05:33.785"></status>
 </kw>
 <kw name="Create URI String With" library="URIStringBuilderTool">
 <doc>Helper Keyword to construct the request uri with different character strings
@@ -942,7 +942,7 @@ character_string = final character of the uri. i.e. /, /?, etc ...</doc>
 <assign>
 <var>${uri_string}</var>
 </assign>
-<msg timestamp="20191212 09:46:46.396" level="TRACE">Arguments: [ ${base_uri}='OrganizationWebService.svc' | ${request_type}='/organizations' | ${character_string}='/?' ]</msg>
+<msg timestamp="20191212 11:05:33.786" level="TRACE">Arguments: [ ${base_uri}='OrganizationWebService.svc' | ${request_type}='/organizations' | ${character_string}='/?' ]</msg>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
 <arguments>
@@ -951,14 +951,14 @@ character_string = final character of the uri. i.e. /, /?, etc ...</doc>
 <assign>
 <var>${uri}</var>
 </assign>
-<msg timestamp="20191212 09:46:46.396" level="TRACE">Arguments: [ 'OrganizationWebService.svc/organizations/?' ]</msg>
-<msg timestamp="20191212 09:46:46.396" level="TRACE">Return: 'OrganizationWebService.svc/organizations/?'</msg>
-<msg timestamp="20191212 09:46:46.397" level="INFO">${uri} = OrganizationWebService.svc/organizations/?</msg>
-<status status="PASS" starttime="20191212 09:46:46.396" endtime="20191212 09:46:46.397"></status>
+<msg timestamp="20191212 11:05:33.787" level="TRACE">Arguments: [ 'OrganizationWebService.svc/organizations/?' ]</msg>
+<msg timestamp="20191212 11:05:33.787" level="TRACE">Return: 'OrganizationWebService.svc/organizations/?'</msg>
+<msg timestamp="20191212 11:05:33.787" level="INFO">${uri} = OrganizationWebService.svc/organizations/?</msg>
+<status status="PASS" starttime="20191212 11:05:33.787" endtime="20191212 11:05:33.787"></status>
 </kw>
-<msg timestamp="20191212 09:46:46.397" level="TRACE">Return: 'OrganizationWebService.svc/organizations/?'</msg>
-<msg timestamp="20191212 09:46:46.397" level="INFO">${uri_string} = OrganizationWebService.svc/organizations/?</msg>
-<status status="PASS" starttime="20191212 09:46:46.395" endtime="20191212 09:46:46.397"></status>
+<msg timestamp="20191212 11:05:33.788" level="TRACE">Return: 'OrganizationWebService.svc/organizations/?'</msg>
+<msg timestamp="20191212 11:05:33.788" level="INFO">${uri_string} = OrganizationWebService.svc/organizations/?</msg>
+<status status="PASS" starttime="20191212 11:05:33.786" endtime="20191212 11:05:33.788"></status>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
@@ -968,10 +968,10 @@ character_string = final character of the uri. i.e. /, /?, etc ...</doc>
 <assign>
 <var>${uri}</var>
 </assign>
-<msg timestamp="20191212 09:46:46.398" level="TRACE">Arguments: [ 'OrganizationWebService.svc/organizations/?OrganizationSid=511&amp;IsActive=True&amp;AsOfDateTime=12/12/2019' ]</msg>
-<msg timestamp="20191212 09:46:46.398" level="TRACE">Return: 'OrganizationWebService.svc/organizations/?OrganizationSid=511&amp;IsActive=True&amp;AsOfDateTime=12/12/2019'</msg>
-<msg timestamp="20191212 09:46:46.398" level="INFO">${uri} = OrganizationWebService.svc/organizations/?OrganizationSid=511&amp;IsActive=True&amp;AsOfDateTime=12/12/2019</msg>
-<status status="PASS" starttime="20191212 09:46:46.397" endtime="20191212 09:46:46.398"></status>
+<msg timestamp="20191212 11:05:33.789" level="TRACE">Arguments: [ 'OrganizationWebService.svc/organizations/?OrganizationSid=516&amp;IsActive=True&amp;AsOfDateTime=12/12/2019' ]</msg>
+<msg timestamp="20191212 11:05:33.789" level="TRACE">Return: 'OrganizationWebService.svc/organizations/?OrganizationSid=516&amp;IsActive=True&amp;AsOfDateTime=12/12/2019'</msg>
+<msg timestamp="20191212 11:05:33.789" level="INFO">${uri} = OrganizationWebService.svc/organizations/?OrganizationSid=516&amp;IsActive=True&amp;AsOfDateTime=12/12/2019</msg>
+<status status="PASS" starttime="20191212 11:05:33.788" endtime="20191212 11:05:33.789"></status>
 </kw>
 <kw name="Get Request" library="RequestsLibrary">
 <doc>Send a GET request on the session object found using the
@@ -984,19 +984,19 @@ given `alias`</doc>
 <assign>
 <var>${response}</var>
 </assign>
-<msg timestamp="20191212 09:46:46.399" level="TRACE">Arguments: [ 'xrs_web_service_session' | 'OrganizationWebService.svc/organizations/?OrganizationSid=511&amp;IsActive=True&amp;AsOfDateTime=12/12/2019' | headers={'Accept': 'application/json',
+<msg timestamp="20191212 11:05:33.790" level="TRACE">Arguments: [ 'xrs_web_service_session' | 'OrganizationWebService.svc/organizations/?OrganizationSid=516&amp;IsActive=True&amp;AsOfDateTime=12/12/2019' | headers={'Accept': 'application/json',
  'Accept-Encoding': 'gzip, deflate',
  'Content-Type': 'application/json'} ]</msg>
-<msg timestamp="20191212 09:46:46.399" level="INFO">GET Request using : uri=OrganizationWebService.svc/organizations/?OrganizationSid=511&amp;IsActive=True&amp;AsOfDateTime=12/12/2019, params=None, allow_redirects=True, timeout=None
+<msg timestamp="20191212 11:05:33.790" level="INFO">GET Request using : uri=OrganizationWebService.svc/organizations/?OrganizationSid=516&amp;IsActive=True&amp;AsOfDateTime=12/12/2019, params=None, allow_redirects=True, timeout=None
 headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
 data=None 
 json=None</msg>
-<msg timestamp="20191212 09:46:46.824" level="DEBUG">https://d3ws.xataxrs.com:443 "GET /OrganizationWebService.svc/organizations/?OrganizationSid=511&amp;IsActive=True&amp;AsOfDateTime=12/12/2019 HTTP/1.1" 200 614</msg>
-<msg timestamp="20191212 09:46:46.826" level="DEBUG">GET Response : status=200, reason=OK
-[{"Address1":"","Address2":"","AllowSharedResourceGroup":false,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"","Country":"USA","CreateDate":"\/Date(1576194403361-0800)\/","DotNumber":"123456","FleetViewRefresh":0,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576194403499-0800)\/","OrganizationId":"itselfmedia","OrganizationName":"itself media","OrganizationSid":511,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"","State":"","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"}]</msg>
-<msg timestamp="20191212 09:46:46.826" level="TRACE">Return: &lt;Response [200]&gt;</msg>
-<msg timestamp="20191212 09:46:46.827" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20191212 09:46:46.398" endtime="20191212 09:46:46.827"></status>
+<msg timestamp="20191212 11:05:34.247" level="DEBUG">https://d3ws.xataxrs.com:443 "GET /OrganizationWebService.svc/organizations/?OrganizationSid=516&amp;IsActive=True&amp;AsOfDateTime=12/12/2019 HTTP/1.1" 200 612</msg>
+<msg timestamp="20191212 11:05:34.249" level="DEBUG">GET Response : status=200, reason=OK
+[{"Address1":"","Address2":"","AllowSharedResourceGroup":false,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"","Country":"USA","CreateDate":"\/Date(1576199130592-0800)\/","DotNumber":"123456","FleetViewRefresh":0,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576199130747-0800)\/","OrganizationId":"alonevalue","OrganizationName":"alone value","OrganizationSid":516,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"","State":"","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"}]</msg>
+<msg timestamp="20191212 11:05:34.250" level="TRACE">Return: &lt;Response [200]&gt;</msg>
+<msg timestamp="20191212 11:05:34.250" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191212 11:05:33.789" endtime="20191212 11:05:34.251"></status>
 </kw>
 <kw name="Should Be Equal As Strings" library="BuiltIn">
 <doc>Fails if objects are unequal after converting them to strings.</doc>
@@ -1004,19 +1004,19 @@ json=None</msg>
 <arg>${response.status_code}</arg>
 <arg>200</arg>
 </arguments>
-<msg timestamp="20191212 09:46:46.829" level="TRACE">Arguments: [ 200 | '200' ]</msg>
-<msg timestamp="20191212 09:46:46.830" level="INFO">Argument types are:
+<msg timestamp="20191212 11:05:34.253" level="TRACE">Arguments: [ 200 | '200' ]</msg>
+<msg timestamp="20191212 11:05:34.253" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;type 'unicode'&gt;</msg>
-<msg timestamp="20191212 09:46:46.830" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20191212 09:46:46.828" endtime="20191212 09:46:46.830"></status>
+<msg timestamp="20191212 11:05:34.254" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20191212 11:05:34.251" endtime="20191212 11:05:34.254"></status>
 </kw>
-<msg timestamp="20191212 09:46:46.830" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20191212 09:46:46.391" endtime="20191212 09:46:46.830"></status>
+<msg timestamp="20191212 11:05:34.255" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20191212 11:05:33.782" endtime="20191212 11:05:34.255"></status>
 </kw>
 <kw name="Verify Get Organizations Raw String URI With ? Returns 200 OK">
 <doc>Verify that using the given character string in the raw URI string returns 200 OK</doc>
-<msg timestamp="20191212 09:46:46.832" level="TRACE">Arguments: [ ${character_string}='?' ]</msg>
+<msg timestamp="20191212 11:05:34.259" level="TRACE">Arguments: [ ${character_string}='?' ]</msg>
 <kw name="Get Time" library="BuiltIn">
 <doc>Returns the given time in the requested format.</doc>
 <arguments>
@@ -1027,12 +1027,12 @@ json=None</msg>
 <var>${mm}</var>
 <var>${dd}</var>
 </assign>
-<msg timestamp="20191212 09:46:46.833" level="TRACE">Arguments: [ 'year,month,day' ]</msg>
-<msg timestamp="20191212 09:46:46.834" level="TRACE">Return: ['2019', '12', '12']</msg>
-<msg timestamp="20191212 09:46:46.834" level="INFO">${yyyy} = 2019</msg>
-<msg timestamp="20191212 09:46:46.834" level="INFO">${mm} = 12</msg>
-<msg timestamp="20191212 09:46:46.834" level="INFO">${dd} = 12</msg>
-<status status="PASS" starttime="20191212 09:46:46.833" endtime="20191212 09:46:46.834"></status>
+<msg timestamp="20191212 11:05:34.260" level="TRACE">Arguments: [ 'year,month,day' ]</msg>
+<msg timestamp="20191212 11:05:34.261" level="TRACE">Return: ['2019', '12', '12']</msg>
+<msg timestamp="20191212 11:05:34.261" level="INFO">${yyyy} = 2019</msg>
+<msg timestamp="20191212 11:05:34.261" level="INFO">${mm} = 12</msg>
+<msg timestamp="20191212 11:05:34.261" level="INFO">${dd} = 12</msg>
+<status status="PASS" starttime="20191212 11:05:34.260" endtime="20191212 11:05:34.261"></status>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
@@ -1044,10 +1044,10 @@ json=None</msg>
 <assign>
 <var>&amp;{params}</var>
 </assign>
-<msg timestamp="20191212 09:46:46.835" level="TRACE">Arguments: [ 'OrganizationSid=${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_SID}' | 'IsActive=True' | 'AsOfDateTime=${mm}/${dd}/${yyyy}' ]</msg>
-<msg timestamp="20191212 09:46:46.836" level="TRACE">Return: {'AsOfDateTime': '12/12/2019', 'IsActive': 'True', 'OrganizationSid': 511}</msg>
-<msg timestamp="20191212 09:46:46.836" level="INFO">&amp;{params} = { OrganizationSid=511 | IsActive=True | AsOfDateTime=12/12/2019 }</msg>
-<status status="PASS" starttime="20191212 09:46:46.835" endtime="20191212 09:46:46.836"></status>
+<msg timestamp="20191212 11:05:34.262" level="TRACE">Arguments: [ 'OrganizationSid=${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_SID}' | 'IsActive=True' | 'AsOfDateTime=${mm}/${dd}/${yyyy}' ]</msg>
+<msg timestamp="20191212 11:05:34.263" level="TRACE">Return: {'AsOfDateTime': '12/12/2019', 'IsActive': 'True', 'OrganizationSid': 516}</msg>
+<msg timestamp="20191212 11:05:34.264" level="INFO">&amp;{params} = { OrganizationSid=516 | IsActive=True | AsOfDateTime=12/12/2019 }</msg>
+<status status="PASS" starttime="20191212 11:05:34.262" endtime="20191212 11:05:34.264"></status>
 </kw>
 <kw name="Create URI String With" library="URIStringBuilderTool">
 <doc>Helper Keyword to construct the request uri with different character strings
@@ -1062,7 +1062,7 @@ character_string = final character of the uri. i.e. /, /?, etc ...</doc>
 <assign>
 <var>${uri_string}</var>
 </assign>
-<msg timestamp="20191212 09:46:46.837" level="TRACE">Arguments: [ ${base_uri}='OrganizationWebService.svc' | ${request_type}='/organizations' | ${character_string}='?' ]</msg>
+<msg timestamp="20191212 11:05:34.265" level="TRACE">Arguments: [ ${base_uri}='OrganizationWebService.svc' | ${request_type}='/organizations' | ${character_string}='?' ]</msg>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
 <arguments>
@@ -1071,14 +1071,14 @@ character_string = final character of the uri. i.e. /, /?, etc ...</doc>
 <assign>
 <var>${uri}</var>
 </assign>
-<msg timestamp="20191212 09:46:46.838" level="TRACE">Arguments: [ 'OrganizationWebService.svc/organizations?' ]</msg>
-<msg timestamp="20191212 09:46:46.838" level="TRACE">Return: 'OrganizationWebService.svc/organizations?'</msg>
-<msg timestamp="20191212 09:46:46.838" level="INFO">${uri} = OrganizationWebService.svc/organizations?</msg>
-<status status="PASS" starttime="20191212 09:46:46.838" endtime="20191212 09:46:46.838"></status>
+<msg timestamp="20191212 11:05:34.266" level="TRACE">Arguments: [ 'OrganizationWebService.svc/organizations?' ]</msg>
+<msg timestamp="20191212 11:05:34.266" level="TRACE">Return: 'OrganizationWebService.svc/organizations?'</msg>
+<msg timestamp="20191212 11:05:34.267" level="INFO">${uri} = OrganizationWebService.svc/organizations?</msg>
+<status status="PASS" starttime="20191212 11:05:34.266" endtime="20191212 11:05:34.267"></status>
 </kw>
-<msg timestamp="20191212 09:46:46.839" level="TRACE">Return: 'OrganizationWebService.svc/organizations?'</msg>
-<msg timestamp="20191212 09:46:46.839" level="INFO">${uri_string} = OrganizationWebService.svc/organizations?</msg>
-<status status="PASS" starttime="20191212 09:46:46.836" endtime="20191212 09:46:46.839"></status>
+<msg timestamp="20191212 11:05:34.267" level="TRACE">Return: 'OrganizationWebService.svc/organizations?'</msg>
+<msg timestamp="20191212 11:05:34.267" level="INFO">${uri_string} = OrganizationWebService.svc/organizations?</msg>
+<status status="PASS" starttime="20191212 11:05:34.264" endtime="20191212 11:05:34.267"></status>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
@@ -1088,10 +1088,10 @@ character_string = final character of the uri. i.e. /, /?, etc ...</doc>
 <assign>
 <var>${uri}</var>
 </assign>
-<msg timestamp="20191212 09:46:46.840" level="TRACE">Arguments: [ 'OrganizationWebService.svc/organizations?OrganizationSid=511&amp;IsActive=True&amp;AsOfDateTime=12/12/2019' ]</msg>
-<msg timestamp="20191212 09:46:46.840" level="TRACE">Return: 'OrganizationWebService.svc/organizations?OrganizationSid=511&amp;IsActive=True&amp;AsOfDateTime=12/12/2019'</msg>
-<msg timestamp="20191212 09:46:46.840" level="INFO">${uri} = OrganizationWebService.svc/organizations?OrganizationSid=511&amp;IsActive=True&amp;AsOfDateTime=12/12/2019</msg>
-<status status="PASS" starttime="20191212 09:46:46.839" endtime="20191212 09:46:46.840"></status>
+<msg timestamp="20191212 11:05:34.269" level="TRACE">Arguments: [ 'OrganizationWebService.svc/organizations?OrganizationSid=516&amp;IsActive=True&amp;AsOfDateTime=12/12/2019' ]</msg>
+<msg timestamp="20191212 11:05:34.269" level="TRACE">Return: 'OrganizationWebService.svc/organizations?OrganizationSid=516&amp;IsActive=True&amp;AsOfDateTime=12/12/2019'</msg>
+<msg timestamp="20191212 11:05:34.269" level="INFO">${uri} = OrganizationWebService.svc/organizations?OrganizationSid=516&amp;IsActive=True&amp;AsOfDateTime=12/12/2019</msg>
+<status status="PASS" starttime="20191212 11:05:34.267" endtime="20191212 11:05:34.269"></status>
 </kw>
 <kw name="Get Request" library="RequestsLibrary">
 <doc>Send a GET request on the session object found using the
@@ -1104,19 +1104,19 @@ given `alias`</doc>
 <assign>
 <var>${response}</var>
 </assign>
-<msg timestamp="20191212 09:46:46.841" level="TRACE">Arguments: [ 'xrs_web_service_session' | 'OrganizationWebService.svc/organizations?OrganizationSid=511&amp;IsActive=True&amp;AsOfDateTime=12/12/2019' | headers={'Accept': 'application/json',
+<msg timestamp="20191212 11:05:34.270" level="TRACE">Arguments: [ 'xrs_web_service_session' | 'OrganizationWebService.svc/organizations?OrganizationSid=516&amp;IsActive=True&amp;AsOfDateTime=12/12/2019' | headers={'Accept': 'application/json',
  'Accept-Encoding': 'gzip, deflate',
  'Content-Type': 'application/json'} ]</msg>
-<msg timestamp="20191212 09:46:46.841" level="INFO">GET Request using : uri=OrganizationWebService.svc/organizations?OrganizationSid=511&amp;IsActive=True&amp;AsOfDateTime=12/12/2019, params=None, allow_redirects=True, timeout=None
+<msg timestamp="20191212 11:05:34.270" level="INFO">GET Request using : uri=OrganizationWebService.svc/organizations?OrganizationSid=516&amp;IsActive=True&amp;AsOfDateTime=12/12/2019, params=None, allow_redirects=True, timeout=None
 headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
 data=None 
 json=None</msg>
-<msg timestamp="20191212 09:46:47.350" level="DEBUG">https://d3ws.xataxrs.com:443 "GET /OrganizationWebService.svc/organizations?OrganizationSid=511&amp;IsActive=True&amp;AsOfDateTime=12/12/2019 HTTP/1.1" 200 614</msg>
-<msg timestamp="20191212 09:46:47.351" level="DEBUG">GET Response : status=200, reason=OK
-[{"Address1":"","Address2":"","AllowSharedResourceGroup":false,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"","Country":"USA","CreateDate":"\/Date(1576194403361-0800)\/","DotNumber":"123456","FleetViewRefresh":0,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576194403499-0800)\/","OrganizationId":"itselfmedia","OrganizationName":"itself media","OrganizationSid":511,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"","State":"","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"}]</msg>
-<msg timestamp="20191212 09:46:47.351" level="TRACE">Return: &lt;Response [200]&gt;</msg>
-<msg timestamp="20191212 09:46:47.351" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20191212 09:46:46.841" endtime="20191212 09:46:47.351"></status>
+<msg timestamp="20191212 11:05:34.723" level="DEBUG">https://d3ws.xataxrs.com:443 "GET /OrganizationWebService.svc/organizations?OrganizationSid=516&amp;IsActive=True&amp;AsOfDateTime=12/12/2019 HTTP/1.1" 200 612</msg>
+<msg timestamp="20191212 11:05:34.725" level="DEBUG">GET Response : status=200, reason=OK
+[{"Address1":"","Address2":"","AllowSharedResourceGroup":false,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"","Country":"USA","CreateDate":"\/Date(1576199130592-0800)\/","DotNumber":"123456","FleetViewRefresh":0,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576199130747-0800)\/","OrganizationId":"alonevalue","OrganizationName":"alone value","OrganizationSid":516,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"","State":"","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"}]</msg>
+<msg timestamp="20191212 11:05:34.725" level="TRACE">Return: &lt;Response [200]&gt;</msg>
+<msg timestamp="20191212 11:05:34.725" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191212 11:05:34.269" endtime="20191212 11:05:34.726"></status>
 </kw>
 <kw name="Should Be Equal As Strings" library="BuiltIn">
 <doc>Fails if objects are unequal after converting them to strings.</doc>
@@ -1124,24 +1124,24 @@ json=None</msg>
 <arg>${response.status_code}</arg>
 <arg>200</arg>
 </arguments>
-<msg timestamp="20191212 09:46:47.352" level="TRACE">Arguments: [ 200 | '200' ]</msg>
-<msg timestamp="20191212 09:46:47.352" level="INFO">Argument types are:
+<msg timestamp="20191212 11:05:34.728" level="TRACE">Arguments: [ 200 | '200' ]</msg>
+<msg timestamp="20191212 11:05:34.728" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;type 'unicode'&gt;</msg>
-<msg timestamp="20191212 09:46:47.353" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20191212 09:46:47.352" endtime="20191212 09:46:47.353"></status>
+<msg timestamp="20191212 11:05:34.729" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20191212 11:05:34.726" endtime="20191212 11:05:34.729"></status>
 </kw>
-<msg timestamp="20191212 09:46:47.353" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20191212 09:46:46.832" endtime="20191212 09:46:47.353"></status>
+<msg timestamp="20191212 11:05:34.729" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20191212 11:05:34.258" endtime="20191212 11:05:34.730"></status>
 </kw>
 <doc>Get Organizations with basic parameters using a raw URI string</doc>
 <tags>
 <tag>awsxrsorganizationrestwebservicevalidation</tag>
 </tags>
-<status status="PASS" starttime="20191212 09:46:46.389" endtime="20191212 09:46:47.354" critical="yes"></status>
+<status status="PASS" starttime="20191212 11:05:33.780" endtime="20191212 11:05:34.732" critical="yes"></status>
 </test>
 <test id="s1-s1-t7" name="Validate AWS XRS Get Organizations By ID REST Web Services Returns 200 OK">
-<kw name="Get Organization By ID" library="Organization">
+<kw name="Get Organizations By ID" library="Organization">
 <doc>Get organizations by ID.</doc>
 <arguments>
 <arg>${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_1_DICT.OrganizationId}</arg>
@@ -1149,7 +1149,7 @@ json=None</msg>
 <assign>
 <var>${response}</var>
 </assign>
-<msg timestamp="20191212 09:46:47.358" level="TRACE">Arguments: [ ${organization_id}='itselfmedia' ]</msg>
+<msg timestamp="20191212 11:05:34.748" level="TRACE">Arguments: [ ${organization_id}='alonevalue' ]</msg>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
 <arguments>
@@ -1158,10 +1158,10 @@ json=None</msg>
 <assign>
 <var>${uri}</var>
 </assign>
-<msg timestamp="20191212 09:46:47.359" level="TRACE">Arguments: [ 'OrganizationWebService.svc/organizations/itselfmedia' ]</msg>
-<msg timestamp="20191212 09:46:47.360" level="TRACE">Return: 'OrganizationWebService.svc/organizations/itselfmedia'</msg>
-<msg timestamp="20191212 09:46:47.360" level="INFO">${uri} = OrganizationWebService.svc/organizations/itselfmedia</msg>
-<status status="PASS" starttime="20191212 09:46:47.359" endtime="20191212 09:46:47.360"></status>
+<msg timestamp="20191212 11:05:34.749" level="TRACE">Arguments: [ 'OrganizationWebService.svc/organizations/alonevalue' ]</msg>
+<msg timestamp="20191212 11:05:34.749" level="TRACE">Return: 'OrganizationWebService.svc/organizations/alonevalue'</msg>
+<msg timestamp="20191212 11:05:34.749" level="INFO">${uri} = OrganizationWebService.svc/organizations/alonevalue</msg>
+<status status="PASS" starttime="20191212 11:05:34.748" endtime="20191212 11:05:34.750"></status>
 </kw>
 <kw name="Get Request" library="RequestsLibrary">
 <doc>Send a GET request on the session object found using the
@@ -1174,23 +1174,23 @@ given `alias`</doc>
 <assign>
 <var>${response}</var>
 </assign>
-<msg timestamp="20191212 09:46:47.360" level="TRACE">Arguments: [ 'xrs_web_service_session' | 'OrganizationWebService.svc/organizations/itselfmedia' | headers={'Accept': 'application/json',
+<msg timestamp="20191212 11:05:34.751" level="TRACE">Arguments: [ 'xrs_web_service_session' | 'OrganizationWebService.svc/organizations/alonevalue' | headers={'Accept': 'application/json',
  'Accept-Encoding': 'gzip, deflate',
  'Content-Type': 'application/json'} ]</msg>
-<msg timestamp="20191212 09:46:47.361" level="INFO">GET Request using : uri=OrganizationWebService.svc/organizations/itselfmedia, params=None, allow_redirects=True, timeout=None
+<msg timestamp="20191212 11:05:34.751" level="INFO">GET Request using : uri=OrganizationWebService.svc/organizations/alonevalue, params=None, allow_redirects=True, timeout=None
 headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
 data=None 
 json=None</msg>
-<msg timestamp="20191212 09:46:47.799" level="DEBUG">https://d3ws.xataxrs.com:443 "GET /OrganizationWebService.svc/organizations/itselfmedia HTTP/1.1" 200 612</msg>
-<msg timestamp="20191212 09:46:47.800" level="DEBUG">GET Response : status=200, reason=OK
-{"Address1":"","Address2":"","AllowSharedResourceGroup":false,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"","Country":"USA","CreateDate":"\/Date(1576194403361-0800)\/","DotNumber":"123456","FleetViewRefresh":0,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576194403499-0800)\/","OrganizationId":"itselfmedia","OrganizationName":"itself media","OrganizationSid":511,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"","State":"","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"}</msg>
-<msg timestamp="20191212 09:46:47.800" level="TRACE">Return: &lt;Response [200]&gt;</msg>
-<msg timestamp="20191212 09:46:47.801" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20191212 09:46:47.360" endtime="20191212 09:46:47.801"></status>
+<msg timestamp="20191212 11:05:35.263" level="DEBUG">https://d3ws.xataxrs.com:443 "GET /OrganizationWebService.svc/organizations/alonevalue HTTP/1.1" 200 610</msg>
+<msg timestamp="20191212 11:05:35.265" level="DEBUG">GET Response : status=200, reason=OK
+{"Address1":"","Address2":"","AllowSharedResourceGroup":false,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"","Country":"USA","CreateDate":"\/Date(1576199130592-0800)\/","DotNumber":"123456","FleetViewRefresh":0,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576199130747-0800)\/","OrganizationId":"alonevalue","OrganizationName":"alone value","OrganizationSid":516,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"","State":"","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"}</msg>
+<msg timestamp="20191212 11:05:35.265" level="TRACE">Return: &lt;Response [200]&gt;</msg>
+<msg timestamp="20191212 11:05:35.266" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191212 11:05:34.750" endtime="20191212 11:05:35.266"></status>
 </kw>
-<msg timestamp="20191212 09:46:47.801" level="TRACE">Return: &lt;Response [200]&gt;</msg>
-<msg timestamp="20191212 09:46:47.801" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20191212 09:46:47.358" endtime="20191212 09:46:47.801"></status>
+<msg timestamp="20191212 11:05:35.267" level="TRACE">Return: &lt;Response [200]&gt;</msg>
+<msg timestamp="20191212 11:05:35.267" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191212 11:05:34.746" endtime="20191212 11:05:35.268"></status>
 </kw>
 <kw name="Should Be Equal As Strings" library="BuiltIn">
 <doc>Fails if objects are unequal after converting them to strings.</doc>
@@ -1198,41 +1198,110 @@ json=None</msg>
 <arg>${response.status_code}</arg>
 <arg>200</arg>
 </arguments>
-<msg timestamp="20191212 09:46:47.803" level="TRACE">Arguments: [ 200 | '200' ]</msg>
-<msg timestamp="20191212 09:46:47.803" level="INFO">Argument types are:
+<msg timestamp="20191212 11:05:35.272" level="TRACE">Arguments: [ 200 | '200' ]</msg>
+<msg timestamp="20191212 11:05:35.273" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;type 'unicode'&gt;</msg>
-<msg timestamp="20191212 09:46:47.803" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20191212 09:46:47.802" endtime="20191212 09:46:47.804"></status>
+<msg timestamp="20191212 11:05:35.274" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20191212 11:05:35.270" endtime="20191212 11:05:35.274"></status>
 </kw>
+<doc>Get organization by ID returns 200 OK</doc>
 <tags>
 <tag>awsxrsorganizationrestwebservicevalidation</tag>
 </tags>
-<status status="PASS" starttime="20191212 09:46:47.357" endtime="20191212 09:46:47.805" critical="yes"></status>
+<status status="PASS" starttime="20191212 11:05:34.740" endtime="20191212 11:05:35.276" critical="yes"></status>
+</test>
+<test id="s1-s1-t8" name="Validate AWS XRS Get Organizations REST Web Services For All Organizations Returns 200 OK">
+<kw name="Get All Organizations" library="Organization">
+<doc>Get attributes for all organizations.</doc>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191212 11:05:35.282" level="TRACE">Arguments: [  ]</msg>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${XRS_Entity_Management_Base_URI.Organization}${ENTITY_MANAGEMENT_WEBSERVICE_POST_GET_ORGANIZATIONS}</arg>
+</arguments>
+<assign>
+<var>${uri}</var>
+</assign>
+<msg timestamp="20191212 11:05:35.284" level="TRACE">Arguments: [ 'OrganizationWebService.svc/organizations' ]</msg>
+<msg timestamp="20191212 11:05:35.284" level="TRACE">Return: 'OrganizationWebService.svc/organizations'</msg>
+<msg timestamp="20191212 11:05:35.285" level="INFO">${uri} = OrganizationWebService.svc/organizations</msg>
+<status status="PASS" starttime="20191212 11:05:35.283" endtime="20191212 11:05:35.285"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${XRS_WEB_SERVICE_SESSION_ALIAS}</arg>
+<arg>${uri}</arg>
+<arg>headers=${XRS_WEBSERVICES_JSON_HEADER}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20191212 11:05:35.286" level="TRACE">Arguments: [ 'xrs_web_service_session' | 'OrganizationWebService.svc/organizations' | headers={'Accept': 'application/json',
+ 'Accept-Encoding': 'gzip, deflate',
+ 'Content-Type': 'application/json'} ]</msg>
+<msg timestamp="20191212 11:05:35.287" level="INFO">GET Request using : uri=OrganizationWebService.svc/organizations, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191212 11:05:36.000" level="DEBUG">https://d3ws.xataxrs.com:443 "GET /OrganizationWebService.svc/organizations HTTP/1.1" 200 16304</msg>
+<msg timestamp="20191212 11:05:36.002" level="DEBUG">GET Response : status=200, reason=OK
+[{"Address1":"12900 Whitewater Dr","Address2":"Suite 300","AllowSharedResourceGroup":true,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"Minnetonka","Country":"USA","CreateDate":"\/Date(1537828533000-0700)\/","DotNumber":"123456","FleetViewRefresh":5,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1574816207411-0800)\/","OrganizationId":"46663","OrganizationName":"Gnome Shipping D3","OrganizationSid":414,"ParentOrganizationId":null,"ParentOrganizationSid":0,"PostalCode":"55343","State":"Minnesota","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"},{"Address1":"","Address2":"","AllowSharedResourceGroup":false,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"","Country":"USA","CreateDate":"\/Date(1576132837331-0800)\/","DotNumber":"123456","FleetViewRefresh":0,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576132837491-0800)\/","OrganizationId":"adultmanager","OrganizationName":"adult manager","OrganizationSid":503,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"","State":"","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"},{"Address1":"","Address2":"","AllowSharedResourceGroup":false,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"","Country":"USA","CreateDate":"\/Date(1576199130592-0800)\/","DotNumber":"123456","FleetViewRefresh":0,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576199130747-0800)\/","OrganizationId":"alonevalue","OrganizationName":"alone value","OrganizationSid":516,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"","State":"","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"},{"Address1":"12900 Whitewater Dr","Address2":"Suite 300","AllowSharedResourceGroup":true,"AllowSubscriptionChange":false,"BillingOrganizationId":"46663","BillingOrganizationSid":414,"CarrierName":"Gnome Shipping D3","City":"Minnetonka","Country":"USA","CreateDate":"\/Date(1556163634892-0700)\/","DotNumber":"123456","FleetViewRefresh":5,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1575348898444-0800)\/","OrganizationId":"Bob","OrganizationName":"Bob","OrganizationSid":482,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"55343","State":"Minnesota","Status":true,"TimeZone":"HST","UnitOfMeasure":"Standard"},{"Address1":"","Address2":"","AllowSharedResourceGroup":false,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"","Country":"USA","CreateDate":"\/Date(1576132502418-0800)\/","DotNumber":"123456","FleetViewRefresh":0,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576132502318-0800)\/","OrganizationId":"bytop","OrganizationName":"by top","OrganizationSid":501,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"","State":"","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"},{"Address1":"","Address2":"","AllowSharedResourceGroup":false,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"","Country":"USA","CreateDate":"\/Date(1576132876437-0800)\/","DotNumber":"123456","FleetViewRefresh":0,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576132876598-0800)\/","OrganizationId":"directorcompare","OrganizationName":"director compare","OrganizationSid":504,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"","State":"","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"},{"Address1":"","Address2":"","AllowSharedResourceGroup":false,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"","Country":"USA","CreateDate":"\/Date(1576198711058-0800)\/","DotNumber":"123456","FleetViewRefresh":0,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576198711082-0800)\/","OrganizationId":"discoveradd","OrganizationName":"discover add","OrganizationSid":513,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"","State":"","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"},{"Address1":"","Address2":"","AllowSharedResourceGroup":false,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"","Country":"USA","CreateDate":"\/Date(1576122799498-0800)\/","DotNumber":"123456","FleetViewRefresh":0,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576122799351-0800)\/","OrganizationId":"Evaluate FakerLibrary.WordEvaluate FakerLibrary.Word","OrganizationName":"Evaluate FakerLibrary.Word Evaluate FakerLibrary.Word","OrganizationSid":499,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"","State":"","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"},{"Address1":"","Address2":"","AllowSharedResourceGroup":false,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"","Country":"USA","CreateDate":"\/Date(1576122678864-0800)\/","DotNumber":"123456","FleetViewRefresh":0,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576122678742-0800)\/","OrganizationId":"FakerLibrary.WordFakerLibrary.Word","OrganizationName":"FakerLibrary.Word FakerLibrary.Word","OrganizationSid":498,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"","State":"","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"},{"Address1":"12900 Whitewater Dr","Address2":"Suite 300","AllowSharedResourceGroup":true,"AllowSubscriptionChange":false,"BillingOrganizationId":"46663","BillingOrganizationSid":414,"CarrierName":"Gnome Shipping D3","City":"Minnetonka","Country":"USA","CreateDate":"\/Date(1575692062764-0800)\/","DotNumber":"123456","FleetViewRefresh":5,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576109206905-0800)\/","OrganizationId":"fghjfghjfghj","OrganizationName":"testme name","OrganizationSid":494,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"55343","State":"Minnesota","Status":true,"TimeZone":"NFLD","UnitOfMeasure":"Standard"},{"Address1":"","Address2":"","AllowSharedResourceGroup":false,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"","Country":"USA","CreateDate":"\/Date(1576194403361-0800)\/","DotNumber":"123456","FleetViewRefresh":0,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576194403499-0800)\/","OrganizationId":"itselfmedia","OrganizationName":"itself media","OrganizationSid":511,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"","State":"","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"},{"Address1":"","Address2":"","AllowSharedResourceGroup":false,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"","Country":"USA","CreateDate":"\/Date(1576199029080-0800)\/","DotNumber":"123456","FleetViewRefresh":0,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576199029238-0800)\/","OrganizationId":"legscene","OrganizationName":"leg scene","OrganizationSid":515,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"","State":"","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"},{"Address1":"","Address2":"","AllowSharedResourceGroup":false,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"","Country":"USA","CreateDate":"\/Date(1576193414920-0800)\/","DotNumber":"123456","FleetViewRefresh":0,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576193415165-0800)\/","OrganizationId":"lookstar","OrganizationName":"look star","OrganizationSid":506,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"","State":"","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"},{"Address1":"","Address2":"","AllowSharedResourceGroup":false,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"","Country":"USA","CreateDate":"\/Date(1576111786284-0800)\/","DotNumber":"123456","FleetViewRefresh":0,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576111786488-0800)\/","OrganizationId":"neworgid","OrganizationName":"neworg name","OrganizationSid":495,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"","State":"","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"},{"Address1":"","Address2":"","AllowSharedResourceGroup":false,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"","Country":"USA","CreateDate":"\/Date(1576113163095-0800)\/","DotNumber":"123456","FleetViewRefresh":0,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576113163460-0800)\/","OrganizationId":"neworgid2","OrganizationName":"neworg name2","OrganizationSid":496,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"","State":"","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"},{"Address1":"","Address2":"","AllowSharedResourceGroup":false,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"","Country":"USA","CreateDate":"\/Date(1576198598102-0800)\/","DotNumber":"123456","FleetViewRefresh":0,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576198598271-0800)\/","OrganizationId":"nicescene","OrganizationName":"nice scene","OrganizationSid":512,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"","State":"","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"},{"Address1":"","Address2":"","AllowSharedResourceGroup":false,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"","Country":"USA","CreateDate":"\/Date(1576198957632-0800)\/","DotNumber":"123456","FleetViewRefresh":0,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576198957614-0800)\/","OrganizationId":"officermain","OrganizationName":"officer main","OrganizationSid":514,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"","State":"","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"},{"Address1":"","Address2":"","AllowSharedResourceGroup":false,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"","Country":"USA","CreateDate":"\/Date(1576193807638-0800)\/","DotNumber":"123456","FleetViewRefresh":0,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576193807711-0800)\/","OrganizationId":"onapply","OrganizationName":"on apply","OrganizationSid":509,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"","State":"","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"},{"Address1":"12900 Whitewater Dr","Address2":"Suite 300","AllowSharedResourceGroup":true,"AllowSubscriptionChange":false,"BillingOrganizationId":"46663","BillingOrganizationSid":414,"CarrierName":"Gnome Shipping D3","City":"Minnetonka","Country":"USA","CreateDate":"\/Date(1576113346196-0800)\/","DotNumber":"123456","FleetViewRefresh":5,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576113346196-0800)\/","OrganizationId":"sdfgsdfgdfg","OrganizationName":"ksdjfhgkjsdg","OrganizationSid":497,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"55343","State":"Minnesota","Status":true,"TimeZone":"HST","UnitOfMeasure":"Standard"},{"Address1":"","Address2":"","AllowSharedResourceGroup":false,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"","Country":"USA","CreateDate":"\/Date(1576194375306-0800)\/","DotNumber":"123456","FleetViewRefresh":0,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576194375502-0800)\/","OrganizationId":"sherequire","OrganizationName":"she require","OrganizationSid":510,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"","State":"","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"},{"Address1":"","Address2":"","AllowSharedResourceGroup":false,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"","Country":"USA","CreateDate":"\/Date(1576128882233-0800)\/","DotNumber":"123456","FleetViewRefresh":0,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576128882274-0800)\/","OrganizationId":"simplybecause","OrganizationName":"simply because","OrganizationSid":500,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"","State":"","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"},{"Address1":"","Address2":"","AllowSharedResourceGroup":false,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"","Country":"USA","CreateDate":"\/Date(1576132795706-0800)\/","DotNumber":"123456","FleetViewRefresh":0,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576132795968-0800)\/","OrganizationId":"strategymeeting","OrganizationName":"strategy meeting","OrganizationSid":502,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"","State":"","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"},{"Address1":"12900 Whitewater Dr","Address2":"300","AllowSharedResourceGroup":true,"AllowSubscriptionChange":false,"BillingOrganizationId":"46663","BillingOrganizationSid":414,"CarrierName":"SvirfneblinSyndicate","City":"Minnetonka","Country":"USA","CreateDate":"\/Date(1537907376514-0700)\/","DotNumber":"12312312","FleetViewRefresh":5,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1575349017631-0800)\/","OrganizationId":"SvirfneblinSyndicate","OrganizationName":"SvirfneblinSyndicate","OrganizationSid":415,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"55343","State":"Minnesota","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"},{"Address1":"","Address2":"","AllowSharedResourceGroup":false,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"","Country":"USA","CreateDate":"\/Date(1576193767687-0800)\/","DotNumber":"123456","FleetViewRefresh":0,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576193767766-0800)\/","OrganizationId":"uponremember","OrganizationName":"upon remember","OrganizationSid":508,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"","State":"","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"},{"Address1":"","Address2":"","AllowSharedResourceGroup":false,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"","Country":"USA","CreateDate":"\/Date(1576132988050-0800)\/","DotNumber":"123456","FleetViewRefresh":0,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576132988266-0800)\/","OrganizationId":"whiterule","OrganizationName":"white rule","OrganizationSid":505,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"","State":"","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"},{"Address1":"","Address2":"","AllowSharedResourceGroup":false,"AllowSubscriptionChange":false,"BillingOrganizationId":null,"BillingOrganizationSid":0,"CarrierName":"Gnome Shipping D3","City":"","Country":"USA","CreateDate":"\/Date(1576193686932-0800)\/","DotNumber":"123456","FleetViewRefresh":0,"Language":"English","ModifiedBy":5412,"ModifiedDate":"\/Date(1576193687184-0800)\/","OrganizationId":"withloss","OrganizationName":"with loss","OrganizationSid":507,"ParentOrganizationId":"46663","ParentOrganizationSid":414,"PostalCode":"","State":"","Status":true,"TimeZone":"CST","UnitOfMeasure":"Standard"}]</msg>
+<msg timestamp="20191212 11:05:36.004" level="TRACE">Return: &lt;Response [200]&gt;</msg>
+<msg timestamp="20191212 11:05:36.004" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191212 11:05:35.285" endtime="20191212 11:05:36.005"></status>
+</kw>
+<msg timestamp="20191212 11:05:36.005" level="TRACE">Return: &lt;Response [200]&gt;</msg>
+<msg timestamp="20191212 11:05:36.006" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191212 11:05:35.282" endtime="20191212 11:05:36.006"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20191212 11:05:36.010" level="TRACE">Arguments: [ 200 | '200' ]</msg>
+<msg timestamp="20191212 11:05:36.010" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<msg timestamp="20191212 11:05:36.011" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20191212 11:05:36.009" endtime="20191212 11:05:36.011"></status>
+</kw>
+<doc>Gets all the Organizations</doc>
+<tags>
+<tag>awsxrsorganizationrestwebservicevalidation</tag>
+</tags>
+<status status="PASS" starttime="20191212 11:05:35.280" endtime="20191212 11:05:36.012" critical="yes"></status>
 </test>
 <kw name="Delete All Sessions" library="RequestsLibrary" type="teardown">
 <doc>Removes all the session objects</doc>
-<msg timestamp="20191212 09:46:47.809" level="TRACE">Arguments: [  ]</msg>
-<msg timestamp="20191212 09:46:47.809" level="INFO">Delete All Sessions</msg>
-<msg timestamp="20191212 09:46:47.810" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20191212 09:46:47.809" endtime="20191212 09:46:47.810"></status>
+<msg timestamp="20191212 11:05:36.018" level="TRACE">Arguments: [  ]</msg>
+<msg timestamp="20191212 11:05:36.018" level="INFO">Delete All Sessions</msg>
+<msg timestamp="20191212 11:05:36.018" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20191212 11:05:36.018" endtime="20191212 11:05:36.018"></status>
 </kw>
 <doc>Fundamental suite to test XRS AWS Organization Entity Management Web Services</doc>
-<status status="PASS" starttime="20191212 09:46:41.291" endtime="20191212 09:46:47.810"></status>
+<status status="PASS" starttime="20191212 11:05:28.508" endtime="20191212 11:05:36.019"></status>
 </suite>
-<status status="PASS" starttime="20191212 09:46:41.267" endtime="20191212 09:46:47.816"></status>
+<status status="PASS" starttime="20191212 11:05:28.482" endtime="20191212 11:05:36.028"></status>
 </suite>
 <statistics>
 <total>
-<stat pass="7" fail="0">Critical Tests</stat>
-<stat pass="7" fail="0">All Tests</stat>
+<stat pass="8" fail="0">Critical Tests</stat>
+<stat pass="8" fail="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="7" fail="0">awsxrsorganizationrestwebservicevalidation</stat>
+<stat pass="8" fail="0">awsxrsorganizationrestwebservicevalidation</stat>
 </tag>
 <suite>
-<stat pass="7" fail="0" id="s1" name="AWS XRS WebServicesTests">AWS XRS WebServicesTests</stat>
-<stat pass="7" fail="0" id="s1-s1" name="ValidateAWSXRSOrganizationWebService">AWS XRS WebServicesTests.ValidateAWSXRSOrganizationWebService</stat>
+<stat pass="8" fail="0" id="s1" name="AWS XRS WebServicesTests">AWS XRS WebServicesTests</stat>
+<stat pass="8" fail="0" id="s1-s1" name="ValidateAWSXRSOrganizationWebService">AWS XRS WebServicesTests.ValidateAWSXRSOrganizationWebService</stat>
 </suite>
 </statistics>
 <errors>
