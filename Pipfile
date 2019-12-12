@@ -13,10 +13,11 @@ pyyaml = "*"
 robotframework-pabot = "*"
 configparser = "*"
 setuptools = "*"
-hashlib = "*"
 httpserver = "*"
 pillow = "*"
 psutil = "*"
+robotframework-faker = "*"
+faker = "==2.0.5"
 
 [requires]
 python_version = "3.7"

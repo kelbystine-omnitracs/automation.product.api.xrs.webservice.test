@@ -13,6 +13,7 @@ XRS_GENERAL_INFORMATION:
     Company_Login_ID: GnomeShippingD3
     Company_Name: Gnome Shipping D3
     Status: Active
+    ParentOrganizationSid: 414
   Address:
     Carrier_Name: Gnome Shipping D3
     DOT_Number: 123456

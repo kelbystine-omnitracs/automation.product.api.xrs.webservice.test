@@ -8,24 +8,24 @@ Variables  ../../XRS_WebServices/XRSWebServicesBaseURI.yaml
 ${ENTITY_MANAGEMENT_WEBSERVICE_GET_DELETE_DEVICE_WITH_NUMBER} =  /device
 ${ENTITY_MANAGEMENT_WEBSERVICE_POST_PUT_GET_DEVICES} =  /devices
 
-
 *** Keywords ***
 Get Device With Phone Number
-  [Documentation]  This will get device information for a particular device using the phone number
   [Arguments]  ${phone_number}
+  [Documentation]  Get device information for a particular device using the phone number
   ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Device}${ENTITY_MANAGEMENT_WEBSERVICE_GET_DELETE_DEVICE_WITH_NUMBER}/${phone_number}
   ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
   [Return]  ${response}
 
 Delete Device With Phone Number
-  [Documentation]  This will delete device information for a particular device using the phone number
   [Arguments]  ${phone_number}
+  [Documentation]  Delete device information for a particular device using the phone number
   ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Device}${ENTITY_MANAGEMENT_WEBSERVICE_GET_DELETE_DEVICE_WITH_NUMBER}/${phone_number}
   ${response} =  Delete Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
   [Return]  ${response}
 
 Post Devices
-  [Documentation]  This will post device information.
+  [Arguments]  @{list_data}
+  [Documentation]  Calls the Post Method on Devices.
   ...  Accepts a list of json objects
   ...  Json field definitions:
   ...  BelongsToResourceGroups  # ResourceGroupID Collection  ResourceGroupID String values  ***Not Required***
@@ -76,35 +76,35 @@ Post Devices
   ...      Identifies if a device is active or inactive in Omnitracs XRS. The value of this field must be Active or Inactive.
   ...  StoreGNISFileOnMobile  # String  [Boolean]  Yes  No  ***Read Only***
   ...      A read only field indicating whether the GNIS file will be stored on the mobile.
-  ...  UserDefinedField1  # Strind  [Null]  Max 100 characters  ***Not Required***
+  ...  UserDefinedField1  # String  [Null]  Max 100 characters  ***Not Required***
   ...      User-defined field #1
-  ...  UserDefinedField2  # Strind  [Null]  Max 100 characters  ***Not Required***
+  ...  UserDefinedField2  # String  [Null]  Max 100 characters  ***Not Required***
   ...      User-defined field #2
-  ...  UserDefinedField3  # Strind  [Null]  Max 100 characters  ***Not Required***
+  ...  UserDefinedField3  # String  [Null]  Max 100 characters  ***Not Required***
   ...      User-defined field #3
-  ...  UserDefinedField4  # Strind  [Null]  Max 100 characters  ***Not Required***
+  ...  UserDefinedField4  # String  [Null]  Max 100 characters  ***Not Required***
   ...      User-defined field #4
-  ...  UserDefinedField5  # Strind  [Null]  Max 100 characters  ***Not Required***
+  ...  UserDefinedField5  # String  [Null]  Max 100 characters  ***Not Required***
   ...      User-defined field #5
-  [Arguments]  @{list_data}
   ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Device}${ENTITY_MANAGEMENT_WEBSERVICE_POST_PUT_GET_DEVICES}
   ${response} =  Post Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  json=${list_data}  headers=${XRS_WEBSERVICES_JSON_HEADER}
   [Return]  ${response}
 
 Put Devices
-  [Documentation]  This will post device information.
+  [Arguments]  @{list_data}
+  [Documentation]  Calls the Put Method on Devices.
   ...  Accepts a list of json objects
   ...  See Json field definitions in the "Post Devices" Keyword
-  [Arguments]  @{list_data}
   ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Device}${ENTITY_MANAGEMENT_WEBSERVICE_POST_PUT_GET_DEVICES}
   ${response} =  Put Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  json=${list_data}  headers=${XRS_WEBSERVICES_JSON_HEADER}
   [Return]  ${response}
 
-Get Devices With URI Ending Without Forward Slash
-  [Documentation]  This Keyword contains a modified URI that ends without a foward slash
+Get Devices
+  [Arguments]  &{params}
+  [Documentation]  Call the Get Method on Devices.
   ...  This will get devices that match the provided parameters.
   ...  Params can be named individually or within a Dictionary
-  ...  Params:
+  ...  Param Definitions:
   ...  AsOfDateTime  # Default Value [No Filter]
   ...     Tells the service to return only the data that changed since the specified date and time.
   ...  IsActive  # Default Value [No Filter]
@@ -126,38 +126,15 @@ Get Devices With URI Ending Without Forward Slash
   ...     Example value: 1234567890
   ...  ResourceGroupID  # Default Value [No Filter]
   ...     Limits results to devices in one or more resource groups.
-  [Arguments]  &{params}
   ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Device}${ENTITY_MANAGEMENT_WEBSERVICE_POST_PUT_GET_DEVICES}
   ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}  params=${params}
   [Return]  ${response}
 
-Get Devices With URI Ending With Forward Slash
-  [Documentation]  This Keyword contains a modified URI that ends with a forward slash
+Get Devices With URI Ending With ${ending_character} And Parameters ${params}
+  [Documentation]  This Keyword modifies character between the base uri and the parameters
   ...  This will get devices that match the provided parameters.
   ...  Params can be named individually or within a Dictionary
-  ...  Params:
-  ...  AsOfDateTime  # Default Value [No Filter]
-  ...     Tells the service to return only the data that changed since the specified date and time.
-  ...  IsActive  # Default Value [No Filter]
-  ...     Filters results to active drivers only.
-  ...     Valid Values: True False Both
-  ...  Limit  # Default Value 100
-  ...     Used in conjunction with the Offset parameter to implement paging.
-  ...     Limits the number of results to a specified number.
-  ...     System Limit: 10,000
-  ...  Offset  # Default Value 1
-  ...     Used in conjunction with the Limit parameter to implement paging.
-  ...     Represents a page number for the starting point of the return set.
-  ...  OrganizationID  # Default Value [No Filter]
-  ...     Limits results to devices in one or more organizations.
-  ...  PhoneNumber  # Default Value [No Filter]
-  ...     The following values can be specified:
-  ...     [No Filter] - Limits results to all device records within the Web Service users' OrganizationID and ResourceGroupID.
-  ...     10 character phone number - Limits results to the device record within the Web Service users' OrganizationID and ResourceGroupID
-  ...     Example value: 1234567890
-  ...  ResourceGroupID  # Default Value [No Filter]
-  ...     Limits results to devices in one or more resource groups.
-  [Arguments]  &{params}
-  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Device}${ENTITY_MANAGEMENT_WEBSERVICE_POST_PUT_GET_DEVICES}/
+  ...  See the Get Devices Keyword for param definitions.
+  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Device}${ENTITY_MANAGEMENT_WEBSERVICE_POST_PUT_GET_DEVICES}${ending_character}
   ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}  params=${params}
   [Return]  ${response}
