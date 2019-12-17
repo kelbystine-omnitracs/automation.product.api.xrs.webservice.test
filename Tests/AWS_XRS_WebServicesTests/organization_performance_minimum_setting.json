@@ -1,0 +1,150 @@
+[
+   {
+      "Key": "AbsHardBrakeEnable",
+      "Value": "0"
+   },
+   {
+      "Key": "ExcessiveOverspeedThreshold",
+      "Value": "5"
+   },
+   {
+      "Key": "ExcessiveOverspeedEnable",
+      "Value": "0"
+   },
+   {
+      "Key": "OverspeedThreshold",
+      "Value": "5"
+   },
+   {
+      "Key": "OverspeedEnable",
+      "Value": "0"
+   },
+   {
+      "Key": "CMSXBRThreshold",
+      "Value": "-1"
+   },
+   {
+      "Key": "ForwardCollisionWarningCriticalEventDetection",
+      "Value": "0"
+   },
+   {
+      "Key": "HapticWarningXBRThreshold",
+      "Value": "-1"
+   },
+   {
+      "Key": "FCWOffThreshold",
+      "Value": "1"
+   },
+   {
+      "Key": "FCWOnThreshold",
+      "Value": "1"
+   },
+   {
+      "Key": "ForwardCollisionWarningMinimumSpeedThreshold",
+      "Value": "1"
+   },
+   {
+      "Key": "FollowingTimeDurationThreshold",
+      "Value": "1"
+   },
+   {
+      "Key": "FollowingTimeViolationOffThreshold",
+      "Value": "1"
+   },
+   {
+      "Key": "FollowingTimeViolationOnThreshold",
+      "Value": "1"
+   },
+   {
+      "Key": "FollowingTimeViolationThreshold",
+      "Value": "0"
+   },
+   {
+      "Key": "FleetHardBrakeThreshold",
+      "Value": "-4"
+   },
+   {
+      "Key": "LaneDepartureDisableWarningEnable",
+      "Value": "0"
+   },
+   {
+      "Key": "LaneDepartureDisableEventCountThreshold",
+      "Value": "1"
+   },
+   {
+      "Key": "LaneDepartureDisableTimeThreshold",
+      "Value": "1"
+   },
+   {
+      "Key": "LaneDepartureDisableOffCountThreshold",
+      "Value": "1"
+   },
+   {
+      "Key": "LaneDepartureDisableOnCountThreshold",
+      "Value": "1"
+   },
+   {
+      "Key": "LaneDepartureDisableSpeedThreshold",
+      "Value": "0"
+   },
+   {
+      "Key": "LaneDepartureActiveWarningEnable",
+      "Value": "0"
+   },
+   {
+      "Key": "LaneDepartureImminentWarningEnable",
+      "Value": "0"
+   },
+   {
+      "Key": "LaneDepartureImminentEventCountThreshold",
+      "Value": "1"
+   },
+   {
+      "Key": "LaneDepartureImminentTimeThreshold",
+      "Value": "1"
+   },
+   {
+      "Key": "LaneDepartureImminentOffCountThreshold",
+      "Value": "1"
+   },
+   {
+      "Key": "LaneDepartureImminentSpeedThreshold",
+      "Value": "0"
+   },
+   {
+      "Key": "LaneDepartureActiveOffCountThreshold",
+      "Value": "1"
+   },
+   {
+      "Key": "LaneDepartureActiveOnCountThreshold",
+      "Value": "1"
+   },
+   {
+      "Key": "LaneDepartureActiveSpeedThreshold",
+      "Value": "0"
+   },
+   {
+      "Key": "LaneDepartureActiveTimeThreshold",
+      "Value": "1"
+   },
+   {
+      "Key": "RollStabilityCriticalEventDetection",
+      "Value": "0"
+   },
+   {
+      "Key": "RollStabilityOffThreshold",
+      "Value": "1"
+   },
+   {
+      "Key": "RollStabilityOnThreshold",
+      "Value": "1"
+   },
+   {
+      "Key": "RollStabilityMinimumSpeedThreshold",
+      "Value": "1"
+   },
+   {
+      "Key": "RollStabilitySources",
+      "Value": "0"
+   }
+]

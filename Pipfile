@@ -18,6 +18,7 @@ pillow = "*"
 psutil = "*"
 robotframework-faker = "*"
 faker = "==2.0.5"
+robotframework-jsonlibrary = "*"
 
 [requires]
 python_version = "3.7"

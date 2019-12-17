@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation   Fundamental suite to test XRS AWS Organization Entity Management Web Services
-Library          FakerLibrary
+Library         FakerLibrary
+Library         JSONLibrary
 Resource        ../../Resources/XRS_WebServices/XRSCommonWebService.resource
 Resource        ../../Resources/XRS_WebServices/EntityManagement/Organization.resource
 Resource        ../../Resources/XRS_WebServices/Toolbox/URIStringBuilderTool.resource
@@ -21,7 +22,7 @@ ${XRS_HOST_ENVIRONMENT} =  d3  # TODO: remove this when pulled into larger suite
 *** Test Cases ***
 Validate AWS XRS Get Organization By SID REST Web Services Returns 200 OK With Parent Organization SID
   [Documentation]  Verifies that a Organization with a specific number does not exist
-  ${response} =  Get Organization With OrganizationSID  ${XRS_GENERAL_INFORMATION.Company.ParentOrganizationSid}
+  ${response} =  Get Organization By OrganizationSID  ${XRS_GENERAL_INFORMATION.Company.ParentOrganizationSid}
   Should Be Equal As Strings  ${response.status_code}  200
 
 Validate AWS XRS Post Organization REST Web Services Returns Caption "Request succeeded."
@@ -36,7 +37,7 @@ Validate AWS XRS Post Organization REST Web Services Returns Caption "Request su
 
 Validate AWS XRS Get Organization By SID REST Web Services Returns 200 OK With New Organization
   [Documentation]  Verifies that a posted Organization now exists
-  ${response} =  Get Organization With OrganizationSID  ${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_SID}
+  ${response} =  Get Organization By OrganizationSID  ${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_SID}
   Should Be Equal As Strings  ${response.status_code}  200
 
 Validate AWS XRS Put Organization REST Web Services Modifies Description Successfully
@@ -68,6 +69,34 @@ Validate AWS XRS Get Organizations REST Web Services For All Organizations Retur
   [Documentation]  Gets all the Organizations
   ${response} =  Get All Organizations
   Should Be Equal As Strings  ${response.status_code}  200
+
+# Organizations Performance (settings) Data Tests
+Validate AWS XRS Get Organizations Performance (settings) Data By SID REST Web Services Returns 200 OK
+  [Documentation]  Get organization performance endpoint by ID returns 200 OK
+  ${response} =  Get Organizations Performance Data By ID  ${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_1_DICT.OrganizationId}
+  Should Be Equal As Strings  ${response.status_code}  200
+
+Validate AWS XRS Put Organization Performance (settings) Data By SID REST Web Services Update Return 200 OK
+  [Documentation]  Sends an performance settings update request from a json file, expects a 200 response
+  ${json_data} =  Load JSON From File  ${CURDIR}/organization_performance_minimum_setting.json
+  # @{jsdon_data_as_list} =  Create List  ${json_data}
+  ${response} =  Put Organizations Performance Data By ID  ${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_1_DICT.OrganizationId}  ${json_data}
+  Should Be Equal As Strings  ${response.status_code}  200
+
+Validate AWS XRS Get Organizations Performance (settings) Data By Parameters REST Web Services Returns 200 OK
+  [Documentation]  Get Organizations with basic parameters
+  ${yyyy}	${mm}	${dd} =	Get Time	year,month,day
+  &{params} =  Create Dictionary
+  ...  OrganizationId=${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_1_DICT.OrganizationId}
+  ...  IsActive=True
+  ...  AsOfDateTime=${mm}/${dd}/${yyyy}
+  Verify Get Organizations Performance (settings) Data With Forward Slash Returns 200 OK  &{params}
+  Verify Get Organizations Performance (settings) Data Without Forward Slash Returns 200 OK  &{params}
+
+Validate AWS XRS Get Organizations Performance (settings) Data By Parameters REST Web Services Returns 200 OK With Raw String URI
+  [Documentation]  Get Organizations with basic parameters using a raw URI string
+  Verify Get Organizations Performance (settings) Data Raw String URI With /? Returns 200 OK
+  Verify Get Organizations Performance (settings) Data Raw String URI With ? Returns 200 OK
 
 *** Keywords ***
 Test Data Setup For XRS AWS Organization Web Service Test Suite
@@ -113,6 +142,29 @@ Verify Get Organizations With Forward Slash Returns 200 OK
   Should Be Equal As Strings  ${response.status_code}  200
 
 Verify Get Organizations Raw String URI With ${character_string} Returns 200 OK
+  [Documentation]  Verify that using the given character string in the raw URI string returns 200 OK
+  ${yyyy}	${mm}	${dd} =	Get Time	year,month,day
+  &{params} =  Create Dictionary  OrganizationSid=${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_SID}  IsActive=True  AsOfDateTime=${mm}/${dd}/${yyyy}
+  ${uri_string} =  Create URI String With  ${XRS_Entity_Management_Base_URI.Organization}  ${ENTITY_MANAGEMENT_WEBSERVICE_POST_GET_ORGANIZATIONS}  ${character_string}
+  ${uri} =  Set Variable  ${uri_string}OrganizationSid=${params.OrganizationSid}&IsActive=${params.IsActive}&AsOfDateTime=${params.AsOfDateTime}
+  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
+  Should Be Equal As Strings  ${response.status_code}  200
+
+# Keywords for Organizations Performance (settings) Data
+Verify Get Organizations Performance (settings) Data Without Forward Slash Returns 200 OK
+  [Arguments]  &{params}
+  [Documentation]  Verify that not using a '/' in the URI returns 200 OK
+  ${response} =  Get Organizations Performance Data  &{params}
+  Should Be Equal As Strings  ${response.status_code}  200
+
+Verify Get Organizations Performance (settings) Data With Forward Slash Returns 200 OK
+  [Arguments]  &{params}
+  [Documentation]  Verify that using a '/' in the URI returns 200 OK
+  ${ending_character} =  Set Variable  /
+  ${response} =  Get Organizations Performance Data With URI Ending With ${ending_character} And Parameters &{params}
+  Should Be Equal As Strings  ${response.status_code}  200
+
+Verify Get Organizations Performance (settings) Data Raw String URI With ${character_string} Returns 200 OK
   [Documentation]  Verify that using the given character string in the raw URI string returns 200 OK
   ${yyyy}	${mm}	${dd} =	Get Time	year,month,day
   &{params} =  Create Dictionary  OrganizationSid=${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_SID}  IsActive=True  AsOfDateTime=${mm}/${dd}/${yyyy}
