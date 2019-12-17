@@ -213,7 +213,7 @@ Get All Organizations Performance Data
 Put Organizations Performance Data By ID
   [Arguments]  ${organization_id}  ${json_data}
   [Documentation]  Calls the Put Method on Organizations performance (settings)
-  ...  Requires two variables: OrganizationId and List data
+  ...  Requires two variables: OrganizationId and json file data
   ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Organization}${ENTITY_MANAGEMENT_WEBSERVICE_POST_GET_ORGANIZATIONS}/${organization_id}/performance
   ${response} =  Put Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  json=${json_data}  headers=${XRS_WEBSERVICES_JSON_HEADER}
   [Return]  ${response}
