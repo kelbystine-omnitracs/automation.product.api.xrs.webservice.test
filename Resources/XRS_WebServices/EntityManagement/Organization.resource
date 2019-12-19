@@ -5,16 +5,16 @@ Resource  ../../XRS_WebServices/XRSCommonWebService.resource
 Variables  ../../XRS_WebServices/XRSWebServicesBaseURI.yaml
 
 *** Variables ***
-${ENTITY_MANAGEMENT_WEBSERVICE_GET_ORGANIZATION} =  /organization
-${ENTITY_MANAGEMENT_WEBSERVICE_POST_GET_ORGANIZATIONS} =  /organizations
-${ENTITY_MANAGEMENT_WEBSERVICE_PUT_ORGANIZATIONS} =  /organizations/update
-${ENTITY_MANAGEMENT_WEBSERVICE_GET_PUT_ORGANIZATIONS_PERFORMANCE} =  /organizations/performance
+${XRS_WEBSERVICE_ENTITY_MANAGEMENT_GET_ORGANIZATION} =  /organization
+${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_ORGANIZATIONS} =  /organizations
+${XRS_WEBSERVICE_ENTITY_MANAGEMENT_PUT_ORGANIZATIONS} =  /organizations/update
+${XRS_WEBSERVICE_ENTITY_MANAGEMENT_GET_PUT_ORGANIZATIONS_PERFORMANCE} =  /organizations/performance
 
 *** Keywords ***
 Get Organization By OrganizationSID
   [Arguments]  ${organization_sid}
   [Documentation]  Get Organization information for a particular Organization using the OrganizationSID
-  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Organization}${ENTITY_MANAGEMENT_WEBSERVICE_GET_ORGANIZATION}/${organization_sid}
+  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Organization}${XRS_WEBSERVICE_ENTITY_MANAGEMENT_GET_ORGANIZATION}/${organization_sid}
   ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
   [Return]  ${response}
 
@@ -86,7 +86,7 @@ Post Organizations
   ...      The unit of measure selected for this organization. This applies to all performance and compliance based reporting.
   ...      Standard (MPG)
   ...      Metric (KM/L)
-  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Organization}${ENTITY_MANAGEMENT_WEBSERVICE_POST_GET_ORGANIZATIONS}
+  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Organization}${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_ORGANIZATIONS}
   ${response} =  Post Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  json=${list_data}  headers=${XRS_WEBSERVICES_JSON_HEADER}
   [Return]  ${response}
 
@@ -95,7 +95,7 @@ Put Organizations
   [Documentation]  Calls the Put Method on Organizations.
   ...  Accepts a list of json objects
   ...  See Json field definitions in the "Post Organizations" Keyword
-  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Organization}${ENTITY_MANAGEMENT_WEBSERVICE_PUT_ORGANIZATIONS}
+  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Organization}${XRS_WEBSERVICE_ENTITY_MANAGEMENT_PUT_ORGANIZATIONS}
   ${response} =  Put Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  json=${list_data}  headers=${XRS_WEBSERVICES_JSON_HEADER}
   [Return]  ${response}
 
@@ -129,7 +129,7 @@ Get Organizations
   ...      Limits results to organizations that fall under the specified organization.
   ...  ResourceGroupSid  # Default Value [No Filter]
   ...      Limits results to Organizations in one or more resource groups.
-  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Organization}${ENTITY_MANAGEMENT_WEBSERVICE_POST_GET_ORGANIZATIONS}
+  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Organization}${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_ORGANIZATIONS}
   ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}  params=${params}
   [Return]  ${response}
 
@@ -138,20 +138,20 @@ Get Organizations With URI Ending With ${ending_character} And Parameters ${para
   ...  This will get Organizations that match the provided parameters.
   ...  Params can be named individually or within a Dictionary
   ...  See the Get Organizations Keyword for param definitions.
-  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Organization}${ENTITY_MANAGEMENT_WEBSERVICE_POST_GET_ORGANIZATIONS}${ending_character}
+  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Organization}${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_ORGANIZATIONS}${ending_character}
   ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}  params=${params}
   [Return]  ${response}
 
 Get Organizations By ID
   [Arguments]  ${organization_id}
   [Documentation]  Get organizations by ID.
-  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Organization}${ENTITY_MANAGEMENT_WEBSERVICE_POST_GET_ORGANIZATIONS}/${organization_id}
+  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Organization}${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_ORGANIZATIONS}/${organization_id}
   ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
   [Return]  ${response}
 
 Get All Organizations
   [Documentation]  Get attributes for all organizations.
-  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Organization}${ENTITY_MANAGEMENT_WEBSERVICE_POST_GET_ORGANIZATIONS}
+  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Organization}${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_ORGANIZATIONS}
   ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
   [Return]  ${response}
 
@@ -159,7 +159,7 @@ Get All Organizations
 Get Organizations Performance Data By ID
   [Arguments]  ${organization_id}
   [Documentation]  Get performance (settings) data for all organizations by ID
-  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Organization}${ENTITY_MANAGEMENT_WEBSERVICE_POST_GET_ORGANIZATIONS}/${organization_id}/performance
+  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Organization}${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_ORGANIZATIONS}/${organization_id}/performance
   ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
   [Return]  ${response}
 
@@ -191,7 +191,7 @@ Get Organizations Performance Data
   ...      Limits results to Organizations in one or more resource groups.
   ...  Recurse  # Default Value [No Filter]
   ...      No clue what this does.
-  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Organization}${ENTITY_MANAGEMENT_WEBSERVICE_GET_PUT_ORGANIZATIONS_PERFORMANCE}
+  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Organization}${XRS_WEBSERVICE_ENTITY_MANAGEMENT_GET_PUT_ORGANIZATIONS_PERFORMANCE}
   ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}  params=&{params}
   [Return]  ${response}
 
@@ -200,13 +200,13 @@ Get Organizations Performance Data With URI Ending With ${ending_character} And 
   ...  This will get Organizations that match the provided parameters.
   ...  Params can be named individually or within a Dictionary
   ...  See the Get Organizations Performance Data Keyword for param definitions.
-  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Organization}${ENTITY_MANAGEMENT_WEBSERVICE_GET_PUT_ORGANIZATIONS_PERFORMANCE}${ending_character}
+  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Organization}${XRS_WEBSERVICE_ENTITY_MANAGEMENT_GET_PUT_ORGANIZATIONS_PERFORMANCE}${ending_character}
   ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}  params=${params}
   [Return]  ${response}
 
 Get All Organizations Performance Data
   [Documentation]  Get all the organization performance (settings) data
-  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Organization}${ENTITY_MANAGEMENT_WEBSERVICE_GET_PUT_ORGANIZATIONS_PERFORMANCE}
+  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Organization}${XRS_WEBSERVICE_ENTITY_MANAGEMENT_GET_PUT_ORGANIZATIONS_PERFORMANCE}
   ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
   [Return]  ${response}
 
@@ -214,6 +214,6 @@ Put Organizations Performance Data By ID
   [Arguments]  ${organization_id}  ${json_data}
   [Documentation]  Calls the Put Method on Organizations performance (settings)
   ...  Requires two variables: OrganizationId and json file data
-  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Organization}${ENTITY_MANAGEMENT_WEBSERVICE_POST_GET_ORGANIZATIONS}/${organization_id}/performance
+  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Organization}${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_ORGANIZATIONS}/${organization_id}/performance
   ${response} =  Put Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  json=${json_data}  headers=${XRS_WEBSERVICES_JSON_HEADER}
   [Return]  ${response}

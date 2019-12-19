@@ -5,21 +5,21 @@ Resource  ../../XRS_WebServices/XRSCommonWebService.resource
 Variables  ../../XRS_WebServices/XRSWebServicesBaseURI.yaml
 
 *** Variables ***
-${ENTITY_MANAGEMENT_WEBSERVICE_GET_DELETE_DEVICE_WITH_NUMBER} =  /device
-${ENTITY_MANAGEMENT_WEBSERVICE_POST_PUT_GET_DEVICES} =  /devices
+${XRS_WEBSERVICE_ENTITY_MANAGEMENT_GET_DELETE_DEVICE_BY_NUMBER} =  /device
+${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_PUT_DEVICES} =  /devices
 
 *** Keywords ***
-Get Device With Phone Number
+Get Device By Phone Number
   [Arguments]  ${phone_number}
   [Documentation]  Get device information for a particular device using the phone number
-  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Device}${ENTITY_MANAGEMENT_WEBSERVICE_GET_DELETE_DEVICE_WITH_NUMBER}/${phone_number}
+  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Device}${XRS_WEBSERVICE_ENTITY_MANAGEMENT_GET_DELETE_DEVICE_BY_NUMBER}/${phone_number}
   ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
   [Return]  ${response}
 
-Delete Device With Phone Number
+Delete Device By Phone Number
   [Arguments]  ${phone_number}
   [Documentation]  Delete device information for a particular device using the phone number
-  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Device}${ENTITY_MANAGEMENT_WEBSERVICE_GET_DELETE_DEVICE_WITH_NUMBER}/${phone_number}
+  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Device}${XRS_WEBSERVICE_ENTITY_MANAGEMENT_GET_DELETE_DEVICE_BY_NUMBER}/${phone_number}
   ${response} =  Delete Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
   [Return]  ${response}
 
@@ -86,7 +86,7 @@ Post Devices
   ...      User-defined field #4
   ...  UserDefinedField5  # String  [Null]  Max 100 characters  ***Not Required***
   ...      User-defined field #5
-  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Device}${ENTITY_MANAGEMENT_WEBSERVICE_POST_PUT_GET_DEVICES}
+  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Device}${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_PUT_DEVICES}
   ${response} =  Post Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  json=${list_data}  headers=${XRS_WEBSERVICES_JSON_HEADER}
   [Return]  ${response}
 
@@ -95,7 +95,7 @@ Put Devices
   [Documentation]  Calls the Put Method on Devices.
   ...  Accepts a list of json objects
   ...  See Json field definitions in the "Post Devices" Keyword
-  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Device}${ENTITY_MANAGEMENT_WEBSERVICE_POST_PUT_GET_DEVICES}
+  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Device}${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_PUT_DEVICES}
   ${response} =  Put Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  json=${list_data}  headers=${XRS_WEBSERVICES_JSON_HEADER}
   [Return]  ${response}
 
@@ -126,7 +126,7 @@ Get Devices
   ...     Example value: 1234567890
   ...  ResourceGroupID  # Default Value [No Filter]
   ...     Limits results to devices in one or more resource groups.
-  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Device}${ENTITY_MANAGEMENT_WEBSERVICE_POST_PUT_GET_DEVICES}
+  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Device}${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_PUT_DEVICES}
   ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}  params=${params}
   [Return]  ${response}
 
@@ -135,6 +135,6 @@ Get Devices With URI Ending With ${ending_character} And Parameters ${params}
   ...  This will get devices that match the provided parameters.
   ...  Params can be named individually or within a Dictionary
   ...  See the Get Devices Keyword for param definitions.
-  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Device}${ENTITY_MANAGEMENT_WEBSERVICE_POST_PUT_GET_DEVICES}${ending_character}
+  ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Device}${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_PUT_DEVICES}${ending_character}
   ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}  params=${params}
   [Return]  ${response}

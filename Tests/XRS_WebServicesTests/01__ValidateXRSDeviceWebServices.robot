@@ -4,7 +4,7 @@ Resource        ../../Resources/XRS_WebServices/XRSCommonWebService.resource
 Resource        ../../Resources/XRS_WebServices/EntityManagement/Device.resource
 Variables       ./TestDeviceData.yaml
 Variables       ../../Resources/XRS_WebServices/XRSWebServicesBaseURI.yaml
-Variables       ../../Data/TestBenchDefinitions/%{COMPUTERNAME}TestBench/CompanyDefinition.yaml
+Variables       ../../Data/TestBenchDefinitions/%{TEST_BENCH}TestBench/CompanyDefinition.yaml
 
 Suite Setup     Create XRS Web Services Session
 Suite Teardown  Delete All Sessions
