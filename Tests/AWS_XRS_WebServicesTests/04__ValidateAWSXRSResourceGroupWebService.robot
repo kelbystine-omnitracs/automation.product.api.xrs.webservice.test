@@ -30,6 +30,7 @@ Validate AWS XRS Get Resource Groups REST Web Services Returns 200 OK With Raw S
 
 Validate AWS XRS Get Resource Groups REST Web Services For All Resource Groups Returns 200 OK
   [Documentation]  Gets all the Organizations
+  [Tags]  xrsawsperftest
   ${response} =  Get All Resource Groups
   Should Be Equal As Strings  ${response.status_code}  200
 

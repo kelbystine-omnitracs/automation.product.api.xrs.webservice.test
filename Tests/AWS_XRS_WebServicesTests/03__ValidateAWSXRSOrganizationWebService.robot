@@ -67,6 +67,7 @@ Validate AWS XRS Get Organizations By ID REST Web Services Returns 200 OK
 
 Validate AWS XRS Get Organizations REST Web Services For All Organizations Returns 200 OK
   [Documentation]  Gets all the Organizations
+  [Tags]  xrsawsperftest
   ${response} =  Get All Organizations
   Should Be Equal As Strings  ${response.status_code}  200
 

@@ -130,6 +130,12 @@ Get Devices
   ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}  params=${params}
   [Return]  ${response}
 
+Get All Devices
+    [Documentation]  Get attributes for all Devices.
+    ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Device}${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_PUT_DEVICES}
+    ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
+    [Return]  ${response}
+
 Get Devices With URI Ending With ${ending_character} And Parameters ${params}
   [Documentation]  This Keyword modifies character between the base uri and the parameters
   ...  This will get devices that match the provided parameters.

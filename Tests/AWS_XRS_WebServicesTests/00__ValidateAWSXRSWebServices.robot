@@ -2,17 +2,18 @@
 Documentation  Validates the top level XRS Web services
 Resource  ../../Resources/XRS_WebServices/XRSCommonWebService.resource
 Variables  ../../Resources/XRS_WebServices/XRSWebServicesBaseURI.yaml
-
+# Suite Setup and Teardown
 Suite Setup  Create AWS XRS Web Services Session With No Authorization
 Suite Teardown  Delete All Sessions
+Force Tags      awsxrswebservicevalidation
 
 *** Variables ***
-${XRS_HOST_ENVIRONMENT} =  d3
+# Setting a default environment
+${XRS_HOST_ENVIRONMENT} =  d3  # TODO: remove this when pulled into larger suite
 
 *** Test Cases ***
 Validate XRS AWS Webservices
     [Documentation]  Initial test to verify that all XRS Web Services are available
-    [Tags]  xrsawswebservicevalidation
     [Template]  Verify 200 OK Response From XRS WebServices
     ${XRS_Entity_Management_Base_URI}
     ${XRS_Form_Messaging_Base_URI}

@@ -1,0 +1,75 @@
+modules:
+  blazemeter:
+    token: 0cf14f706008495f716a1268:831ff16a2e4ee4a0a4c911706ce109f00ef44d5d8d9910824eb1321a3d3e9df10cfcbd80
+
+execution:
+- executor: robot
+  concurrency: 50
+  hold-for: 2m
+  ramp-up: 10s
+  scenario: bob
+
+- executor: robot
+  concurrency: 50
+  hold-for: 2m
+  ramp-up: 10s
+  scenario: bob
+
+- executor: robot
+  concurrency: 50
+  hold-for: 2m
+  ramp-up: 10s
+  scenario: bob
+
+- executor: robot
+  concurrency: 50
+  hold-for: 2m
+  ramp-up: 10s
+  scenario: bob
+
+- executor: robot
+  concurrency: 50
+  hold-for: 2m
+  ramp-up: 10s
+  scenario: bob
+
+- executor: robot
+  concurrency: 50
+  hold-for: 2m
+  ramp-up: 10s
+  scenario: bob
+
+- executor: robot
+  concurrency: 50
+  hold-for: 2m
+  ramp-up: 10s
+  scenario: bob
+
+- executor: robot
+  concurrency: 50
+  hold-for: 2m
+  ramp-up: 10s
+  scenario: bob
+
+- executor: robot
+  concurrency: 50
+  hold-for: 2m
+  ramp-up: 10s
+  scenario: bob
+
+- executor: robot
+  concurrency: 50
+  hold-for: 2m
+  ramp-up: 10s
+  scenario: bob
+
+scenarios:
+  bob:
+    tags: xrsawsperftest
+    script: /aws-api-gateway-tests/Tests/
+
+reporting:
+  - module: blazemeter
+    report-name: XRS Performance Test 2
+    test: AWS XRS Web Services Get Tests
+    project: XRS Web Services

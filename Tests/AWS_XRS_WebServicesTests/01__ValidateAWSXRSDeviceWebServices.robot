@@ -56,6 +56,12 @@ Validate AWS XRS Get Devices REST Web Services Returns 200 OK With Raw String UR
   Verify Get Devices Raw String URI With /? Returns 200 OK
   Verify Get Devices Raw String URI With ? Returns 200 OK
 
+Validate AWS XRS Get Devices REST Web Services For All Devices Returns 200 OK
+  [Documentation]  Gets all the Devices
+  [Tags]  xrsawsperftest
+  ${response} =  Get All Devices
+  Should Be Equal As Strings  ${response.status_code}  200
+
 Validate AWS XRS Delete Device REST Web Services Returns 200 OK
   [Documentation]  Verifies that created device is deleted
   ${response} =  Delete Device By Phone Number  ${XRS_WEB_SERVICES_TEST_DEVICE_1.PhoneNumber}

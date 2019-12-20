@@ -66,6 +66,7 @@ Validate AWS XRS Delete Driver REST Web Services Returns 200 OK
 
 Validate AWS XRS Get Drivers REST Web Services For All Drivers Returns 200 OK
   [Documentation]  Gets all the drivers
+  [Tags]  xrsawsperftest
   ${response} =  Get All Drivers
   Should Be Equal As Strings  ${response.status_code}  200
 
@@ -80,7 +81,7 @@ Validate AWS XRS Delete Drivers REST Web Services Returns Error Message
 Test Data Setup For XRS AWS Driver Web Service Test Suite
   [Documentation]  Keyword for setting up suite variables for AWS Driver Web Service Tests.
   # Create post test driver 1 data.
-  &{XRS_AWS_WEBSERVICE_POST_TEST_DRIVER_1_DICT} =
+  &{XRS_AWS_WEBSERVICE_POST_TEST_DRIVER_1_DICT} =  Create Dictionary
   ...  CDLNumber=${XRS_WEB_SERVICES_TEST_DRIVER_1.CDLNumber}
   ...  DriverID=${XRS_WEB_SERVICES_TEST_DRIVER_1.DriverID}
   ...  DefaultHOSRule=${XRS_WEB_SERVICES_TEST_DRIVER_1.DefaultHOSRule}
@@ -105,10 +106,10 @@ Test Data Setup For XRS AWS Driver Web Service Test Suite
   ...  Status=${XRS_WEB_SERVICES_TEST_DRIVER_1.Status}
   ...  UseHOSOrganizationSettings=${XRS_WEB_SERVICES_TEST_DRIVER_1.UseHOSOrganizationSettings}
   ...  UserName=${XRS_WEB_SERVICES_TEST_DRIVER_1.UserName}
-  @{XRS_AWS_WEBSERVICE_POST_TEST_DRIVER_LIST} =  ${XRS_AWS_WEBSERVICE_POST_TEST_DRIVER_1_DICT}
+  @{XRS_AWS_WEBSERVICE_POST_TEST_DRIVER_LIST} =  Create List  ${XRS_AWS_WEBSERVICE_POST_TEST_DRIVER_1_DICT}
   Set Suite Variable  @{XRS_AWS_WEBSERVICE_POST_TEST_DRIVER_LIST}
   # Create put test driver 1 data.
-  &{XRS_AWS_WEBSERVICE_PUT_TEST_DRIVER_1_DICT} =
+  &{XRS_AWS_WEBSERVICE_PUT_TEST_DRIVER_1_DICT} =  Create Dictionary
   ...  DriverID=${XRS_WEB_SERVICES_TEST_DRIVER_1.DriverID}
   ...  DefaultHOSRule=${XRS_WEB_SERVICES_TEST_DRIVER_1.DefaultHOSRule}
   ...  ELDExempt=${XRS_WEB_SERVICES_TEST_DRIVER_1.ELDExempt}
@@ -130,7 +131,7 @@ Test Data Setup For XRS AWS Driver Web Service Test Suite
   ...  Status=${XRS_WEB_SERVICES_TEST_DRIVER_1.Status}
   ...  UseHOSOrganizationSettings=${XRS_WEB_SERVICES_TEST_DRIVER_1.UseHOSOrganizationSettings}
   ...  UserName=${XRS_WEB_SERVICES_TEST_DRIVER_1.UserName}
-  @{XRS_AWS_WEBSERVICE_PUT_TEST_DRIVER_LIST} =  ${XRS_AWS_WEBSERVICE_PUT_TEST_DRIVER_1_DICT}
+  @{XRS_AWS_WEBSERVICE_PUT_TEST_DRIVER_LIST} =  Create List  ${XRS_AWS_WEBSERVICE_PUT_TEST_DRIVER_1_DICT}
   Set Suite Variable  @{XRS_AWS_WEBSERVICE_PUT_TEST_DRIVER_LIST}
 
 Verify Get Drivers Without Forward Slash Returns 200 OK
