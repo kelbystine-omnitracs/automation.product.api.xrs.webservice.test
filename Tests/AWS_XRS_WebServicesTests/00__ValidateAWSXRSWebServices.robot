@@ -5,7 +5,7 @@ Variables  ../../Resources/XRS_WebServices/XRSWebServicesBaseURI.yaml
 # Suite Setup and Teardown
 Suite Setup  Create AWS XRS Web Services Session With No Authorization
 Suite Teardown  Delete All Sessions
-Force Tags      awsxrswebservicevalidation
+Force Tags      awsxrswebservicevalidation  awsxrsrestwebservicevalidationsmoketest
 
 *** Variables ***
 # Setting a default environment

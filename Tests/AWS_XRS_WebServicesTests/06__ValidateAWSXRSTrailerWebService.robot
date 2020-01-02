@@ -11,7 +11,7 @@ Suite Setup     Run Keywords
                 ...  Create AWS XRS Web Services Session
                 ...  AND  Test Data Setup For XRS AWS Trailer Web Service Test Suite
 Suite Teardown  Delete All Sessions
-Force Tags      awsxrstrailerrestwebservicevalidation
+Force Tags      awsxrsrestwebservicevalidation  awsxrstrailerrestwebservicevalidation
 
 *** Variables ***
 # Setting a default environment
@@ -19,12 +19,12 @@ ${XRS_HOST_ENVIRONMENT} =  d3  # TODO: remove this when pulled into larger suite
 
 *** Test Cases ***
 Validate AWS XRS Get Trailer REST Web Services Returns 400 Error
-  [Documentation]  Verifies that a driver with a specific number does not exist
+  [Documentation]  Verifies that a trailer with a specific number does not exist
   ${response} =  Get Trailer By ID  ${XRS_WEB_SERVICES_TEST_TRAILER.TrailerIdentity}
   Should Be Equal As Strings  ${response.status_code}  400
 
 Validate AWS XRS Post Trailer REST Web Services Returns Code 201
-  [Documentation]  Posts a driver and expects a Code value of 201
+  [Documentation]  Posts a trailer and expects a Code value of 201
   ${response} =  Post Trailers  @{XRS_AWS_WEBSERVICE_POST_TEST_TRAILER_LIST}
   ${json_response} =  To Json  ${response.content}
   FOR  ${r}  IN  @{json_response}
@@ -32,12 +32,12 @@ Validate AWS XRS Post Trailer REST Web Services Returns Code 201
   END
 
 Validate AWS XRS Get Trailer REST Web Services Returns 200 OK
-  [Documentation]  Verifies that a posted driver now exists
+  [Documentation]  Verifies that a posted trailer now exists
   ${response} =  Get Trailer By ID  ${XRS_WEB_SERVICES_TEST_TRAILER.TrailerIdentity}
   Should Be Equal As Strings  ${response.status_code}  200
 
 Validate AWS XRS Put Trailer REST Web Services Modifies Driver Successfully
-  [Documentation]  Posts a driver and expects a Code value of 201
+  [Documentation]  Posts a trailer and expects a Code value of 201
   ${response} =  Put Trailers  @{XRS_AWS_WEBSERVICE_PUT_TEST_TRAILER_LIST}
   ${json_response} =  To Json  ${response.content}
   FOR  ${r}  IN  @{json_response}
@@ -45,19 +45,19 @@ Validate AWS XRS Put Trailer REST Web Services Modifies Driver Successfully
   END
 
 Validate AWS XRS Get Trailers REST Web Services Returns 200 OK
-  [Documentation]  Get drivers with basic parameters
+  [Documentation]  Get trailers with basic parameters
   ${yyyy}	${mm}	${dd} =	Get Time	year,month,day
   &{params} =  Create Dictionary  OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}  IsActive=True  AsOfDateTime=${mm}/${dd}/${yyyy}
   Verify Get Trailers With Forward Slash Returns 200 OK  &{params}
   Verify Get Trailers Without Forward Slash Returns 200 OK  &{params}
 
 Validate AWS XRS Get Trailers REST Web Services Returns 200 OK With Raw String URI
-  [Documentation]  Get drivers with basic parameters using a raw URI string
+  [Documentation]  Get trailers with basic parameters using a raw URI string
   Verify Get Trailers Raw String URI With /? Returns 200 OK
   Verify Get Trailers Raw String URI With ? Returns 200 OK
 
 Validate AWS XRS Delete Trailer REST Web Services Returns 200 OK
-  [Documentation]  Verifies that created driver is deleted
+  [Documentation]  Verifies that created trailer is deleted
   ${response} =  Delete Trailer By ID  ${XRS_WEB_SERVICES_TEST_TRAILER.TrailerIdentity}
   Should Be Equal As Strings  ${response.status_code}  200
 
@@ -76,12 +76,12 @@ Validate AWS XRS Delete Trailers REST Web Services Returns Error Message
 
 # V2 Trailer Web servicesValidate AWS XRS Get Trailer REST Web Services Returns 400 Error
 Validate AWS XRS Get Trailer V2 REST Web Services Returns 400 Error
-  [Documentation]  Verifies that a driver with a specific number does not exist
+  [Documentation]  Verifies that a trailer with a specific number does not exist
   ${response} =  Get Trailer V2 By ID  ${XRS_WEB_SERVICES_TEST_TRAILER_V2.TrailerIdentity}
   Should Be Equal As Strings  ${response.status_code}  400
 
 Validate AWS XRS Post Trailer V2 REST Web Services Returns Code 201
-  [Documentation]  Posts a driver and expects a Code value of 201
+  [Documentation]  Posts a trailer and expects a Code value of 201
   ${response} =  Post Trailers V2  @{XRS_AWS_WEBSERVICE_POST_TEST_TRAILER_LIST_V2}
   ${json_response} =  To Json  ${response.content}
   FOR  ${r}  IN  @{json_response}
@@ -89,12 +89,12 @@ Validate AWS XRS Post Trailer V2 REST Web Services Returns Code 201
   END
 
 Validate AWS XRS Get Trailer V2 REST Web Services Returns 200 OK
-  [Documentation]  Verifies that a posted driver now exists
+  [Documentation]  Verifies that a posted trailer now exists
   ${response} =  Get Trailer By ID  ${XRS_WEB_SERVICES_TEST_TRAILER_V2.TrailerIdentity}
   Should Be Equal As Strings  ${response.status_code}  200
 
 Validate AWS XRS Put Trailer V2 REST Web Services Modifies Driver Successfully
-  [Documentation]  Posts a driver and expects a Code value of 201
+  [Documentation]  Posts a trailer and expects a Code value of 201
   ${response} =  Put Trailers V2  @{XRS_AWS_WEBSERVICE_PUT_TEST_TRAILER_LIST_V2}
   ${json_response} =  To Json  ${response.content}
   FOR  ${r}  IN  @{json_response}
@@ -102,19 +102,19 @@ Validate AWS XRS Put Trailer V2 REST Web Services Modifies Driver Successfully
   END
 
 Validate AWS XRS Get Trailers V2 REST Web Services Returns 200 OK
-  [Documentation]  Get drivers with basic parameters
+  [Documentation]  Get trailers with basic parameters
   ${yyyy}	${mm}	${dd} =	Get Time	year,month,day
   &{params} =  Create Dictionary  OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}  IsActive=True  AsOfDateTime=${mm}/${dd}/${yyyy}
   Verify Get Trailers V2 With Forward Slash Returns 200 OK  &{params}
   Verify Get Trailers V2 Without Forward Slash Returns 200 OK  &{params}
 
 Validate AWS XRS Get Trailers V2 REST Web Services Returns 200 OK With Raw String URI
-  [Documentation]  Get drivers with basic parameters using a raw URI string
+  [Documentation]  Get trailers with basic parameters using a raw URI string
   Verify Get Trailers V2 Raw String URI With /? Returns 200 OK
   Verify Get Trailers V2 Raw String URI With ? Returns 200 OK
 
 Validate AWS XRS Delete Trailer V2 REST Web Services Returns 200 OK
-  [Documentation]  Verifies that created driver is deleted
+  [Documentation]  Verifies that created trailer is deleted
   ${response} =  Delete Trailer By ID  ${XRS_WEB_SERVICES_TEST_TRAILER_V2.TrailerIdentity}
   Should Be Equal As Strings  ${response.status_code}  200
 

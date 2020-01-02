@@ -11,7 +11,7 @@ Suite Setup     Run Keywords
                 ...  Create AWS XRS Web Services Session
                 ...  AND  Test Data Setup For XRS AWS Site Web Service Test Suite
 Suite Teardown  Delete All Sessions
-Force Tags      awsxrssiterestwebservicevalidation
+Force Tags      awsxrsrestwebservicevalidation  awsxrssiterestwebservicevalidation
 
 *** Variables ***
 # Setting a default environment

@@ -9,7 +9,7 @@ Variables       ../../Data/TestBenchDefinitions/%{TEST_BENCH}TestBench/ResourceG
 # Suite Setup and Teardown
 Suite Setup     Create AWS XRS Web Services Session
 Suite Teardown  Delete All Sessions
-Force Tags      awsxrsresourcegrouprestwebservicevalidation
+Force Tags      awsxrsrestwebservicevalidation  awsxrsresourcegrouprestwebservicevalidation
 
 *** Variables ***
 # Setting a default environment

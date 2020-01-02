@@ -11,7 +11,7 @@ Suite Setup     Run Keywords
                 ...  Create AWS XRS Web Services Session
                 ...  AND  Test Data Setup For XRS AWS Driver Web Service Test Suite
 Suite Teardown  Delete All Sessions
-Force Tags      awsxrsdriverrestwebservicevalidation
+Force Tags      awsxrsrestwebservicevalidation  awsxrsdriverrestwebservicevalidation
 
 *** Variables ***
 # Setting a default environment
@@ -72,7 +72,7 @@ Validate AWS XRS Get Drivers REST Web Services For All Drivers Returns 200 OK
 
 Validate AWS XRS Delete Drivers REST Web Services Returns Error Message
   [Documentation]  Attempts to delete a previously deleted driver.
-  ${response} =  Delete Drivers By ID  ${XRS_WEB_SERVICES_TEST_DRIVER_1_SID}
+  ${response} =  Delete Drivers By IDs  ${XRS_WEB_SERVICES_TEST_DRIVER_1_SID}
   ${expected_error_message} =  Set Variable  Driver ${XRS_WEB_SERVICES_TEST_DRIVER_1_SID} doesn't exist.
   ${json_response} =  To Json  ${response.content}
   Should Be Equal As Strings  ${json_response}[ErrorMessage]  ${expected_error_message}
