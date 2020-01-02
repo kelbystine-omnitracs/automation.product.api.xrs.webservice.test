@@ -1,0 +1,25 @@
+<ArrayOfUser xmlns="http://schemas.datacontract.org/2004/07/Xata.Ignition.WebServiceAPI.Contracts.DataContract.Entities">
+    <User>
+        <AccountLocked>False</AccountLocked>
+        <AlertSubscriptionIds></AlertSubscriptionIds>
+        <AlertSubscriptionsChanged>False</AlertSubscriptionsChanged>
+        <AllowedSingleSignOn>False</AllowedSingleSignOn>
+        <BelongsToResourceGroups>
+            <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">Gnome Shipping D3</string>
+        </BelongsToResourceGroups>
+        <BelongsToResourceGroupsChanged>False</BelongsToResourceGroupsChanged>
+        <DashboardName>None</DashboardName>
+        <Email>beer@xata.com</Email>
+        <EncryptedPassword>xrs123</EncryptedPassword>
+        <FirstName>super</FirstName>
+        <Language>English</Language>
+        <LastName>beer</LastName>
+        <MiddleName>book</MiddleName>
+        <OrganizationID>46663</OrganizationID>
+        <OrganizationName>Gnome Shipping D3</OrganizationName>
+        <PasswordNeverExpires>False</PasswordNeverExpires>
+        <Status>Active</Status>
+        <UserName>beer</UserName>
+        <UserRole>Operations</UserRole>
+    </User>
+</ArrayOfUser>
