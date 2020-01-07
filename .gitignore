@@ -132,3 +132,7 @@ dmypy.json
 Results/*
 TaurusResults/*
 pabot_results/*
+
+# exception to the rule
+!Results/.gitkeep
+!Results/README.md
