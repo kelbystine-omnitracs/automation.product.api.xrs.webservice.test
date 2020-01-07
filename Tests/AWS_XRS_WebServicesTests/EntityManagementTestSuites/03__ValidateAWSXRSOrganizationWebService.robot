@@ -2,12 +2,12 @@
 Documentation   Fundamental suite to test XRS AWS Organization Entity Management Web Services
 Library         FakerLibrary
 Library         JSONLibrary
-Resource        ../../Resources/XRS_WebServices/XRSCommonWebService.resource
-Resource        ../../Resources/XRS_WebServices/EntityManagement/Organization.resource
-Resource        ../../Resources/XRS_WebServices/Toolbox/URIStringBuilderTool.resource
-Variables       ./TestOrganizationData.yaml
-Variables       ../../Resources/XRS_WebServices/XRSWebServicesBaseURI.yaml
-Variables       ../../Data/TestBenchDefinitions/%{TEST_BENCH}TestBench/CompanyDefinition.yaml
+Resource        ../../../Resources/XRS_WebServices/XRSCommonWebService.resource
+Resource        ../../../Resources/XRS_WebServices/EntityManagement/Organization.resource
+Resource        ../../../Resources/XRS_WebServices/Toolbox/URIStringBuilderTool.resource
+Variables       ./EntityManagementTestData/TestOrganizationData.yaml
+Variables       ../../../Resources/XRS_WebServices/XRSWebServicesBaseURI.yaml
+Variables       ../../../Data/TestBenchDefinitions/%{TEST_BENCH}TestBench/CompanyDefinition.yaml
 # Suite Setup and Teardown
 Suite Setup     Run Keywords
                 ...  Create AWS XRS Web Services Session
@@ -79,7 +79,7 @@ Validate AWS XRS Get Organizations Performance (settings) Data By SID REST Web S
 
 Validate AWS XRS Put Organization Performance (settings) Data By SID REST Web Services Update Return 200 OK
   [Documentation]  Sends an performance settings update request from a json file, expects a 200 response
-  ${json_data} =  Load JSON From File  ${CURDIR}/organization_performance_minimum_setting.json
+  ${json_data} =  Load JSON From File  ${CURDIR}/EntityManagementTestData/organization_performance_minimum_setting.json
   # @{jsdon_data_as_list} =  Create List  ${json_data}
   ${response} =  Put Organizations Performance Data By ID  ${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_1_DICT.OrganizationId}  ${json_data}
   Should Be Equal As Strings  ${response.status_code}  200

@@ -1,11 +1,11 @@
 *** Settings ***
 Documentation   Fundamental suite to test XRS AWS Device Entity Management Web Services
-Resource        ../../Resources/XRS_WebServices/XRSCommonWebService.resource
-Resource        ../../Resources/XRS_WebServices/EntityManagement/Device.resource
-Resource        ../../Resources/XRS_WebServices/Toolbox/URIStringBuilderTool.resource
-Variables       ./TestDeviceData.yaml
-Variables       ../../Resources/XRS_WebServices/XRSWebServicesBaseURI.yaml
-Variables       ../../Data/TestBenchDefinitions/%{TEST_BENCH}TestBench/CompanyDefinition.yaml
+Resource        ../../../Resources/XRS_WebServices/XRSCommonWebService.resource
+Resource        ../../../Resources/XRS_WebServices/EntityManagement/Device.resource
+Resource        ../../../Resources/XRS_WebServices/Toolbox/URIStringBuilderTool.resource
+Variables       ./EntityManagementTestData/TestDeviceData.yaml
+Variables       ../../../Resources/XRS_WebServices/XRSWebServicesBaseURI.yaml
+Variables       ../../../Data/TestBenchDefinitions/%{TEST_BENCH}TestBench/CompanyDefinition.yaml
 # Suite Setup and Teardown
 Suite Setup     Run keywords
                 ...  Create AWS XRS Web Services Session

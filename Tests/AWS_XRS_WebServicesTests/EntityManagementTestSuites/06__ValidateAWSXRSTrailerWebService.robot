@@ -1,11 +1,11 @@
 *** Settings ***
 Documentation   Fundamental suite to test XRS AWS Trailer Entity Management Web Services
-Resource        ../../Resources/XRS_WebServices/XRSCommonWebService.resource
-Resource        ../../Resources/XRS_WebServices/EntityManagement/Trailer.resource
-Resource        ../../Resources/XRS_WebServices/Toolbox/URIStringBuilderTool.resource
-Variables       ./TestTrailerData.yaml
-Variables       ../../Resources/XRS_WebServices/XRSWebServicesBaseURI.yaml
-Variables       ../../Data/TestBenchDefinitions/%{TEST_BENCH}TestBench/CompanyDefinition.yaml
+Resource        ../../../Resources/XRS_WebServices/XRSCommonWebService.resource
+Resource        ../../../Resources/XRS_WebServices/EntityManagement/Trailer.resource
+Resource        ../../../Resources/XRS_WebServices/Toolbox/URIStringBuilderTool.resource
+Variables       ./EntityManagementTestData/TestTrailerData.yaml
+Variables       ../../../Resources/XRS_WebServices/XRSWebServicesBaseURI.yaml
+Variables       ../../../Data/TestBenchDefinitions/%{TEST_BENCH}TestBench/CompanyDefinition.yaml
 # Suite Setup and Teardown
 Suite Setup     Run Keywords  
                 ...  Create AWS XRS Web Services Session
