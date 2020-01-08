@@ -6,8 +6,8 @@ Variables  ../../XRS_WebServices/XRSWebServicesBaseURI.yaml
 
 *** Variables ***
 ${XRS_WEBSERVICE_PERFORMANCE_GET_BLACK_BOX_SUMMARY} =  /blackboxsummary
-${XRS_WEBSERVICE_PERFORMANCE_GET_BLACK_BOX_SUMMARY} =  /blackboxsummary/driver
-${XRS_WEBSERVICE_PERFORMANCE_GET_BLACK_BOX_SUMMARY} =  /blackboxsummary/vehicle
+${XRS_WEBSERVICE_PERFORMANCE_GET_BLACK_BOX_SUMMARY_BY_DRIVER_ID} =  /blackboxsummary/driver
+${XRS_WEBSERVICE_PERFORMANCE_GET_BLACK_BOX_SUMMARY_BY_VEHICLE_ID} =  /blackboxsummary/vehicle
 
 *** Keywords ***
 Get Black Box Summary
@@ -56,5 +56,74 @@ Get Black Box Summary
   ...  OnlyShowEventsWithVideo  # Boolean  Default Value [No Filter]
   ...    Limits results to events with or without video.
   ${uri} =  Set Variable  ${XRS_Performance_Base_URI.Black_Box}${XRS_WEBSERVICE_PERFORMANCE_GET_BLACK_BOX_SUMMARY}
+  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}  params=${params}
+  [Return]  ${response}
+
+Get All Black Box Summaries
+  [Documentation]  Get all Black Box summaries
+  ${uri} =  Set Variable  ${XRS_Performance_Base_URI.Black_Box}${XRS_WEBSERVICE_PERFORMANCE_GET_BLACK_BOX_SUMMARY}
+  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
+  [Return]  ${response}
+
+Get Black Box Summary With URI Ending With ${ending_character} And Parameters ${params}
+  [Documentation]  This Keyword modifies character between the base uri and the parameters
+  ...  This will get black box summaries that match the provided parameters.
+  ...  Params can be named individually or within a Dictionary
+  ...  See the "Get Black Box Summary" Keyword for param definitions.
+  ${uri} =  Set Variable  ${XRS_Performance_Base_URI.Black_Box}${XRS_WEBSERVICE_PERFORMANCE_GET_BLACK_BOX_SUMMARY}${ending_character}
+  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}  params=${params}
+  [Return]  ${response}
+
+# Get Summaries by Driver ID
+Get Black Box Summary By Driver ID And Parameters
+  [Arguments]  ${driver_id}  ${params}
+  [Documentation]  Call the Get Method on Black Box Summary By Driver ID.
+  ...  This will get Black Box Events that match the provided parameters.
+  ...  Params can be named individually or within a Dictionary
+  ...  See the "Get Black Box Summary" Keyword for param definitions.
+  ${uri} =  Set Variable  ${XRS_Performance_Base_URI.Black_Box}${XRS_WEBSERVICE_PERFORMANCE_GET_BLACK_BOX_SUMMARY_BY_DRIVER_ID}/${driver_id}
+  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}  params=${params}
+  [Return]  ${response}
+
+Get All Black Box Summaries By Driver ID
+  [Arguments]  ${driver_id}
+  [Documentation]  Get all Black Box summaries by Driver ID
+  ${uri} =  Set Variable  ${XRS_Performance_Base_URI.Black_Box}${XRS_WEBSERVICE_PERFORMANCE_GET_BLACK_BOX_SUMMARY_BY_DRIVER_ID}/${driver_id}
+  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
+  [Return]  ${response}
+
+Get Black Box Summary By Driver ID ${driver_id} With URI Ending With ${ending_character} And Parameters ${params}
+  [Documentation]  This Keyword modifies character between the base uri and the parameters
+  ...  This will get black box summaries that match the provided parameters.
+  ...  Params can be named individually or within a Dictionary
+  ...  See the "Get Black Box Summary" Keyword for param definitions.
+  ${uri} =  Set Variable  ${XRS_Performance_Base_URI.Black_Box}${XRS_WEBSERVICE_PERFORMANCE_GET_BLACK_BOX_SUMMARY_BY_DRIVER_ID}/${driver_id}${ending_character}
+  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}  params=${params}
+  [Return]  ${response}
+
+# Get Summaries by Vehicle ID
+Get Black Box Summary By Vehicle ID And Parameters
+  [Arguments]  ${vehicle_id}  ${params}
+  [Documentation]  Call the Get Method on Black Box Summary By Vehicle ID.
+  ...  This will get Black Box Events that match the provided parameters.
+  ...  Params can be named individually or within a Dictionary
+  ...  See the "Get Black Box Summary" Keyword for param definitions.
+  ${uri} =  Set Variable  ${XRS_Performance_Base_URI.Black_Box}${XRS_WEBSERVICE_PERFORMANCE_GET_BLACK_BOX_SUMMARY_BY_VEHICLE_ID}/${vehicle_id}
+  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}  params=${params}
+  [Return]  ${response}
+
+Get All Black Box Summaries By Vehicle ID
+  [Arguments]  ${vehicle_id}
+  [Documentation]  Get all Black Box summaries by Vehicle ID
+  ${uri} =  Set Variable  ${XRS_Performance_Base_URI.Black_Box}${XRS_WEBSERVICE_PERFORMANCE_GET_BLACK_BOX_SUMMARY_BY_VEHICLE_ID}/${vehicle_id}
+  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
+  [Return]  ${response}
+
+Get Black Box Summary By Vehicle ID ${vehicle_id} With URI Ending With ${ending_character} And Parameters ${params}
+  [Documentation]  This Keyword modifies character between the base uri and the parameters
+  ...  This will get black box summaries that match the provided parameters.
+  ...  Params can be named individually or within a Dictionary
+  ...  See the "Get Black Box Summary" Keyword for param definitions.
+  ${uri} =  Set Variable  ${XRS_Performance_Base_URI.Black_Box}${XRS_WEBSERVICE_PERFORMANCE_GET_BLACK_BOX_SUMMARY_BY_VEHICLE_ID}/${vehicle_id}${ending_character}
   ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}  params=${params}
   [Return]  ${response}
