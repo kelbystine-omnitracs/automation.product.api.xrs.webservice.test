@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation  Keyword library for interacting with the Entity > Device Webservices
-Library  RequestsLibrary
+Library   RequestsLibrary
+Resource  ../../XRS_WebServices/Toolbox/URIStringBuilderTool.resource
 Resource  ../../XRS_WebServices/XRSCommonWebService.resource
 Variables  ../../XRS_WebServices/XRSWebServicesBaseURI.yaml
 
@@ -144,3 +145,24 @@ Get Devices With URI Ending With ${ending_character} And Parameters ${params}
   ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Device}${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_PUT_DEVICES}${ending_character}
   ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}  params=${params}
   [Return]  ${response}
+
+# Helper Keywords
+Get Devices Without Forward Slash
+  [Arguments]  &{params}
+  [Documentation]  Verify that not using a '/' in the URI returns 200 OK
+  ${response} =  Get Devices  &{params}
+  [Return]  ${response.status_code}
+
+Get Devices With Forward Slash
+  [Arguments]  &{params}
+  [Documentation]  Verify that using a '/' in the URI returns 200 OK
+  ${ending_character} =  Set Variable  /
+  ${response} =  Get Devices With URI Ending With ${ending_character} And Parameters &{params}
+  [Return]  ${response.status_code}
+
+Get Devices Raw String URI With ${character_string} And Parameters ${params}
+  [Documentation]  Verify that using the given character string in the raw URI string returns 200 OK
+  ${uri_string} =  Create URI String With  ${XRS_Entity_Management_Base_URI.Device}  ${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_PUT_DEVICES}  ${character_string}
+  ${uri} =  Set Variable  ${uri_string}OrganizationID=${params.OrganizationID}&IsActive=${params.IsActive}&AsOfDateTime=${params.AsOfDateTime}
+  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
+  [Return]  ${response.status_code}

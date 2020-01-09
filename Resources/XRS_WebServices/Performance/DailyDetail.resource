@@ -16,45 +16,50 @@ Get Daily Detail
   ...  This will get Daily Details that match the provided parameters.
   ...  Params can be named individually or within a Dictionary
   ...  Param Definitions:
-  ...  AsOfDateTime  # DateTime  [1900-01-01T00:00:00] DateTime  Default Value [No Filter]
-  ...    Tells the service to return only the data that changed since the specified date and time.
-  ...    This time span is limited to 1 hour.
-  ...    System Limit: 1 hour
-  ...  DriverID  # String  Alphanumeric  Max Length: 20 characters
-  ...    Limits results to Daily Detail records for one or more vehicles.
-  ...    [No Filter] - Limits results to all Daily Detail records within resource groups that are associated with the Web Service User ID.
-  ...    [DriverID] - Limits results to the specified DriverID.
+  ...  AsOfDateTime  # DateTime  [1900-01-01T00:00:00] DateTime  Default Value = Current Date
+  ...    [Current Date] - Limits results to DailyDetail objects that have been added or edited today
+  ...    [DateTime] - DailyDetail objects that were added or edited since the specified date and time will be returned.
+  ...    Maximum Value = Current Date - 7 days
+  ...    Time = All time values are ignored
+  ...  StartDate  # DateTime  [1900-01-01T00:00:00]  Current DateTime – 182 days  Time = 12:00:00 AM if not provided
+  ...    Limits results to all Daily Detail objects that span the time from this date to the date as defined in the EndDate argument.
+  ...  EndDate  # DateTime  [1900-01-01T00:00:00]  StartDateTime + 7 days  Time = 11:59:59 PM if not provided
+  ...    Limits results to all Daily Detail objects that span the time from the date as defined in the StartDate argument to this date.
+  ...  GroupBy  # String  drtiver, Vehicle  Default: Driver
+  ...    The GroupBy parameter can be used to specify whether to return data grouped by driver or vehicle.
+  ...    If no GroupBy parameter is specified, the GroupBy parameter will use the default value of "Driver".
+  ...    This parameter is intended for use with the /DailyDetail Web Service only.
+  ...    The GroupBy parameter is not applicable to the /DailyDetail/Vehicles or /DailyDetail/Drivers Web Services.
+  ...  IncludeHistory  # Boolean  True, False  Default: False
+  ...    True - Limits the results to all Daily Detail objects within resourcegroupID within organizationID
+  ...      including historical information for Drivers & Vehicles assigned to a different organization.
+  ...    NOTE: The "Include History" option is not available when the report is sorted by Organization.
+  ...    False - Limits the results to all Daily Detail objects within resourcegroupID within organizationID
+  ...    NOTE: This field is required when making a GET call with this Web Service.
   ...  Limit  # Long  0-10000  Default Value 5000
   ...    Used in conjunction with the Offset parameter to implement paging.
   ...    Limits the number of results to a specified number.
   ...    System Limit: 10,000
-  ...  Offset  # Long  Default Value 0
+  ...  Offset  # Long  Default Value 1
   ...    Used in conjunction with the Limit parameter to implement paging.
   ...    Represents a page number for the starting point of the return set.
+  ...  OrganizationID  # String  [OrganizationID]  ***Required***
+  ...    Limits results to Daily Detail objects that belong to the specified Organization.
+  ...    NOTE: This field is REQUIRED when performing a GET call to this Web Service.
+  ...  ResourceGroupID  # Long  Default: [No Filter]
+  ...    Limits results to sites in one or more resource groups.
+  ...    [No Filter] - Limits results to all Daily Detail objects within all resource groups within organizationIDs
+  ...      (as specified by OrganizationID field).
+  ...    [ResourceGroupID] - Limits results to all Daily Detail objects within OrganizationID
+  ...      (as specified by OrganizationID field) and ResourceGroupID.
+  ...  DriverID  # String  Alphanumeric  Max Length: 20 characters
+  ...    Limits results to Daily Detail objects for the specified DriverID:
+  ...    [No Filter] - Limits the results to all Daily Detail objects within resourcegroupID within organizationID
+  ...    [DriverID] - Limits the results to all Daily Detail objects for DriverID within resourcegroupID within organizationID
   ...  VehicleID  # String  Alphanumeric  Max Length: 20 characters
-  ...    Limits results to Daily Detail records for one or more vehicles.
-  ...    [No Filter] - Limits results to all Daily Detail records within resource groups that are associated with the Web Service User ID.
-  ...    [VehicleID] - Limits results to the specified VehicleID.
-  ...  StartDate  # DateTime  Format = yyyy-dd-mmT:hh:mm:ss  Max Date = Current DateTime – 92 days  Max Time = -1 hour prior to  EndDateTime
-  ...    Limits results to all Daily Detail objects that span the time from the StartDateTime to EndDateTime arguments.
-  ...    This time span is limited to 1 hour but the StartDateTime can be 92 days earlier than the current date.
-  ...  EndDate  # DateTime  [1900-01-01T00:00:00]  Time = 11:59:59 PM if not provided
-  ...    Limits results to all Daily Detail objects that span the time from the date as defined in the StartDateTime argument to this date.
-  ...    This time span is limited to 1 hour but the StartDateTime can be 92 days earlier than the current date.
-  ...  IncludeHistory  # Boolean  True, False  Default: False
-  ...    True - Limits the results to all Operation Summary objects within the resourcegroupID and organizationID,
-  ...      including historical information for Drivers and Vehicles assigned to a different organization.
-  ...    The "Include History" option is not available when the report is sorted by Organization.
-  ...    False - Limits the results to all Operation Summary objects within the  resourcegroupID and organizationID.
-  ...  OrderDirection  # String  Ascending, Descending  Default: Descending
-  ...    Determines the order results are returned. Valid values are:
-  ...      Descending - Results returned with most recently arrived first.
-  ...      Ascending - Results returned with most recently arrived last.
-  ...    The default value is Descending.
-  ...  OrganizationID  # String  Default Value [No Filter]  ***Required***
-  ...    Limits results to events in one or more organizations.
-  ...  OnlyShowEventsWithVideo  # Boolean  Default Value [No Filter]
-  ...    Limits results to events with or without video.
+  ...    Limits results to Daily Detail objects for the specified VehicleID:
+  ...    [No Filter] - Limits the results to all Daily Detail objects within resourcegroupID within organizationID
+  ...    [VehicleID] - Limits the results to all Daily Detail objects for VehicleID within resourcegroupID within organizationID
   ${uri} =  Set Variable  ${XRS_Performance_Base_URI.Daily_Detail}${XRS_WEBSERVICE_PERFORMANCE_GET_DAILY_DETAIL}
   ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}  params=${params}
   [Return]  ${response}

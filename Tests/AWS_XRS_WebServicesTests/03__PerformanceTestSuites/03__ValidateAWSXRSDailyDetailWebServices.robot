@@ -10,7 +10,7 @@ Variables       ../../../Data/TestBenchDefinitions/%{TEST_BENCH}TestBench/Compan
 # Suite Setup and Teardown
 Suite Setup     Run Keywords
                 ...  Create AWS XRS Web Services Session
-                ...  AND  Test Data Setup For XRS AWS daily Detail Web Service Test Suite
+                ...  AND  Test Data Setup For XRS AWS Daily Detail Web Service Test Suite
 Suite Teardown  Delete All Sessions
 Force Tags      awsxrsrestwebservicevalidation  awsxrsdailydetailrestwebservicevalidation
 
@@ -21,7 +21,7 @@ ${XRS_HOST_ENVIRONMENT} =  d3  # TODO: remove this when pulled into larger suite
 *** Test Cases ***
 Validate AWS XRS Get Daily Detail REST Web Services Returns 200 OK
   [Documentation]  Get Daily Detail Events with basic parameters
-  &{params} =  Create Dictionary  OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}  IncludeHistory=True  OrderDirection=Ascending
+  &{params} =  Create Dictionary  OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}  IncludeHistory=True
   Verify Get Daily Detail With Forward Slash Returns 200 OK  &{params}
   Verify Get Daily Detail Without Forward Slash Returns 200 OK  &{params}
 
@@ -39,7 +39,7 @@ Validate AWS XRS Get Daily Detail REST Web Services For All Daily Details Return
 # Validate Get Daily Details By Driver ID
 Validate AWS XRS Get Daily Details By Driver ID REST Web Services Returns 200 OK
   [Documentation]  Get Daily Detail Events By Driver IDwith basic parameters
-  &{params} =  Create Dictionary  OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}  IncludeHistory=True  OrderDirection=Ascending
+  &{params} =  Create Dictionary  OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}  IncludeHistory=True
   Verify Get Daily Detail By Driver ID With Forward Slash Returns 200 OK  &{params}
   Verify Get Daily Detail By Driver ID Without Forward Slash Returns 200 OK  &{params}
 
@@ -57,7 +57,7 @@ Validate AWS XRS Get Daily Detail By Driver ID REST Web Services For All Daily D
 # Validate Get Daily Details By Vehicle ID
 Validate AWS XRS Get Daily Details By Vehicle ID REST Web Services Returns 200 OK
   [Documentation]  Get Daily Detail Events By Vehicle ID with basic parameters
-  &{params} =  Create Dictionary  OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}  IncludeHistory=True  OrderDirection=Ascending
+  &{params} =  Create Dictionary  OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}  IncludeHistory=True
   Verify Get Daily Detail By Vehicle ID With Forward Slash Returns 200 OK  &{params}
   Verify Get Daily Detail By Vehicle ID Without Forward Slash Returns 200 OK  &{params}
 
@@ -95,7 +95,7 @@ Verify Get Daily Detail With Forward Slash Returns 200 OK
 
 Verify Get Daily Detail Raw String URI With ${character_string} Returns 200 OK
   [Documentation]  Verify that using the given character string in the raw URI string returns 200 OK
-  &{params} =  Create Dictionary  OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}  IncludeHistory=True  OrderDirection=Ascending
+  &{params} =  Create Dictionary  OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}  IncludeHistory=True
   ${uri_string} =  Create URI String With  ${XRS_Performance_Base_URI.Daily_Detail}  ${XRS_WEBSERVICE_PERFORMANCE_GET_DAILY_DETAIL}   ${character_string}
   ${uri} =  Set Variable  ${uri_string}OrganizationID=${params.OrganizationID}&IncludeHistory=${params.IncludeHistory}&OrderDirection=${params.OrderDirection}
   ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
@@ -117,7 +117,7 @@ Verify Get Daily Detail By Driver ID With Forward Slash Returns 200 OK
 
 Verify Get Daily Detail By Driver ID Raw String URI With ${character_string} Returns 200 OK
   [Documentation]  Verify that using the given character string in the raw URI string returns 200 OK
-  &{params} =  Create Dictionary  OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}  IncludeHistory=True  OrderDirection=Ascending
+  &{params} =  Create Dictionary  OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}  IncludeHistory=True
   ${uri_string} =  Create URI String With  ${XRS_Performance_Base_URI.Daily_Detail}  ${XRS_WEBSERVICE_PERFORMANCE_GET_DAILY_DETAIL_BY_DRIVER_ID}/${SAMPLE_DRIVER_ID_FOR_BLACKBOX_TEST}   ${character_string}
   ${uri} =  Set Variable  ${uri_string}OrganizationID=${params.OrganizationID}&IncludeHistory=${params.IncludeHistory}&OrderDirection=${params.OrderDirection}
   ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
@@ -139,7 +139,7 @@ Verify Get Daily Detail By Vehicle ID With Forward Slash Returns 200 OK
 
 Verify Get Daily Detail By Vehicle ID Raw String URI With ${character_string} Returns 200 OK
   [Documentation]  Verify that using the given character string in the raw URI string returns 200 OK
-  &{params} =  Create Dictionary  OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}  IncludeHistory=True  OrderDirection=Ascending
+  &{params} =  Create Dictionary  OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}  IncludeHistory=True
   ${uri_string} =  Create URI String With  ${XRS_Performance_Base_URI.Daily_Detail}  ${XRS_WEBSERVICE_PERFORMANCE_GET_DAILY_DETAIL_BY_VEHICLE_ID}/${SAMPLE_VEHICLE_ID_FOR_BLACKBOX_TEST}   ${character_string}
   ${uri} =  Set Variable  ${uri_string}OrganizationID=${params.OrganizationID}&IncludeHistory=${params.IncludeHistory}&OrderDirection=${params.OrderDirection}
   ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
