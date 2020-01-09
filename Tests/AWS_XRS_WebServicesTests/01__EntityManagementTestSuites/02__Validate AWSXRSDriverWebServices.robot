@@ -13,8 +13,6 @@ Suite Teardown  Delete All Sessions
 Force Tags      awsxrsrestwebservicevalidation  awsxrsdriverrestwebservicevalidation
 
 *** Variables ***
-# Setting a default environment
-${XRS_HOST_ENVIRONMENT} =  d3  # TODO: remove this when pulled into larger suite
 
 *** Test Cases ***
 Validate AWS XRS Get Driver REST Web Services Returns 400 Error
