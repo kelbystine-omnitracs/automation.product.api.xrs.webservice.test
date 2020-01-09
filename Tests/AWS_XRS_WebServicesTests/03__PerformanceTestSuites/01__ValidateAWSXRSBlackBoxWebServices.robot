@@ -75,15 +75,9 @@ Validate AWS XRS Get Black Box Summary By Vehicle ID REST Web Services For All B
 *** Keywords ***
 Test Data Setup For XRS AWS Black Box Web Service Test Suite
   [Documentation]  Keyword for setting up suite variables for AWS Black Box Web Service Tests.
-  ${driver_response} =  Get Drivers  IsActive=True
-  ${driver_response_json} =  To Json  ${driver_response.content}
-  &{get_first_active_driver} =  Set Variable  @{driver_response_json}[0]
-  ${SAMPLE_DRIVER_ID_FOR_BLACKBOX_TEST} =  Set Variable  ${get_first_active_driver.DriverID}
+  ${SAMPLE_DRIVER_ID_FOR_BLACKBOX_TEST} =  Get The nth Active Driver ID  0
   Set Suite Variable  ${SAMPLE_DRIVER_ID_FOR_BLACKBOX_TEST}
-  ${vehicle_response} =  Get Vehicles  IsActive=True
-  ${vehicle_response_json} =  To Json  ${vehicle_response.content}
-  &{get_first_active_vehicle} =  Set Variable  @{vehicle_response_json}[0]
-  ${SAMPLE_VEHICLE_ID_FOR_BLACKBOX_TEST} =  Set Variable  ${get_first_active_vehicle.VehicleName}
+  ${SAMPLE_VEHICLE_ID_FOR_BLACKBOX_TEST} =  Get The nth Active Vehicle ID  0
   Set Suite Variable  ${SAMPLE_VEHICLE_ID_FOR_BLACKBOX_TEST}
 
 Verify Get Black Box Summary Without Forward Slash Returns 200 OK

@@ -257,3 +257,12 @@ Get All Vehicles
   ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Vehicle}${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_PUT_DELETE_VEHICLES}
   ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
   [Return]  ${response}
+
+Get The nth Active Vehicle ID
+    [Arguments]  ${nth_vehicle}
+    [Documentation]  This keyword pulls a 0 index list of vehicle json objects and returns the nth vehicle ID.
+    ...  The argument ${nth_vehicle} must be an integer.
+    ${vehicle_response} =  Get Vehicles  IsActive=True
+    ${vehicle_response_json} =  To Json  ${vehicle_response.content}
+    &{get_first_active_vehicle} =  Set Variable  @{vehicle_response_json}[${nth_vehicle}]
+    [Return]  ${get_first_active_vehicle.VehicleName}

@@ -351,3 +351,12 @@ Delete Drivers By IDs
     ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Driver}${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_PUT_DELETE_DRIVERS}/${drivers_sid}
     ${response} =  Delete Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
     [Return]  ${response}
+
+Get The nth Active Driver ID
+    [Arguments]  ${nth_driver}
+    [Documentation]  This keyword pulls a 0 index list of driver json objects and returns the nth driver ID.
+    ...  The argument ${nth_driver} must be an integer.
+    ${driver_response} =  Get Drivers  IsActive=True
+    ${driver_response_json} =  To Json  ${driver_response.content}
+    &{get_first_active_driver} =  Set Variable  @{driver_response_json}[${nth_driver}]
+    [Return]  ${get_first_active_driver.DriverID}
