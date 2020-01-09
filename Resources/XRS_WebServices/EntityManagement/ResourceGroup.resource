@@ -1,7 +1,8 @@
 *** Settings ***
 Documentation  Keyword library for interacting with the Entity > Resource Group Webservices
 Library  RequestsLibrary
-Resource  ../../XRS_WebServices/XRSCommonWebService.resource
+Resource   ../../XRS_WebServices/XRSCommonWebService.resource
+Resource   ../../XRS_WebServices/Toolbox/URIStringBuilderTool.resource
 Variables  ../../XRS_WebServices/XRSWebServicesBaseURI.yaml
 
 *** Variables ***
@@ -67,3 +68,25 @@ Get Resource Groups With URI Ending With ${ending_character} And Parameters ${pa
   ${uri} =  Set Variable  ${XRS_Entity_Management_Base_URI.Resource_Group}${XRS_WEBSERVICE_ENTITY_MANAGEMENT_GET_RESOURCE_GROUPS}${ending_character}
   ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}  params=${params}
   [Return]  ${response}
+
+# Helper Keywords
+Get Resource Groups Response Code Without Forward Slash
+  [Arguments]  &{params}
+  [Documentation]  Returns the response code with '?' before the parameters.
+  ${response} =  Get Resource Groups  &{params}
+  [Return]  ${response.status_code}
+
+Get Resource Groups Response Code With Forward Slash
+  [Arguments]  &{params}
+  [Documentation]  Returns the response code when the character '/' is placed before '?'.
+  ${response} =  Get Resource Groups With URI Ending With / And Parameters &{params}
+  [Return]  ${response.status_code}
+
+Get Resource Groups Raw String URI Response Code With ${character_string} And Parameters ${params_string}
+  [Documentation]  Uses the given character string to create raw URI string Get request
+  ...  ${character_string} is a set of 1+ characters
+  ...  ${params_string} is a series of '&' delimited parameters 
+  ${uri_string} =  Create URI String With  ${XRS_Entity_Management_Base_URI.Resource_Group}  ${XRS_WEBSERVICE_ENTITY_MANAGEMENT_GET_RESOURCE_GROUPS}  ${character_string}
+  ${uri} =  Set Variable  ${uri_string}${params_string}
+  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
+  [Return]  ${response.status_code}
