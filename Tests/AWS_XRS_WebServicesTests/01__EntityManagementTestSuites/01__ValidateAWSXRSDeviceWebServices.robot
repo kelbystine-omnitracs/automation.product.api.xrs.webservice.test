@@ -49,12 +49,8 @@ Validate AWS XRS Get Devices REST Web Services Returns 200 OK
 
 Validate AWS XRS Get Devices REST Web Services Returns 200 OK With Raw String URI
   [Documentation]  Get devices with basic parameters using a raw URI string
-  ${params_string} =  Catenate  SEPARATOR=&
-  ...  OrganizationID=${XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS.OrganizationID}
-  ...  IsActive=${XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS.IsActive}
-  ...  AsOfDateTime=${XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS.AsOfDateTime}
-  ${w_slash_question_response} =  Get Devices Raw String URI Response Code With /? And Parameters ${params_string}
-  ${w_question_response} =  Get Devices Raw String URI Response Code With ? And Parameters ${params_string}
+  ${w_slash_question_response} =  Get Devices Raw String URI Response Code With /? And Parameters ${XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS_STRING}
+  ${w_question_response} =  Get Devices Raw String URI Response Code With ? And Parameters ${XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS_STRING}
   Should Be Equal As Strings  ${w_slash_question_response}  200
   Should Be Equal As Strings  ${w_question_response}  200
 
@@ -103,3 +99,9 @@ Test Data Setup For XRS AWS Device Web Service Test Suite
   ...  IsActive=True
   ...  AsOfDateTime=${mm}/${dd}/${yyyy}
   Set Suite Variable  &{XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS}
+  # Create test params string
+  ${XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS_STRING} =  Catenate  SEPARATOR=&
+  ...  OrganizationID=${XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS.OrganizationID}
+  ...  IsActive=${XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS.IsActive}
+  ...  AsOfDateTime=${XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS.AsOfDateTime}
+  Set Suite Variable  ${XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS_STRING}
