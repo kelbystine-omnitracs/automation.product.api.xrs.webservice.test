@@ -2,7 +2,6 @@
 Documentation   Fundamental suite to test XRS AWS Site Entity Management Web Services
 Resource        ../../../Resources/XRS_WebServices/XRSCommonWebService.resource
 Resource        ../../../Resources/XRS_WebServices/EntityManagement/Site.resource
-Resource        ../../../Resources/XRS_WebServices/Toolbox/URIStringBuilderTool.resource
 Variables       ./EntityManagementTestData/TestSiteData.yaml
 Variables       ../../../Resources/XRS_WebServices/XRSWebServicesBaseURI.yaml
 Variables       ../../../Data/TestBenchDefinitions/%{TEST_BENCH}TestBench/CompanyDefinition.yaml
@@ -14,8 +13,6 @@ Suite Teardown  Delete All Sessions
 Force Tags      awsxrsrestwebservicevalidation  awsxrssiterestwebservicevalidation
 
 *** Variables ***
-# Setting a default environment
-${XRS_HOST_ENVIRONMENT} =  d3  # TODO: remove this when pulled into larger suite
 
 *** Test Cases ***
 Validate AWS XRS Get Site REST Web Services Returns Geographic "Site identity does not exist." Error Message
@@ -50,15 +47,17 @@ Validate AWS XRS Put Site REST Web Services Modifies Site Successfully
 
 Validate AWS XRS Get Sites REST Web Services Returns 200 OK
   [Documentation]  Get Sites with basic parameters
-  ${yyyy}	${mm}	${dd} =	Get Time	year,month,day
-  &{params} =  Create Dictionary  OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}  IsActive=True  AsOfDateTime=${mm}/${dd}/${yyyy}
-  Verify Get Sites With Forward Slash Returns 200 OK  &{params}
-  Verify Get Sites Without Forward Slash Returns 200 OK  &{params}
+  ${wo_slash_response} =  Get Sites Response Code With Forward Slash  &{XRS_AWS_WEBSERVICE_SITE_TEST_PARAMS}
+  ${w_slash_response} =  Get Sites Response Code Without Forward Slash  &{XRS_AWS_WEBSERVICE_SITE_TEST_PARAMS}
+  Should Be Equal As Strings  ${wo_slash_response}  200
+  Should Be Equal As Strings  ${w_slash_response}  200
 
 Validate AWS XRS Get Sites REST Web Services Returns 200 OK With Raw String URI
   [Documentation]  Get Sites with basic parameters using a raw URI string
-  Verify Get Sites Raw String URI With /? Returns 200 OK
-  Verify Get Sites Raw String URI With ? Returns 200 OK
+  ${w_slash_question_response} =  Get Sites Raw String URI Response Code With /? And Parameters ${XRS_AWS_WEBSERVICE_SITE_TEST_PARAMS_STRING}
+  ${w_question_response} =  Get Sites Raw String URI Response Code With ? And Parameters ${XRS_AWS_WEBSERVICE_SITE_TEST_PARAMS_STRING}
+  Should Be Equal As Strings  ${w_slash_question_response}  200
+  Should Be Equal As Strings  ${w_question_response}  200
 
 Validate AWS XRS Delete Site REST Web Services Returns 200 OK
   [Documentation]  Verifies that created Site is deleted
@@ -113,25 +112,16 @@ Test Data Setup For XRS AWS Site Web Service Test Suite
   ...  TimeZone=${XRS_WEB_SERVICES_TEST_SITE.TimeZone}
   @{XRS_AWS_WEBSERVICE_PUT_TEST_SITE_LIST} =  Create List  ${XRS_AWS_WEBSERVICE_PUT_TEST_SITE_1_DICT}
   Set Suite Variable  @{XRS_AWS_WEBSERVICE_PUT_TEST_SITE_LIST}
-
-Verify Get Sites Without Forward Slash Returns 200 OK
-  [Arguments]  &{params}
-  [Documentation]  Verify that not using a '/' in the URI returns 200 OK
-  ${response} =  Get Sites  &{params}
-  Should Be Equal As Strings  ${response.status_code}  200
-
-Verify Get Sites With Forward Slash Returns 200 OK
-  [Arguments]  &{params}
-  [Documentation]  Verify that using a '/' in the URI returns 200 OK
-  ${ending_character} =  Set Variable  /
-  ${response} =  Get Sites With URI Ending With ${ending_character} And Parameters &{params}
-  Should Be Equal As Strings  ${response.status_code}  200
-
-Verify Get Sites Raw String URI With ${character_string} Returns 200 OK
-  [Documentation]  Verify that using the given character string in the raw URI string returns 200 OK
+  # Create test params
   ${yyyy}	${mm}	${dd} =	Get Time	year,month,day
-  &{params} =  Create Dictionary  OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}  IsActive=True  AsOfDateTime=${mm}/${dd}/${yyyy}
-  ${uri_string} =  Create URI String With  ${XRS_Entity_Management_Base_URI.Site}  ${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_PUT_DELETE_SITE}  ${character_string}
-  ${uri} =  Set Variable  ${uri_string}OrganizationID=${params.OrganizationID}&IsActive=${params.IsActive}&AsOfDateTime=${params.AsOfDateTime}
-  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
-  Should Be Equal As Strings  ${response.status_code}  200
+  &{XRS_AWS_WEBSERVICE_SITE_TEST_PARAMS} =  Create Dictionary
+  ...  OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}
+  ...  IsActive=True
+  ...  AsOfDateTime=${mm}/${dd}/${yyyy}
+  Set Suite Variable  &{XRS_AWS_WEBSERVICE_SITE_TEST_PARAMS}
+  # Create test params string
+  ${XRS_AWS_WEBSERVICE_SITE_TEST_PARAMS_STRING} =  Catenate  SEPARATOR=&
+  ...  OrganizationID=${XRS_AWS_WEBSERVICE_SITE_TEST_PARAMS.OrganizationID}
+  ...  IsActive=${XRS_AWS_WEBSERVICE_SITE_TEST_PARAMS.IsActive}
+  ...  AsOfDateTime=${XRS_AWS_WEBSERVICE_SITE_TEST_PARAMS.AsOfDateTime}
+  Set Suite Variable  ${XRS_AWS_WEBSERVICE_SITE_TEST_PARAMS_STRING}
