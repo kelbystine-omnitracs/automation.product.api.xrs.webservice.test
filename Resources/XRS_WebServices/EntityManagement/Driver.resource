@@ -2,6 +2,7 @@
 Documentation  Keyword library for interacting with the Entity > Driver Webservices
 Library  RequestsLibrary
 Resource  ../../XRS_WebServices/XRSCommonWebService.resource
+Resource  ../../XRS_WebServices/Toolbox/URIStringBuilderTool.resource
 Variables  ../../XRS_WebServices/XRSWebServicesBaseURI.yaml
 
 *** Variables ***
@@ -352,6 +353,7 @@ Delete Drivers By IDs
     ${response} =  Delete Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
     [Return]  ${response}
 
+# Helper Keywords
 Get The nth Active Driver ID
     [Arguments]  ${nth_driver}
     [Documentation]  This keyword pulls a 0 index list of driver json objects and returns the nth driver ID.
@@ -360,3 +362,24 @@ Get The nth Active Driver ID
     ${driver_response_json} =  To Json  ${driver_response.content}
     &{get_first_active_driver} =  Set Variable  @{driver_response_json}[${nth_driver}]
     [Return]  ${get_first_active_driver.DriverID}
+
+Get Drivers Response Code Without Forward Slash
+  [Arguments]  &{params}
+  [Documentation]  Returns the response code with '?' before the parameters.
+  ${response} =  Get Drivers  &{params}
+  [Return]  ${response.status_code}
+
+Get Drivers Response Code With Forward Slash
+  [Arguments]  &{params}
+  [Documentation]  Returns the response code when the character '/' is placed before '?'.
+  ${response} =  Get Drivers With URI Ending With / And Parameters &{params}
+  [Return]  ${response.status_code}
+
+Get Drivers Raw String URI Response Code With ${character_string} And Parameters ${params_string}
+  [Documentation]  Uses the given character string to create raw URI string Get request
+  ...  ${character_string} is a set of 1+ characters
+  ...  ${params_string} is a series of '&' delimited parameters 
+  ${uri_string} =  Create URI String With  ${XRS_Entity_Management_Base_URI.Driver}  ${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_PUT_DELETE_DRIVERS}  ${character_string}
+  ${uri} =  Set Variable  ${uri_string}${params_string}
+  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
+  [Return]  ${response.status_code}

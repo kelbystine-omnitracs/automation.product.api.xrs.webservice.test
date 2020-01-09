@@ -2,7 +2,6 @@
 Documentation   Fundamental suite to test XRS AWS Driver Entity Management Web Services
 Resource        ../../../Resources/XRS_WebServices/XRSCommonWebService.resource
 Resource        ../../../Resources/XRS_WebServices/EntityManagement/Driver.resource
-Resource        ../../../Resources/XRS_WebServices/Toolbox/URIStringBuilderTool.resource
 Variables       ./EntityManagementTestData/TestDriverData.yaml
 Variables       ../../../Resources/XRS_WebServices/XRSWebServicesBaseURI.yaml
 Variables       ../../../Data/TestBenchDefinitions/%{TEST_BENCH}TestBench/CompanyDefinition.yaml
@@ -49,15 +48,21 @@ Validate AWS XRS Put Driver REST Web Services Modifies Driver Successfully
 
 Validate AWS XRS Get Drivers REST Web Services Returns 200 OK
   [Documentation]  Get drivers with basic parameters
-  ${yyyy}	${mm}	${dd} =	Get Time	year,month,day
-  &{params} =  Create Dictionary  OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}  IsActive=True  AsOfDateTime=${mm}/${dd}/${yyyy}
-  Verify Get Drivers With Forward Slash Returns 200 OK  &{params}
-  Verify Get Drivers Without Forward Slash Returns 200 OK  &{params}
+  ${wo_slash_response} =  Get Drivers Response Code With Forward Slash  &{XRS_AWS_WEBSERVICE_DRIVER_TEST_PARAMS}
+  ${w_slash_response} =  Get Drivers Response Code Without Forward Slash  &{XRS_AWS_WEBSERVICE_DRIVER_TEST_PARAMS}
+  Should Be Equal As Strings  ${wo_slash_response}  200
+  Should Be Equal As Strings  ${w_slash_response}  200
 
 Validate AWS XRS Get Drivers REST Web Services Returns 200 OK With Raw String URI
   [Documentation]  Get drivers with basic parameters using a raw URI string
-  Verify Get Drivers Raw String URI With /? Returns 200 OK
-  Verify Get Drivers Raw String URI With ? Returns 200 OK
+  ${params_string} =  Catenate  SEPARATOR=&
+  ...  OrganizationID=${XRS_AWS_WEBSERVICE_DRIVER_TEST_PARAMS.OrganizationID}
+  ...  IsActive=${XRS_AWS_WEBSERVICE_DRIVER_TEST_PARAMS.IsActive}
+  ...  AsOfDateTime=${XRS_AWS_WEBSERVICE_DRIVER_TEST_PARAMS.AsOfDateTime}
+  ${w_slash_question_response} =  Get Drivers Raw String URI Response Code With /? And Parameters ${params_string}
+  ${w_question_response} =  Get Drivers Raw String URI Response Code With ? And Parameters ${params_string}
+  Should Be Equal As Strings  ${w_slash_question_response}  200
+  Should Be Equal As Strings  ${w_question_response}  200
 
 Validate AWS XRS Delete Driver REST Web Services Returns 200 OK
   [Documentation]  Verifies that created driver is deleted
@@ -133,25 +138,10 @@ Test Data Setup For XRS AWS Driver Web Service Test Suite
   ...  UserName=${XRS_WEB_SERVICES_TEST_DRIVER_1.UserName}
   @{XRS_AWS_WEBSERVICE_PUT_TEST_DRIVER_LIST} =  Create List  ${XRS_AWS_WEBSERVICE_PUT_TEST_DRIVER_1_DICT}
   Set Suite Variable  @{XRS_AWS_WEBSERVICE_PUT_TEST_DRIVER_LIST}
-
-Verify Get Drivers Without Forward Slash Returns 200 OK
-  [Arguments]  &{params}
-  [Documentation]  Verify that not using a '/' in the URI returns 200 OK
-  ${response} =  Get Drivers  &{params}
-  Should Be Equal As Strings  ${response.status_code}  200
-
-Verify Get Drivers With Forward Slash Returns 200 OK
-  [Arguments]  &{params}
-  [Documentation]  Verify that using a '/' in the URI returns 200 OK
-  ${ending_character} =  Set Variable  /
-  ${response} =  Get Drivers With URI Ending With ${ending_character} And Parameters &{params}
-  Should Be Equal As Strings  ${response.status_code}  200
-
-Verify Get Drivers Raw String URI With ${character_string} Returns 200 OK
-  [Documentation]  Verify that using the given character string in the raw URI string returns 200 OK
+  # Create test params
   ${yyyy}	${mm}	${dd} =	Get Time	year,month,day
-  &{params} =  Create Dictionary  OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}  IsActive=True  AsOfDateTime=${mm}/${dd}/${yyyy}
-  ${uri_string} =  Create URI String With  ${XRS_Entity_Management_Base_URI.Driver}  ${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_PUT_DELETE_DRIVERS}  ${character_string}
-  ${uri} =  Set Variable  ${uri_string}OrganizationID=${params.OrganizationID}&IsActive=${params.IsActive}&AsOfDateTime=${params.AsOfDateTime}
-  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
-  Should Be Equal As Strings  ${response.status_code}  200
+  &{XRS_AWS_WEBSERVICE_DRIVER_TEST_PARAMS} =  Create Dictionary
+  ...  OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}
+  ...  IsActive=True
+  ...  AsOfDateTime=${mm}/${dd}/${yyyy}
+  Set Suite Variable  &{XRS_AWS_WEBSERVICE_DRIVER_TEST_PARAMS}

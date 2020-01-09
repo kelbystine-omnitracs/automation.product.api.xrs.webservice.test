@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation   Fundamental suite to test XRS AWS Device Entity Management Web Services
+Documentation   Smoke suite to test XRS AWS Device Entity Management Web Services
 Resource        ../../../Resources/XRS_WebServices/XRSCommonWebService.resource
 Resource        ../../../Resources/XRS_WebServices/EntityManagement/Device.resource
 Variables       ./EntityManagementTestData/TestDeviceData.yaml
@@ -12,8 +12,6 @@ Suite Teardown  Delete All Sessions
 Force Tags      awsxrsrestwebservicevalidation  awsxrsdevicerestwebservicevalidation
 
 *** Variables ***
-# Setting a default environment
-${XRS_HOST_ENVIRONMENT} =  d3  # TODO: remove this when pulled into larger suite
 
 *** Test Cases ***
 Validate AWS XRS Get Device REST Web Services Returns 400 Error
@@ -44,19 +42,19 @@ Validate AWS XRS Put Device REST Web Services Modifies Description Successfully
 
 Validate AWS XRS Get Devices REST Web Services Returns 200 OK
   [Documentation]  Get devices with basic parameters
-  ${yyyy}	${mm}	${dd} =	Get Time	year,month,day
-  &{params} =  Create Dictionary  OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}  IsActive=True  AsOfDateTime=${mm}/${dd}/${yyyy}
-  ${wo_slash_response} =  Get Devices With Forward Slash  &{params}
-  ${w_slash_response} =  Get Devices Without Forward Slash  &{params}
+  ${wo_slash_response} =  Get Devices Response Code With Forward Slash  &{XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS}
+  ${w_slash_response} =  Get Devices Response Code Without Forward Slash  &{XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS}
   Should Be Equal As Strings  ${wo_slash_response}  200
   Should Be Equal As Strings  ${w_slash_response}  200
 
 Validate AWS XRS Get Devices REST Web Services Returns 200 OK With Raw String URI
   [Documentation]  Get devices with basic parameters using a raw URI string
-  ${yyyy}	${mm}	${dd} =	Get Time	year,month,day
-  &{params} =  Create Dictionary  OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}  IsActive=True  AsOfDateTime=${mm}/${dd}/${yyyy}
-  ${w_slash_question_response} =  Get Devices Raw String URI With /? And Parameters &{params}
-  ${w_question_response} =  Get Devices Raw String URI With ? And Parameters &{params}
+  ${params_string} =  Catenate  SEPARATOR=&
+  ...  OrganizationID=${XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS.OrganizationID}
+  ...  IsActive=${XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS.IsActive}
+  ...  AsOfDateTime=${XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS.AsOfDateTime}
+  ${w_slash_question_response} =  Get Devices Raw String URI Response Code With /? And Parameters ${params_string}
+  ${w_question_response} =  Get Devices Raw String URI Response Code With ? And Parameters ${params_string}
   Should Be Equal As Strings  ${w_slash_question_response}  200
   Should Be Equal As Strings  ${w_question_response}  200
 
@@ -98,3 +96,10 @@ Test Data Setup For XRS AWS Device Web Service Test Suite
   ...  Status=${XRS_WEB_SERVICES_TEST_DEVICE_1.Status}
   @{XRS_AWS_WEBSERVICE_PUT_TEST_DEVICE_LIST} =  Create List  ${XRS_AWS_WEBSERVICE_PUT_TEST_DEVICE_1_DICT}
   Set Suite Variable  @{XRS_AWS_WEBSERVICE_PUT_TEST_DEVICE_LIST}
+  # Create test params
+  ${yyyy}	${mm}	${dd} =	Get Time	year,month,day
+  &{XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS} =  Create Dictionary
+  ...  OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}
+  ...  IsActive=True
+  ...  AsOfDateTime=${mm}/${dd}/${yyyy}
+  Set Suite Variable  &{XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS}
