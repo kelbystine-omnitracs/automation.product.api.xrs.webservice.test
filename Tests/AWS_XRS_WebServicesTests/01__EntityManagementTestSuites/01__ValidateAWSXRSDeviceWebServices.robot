@@ -2,6 +2,7 @@
 Documentation   Smoke suite to test XRS AWS Device Entity Management Web Services
 Resource        ../../../Resources/XRS_WebServices/XRSCommonWebService.resource
 Resource        ../../../Resources/XRS_WebServices/EntityManagement/Device.resource
+Resource        ../../../Resources/XRS_WebServices/Toolbox/ParseResponse.resource
 Variables       ./EntityManagementTestData/TestDeviceData.yaml
 Variables       ../../../Data/TestBenchDefinitions/%{TEST_BENCH}TestBench/CompanyDefinition.yaml
 # Suite Setup and Teardown
@@ -22,10 +23,8 @@ Validate AWS XRS Get Device REST Web Services Returns 400 Error
 Validate AWS XRS Post Device REST Web Services Returns Code 201
   [Documentation]  Posts a device and expects a Code value of 201
   ${response} =  Post Devices  @{XRS_AWS_WEBSERVICE_POST_TEST_DEVICE_LIST}
-  ${json_response} =  To Json  ${response.content}
-  FOR  ${r}  IN  @{json_response}
-    Should Be Equal As Strings  ${r}[Code]  201
-  END
+  &{expected_values} =  Create Dictionary  key=Code  value=201
+  Verify Response List ${response} Has Key ${expected_values.key} And Contains Value ${expected_values.value}
 
 Validate AWS XRS Get Device REST Web Services Returns 200 OK
   [Documentation]  Verifies that a posted device now exists
@@ -35,10 +34,8 @@ Validate AWS XRS Get Device REST Web Services Returns 200 OK
 Validate AWS XRS Put Device REST Web Services Modifies Description Successfully
   [Documentation]  Posts a device and expects a Code value of 201
   ${response} =  Put Devices  @{XRS_AWS_WEBSERVICE_PUT_TEST_DEVICE_LIST}
-  ${json_response} =  To Json  ${response.content}
-  FOR  ${r}  IN  @{json_response}
-    Should Be Equal As Strings  ${r}[Description]  Device edited successfully.
-  END
+  &{expected_values} =  Create Dictionary  key=Description  value=Device edited successfully.
+  Verify Response List ${response} Has Key ${expected_values.key} And Contains Value ${expected_values.value}
 
 Validate AWS XRS Get Devices REST Web Services Returns 200 OK
   [Documentation]  Get devices with basic parameters

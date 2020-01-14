@@ -2,9 +2,11 @@
 Documentation   Fundamental suite to test XRS AWS Organization Entity Management Web Services
 Library         FakerLibrary
 Library         JSONLibrary
+Library         Collections
 Resource        ../../../Resources/XRS_WebServices/XRSCommonWebService.resource
 Resource        ../../../Resources/XRS_WebServices/EntityManagement/Organization.resource
 Resource        ../../../Resources/XRS_WebServices/Toolbox/URIStringBuilderTool.resource
+Resource        ../../../Resources/XRS_WebServices/Toolbox/ParseResponse.resource
 Variables       ./EntityManagementTestData/TestOrganizationData.yaml
 Variables       ../../../Resources/XRS_WebServices/XRSWebServicesBaseURI.yaml
 Variables       ../../../Data/TestBenchDefinitions/%{TEST_BENCH}TestBench/CompanyDefinition.yaml
@@ -26,10 +28,13 @@ Validate AWS XRS Get Organization By SID REST Web Services Returns 200 OK With P
 Validate AWS XRS Post Organization REST Web Services Returns Caption "Request succeeded."
   [Documentation]  Posts a Organization and expects a Caption value "Request succeeded."
   ${response} =  Post Organizations  @{XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_LIST}
+  &{expected_values} =  Create Dictionary  key=Caption  value=Request succeeded.
+  # Parse response
   ${json_response} =  To Json  ${response.content}
   FOR  ${r}  IN  @{json_response}
-    Should Be Equal As Strings  ${r}[Caption]  Request succeeded.
-    ${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_SID} =  Set Variable  ${r}[SID]
+    ${get_caption_value} =  Get From Dictionary  ${r}  &{expected_values.key}
+    Should Be Equal As Strings  ${get_caption_value}  &{expected_values.value}
+    ${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_SID} =  Get From Dictionary  ${r}  SID
   END
   # After Test Processes
   Set Suite Variable  ${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_SID}
@@ -43,10 +48,8 @@ Validate AWS XRS Get Organization By SID REST Web Services Returns 200 OK With N
 Validate AWS XRS Put Organization REST Web Services Modifies Description Successfully
   [Documentation]  Posts a Organization and expects a Code value of 201
   ${response} =  Put Organizations  @{XRS_AWS_WEBSERVICE_PUT_TEST_ORGANIZATION_LIST}
-  ${json_response} =  To Json  ${response.content}
-  FOR  ${r}  IN  @{json_response}
-    Should Be Equal As Strings  ${r}[Description]  Organization Edited Successfully.
-  END
+  &{expected_values} =  Create Dictionary  key=Description  value=Organization Edited Successfully.
+  Verify Response List ${response} Has Key ${expected_values.key} And Contains Value ${expected_values.value}
 
 Validate AWS XRS Get Organizations By Parameters REST Web Services Returns 200 OK
   [Documentation]  Get Organizations with basic parameters

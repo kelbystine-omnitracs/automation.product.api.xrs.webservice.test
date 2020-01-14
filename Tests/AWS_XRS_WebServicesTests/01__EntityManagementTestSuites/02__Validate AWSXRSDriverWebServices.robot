@@ -2,6 +2,7 @@
 Documentation   Fundamental suite to test XRS AWS Driver Entity Management Web Services
 Resource        ../../../Resources/XRS_WebServices/XRSCommonWebService.resource
 Resource        ../../../Resources/XRS_WebServices/EntityManagement/Driver.resource
+Resource        ../../../Resources/XRS_WebServices/Toolbox/ParseResponse.resource
 Variables       ./EntityManagementTestData/TestDriverData.yaml
 Variables       ../../../Resources/XRS_WebServices/XRSWebServicesBaseURI.yaml
 Variables       ../../../Data/TestBenchDefinitions/%{TEST_BENCH}TestBench/CompanyDefinition.yaml
@@ -23,26 +24,22 @@ Validate AWS XRS Get Driver REST Web Services Returns 400 Error
 Validate AWS XRS Post Driver REST Web Services Returns Code 201
   [Documentation]  Posts a driver and expects a Code value of 201
   ${response} =  Post Drivers  @{XRS_AWS_WEBSERVICE_POST_TEST_DRIVER_LIST}
-  ${json_response} =  To Json  ${response.content}
-  FOR  ${r}  IN  @{json_response}
-    Should Be Equal As Strings  ${r}[Code]  201
-  END
+  &{expected_values} =  Create Dictionary  key=Code  value=201
+  Verify Response List ${response} Has Key ${expected_values.key} And Contains Value ${expected_values.value}
 
 Validate AWS XRS Get Driver REST Web Services Returns 200 OK
   [Documentation]  Verifies that a posted driver now exists
   ${response} =  Get Driver By ID  ${XRS_WEB_SERVICES_TEST_DRIVER_1.DriverID}
   Should Be Equal As Strings  ${response.status_code}  200
-  ${json_response} =  To Json  ${response.content}
-  ${XRS_WEB_SERVICES_TEST_DRIVER_1_SID} =  Set Variable  ${json_response}[SID]
+  # Set a global veriable for delete driver test
+  ${XRS_WEB_SERVICES_TEST_DRIVER_1_SID} =  Get Value From Response With Key  SID  ${response}
   Set Global Variable  ${XRS_WEB_SERVICES_TEST_DRIVER_1_SID}
 
 Validate AWS XRS Put Driver REST Web Services Modifies Driver Successfully
   [Documentation]  Posts a driver and expects a Code value of 201
   ${response} =  Put Drivers  @{XRS_AWS_WEBSERVICE_PUT_TEST_DRIVER_LIST}
-  ${json_response} =  To Json  ${response.content}
-  FOR  ${r}  IN  @{json_response}
-    Should Be Equal As Strings  ${r}[Description]  Driver edited successfully.
-  END
+  &{expected_values} =  Create Dictionary  key=Description  value=Driver edited successfully.
+  Verify Response List ${response} Has Key ${expected_values.key} And Contains Value ${expected_values.value}
 
 Validate AWS XRS Get Drivers REST Web Services Returns 200 OK
   [Documentation]  Get drivers with basic parameters

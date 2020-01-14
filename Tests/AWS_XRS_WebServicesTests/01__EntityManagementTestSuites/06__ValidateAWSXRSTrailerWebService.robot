@@ -2,6 +2,7 @@
 Documentation   Fundamental suite to test XRS AWS Trailer Entity Management Web Services
 Resource        ../../../Resources/XRS_WebServices/XRSCommonWebService.resource
 Resource        ../../../Resources/XRS_WebServices/EntityManagement/Trailer.resource
+Resource        ../../../Resources/XRS_WebServices/Toolbox/ParseResponse.resource
 Variables       ./EntityManagementTestData/TestTrailerData.yaml
 Variables       ../../../Resources/XRS_WebServices/XRSWebServicesBaseURI.yaml
 Variables       ../../../Data/TestBenchDefinitions/%{TEST_BENCH}TestBench/CompanyDefinition.yaml
@@ -23,10 +24,8 @@ Validate AWS XRS Get Trailer REST Web Services Returns 400 Error
 Validate AWS XRS Post Trailer REST Web Services Returns Code 201
   [Documentation]  Posts a trailer and expects a Code value of 201
   ${response} =  Post Trailers  @{XRS_AWS_WEBSERVICE_POST_TEST_TRAILER_LIST}
-  ${json_response} =  To Json  ${response.content}
-  FOR  ${r}  IN  @{json_response}
-    Should Be Equal As Strings  ${r}[Code]  201
-  END
+  &{expected_values} =  Create Dictionary  key=Code  value=201
+  Verify Response List ${response} Has Key ${expected_values.key} And Contains Value ${expected_values.value}
 
 Validate AWS XRS Get Trailer REST Web Services Returns 200 OK
   [Documentation]  Verifies that a posted trailer now exists
@@ -36,10 +35,8 @@ Validate AWS XRS Get Trailer REST Web Services Returns 200 OK
 Validate AWS XRS Put Trailer REST Web Services Modifies Driver Successfully
   [Documentation]  Posts a trailer and expects a Code value of 201
   ${response} =  Put Trailers  @{XRS_AWS_WEBSERVICE_PUT_TEST_TRAILER_LIST}
-  ${json_response} =  To Json  ${response.content}
-  FOR  ${r}  IN  @{json_response}
-    Should Be Equal As Strings  ${r}[Description]  Trailer edited successfully.
-  END
+  &{expected_values} =  Create Dictionary  key=Description  value=Trailer edited successfully.
+  Verify Response List ${response} Has Key ${expected_values.key} And Contains Value ${expected_values.value}
 
 Validate AWS XRS Get Trailers REST Web Services Returns 200 OK
   [Documentation]  Get trailers with basic parameters
@@ -69,9 +66,9 @@ Validate AWS XRS Get Trailers REST Web Services For All Trailers Returns 200 OK
 Validate AWS XRS Delete Trailers REST Web Services Returns Error Message
   [Documentation]  Attempts to delete a previously deleted trailer.
   ${response} =  Delete Trailer By ID  ${XRS_WEB_SERVICES_TEST_TRAILER.TrailerIdentity}
-  ${expected_error_message} =  Set Variable  Trailer not exist.
-  ${json_response} =  To Json  ${response.content}
-  Should Be Equal As Strings  ${json_response}[Description]  ${expected_error_message}
+  &{expected_values} =  Create Dictionary  key=Description  value=Trailer not exist.
+  ${actual_value} =  Get Value From Response With Key  ${expected_values.key}  ${response}
+  Should Be Equal As Strings  ${actual_value}  ${expected_values.value}
 
 # V2 Trailer Web servicesValidate AWS XRS Get Trailer REST Web Services Returns 400 Error
 Validate AWS XRS Get Trailer V2 REST Web Services Returns 400 Error
@@ -82,10 +79,8 @@ Validate AWS XRS Get Trailer V2 REST Web Services Returns 400 Error
 Validate AWS XRS Post Trailer V2 REST Web Services Returns Code 201
   [Documentation]  Posts a trailer and expects a Code value of 201
   ${response} =  Post Trailers V2  @{XRS_AWS_WEBSERVICE_POST_TEST_TRAILER_LIST_V2}
-  ${json_response} =  To Json  ${response.content}
-  FOR  ${r}  IN  @{json_response}
-    Should Be Equal As Strings  ${r}[Code]  201
-  END
+  &{expected_values} =  Create Dictionary  key=Code  value=201
+  Verify Response List ${response} Has Key ${expected_values.key} And Contains Value ${expected_values.value}
 
 Validate AWS XRS Get Trailer V2 REST Web Services Returns 200 OK
   [Documentation]  Verifies that a posted trailer now exists
@@ -95,22 +90,22 @@ Validate AWS XRS Get Trailer V2 REST Web Services Returns 200 OK
 Validate AWS XRS Put Trailer V2 REST Web Services Modifies Driver Successfully
   [Documentation]  Posts a trailer and expects a Code value of 201
   ${response} =  Put Trailers V2  @{XRS_AWS_WEBSERVICE_PUT_TEST_TRAILER_LIST_V2}
-  ${json_response} =  To Json  ${response.content}
-  FOR  ${r}  IN  @{json_response}
-    Should Be Equal As Strings  ${r}[Description]  Trailer edited successfully.
-  END
+  &{expected_values} =  Create Dictionary  key=Description  value=Trailer edited successfully.
+  Verify Response List ${response} Has Key ${expected_values.key} And Contains Value ${expected_values.value}
 
 Validate AWS XRS Get Trailers V2 REST Web Services Returns 200 OK
   [Documentation]  Get trailers with basic parameters
-  ${yyyy}	${mm}	${dd} =	Get Time	year,month,day
-  &{params} =  Create Dictionary  OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}  IsActive=True  AsOfDateTime=${mm}/${dd}/${yyyy}
-  Verify Get Trailers V2 With Forward Slash Returns 200 OK  &{params}
-  Verify Get Trailers V2 Without Forward Slash Returns 200 OK  &{params}
+  ${wo_slash_response} =  Get Trailers V2 Response Code With Forward Slash  &{XRS_AWS_WEBSERVICE_TRAILER_TEST_PARAMS}
+  ${w_slash_response} =  Get Trailers V2 Response Code Without Forward Slash  &{XRS_AWS_WEBSERVICE_TRAILER_TEST_PARAMS}
+  Should Be Equal As Strings  ${wo_slash_response}  200
+  Should Be Equal As Strings  ${w_slash_response}  200
 
 Validate AWS XRS Get Trailers V2 REST Web Services Returns 200 OK With Raw String URI
   [Documentation]  Get trailers with basic parameters using a raw URI string
-  Verify Get Trailers V2 Raw String URI With /? Returns 200 OK
-  Verify Get Trailers V2 Raw String URI With ? Returns 200 OK
+  ${w_slash_question_response} =  Get Trailers V2 Raw String URI Response Code With /? And Parameters ${XRS_AWS_WEBSERVICE_TRAILER_TEST_PARAMS_STRING}
+  ${w_question_response} =  Get Trailers V2 Raw String URI Response Code With ? And Parameters ${XRS_AWS_WEBSERVICE_TRAILER_TEST_PARAMS_STRING}
+  Should Be Equal As Strings  ${w_slash_question_response}  200
+  Should Be Equal As Strings  ${w_question_response}  200
 
 Validate AWS XRS Delete Trailer V2 REST Web Services Returns 200 OK
   [Documentation]  Verifies that created trailer is deleted
@@ -173,47 +168,3 @@ Test Data Setup For XRS AWS Trailer Web Service Test Suite
   ...  IsActive=${XRS_AWS_WEBSERVICE_TRAILER_TEST_PARAMS.IsActive}
   ...  AsOfDateTime=${XRS_AWS_WEBSERVICE_TRAILER_TEST_PARAMS.AsOfDateTime}
   Set Suite Variable  ${XRS_AWS_WEBSERVICE_TRAILER_TEST_PARAMS_STRING}
-
-Verify Get Trailers Without Forward Slash Returns 200 OK
-  [Arguments]  &{params}
-  [Documentation]  Verify that not using a '/' in the URI returns 200 OK
-  ${response} =  Get Trailers  &{params}
-  Should Be Equal As Strings  ${response.status_code}  200
-
-Verify Get Trailers With Forward Slash Returns 200 OK
-  [Arguments]  &{params}
-  [Documentation]  Verify that using a '/' in the URI returns 200 OK
-  ${ending_character} =  Set Variable  /
-  ${response} =  Get Trailers With URI Ending With ${ending_character} And Parameters &{params}
-  Should Be Equal As Strings  ${response.status_code}  200
-
-Verify Get Trailers Raw String URI With ${character_string} Returns 200 OK
-  [Documentation]  Verify that using the given character string in the raw URI string returns 200 OK
-  ${yyyy}	${mm}	${dd} =	Get Time	year,month,day
-  &{params} =  Create Dictionary  OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}  IsActive=True  AsOfDateTime=${mm}/${dd}/${yyyy}
-  ${uri_string} =  Create URI String With  ${XRS_Entity_Management_Base_URI.Trailer}  ${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_PUT_TRAILERS}  ${character_string}
-  ${uri} =  Set Variable  ${uri_string}OrganizationID=${params.OrganizationID}&IsActive=${params.IsActive}&AsOfDateTime=${params.AsOfDateTime}
-  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
-  Should Be Equal As Strings  ${response.status_code}  200
-
-Verify Get Trailers V2 Without Forward Slash Returns 200 OK
-  [Arguments]  &{params}
-  [Documentation]  Verify that not using a '/' in the URI returns 200 OK
-  ${response} =  Get Trailers V2  &{params}
-  Should Be Equal As Strings  ${response.status_code}  200
-
-Verify Get Trailers V2 With Forward Slash Returns 200 OK
-  [Arguments]  &{params}
-  [Documentation]  Verify that using a '/' in the URI returns 200 OK
-  ${ending_character} =  Set Variable  /
-  ${response} =  Get Trailers With URI Ending With ${ending_character} And Parameters &{params}
-  Should Be Equal As Strings  ${response.status_code}  200
-
-Verify Get Trailers V2 Raw String URI With ${character_string} Returns 200 OK
-  [Documentation]  Verify that using the given character string in the raw URI string returns 200 OK
-  ${yyyy}	${mm}	${dd} =	Get Time	year,month,day
-  &{params} =  Create Dictionary  OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}  IsActive=True  AsOfDateTime=${mm}/${dd}/${yyyy}
-  ${uri_string} =  Create URI String With  ${XRS_Entity_Management_Base_URI.Trailer}  ${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_PUT_TRAILERS_V2}  ${character_string}
-  ${uri} =  Set Variable  ${uri_string}OrganizationID=${params.OrganizationID}&IsActive=${params.IsActive}&AsOfDateTime=${params.AsOfDateTime}
-  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
-  Should Be Equal As Strings  ${response.status_code}  200

@@ -2,6 +2,7 @@
 Documentation   Fundamental suite to test XRS AWS Site Entity Management Web Services
 Resource        ../../../Resources/XRS_WebServices/XRSCommonWebService.resource
 Resource        ../../../Resources/XRS_WebServices/EntityManagement/Site.resource
+Resource        ../../../Resources/XRS_WebServices/Toolbox/ParseResponse.resource
 Variables       ./EntityManagementTestData/TestSiteData.yaml
 Variables       ../../../Resources/XRS_WebServices/XRSWebServicesBaseURI.yaml
 Variables       ../../../Data/TestBenchDefinitions/%{TEST_BENCH}TestBench/CompanyDefinition.yaml
@@ -24,26 +25,22 @@ Validate AWS XRS Get Site REST Web Services Returns Geographic "Site identity do
 Validate AWS XRS Post Site REST Web Services Returns Description "Geographic Site added successfully."
   [Documentation]  Posts a Site and expects a Code value of 201
   ${response} =  Post Sites  @{XRS_AWS_WEBSERVICE_POST_TEST_SITE_LIST}
-  ${json_response} =  To Json  ${response.content}
-  FOR  ${r}  IN  @{json_response}
-    Should Be Equal As Strings  ${r}[Description]  Geographic Site added successfully.
-  END
+  &{expected_values} =  Create Dictionary  key=Description  value=Geographic Site added successfully.
+  Verify Response List ${response} Has Key ${expected_values.key} And Contains Value ${expected_values.value}
 
 Validate AWS XRS Get Site REST Web Services Returns 200 OK
   [Documentation]  Verifies that a posted Site now exists
   ${response} =  Get Sites By Site Id  ${XRS_WEB_SERVICES_TEST_SITE.SiteID}
   Should Be Equal As Strings  ${response.status_code}  200
-  ${json_response} =  To Json  ${response.content}
-  ${XRS_WEB_SERVICES_TEST_SITE_SID} =  Set Variable  ${json_response}[SiteID]
+  # Set a global veriable for delete site test
+  ${XRS_WEB_SERVICES_TEST_SITE_SID} =  Get Value From Response With Key  ${response}  SiteID
   Set Global Variable  ${XRS_WEB_SERVICES_TEST_SITE_SID}
 
 Validate AWS XRS Put Site REST Web Services Modifies Site Successfully
   [Documentation]  Posts a Site and expects a Code value of 201
   ${response} =  Put Sites  @{XRS_AWS_WEBSERVICE_PUT_TEST_SITE_LIST}
-  ${json_response} =  To Json  ${response.content}
-  FOR  ${r}  IN  @{json_response}
-    Should Be Equal As Strings  ${r}[Description]  Geographic Site edited successfully.
-  END
+  &{expected_values} =  Create Dictionary  key=Description  value=Geographic Site edited successfully.
+  Verify Response List ${response} Has Key ${expected_values.key} And Contains Value ${expected_values.value}
 
 Validate AWS XRS Get Sites REST Web Services Returns 200 OK
   [Documentation]  Get Sites with basic parameters
