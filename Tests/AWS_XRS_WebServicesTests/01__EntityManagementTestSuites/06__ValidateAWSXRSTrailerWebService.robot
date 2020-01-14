@@ -2,7 +2,6 @@
 Documentation   Fundamental suite to test XRS AWS Trailer Entity Management Web Services
 Resource        ../../../Resources/XRS_WebServices/XRSCommonWebService.resource
 Resource        ../../../Resources/XRS_WebServices/EntityManagement/Trailer.resource
-Resource        ../../../Resources/XRS_WebServices/Toolbox/URIStringBuilderTool.resource
 Variables       ./EntityManagementTestData/TestTrailerData.yaml
 Variables       ../../../Resources/XRS_WebServices/XRSWebServicesBaseURI.yaml
 Variables       ../../../Data/TestBenchDefinitions/%{TEST_BENCH}TestBench/CompanyDefinition.yaml
@@ -14,8 +13,6 @@ Suite Teardown  Delete All Sessions
 Force Tags      awsxrsrestwebservicevalidation  awsxrstrailerrestwebservicevalidation
 
 *** Variables ***
-# Setting a default environment
-${XRS_HOST_ENVIRONMENT} =  d3  # TODO: remove this when pulled into larger suite
 
 *** Test Cases ***
 Validate AWS XRS Get Trailer REST Web Services Returns 400 Error
@@ -46,15 +43,17 @@ Validate AWS XRS Put Trailer REST Web Services Modifies Driver Successfully
 
 Validate AWS XRS Get Trailers REST Web Services Returns 200 OK
   [Documentation]  Get trailers with basic parameters
-  ${yyyy}	${mm}	${dd} =	Get Time	year,month,day
-  &{params} =  Create Dictionary  OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}  IsActive=True  AsOfDateTime=${mm}/${dd}/${yyyy}
-  Verify Get Trailers With Forward Slash Returns 200 OK  &{params}
-  Verify Get Trailers Without Forward Slash Returns 200 OK  &{params}
+  ${wo_slash_response} =  Get Trailers Response Code With Forward Slash  &{XRS_AWS_WEBSERVICE_TRAILER_TEST_PARAMS}
+  ${w_slash_response} =  Get Trailers Response Code Without Forward Slash  &{XRS_AWS_WEBSERVICE_TRAILER_TEST_PARAMS}
+  Should Be Equal As Strings  ${wo_slash_response}  200
+  Should Be Equal As Strings  ${w_slash_response}  200
 
 Validate AWS XRS Get Trailers REST Web Services Returns 200 OK With Raw String URI
   [Documentation]  Get trailers with basic parameters using a raw URI string
-  Verify Get Trailers Raw String URI With /? Returns 200 OK
-  Verify Get Trailers Raw String URI With ? Returns 200 OK
+  ${w_slash_question_response} =  Get Trailers Raw String URI Response Code With /? And Parameters ${XRS_AWS_WEBSERVICE_TRAILER_TEST_PARAMS_STRING}
+  ${w_question_response} =  Get Trailers Raw String URI Response Code With ? And Parameters ${XRS_AWS_WEBSERVICE_TRAILER_TEST_PARAMS_STRING}
+  Should Be Equal As Strings  ${w_slash_question_response}  200
+  Should Be Equal As Strings  ${w_question_response}  200
 
 Validate AWS XRS Delete Trailer REST Web Services Returns 200 OK
   [Documentation]  Verifies that created trailer is deleted
@@ -161,6 +160,19 @@ Test Data Setup For XRS AWS Trailer Web Service Test Suite
   ...  Country=${XRS_WEB_SERVICES_TEST_TRAILER_V2.Country}
   @{XRS_AWS_WEBSERVICE_PUT_TEST_TRAILER_LIST_V2} =  Create List  ${XRS_AWS_WEBSERVICE_PUT_TEST_TRAILER_1_V2_DICT}
   Set Suite Variable  @{XRS_AWS_WEBSERVICE_PUT_TEST_TRAILER_LIST_V2}
+  # Create test params
+  ${yyyy}	${mm}	${dd} =	Get Time	year,month,day
+  &{XRS_AWS_WEBSERVICE_TRAILER_TEST_PARAMS} =  Create Dictionary
+  ...  OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}
+  ...  IsActive=True
+  ...  AsOfDateTime=${mm}/${dd}/${yyyy}
+  Set Suite Variable  &{XRS_AWS_WEBSERVICE_TRAILER_TEST_PARAMS}
+  # Create test params string
+  ${XRS_AWS_WEBSERVICE_TRAILER_TEST_PARAMS_STRING} =  Catenate  SEPARATOR=&
+  ...  OrganizationID=${XRS_AWS_WEBSERVICE_TRAILER_TEST_PARAMS.OrganizationID}
+  ...  IsActive=${XRS_AWS_WEBSERVICE_TRAILER_TEST_PARAMS.IsActive}
+  ...  AsOfDateTime=${XRS_AWS_WEBSERVICE_TRAILER_TEST_PARAMS.AsOfDateTime}
+  Set Suite Variable  ${XRS_AWS_WEBSERVICE_TRAILER_TEST_PARAMS_STRING}
 
 Verify Get Trailers Without Forward Slash Returns 200 OK
   [Arguments]  &{params}
