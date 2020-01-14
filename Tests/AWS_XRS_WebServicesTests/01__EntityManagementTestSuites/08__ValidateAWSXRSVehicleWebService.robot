@@ -35,8 +35,7 @@ Validate AWS XRS Get Vehicle REST Web Services Returns 200 OK
   ${response} =  Get Vehicle By ID  ${XRS_WEB_SERVICES_TEST_VEHICLE.VehicleName}
   Should Be Equal As Strings  ${response.status_code}  200
   # Create a Global variable for use later
-  Log To Console  ${response}
-  ${XRS_WEB_SERVICES_TEST_VEHICLE_SID} =  Get Value From Response With Key  ${response}  SID
+  ${XRS_WEB_SERVICES_TEST_VEHICLE_SID} =  Get Value From Response With Key  SID  ${response}
   Set Global Variable  ${XRS_WEB_SERVICES_TEST_VEHICLE_SID}
 
 Validate AWS XRS Get Vehicle By SID REST Web Services Returns 200 OK
