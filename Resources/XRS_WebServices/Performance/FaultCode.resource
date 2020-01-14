@@ -2,6 +2,7 @@
 Documentation  Keyword library for interacting with the Performance > Fault Code Webservices
 Library  RequestsLibrary
 Resource  ../../XRS_WebServices/XRSCommonWebService.resource
+Resource  ../../XRS_WebServices/Toolbox/URIStringBuilderTool.resource
 Variables  ../../XRS_WebServices/XRSWebServicesBaseURI.yaml
 
 *** Variables ***
@@ -83,3 +84,47 @@ Get Fault Codes By Vehicle ID ${vehicle_id} With URI Ending With ${ending_charac
   ${uri} =  Set Variable  ${XRS_Performance_Base_URI.Fault_Code}${XRS_WEBSERVICE_PERFORMANCE_GET_FAULT_CODES_BY_VEHICLE_ID}/${vehicle_id}${ending_character}
   ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}  params=${params}
   [Return]  ${response}
+
+# Helper Keywords
+Get Fault Codes Response Code Without Forward Slash
+  [Arguments]  &{params}
+  [Documentation]  Returns the response code with '?' before the parameters.
+  ${response} =  Get Fault Codes  &{params}
+  [Return]  ${response.status_code}
+
+Get Fault Codes Response Code With Forward Slash
+  [Arguments]  &{params}
+  [Documentation]  Returns the response code when the character '/' is placed before '?'.
+  ${response} =  Get Fault Codes With URI Ending With / And Parameters &{params}
+  [Return]  ${response.status_code}
+
+Get Fault Codes Raw String URI Response Code With ${character_string} And Parameters ${params_string}
+  [Documentation]  Uses the given character string to create raw URI string Get request
+  ...  ${character_string} is a set of 1+ characters
+  ...  ${params_string} is a series of '&' delimited parameters 
+  ${uri_string} =  Create URI String With  ${XRS_Performance_Base_URI.Fault_Code}  ${XRS_WEBSERVICE_PERFORMANCE_GET_FAULT_CODES}  ${character_string}
+  ${uri} =  Set Variable  ${uri_string}${params_string}
+  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
+  [Return]  ${response.status_code}
+
+# Helper Keywords For Get Black Box Summaries By Vehicle ID
+Get Fault Codes By Vehicle ID Response Code Without Forward Slash
+  [Arguments]  ${vehicle_id}  &{params}
+  [Documentation]  Returns the response code with '?' before the parameters.
+  ${response} =  Get Fault Codes By Vehicle ID And Parameters  ${vehicle_id}  ${params}
+  [Return]  ${response.status_code}
+
+Get Fault Codes By Vehicle ID Response Code With Forward Slash
+  [Arguments]  ${vehicle_id}  &{params}
+  [Documentation]  Returns the response code when the character '/' is placed before '?'.
+  ${response} =  Get Fault Codes By Vehicle ID ${vehicle_id} With URI Ending With / And Parameters ${params}
+  [Return]  ${response.status_code}
+
+Get Fault Codes By Vehicle ID ${vehicle_id} Raw String URI Response Code With ${character_string} And Parameters ${params_string}
+  [Documentation]  Uses the given character string to create raw URI string Get request
+  ...  ${character_string} is a set of 1+ characters
+  ...  ${params_string} is a series of '&' delimited parameters 
+  ${uri_string} =  Create URI String With  ${XRS_Performance_Base_URI.Fault_Code}  ${XRS_WEBSERVICE_PERFORMANCE_GET_FAULT_CODES_BY_VEHICLE_ID}/${vehicle_id}  ${character_string}
+  ${uri} =  Set Variable  ${uri_string}${params_string}
+  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
+  [Return]  ${response.status_code}
