@@ -1,26 +1,22 @@
 *** Settings ***
 Documentation  Validates the top level XRS Web services
-Resource  ../../Resources/XRS_WebServices/XRSCommonWebService.resource
-Variables  ../../Resources/XRS_WebServices/XRSWebServicesBaseURI.yaml
+Resource        ../../Resources/XRS_WebServices/XRSCommonWebService.resource
+Variables       ../../Resources/XRS_WebServices/XRSWebServicesBaseURI.yaml
 # Suite Setup and Teardown
-Suite Setup  Create AWS XRS Web Services Session With No Authorization
+Suite Setup     Create AWS XRS Web Services Session With No Authorization
 Suite Teardown  Delete All Sessions
 Force Tags      awsxrswebservicevalidation  awsxrsrestwebservicevalidationsmoketest
+Test Template   Verify 200 OK Response From XRS WebServices
 
 *** Variables ***
-# Setting a default environment
-${XRS_HOST_ENVIRONMENT} =  d3  # TODO: remove this when pulled into larger suite
 
 *** Test Cases ***
-Validate XRS AWS Webservices
-    [Documentation]  Initial test to verify that all XRS Web Services are available
-    [Template]  Verify 200 OK Response From XRS WebServices
-    ${XRS_Entity_Management_Base_URI}
-    ${XRS_Form_Messaging_Base_URI}
-    ${XRS_Performance_Base_URI}
-    ${XRS_Routing_Dispatch_Base_URI}
-    ${XRS_Status_Base_URI}
-    ${XRS_Compliance_Base_URI}
+Validate Entity Management XRS Web Services     ${XRS_Entity_Management_Base_URI}
+Validate Form Messaging XRS Web Services        ${XRS_Form_Messaging_Base_URI}
+Validate Performance XRS Web Services           ${XRS_Performance_Base_URI}
+Validate Routing Dispatch XRS Web Services      ${XRS_Routing_Dispatch_Base_URI}
+Validate Status XRS Web Services                ${XRS_Status_Base_URI}
+Validate Compliance XRS Web Services            ${XRS_Compliance_Base_URI}
 
 *** Keywords ***
 Verify 200 OK Response From XRS WebServices

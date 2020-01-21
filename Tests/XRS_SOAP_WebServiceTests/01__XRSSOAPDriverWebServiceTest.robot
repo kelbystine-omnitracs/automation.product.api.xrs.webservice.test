@@ -1,6 +1,7 @@
 *** Settings ***
-Documentation  This is a POC for using the suds library in RF.
+Documentation  This is a POC for using the SOAP testing in RF.
 Library  SudsLibrary
+Library  RequestsLibrary
 Library    ./SudsLibraryExtension.py
 Library    Collections 
 Variables  ../../Data/XRSEnvironmentData.yaml
@@ -9,14 +10,45 @@ Variables  ../../Data/TestBenchDefinitions/%{TEST_BENCH}TestBench/Users.yaml
 Variables  ../../Data/TestBenchDefinitions/%{TEST_BENCH}TestBench/CompanyDefinition.yaml
 
 *** Variables ***
+${XRS_WEB_SERVICE_SESSION_ALIAS} =  xrs_web_service_session
+@{XRS_WEBSERVICES_AUTHORIZATION} =  ${XRS_GENERAL_INFORMATION.Company.Company_Login_ID}|${DEFAULT_ADMIN_USER.USERNAME}  ${DEFAULT_ADMIN_USER.PASSWORD}
+&{XRS_WEBSERVICES_SOAP_HEADER} =  Content-Type=application/soap+xml  Accept=application/soap+xml  Accept-Encoding=gzip, deflate
 ${XRS_HOST_ENVIRONMENT} =  d3
-${XRS_SINGLE_WSDL} =  ?Wsdl
+${XRS_SINGLE_WSDL} =  ?singleWsdl
+${SOAP_SVC} =  /soap
 ${uri} =  ${XRS_WEBSERVICES_URL}[${XRS_HOST_ENVIRONMENT}]/${XRS_Entity_Management_Base_URI.Driver}${XRS_SINGLE_WSDL}
-&{XRS_WEBSERVICES_AUTHORIZATION} =  username=${XRS_GENERAL_INFORMATION.Company.Company_Login_ID}|${DEFAULT_ADMIN_USER.USERNAME}  password=${DEFAULT_ADMIN_USER.PASSWORD}
+# &{XRS_WEBSERVICES_AUTHORIZATION} =  username=${XRS_GENERAL_INFORMATION.Company.Company_Login_ID}|${DEFAULT_ADMIN_USER.USERNAME}  password=${DEFAULT_ADMIN_USER.PASSWORD}
 
 *** Test Cases ***
-Get All Drivers
+Requests Tests
     [Tags]  soapy
+    [Documentation]
+    ${body_data} =  Set Variable  <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/">
+   ...  <soap:Header/>
+   ...  <soap:Body>
+   ...     <tem:GetDrivers>
+   ...     </tem:GetDrivers>
+   ...  </soap:Body>
+   ...  </soap:Envelope>
+    Create Session  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}
+    ${response} =  Post Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  /  body=${body_data}  auth=${XRS_WEBSERVICES_AUTHORIZATION}  headers=${XRS_WEBSERVICES_SOAP_HEADER}
+    Log To Console  ${response}
+# import requests
+# url="http://wsf.cdyne.com/WeatherWS/Weather.asmx?WSDL"
+# #headers = {'content-type': 'application/soap+xml'}
+# headers = {'content-type': 'text/xml'}
+# body = """<?xml version="1.0" encoding="UTF-8"?>
+#          <SOAP-ENV:Envelope xmlns:ns0="http://ws.cdyne.com/WeatherWS/" xmlns:ns1="http://schemas.xmlsoap.org/soap/envelope/" 
+#             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+#             <SOAP-ENV:Header/>
+#               <ns1:Body><ns0:GetWeatherInformation/></ns1:Body>
+#          </SOAP-ENV:Envelope>"""
+
+# response = requests.post(url,data=body,headers=headers)
+# print response.content
+
+Get All Drivers
+    [Tags]
     [Documentation]
     Set Binding     SOAP-ENV    http://www.w3.org/2003/05/soap-envelope
     Create Soap Client  ${uri}  alias=XRS_SOAP
@@ -34,7 +66,7 @@ Get All Drivers
     ${response} =  Call Soap Method  GetDrivers  ${wsdlobj}
 
 W3 School
-    [Tags]  soapy
+    [Tags]
     [Documentation]
     Create Soap Client  https://www.w3schools.com/xml/tempconvert.asmx?WSDL  alias=W3_SCHOOL
     ${headers} =  Create Dictionary
