@@ -3,8 +3,8 @@ Documentation  Creates a XRS Web Service session with or without authorization.
 ...  The default authorization is based upon the admin user of the company.
 Library  RequestsLibrary
 Variables  ../../Data/XRSEnvironmentData.yaml
-Variables  ../../Data/TestBenchDefinitions/%{TEST_BENCH}TestBench/Users.yaml
-Variables  ../../Data/TestBenchDefinitions/%{TEST_BENCH}TestBench/CompanyDefinition.yaml
+Variables  ../../Data/TestBenchDefinitions/${XRS_TEST_BENCH_FOLDER_NAME}/Users.yaml
+Variables  ../../Data/TestBenchDefinitions/${XRS_TEST_BENCH_FOLDER_NAME}/CompanyDefinition.yaml
 
 *** Variables ***
 ${XRS_WEB_SERVICE_SESSION_ALIAS} =  xrs_web_service_session
