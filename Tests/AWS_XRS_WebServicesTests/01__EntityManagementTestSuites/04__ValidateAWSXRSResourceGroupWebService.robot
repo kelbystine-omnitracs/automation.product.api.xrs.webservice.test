@@ -3,8 +3,8 @@ Documentation   Fundamental suite to test XRS AWS Resource Group Entity Manageme
 Resource        ../../../Resources/XRS_WebServices/XRSCommonWebService.resource
 Resource        ../../../Resources/XRS_WebServices/EntityManagement/ResourceGroup.resource
 Variables       ../../../Resources/XRS_WebServices/XRSWebServicesBaseURI.yaml
-Variables       ../../../Data/TestBenchDefinitions/%{TEST_BENCH}TestBench/CompanyDefinition.yaml
-Variables       ../../../Data/TestBenchDefinitions/%{TEST_BENCH}TestBench/ResourceGroupsDefinition.yaml
+Variables       ../../../Data/TestBenchDefinitions/${XRS_TEST_BENCH_FOLDER_NAME}/CompanyDefinition.yaml
+Variables       ../../../Data/TestBenchDefinitions/${XRS_TEST_BENCH_FOLDER_NAME}/ResourceGroupsDefinition.yaml
 # Suite Setup and Teardown
 Suite Setup     Run Keywords
                 ...  Create AWS XRS Web Services Session

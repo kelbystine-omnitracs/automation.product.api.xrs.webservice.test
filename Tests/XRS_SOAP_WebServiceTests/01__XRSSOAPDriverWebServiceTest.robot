@@ -6,8 +6,8 @@ Library    ./SudsLibraryExtension.py
 Library    Collections 
 Variables  ../../Data/XRSEnvironmentData.yaml
 Variables  ../../Resources/XRS_WebServices/XRSWebServicesBaseURI.yaml
-Variables  ../../Data/TestBenchDefinitions/%{TEST_BENCH}TestBench/Users.yaml
-Variables  ../../Data/TestBenchDefinitions/%{TEST_BENCH}TestBench/CompanyDefinition.yaml
+Variables  ../../Data/TestBenchDefinitions/${XRS_TEST_BENCH_FOLDER_NAME}/Users.yaml
+Variables  ../../Data/TestBenchDefinitions/${XRS_TEST_BENCH_FOLDER_NAME}/CompanyDefinition.yaml
 
 *** Variables ***
 ${XRS_WEB_SERVICE_SESSION_ALIAS} =  xrs_web_service_session

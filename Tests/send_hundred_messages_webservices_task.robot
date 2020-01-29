@@ -2,8 +2,8 @@
 Documentation     This task is designed to create 100 messages at a time to be sent to mobile through webservices.
 Library           RequestsLibrary
 Library           FakerLibrary
-Variables         ../Data/TestBenchDefinitions/%{TEST_BENCH}TestBench/Users.yaml
-Variables         ../Data/TestBenchDefinitions/%{TEST_BENCH}TestBench/CompanyDefinition.yaml
+Variables         ../Data/TestBenchDefinitions/${XRS_TEST_BENCH_FOLDER_NAME}/Users.yaml
+Variables         ../Data/TestBenchDefinitions/${XRS_TEST_BENCH_FOLDER_NAME}/CompanyDefinition.yaml
 Variables         ../Data/CommonData.yaml
 Variables         ../Data/EnvironmentData.yaml
 

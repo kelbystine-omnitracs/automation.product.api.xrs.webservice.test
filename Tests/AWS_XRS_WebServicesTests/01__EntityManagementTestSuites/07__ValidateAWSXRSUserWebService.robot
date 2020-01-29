@@ -6,7 +6,7 @@ Resource        ../../../Resources/XRS_WebServices/EntityManagement/User.resourc
 Resource        ../../../Resources/XRS_WebServices/Toolbox/ParseResponse.resource
 Variables       ./EntityManagementTestData/TestUserData.yaml
 Variables       ../../../Resources/XRS_WebServices/XRSWebServicesBaseURI.yaml
-Variables       ../../../Data/TestBenchDefinitions/%{TEST_BENCH}TestBench/CompanyDefinition.yaml
+Variables       ../../../Data/TestBenchDefinitions/${XRS_TEST_BENCH_FOLDER_NAME}/CompanyDefinition.yaml
 # Suite Setup and Teardown
 Suite Setup     Run Keywords  
                 ...  Create AWS XRS Web Services Session

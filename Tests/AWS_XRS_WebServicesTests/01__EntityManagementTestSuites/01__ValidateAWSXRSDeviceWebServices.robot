@@ -4,7 +4,7 @@ Resource        ../../../Resources/XRS_WebServices/XRSCommonWebService.resource
 Resource        ../../../Resources/XRS_WebServices/EntityManagement/Device.resource
 Resource        ../../../Resources/XRS_WebServices/Toolbox/ParseResponse.resource
 Variables       ./EntityManagementTestData/TestDeviceData.yaml
-Variables       ../../../Data/TestBenchDefinitions/%{TEST_BENCH}TestBench/CompanyDefinition.yaml
+Variables       ../../../Data/TestBenchDefinitions/${XRS_TEST_BENCH_FOLD_NAME}/CompanyDefinition.yaml
 # Suite Setup and Teardown
 Suite Setup     Run keywords
                 ...  Create AWS XRS Web Services Session
@@ -18,7 +18,7 @@ Force Tags      awsxrsrestwebservicevalidation  awsxrsdevicerestwebservicevalida
 Validate AWS XRS Get Device REST Web Services Returns 400 Error
   [Documentation]  Verifies that a device with a specific number does not exist
   ${response} =  Get Device By Phone Number  ${XRS_WEB_SERVICES_TEST_DEVICE_1.PhoneNumber}
-  Should Be Equal As Strings  ${response.status_code}  400
+  Status Should Be  400  ${response}
 
 Validate AWS XRS Post Device REST Web Services Returns Code 201
   [Documentation]  Posts a device and expects a Code value of 201
@@ -29,7 +29,7 @@ Validate AWS XRS Post Device REST Web Services Returns Code 201
 Validate AWS XRS Get Device REST Web Services Returns 200 OK
   [Documentation]  Verifies that a posted device now exists
   ${response} =  Get Device By Phone Number  ${XRS_WEB_SERVICES_TEST_DEVICE_1.PhoneNumber}
-  Should Be Equal As Strings  ${response.status_code}  200
+  Request Should Be Successful  ${response}
 
 Validate AWS XRS Put Device REST Web Services Modifies Description Successfully
   [Documentation]  Posts a device and expects a Code value of 201
@@ -39,28 +39,28 @@ Validate AWS XRS Put Device REST Web Services Modifies Description Successfully
 
 Validate AWS XRS Get Devices REST Web Services Returns 200 OK
   [Documentation]  Get devices with basic parameters
-  ${wo_slash_response} =  Get Devices Response Code With Forward Slash  &{XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS}
-  ${w_slash_response} =  Get Devices Response Code Without Forward Slash  &{XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS}
-  Should Be Equal As Strings  ${wo_slash_response}  200
-  Should Be Equal As Strings  ${w_slash_response}  200
+  ${wo_slash_response} =  Get Devices Response With Forward Slash  &{XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS}
+  ${w_slash_response} =  Get Devices Response Without Forward Slash  &{XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS}
+  Request Should Be Successful  ${wo_slash_response}
+  Request Should Be Successful  ${w_slash_response}
 
 Validate AWS XRS Get Devices REST Web Services Returns 200 OK With Raw String URI
   [Documentation]  Get devices with basic parameters using a raw URI string
-  ${w_slash_question_response} =  Get Devices Raw String URI Response Code With /? And Parameters ${XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS_STRING}
-  ${w_question_response} =  Get Devices Raw String URI Response Code With ? And Parameters ${XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS_STRING}
-  Should Be Equal As Strings  ${w_slash_question_response}  200
-  Should Be Equal As Strings  ${w_question_response}  200
+  ${w_slash_question_response} =  Get Devices Raw String URI Response With /? And Parameters ${XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS_STRING}
+  ${w_question_response} =  Get Devices Raw String URI Response With ? And Parameters ${XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS_STRING}
+  Request Should Be Successful  ${w_slash_question_response}
+  Request Should Be Successful  ${w_question_response}
 
 Validate AWS XRS Get Devices REST Web Services For All Devices Returns 200 OK
   [Documentation]  Gets all the Devices
   [Tags]  xrsawsperftest
   ${response} =  Get All Devices
-  Should Be Equal As Strings  ${response.status_code}  200
+  Request Should Be Successful  ${response}
 
 Validate AWS XRS Delete Device REST Web Services Returns 200 OK
   [Documentation]  Verifies that created device is deleted
   ${response} =  Delete Device By Phone Number  ${XRS_WEB_SERVICES_TEST_DEVICE_1.PhoneNumber}
-  Should Be Equal As Strings  ${response.status_code}  200
+  Request Should Be Successful  ${response}
 
 *** Keywords ***
 Test Data Setup For XRS AWS Device Web Service Test Suite
