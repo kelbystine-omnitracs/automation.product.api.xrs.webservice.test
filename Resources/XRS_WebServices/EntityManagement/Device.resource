@@ -147,23 +147,23 @@ Get Devices With URI Ending With ${ending_character} And Parameters ${params}
   [Return]  ${response}
 
 # Helper Keywords
-Get Devices Response Code Without Forward Slash
+Get Devices Response Without Forward Slash
   [Arguments]  &{params}
-  [Documentation]  Returns the response code with '?' before the parameters.
+  [Documentation]  Returns the response with '?' before the parameters.
   ${response} =  Get Devices  &{params}
-  [Return]  ${response.status_code}
+  [Return]  ${response}
 
-Get Devices Response Code With Forward Slash
+Get Devices Response With Forward Slash
   [Arguments]  &{params}
-  [Documentation]  Returns the response code when the character '/' is placed before '?'.
+  [Documentation]  Returns the response when the character '/' is placed before '?'.
   ${response} =  Get Devices With URI Ending With / And Parameters &{params}
-  [Return]  ${response.status_code}
+  [Return]  ${response}
 
-Get Devices Raw String URI Response Code With ${character_string} And Parameters ${params_string}
+Get Devices Raw String URI Response With ${character_string} And Parameters ${params_string}
   [Documentation]  Uses the given character string to create raw URI string Get request
   ...  ${character_string} is a set of 1+ characters
   ...  ${params_string} is a series of '&' delimited parameters 
   ${uri_string} =  Create URI String With  ${XRS_Entity_Management_Base_URI.Device}  ${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_PUT_DEVICES}  ${character_string}
   ${uri} =  Set Variable  ${uri_string}${params_string}
   ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
-  [Return]  ${response.status_code}
+  [Return]  ${response}
