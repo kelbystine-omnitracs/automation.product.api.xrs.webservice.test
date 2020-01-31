@@ -4,7 +4,7 @@ Resource        ../../../Resources/XRS_WebServices/XRSCommonWebService.resource
 Resource        ../../../Resources/XRS_WebServices/EntityManagement/Driver.resource
 Resource        ../../../Resources/XRS_WebServices/Toolbox/ParseResponse.resource
 Variables       ./EntityManagementTestData/TestDriverData.yaml
-Variables       ../../../Resources/XRS_WebServices/XRSWebServicesBaseURI.yaml
+# Variables       ../../../Resources/XRS_WebServices/XRSWebServicesBaseURI.yaml
 Variables       ../../../Data/TestBenchDefinitions/${XRS_TEST_BENCH_FOLDER_NAME}/CompanyDefinition.yaml
 # Suite Setup and Teardown
 Suite Setup     Run Keywords  
@@ -16,61 +16,59 @@ Force Tags      awsxrsrestwebservicevalidation  awsxrsdriverrestwebservicevalida
 *** Variables ***
 
 *** Test Cases ***
-Validate AWS XRS Get Driver REST Web Services Returns 400 Error
+Validate AWS XRS Get Driver REST Web Services Response Returns 400 Error
   [Documentation]  Verifies that a driver with a specific number does not exist
   ${response} =  Get Driver By ID  ${XRS_WEB_SERVICES_TEST_DRIVER_1.DriverID}
-  Should Be Equal As Strings  ${response.status_code}  400
+  Status Should Be  400  ${response}
 
-Validate AWS XRS Post Driver REST Web Services Returns Code 201
+Validate AWS XRS Post Driver REST Web Services Response Returns Code 201
   [Documentation]  Posts a driver and expects a Code value of 201
   ${response} =  Post Drivers  @{XRS_AWS_WEBSERVICE_POST_TEST_DRIVER_LIST}
   &{expected_values} =  Create Dictionary  key=Code  value=201
   Verify Response List ${response} Has Key ${expected_values.key} And Contains Value ${expected_values.value}
 
-Validate AWS XRS Get Driver REST Web Services Returns 200 OK
+Validate AWS XRS Get Driver REST Web Services Response Returns 200 OK
   [Documentation]  Verifies that a posted driver now exists
   ${response} =  Get Driver By ID  ${XRS_WEB_SERVICES_TEST_DRIVER_1.DriverID}
-  Should Be Equal As Strings  ${response.status_code}  200
-  # Set a global veriable for delete driver test
-  ${XRS_WEB_SERVICES_TEST_DRIVER_1_SID} =  Get Value From Response With Key  SID  ${response}
-  Set Global Variable  ${XRS_WEB_SERVICES_TEST_DRIVER_1_SID}
+  Request Should Be Successful  ${response}
+  Get SID Value From ${response} And Set Test Suite Variable
 
-Validate AWS XRS Put Driver REST Web Services Modifies Driver Successfully
+Validate AWS XRS Put Driver REST Web Services Response Description Returns "Driver edited successfully."
   [Documentation]  Posts a driver and expects a Code value of 201
   ${response} =  Put Drivers  @{XRS_AWS_WEBSERVICE_PUT_TEST_DRIVER_LIST}
   &{expected_values} =  Create Dictionary  key=Description  value=Driver edited successfully.
   Verify Response List ${response} Has Key ${expected_values.key} And Contains Value ${expected_values.value}
 
-Validate AWS XRS Get Drivers REST Web Services Returns 200 OK
+Validate AWS XRS Get Drivers REST Web Services Response Returns 200 OK
   [Documentation]  Get drivers with basic parameters
-  ${wo_slash_response} =  Get Drivers Response Code With Forward Slash  &{XRS_AWS_WEBSERVICE_DRIVER_TEST_PARAMS}
-  ${w_slash_response} =  Get Drivers Response Code Without Forward Slash  &{XRS_AWS_WEBSERVICE_DRIVER_TEST_PARAMS}
-  Should Be Equal As Strings  ${wo_slash_response}  200
-  Should Be Equal As Strings  ${w_slash_response}  200
+  ${wo_slash_response} =  Get Drivers Response With Forward Slash  &{XRS_AWS_WEBSERVICE_DRIVER_TEST_PARAMS}
+  ${w_slash_response} =  Get Drivers Response Without Forward Slash  &{XRS_AWS_WEBSERVICE_DRIVER_TEST_PARAMS}
+  Request Should Be Successful  ${wo_slash_response}
+  Request Should Be Successful  ${w_slash_response}
 
-Validate AWS XRS Get Drivers REST Web Services Returns 200 OK With Raw String URI
+Validate AWS XRS Get Drivers REST Web Services Response Returns 200 OK With Raw String URI
   [Documentation]  Get drivers with basic parameters using a raw URI string
   ${params_string} =  Catenate  SEPARATOR=&
   ...  OrganizationID=${XRS_AWS_WEBSERVICE_DRIVER_TEST_PARAMS.OrganizationID}
   ...  IsActive=${XRS_AWS_WEBSERVICE_DRIVER_TEST_PARAMS.IsActive}
   ...  AsOfDateTime=${XRS_AWS_WEBSERVICE_DRIVER_TEST_PARAMS.AsOfDateTime}
-  ${w_slash_question_response} =  Get Drivers Raw String URI Response Code With /? And Parameters ${params_string}
-  ${w_question_response} =  Get Drivers Raw String URI Response Code With ? And Parameters ${params_string}
-  Should Be Equal As Strings  ${w_slash_question_response}  200
-  Should Be Equal As Strings  ${w_question_response}  200
+  ${w_slash_question_response} =  Get Drivers Raw String URI Response With /? And Parameters ${params_string}
+  ${w_question_response} =  Get Drivers Raw String URI Response With ? And Parameters ${params_string}
+  Request Should Be Successful  ${w_slash_question_response}
+  Request Should Be Successful  ${w_question_response}
 
-Validate AWS XRS Delete Driver REST Web Services Returns 200 OK
+Validate AWS XRS Delete Driver REST Web Services Response Returns 200 OK
   [Documentation]  Verifies that created driver is deleted
   ${response} =  Delete Driver By ID  ${XRS_WEB_SERVICES_TEST_DRIVER_1.DriverID}
-  Should Be Equal As Strings  ${response.status_code}  200
+  Request Should Be Successful  ${response}
 
-Validate AWS XRS Get Drivers REST Web Services For All Drivers Returns 200 OK
+Validate AWS XRS Get Drivers REST Web Services For All Drivers Response Returns 200 OK
   [Documentation]  Gets all the drivers
   [Tags]  xrsawsperftest
   ${response} =  Get All Drivers
-  Should Be Equal As Strings  ${response.status_code}  200
+  Request Should Be Successful  ${response}
 
-Validate AWS XRS Delete Drivers REST Web Services Returns Error Message
+Validate AWS XRS Delete Drivers REST Web Services Response Returns Error Message
   [Documentation]  Attempts to delete a previously deleted driver.
   ${response} =  Delete Drivers By IDs  ${XRS_WEB_SERVICES_TEST_DRIVER_1_SID}
   ${expected_error_message} =  Set Variable  Driver ${XRS_WEB_SERVICES_TEST_DRIVER_1_SID} doesn't exist.
@@ -140,3 +138,8 @@ Test Data Setup For XRS AWS Driver Web Service Test Suite
   ...  IsActive=True
   ...  AsOfDateTime=${mm}/${dd}/${yyyy}
   Set Suite Variable  &{XRS_AWS_WEBSERVICE_DRIVER_TEST_PARAMS}
+
+Get ${key} Value From ${response} And Set Test Suite Variable
+    [Documentation]  Set a Suite variable for the delete driver test
+    ${XRS_WEB_SERVICES_TEST_DRIVER_1_SID} =  ParseResponse.Get Value From Response With Key  ${key}  ${response}
+    Set Suite Variable  ${XRS_WEB_SERVICES_TEST_DRIVER_1_SID}

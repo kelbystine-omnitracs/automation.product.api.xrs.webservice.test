@@ -15,49 +15,49 @@ Force Tags      awsxrsrestwebservicevalidation  awsxrsdevicerestwebservicevalida
 *** Variables ***
 
 *** Test Cases ***
-Validate AWS XRS Get Device REST Web Services Returns 400 Error
+Validate AWS XRS Get Device REST Web Services Response Returns 400 Error
   [Documentation]  Verifies that a device with a specific number does not exist
   ${response} =  Get Device By Phone Number  ${XRS_WEB_SERVICES_TEST_DEVICE_1.PhoneNumber}
   Status Should Be  400  ${response}
 
-Validate AWS XRS Post Device REST Web Services Returns Code 201
+Validate AWS XRS Post Device REST Web Services Response Returns Code 201
   [Documentation]  Posts a device and expects a Code value of 201
   ${response} =  Post Devices  @{XRS_AWS_WEBSERVICE_POST_TEST_DEVICE_LIST}
   &{expected_values} =  Create Dictionary  key=Code  value=201
   Verify Response List ${response} Has Key ${expected_values.key} And Contains Value ${expected_values.value}
 
-Validate AWS XRS Get Device REST Web Services Returns 200 OK
+Validate AWS XRS Get Device REST Web Services Response Returns 200 OK
   [Documentation]  Verifies that a posted device now exists
   ${response} =  Get Device By Phone Number  ${XRS_WEB_SERVICES_TEST_DEVICE_1.PhoneNumber}
   Request Should Be Successful  ${response}
 
-Validate AWS XRS Put Device REST Web Services Modifies Description Successfully
+Validate AWS XRS Put Device REST Web Services Response Description Returns "Device edited successfully."
   [Documentation]  Posts a device and expects a Code value of 201
   ${response} =  Put Devices  @{XRS_AWS_WEBSERVICE_PUT_TEST_DEVICE_LIST}
   &{expected_values} =  Create Dictionary  key=Description  value=Device edited successfully.
   Verify Response List ${response} Has Key ${expected_values.key} And Contains Value ${expected_values.value}
 
-Validate AWS XRS Get Devices REST Web Services Returns 200 OK
+Validate AWS XRS Get Devices REST Web Services Response Returns 200 OK
   [Documentation]  Get devices with basic parameters
   ${wo_slash_response} =  Get Devices Response With Forward Slash  &{XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS}
   ${w_slash_response} =  Get Devices Response Without Forward Slash  &{XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS}
   Request Should Be Successful  ${wo_slash_response}
   Request Should Be Successful  ${w_slash_response}
 
-Validate AWS XRS Get Devices REST Web Services Returns 200 OK With Raw String URI
+Validate AWS XRS Get Devices REST Web Services Response Returns 200 OK With Raw String URI
   [Documentation]  Get devices with basic parameters using a raw URI string
   ${w_slash_question_response} =  Get Devices Raw String URI Response With /? And Parameters ${XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS_STRING}
   ${w_question_response} =  Get Devices Raw String URI Response With ? And Parameters ${XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS_STRING}
   Request Should Be Successful  ${w_slash_question_response}
   Request Should Be Successful  ${w_question_response}
 
-Validate AWS XRS Get Devices REST Web Services For All Devices Returns 200 OK
+Validate AWS XRS Get Devices REST Web Services For All Devices Response Returns 200 OK
   [Documentation]  Gets all the Devices
   [Tags]  xrsawsperftest
   ${response} =  Get All Devices
   Request Should Be Successful  ${response}
 
-Validate AWS XRS Delete Device REST Web Services Returns 200 OK
+Validate AWS XRS Delete Device REST Web Services Response Returns 200 OK
   [Documentation]  Verifies that created device is deleted
   ${response} =  Delete Device By Phone Number  ${XRS_WEB_SERVICES_TEST_DEVICE_1.PhoneNumber}
   Request Should Be Successful  ${response}

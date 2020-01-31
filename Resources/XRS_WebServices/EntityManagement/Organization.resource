@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation  Keyword library for interacting with the Entity > Organization Webservices
+...  Version 1.1
 Library  RequestsLibrary
 Resource  ../../XRS_WebServices/XRSCommonWebService.resource
 Resource  ../../XRS_WebServices/XRSCommonWebService.resource
@@ -220,44 +221,42 @@ Put Organizations Performance Data By ID
   [Return]  ${response}
 
 # Helper Keywords
-Get Organizations Response Code Without Forward Slash
+Get Organizations Response Without Forward Slash
   [Arguments]  &{params}
   [Documentation]  Returns the response code with '?' before the parameters.
   ${response} =  Get Organizations  &{params}
-  [Return]  ${response.status_code}
+  [Return]  ${response}
 
-Get Organizations Response Code With Forward Slash
+Get Organizations Response With Forward Slash
   [Arguments]  &{params}
   [Documentation]  Returns the response code when the character '/' is placed before '?'.
   ${response} =  Get Organizations With URI Ending With / And Parameters &{params}
-  [Return]  ${response.status_code}
+  [Return]  ${response}
 
-Get Organizations Raw String URI Response Code With ${character_string} And Parameters ${params_string}
+Get Organizations Raw String URI Response With ${character_string} And Parameters ${params_string}
   [Documentation]  Uses the given character string to create raw URI string Get request
   ...  ${character_string} is a set of 1+ characters
   ...  ${params_string} is a series of '&' delimited parameters 
-  ${uri_string} =  Create URI String With  ${XRS_Entity_Management_Base_URI.Organization}  ${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_ORGANIZATIONS}  ${character_string}
-  ${uri} =  Set Variable  ${uri_string}${params_string}
-  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
-  [Return]  ${response.status_code}
+  ${uri_string} =  Create URI String With  ${XRS_Entity_Management_Base_URI.Organization}  ${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_ORGANIZATIONS}  ${character_string}  ${params_string}
+  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri_string}  headers=${XRS_WEBSERVICES_JSON_HEADER}
+  [Return]  ${response}
 
-Get Organizations Performance (settings) Data Response Code Without Forward Slash
+Get Organizations Performance (settings) Data Response Without Forward Slash
   [Arguments]  &{params}
   [Documentation]  Returns the response code with '?' before the parameters.
   ${response} =  Get Organizations  &{params}
-  [Return]  ${response.status_code}
+  [Return]  ${response}
 
-Get Organizations Performance (settings) Data Response Code With Forward Slash
+Get Organizations Performance (settings) Data Response With Forward Slash
   [Arguments]  &{params}
   [Documentation]  Returns the response code when the character '/' is placed before '?'.
   ${response} =  Get Organizations Performance Data With URI Ending With / And Parameters &{params}
-  [Return]  ${response.status_code}
+  [Return]  ${response}
 
-Get Organizations Performance (settings) Data Raw String URI Response Code With ${character_string} And Parameters ${params_string}
+Get Organizations Performance (settings) Data Raw String URI Response With ${character_string} And Parameters ${params_string}
   [Documentation]  Uses the given character string to create raw URI string Get request
   ...  ${character_string} is a set of 1+ characters
   ...  ${params_string} is a series of '&' delimited parameters 
-  ${uri_string} =  Create URI String With  ${XRS_Entity_Management_Base_URI.Organization}  ${XRS_WEBSERVICE_ENTITY_MANAGEMENT_GET_PUT_ORGANIZATIONS_PERFORMANCE}  ${character_string}
-  ${uri} =  Set Variable  ${uri_string}${params_string}
-  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
-  [Return]  ${response.status_code}
+  ${uri_string} =  Create URI String With  ${XRS_Entity_Management_Base_URI.Organization}  ${XRS_WEBSERVICE_ENTITY_MANAGEMENT_GET_PUT_ORGANIZATIONS_PERFORMANCE}  ${character_string}  ${params_string}
+  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri_string}  headers=${XRS_WEBSERVICES_JSON_HEADER}
+  [Return]  ${response}

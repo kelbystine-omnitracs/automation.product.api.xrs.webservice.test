@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation  Keyword library for interacting with the Entity > Device Webservices
+...  Version 1.1
 Library   RequestsLibrary
 Resource  ../../XRS_WebServices/Toolbox/URIStringBuilderTool.resource
 Resource  ../../XRS_WebServices/XRSCommonWebService.resource
@@ -163,7 +164,10 @@ Get Devices Raw String URI Response With ${character_string} And Parameters ${pa
   [Documentation]  Uses the given character string to create raw URI string Get request
   ...  ${character_string} is a set of 1+ characters
   ...  ${params_string} is a series of '&' delimited parameters 
-  ${uri_string} =  Create URI String With  ${XRS_Entity_Management_Base_URI.Device}  ${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_PUT_DEVICES}  ${character_string}
-  ${uri} =  Set Variable  ${uri_string}${params_string}
+  ${uri_string} =  Create URI String With
+  ...  ${XRS_Entity_Management_Base_URI.Device}
+  ...  ${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_PUT_DEVICES}
+  ...  ${character_string}
+  ...  ${params_string}
   ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
   [Return]  ${response}
