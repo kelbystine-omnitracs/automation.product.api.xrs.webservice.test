@@ -5,7 +5,6 @@ Library         JSONLibrary
 Library         Collections
 Resource        ../../../Resources/XRS_WebServices/XRSCommonWebService.resource
 Resource        ../../../Resources/XRS_WebServices/EntityManagement/Organization.resource
-Resource        ../../../Resources/XRS_WebServices/Toolbox/URIStringBuilderTool.resource
 Resource        ../../../Resources/XRS_WebServices/Toolbox/ParseResponse.resource
 Variables       ./EntityManagementTestData/TestOrganizationData.yaml
 Variables       ../../../Resources/XRS_WebServices/XRSWebServicesBaseURI.yaml
@@ -20,88 +19,79 @@ Force Tags      awsxrsrestwebservicevalidation  awsxrsorganizationrestwebservice
 *** Variables ***
 
 *** Test Cases ***
-Validate AWS XRS Get Organization By SID REST Web Services Returns 200 OK With Parent Organization SID
+Validate AWS XRS Get Organization By SID REST Web Services Response Returns 200 OK With Parent Organization SID
   [Documentation]  Verifies that a Organization with a specific number does not exist
   ${response} =  Get Organization By OrganizationSID  ${XRS_GENERAL_INFORMATION.Company.ParentOrganizationSid}
-  Should Be Equal As Strings  ${response.status_code}  200
+  Request Should Be Successful  ${response}
 
-Validate AWS XRS Post Organization REST Web Services Returns Caption "Request succeeded."
+Validate AWS XRS Post Organization REST Web Services Response Returns Caption "Request succeeded."
   [Documentation]  Posts a Organization and expects a Caption value "Request succeeded."
   ${response} =  Post Organizations  @{XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_LIST}
   &{expected_values} =  Create Dictionary  key=Caption  value=Request succeeded.
-  # Parse response
-  ${json_response} =  To Json  ${response.content}
-  FOR  ${r}  IN  @{json_response}
-    ${get_caption_value} =  Get From Dictionary  ${r}  &{expected_values.key}
-    Should Be Equal As Strings  ${get_caption_value}  &{expected_values.value}
-    ${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_SID} =  Get From Dictionary  ${r}  SID
-  END
-  # After Test Processes
-  Set Suite Variable  ${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_SID}
+  Parse ${reponse} And Verify ${expected_values.key} With ${expected_values.value} And Get Organization SID Test Data
   Create Organization Paramters From Post Organization Test
 
 Validate AWS XRS Get Organization By SID REST Web Services Returns 200 OK With New Organization
   [Documentation]  Verifies that a posted Organization now exists
   ${response} =  Get Organization By OrganizationSID  ${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_SID}
-  Should Be Equal As Strings  ${response.status_code}  200
+  Request Should Be Successful  ${response}
 
-Validate AWS XRS Put Organization REST Web Services Modifies Description Successfully
+Validate AWS XRS Put Organization REST Web Services Response Description Returns "Organization Edited Successfully."
   [Documentation]  Posts a Organization and expects a Code value of 201
   ${response} =  Put Organizations  @{XRS_AWS_WEBSERVICE_PUT_TEST_ORGANIZATION_LIST}
   &{expected_values} =  Create Dictionary  key=Description  value=Organization Edited Successfully.
   Verify Response List ${response} Has Key ${expected_values.key} And Contains Value ${expected_values.value}
 
-Validate AWS XRS Get Organizations By Parameters REST Web Services Returns 200 OK
+Validate AWS XRS Get Organizations By Parameters REST Web Services Response Returns 200 OK
   [Documentation]  Get Organizations with basic parameters
-  ${wo_slash_response} =  Get Organizations Response Code With Forward Slash  &{XRS_AWS_WEBSERVICE_ORGANIZATION_TEST_PARAMS}
-  ${w_slash_response} =  Get Organizations Response Code Without Forward Slash  &{XRS_AWS_WEBSERVICE_ORGANIZATION_TEST_PARAMS}
-  Should Be Equal As Strings  ${wo_slash_response}  200
-  Should Be Equal As Strings  ${w_slash_response}  200
+  ${wo_slash_response} =  Get Organizations Response With Forward Slash  &{XRS_AWS_WEBSERVICE_ORGANIZATION_TEST_PARAMS}
+  ${w_slash_response} =  Get Organizations Response Without Forward Slash  &{XRS_AWS_WEBSERVICE_ORGANIZATION_TEST_PARAMS}
+  Request Should Be Successful  ${wo_slash_response}
+  Request Should Be Successful  ${w_slash_response}
 
-Validate AWS XRS Get Organizations By Parameters REST Web Services Returns 200 OK With Raw String URI
+Validate AWS XRS Get Organizations By Parameters REST Web Services Reponse Returns 200 OK With Raw String URI
   [Documentation]  Get Organizations with basic parameters using a raw URI string
-  ${w_slash_question_response} =  Get Organizations Raw String URI Response Code With /? And Parameters ${XRS_AWS_WEBSERVICE_ORGANIZATION_TEST_PARAMS_STRING}
-  ${w_question_response} =  Get Organizations Raw String URI Response Code With ? And Parameters ${XRS_AWS_WEBSERVICE_ORGANIZATION_TEST_PARAMS_STRING}
-  Should Be Equal As Strings  ${w_slash_question_response}  200
-  Should Be Equal As Strings  ${w_question_response}  200
+  ${w_slash_question_response} =  Get Organizations Raw String URI Response With /? And Parameters ${XRS_AWS_WEBSERVICE_ORGANIZATION_TEST_PARAMS_STRING}
+  ${w_question_response} =  Get Organizations Raw String URI Response With ? And Parameters ${XRS_AWS_WEBSERVICE_ORGANIZATION_TEST_PARAMS_STRING}
+  Request Should Be Successful  ${w_slash_question_response}
+  Request Should Be Successful  ${w_question_response}
 
-Validate AWS XRS Get Organizations By ID REST Web Services Returns 200 OK
+Validate AWS XRS Get Organizations By ID REST Web Services Reponse Returns 200 OK
   [Documentation]  Get organization by ID returns 200 OK
   ${response} =  Get Organizations By ID  ${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_1_DICT.OrganizationId}
-  Should Be Equal As Strings  ${response.status_code}  200
+  Request Should Be Successful  ${response}
 
-Validate AWS XRS Get Organizations REST Web Services For All Organizations Returns 200 OK
+Validate AWS XRS Get Organizations REST Web Services For All Organizations Response Returns 200 OK
   [Documentation]  Gets all the Organizations
   [Tags]  xrsawsperftest
   ${response} =  Get All Organizations
-  Should Be Equal As Strings  ${response.status_code}  200
+  Request Should Be Successful  ${response}
 
 # Organizations Performance (settings) Data Tests
-Validate AWS XRS Get Organizations Performance (settings) Data By SID REST Web Services Returns 200 OK
+Validate AWS XRS Get Organizations Performance (settings) Data By SID REST Web Services Response Returns 200 OK
   [Documentation]  Get organization performance endpoint by ID returns 200 OK
   ${response} =  Get Organizations Performance Data By ID  ${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_1_DICT.OrganizationId}
-  Should Be Equal As Strings  ${response.status_code}  200
+  Request Should Be Successful  ${response}
 
-Validate AWS XRS Put Organization Performance (settings) Data By SID REST Web Services Update Return 200 OK
+Validate AWS XRS Put Organization Performance (settings) Data By SID REST Web Services Update Response Return 200 OK
   [Documentation]  Sends an performance settings update request from a json file, expects a 200 response
   ${json_data} =  Load JSON From File  ${CURDIR}/EntityManagementTestData/organization_performance_minimum_setting.json
-  # @{jsdon_data_as_list} =  Create List  ${json_data}
   ${response} =  Put Organizations Performance Data By ID  ${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_1_DICT.OrganizationId}  ${json_data}
-  Should Be Equal As Strings  ${response.status_code}  200
+  Request Should Be Successful  ${response}
 
-Validate AWS XRS Get Organizations Performance (settings) Data By Parameters REST Web Services Returns 200 OK
+Validate AWS XRS Get Organizations Performance (settings) Data By Parameters REST Web Services Response Returns 200 OK
   [Documentation]  Get Organizations with basic parameters
-  ${wo_slash_response} =  Get Organizations Performance (settings) Data Response Code With Forward Slash  &{XRS_AWS_WEBSERVICE_ORGANIZATION_TEST_PARAMS}
-  ${w_slash_response} =  Get Organizations Performance (settings) Data Response Code Without Forward Slash  &{XRS_AWS_WEBSERVICE_ORGANIZATION_TEST_PARAMS}
-  Should Be Equal As Strings  ${wo_slash_response}  200
-  Should Be Equal As Strings  ${w_slash_response}  200
+  ${wo_slash_response} =  Get Organizations Performance (settings) Data Response With Forward Slash  &{XRS_AWS_WEBSERVICE_ORGANIZATION_TEST_PARAMS}
+  ${w_slash_response} =  Get Organizations Performance (settings) Data Response Without Forward Slash  &{XRS_AWS_WEBSERVICE_ORGANIZATION_TEST_PARAMS}
+  Request Should Be Successful  ${wo_slash_response}
+  Request Should Be Successful  ${w_slash_response}
 
-Validate AWS XRS Get Organizations Performance (settings) Data By Parameters REST Web Services Returns 200 OK With Raw String URI
+Validate AWS XRS Get Organizations Performance (settings) Data By Parameters REST Web Services Response Returns 200 OK With Raw String URI
   [Documentation]  Get Organizations with basic parameters using a raw URI string
-  ${w_slash_question_response} =  Get Organizations Performance (settings) Data Raw String URI Response Code With /? And Parameters ${XRS_AWS_WEBSERVICE_ORGANIZATION_TEST_PARAMS_STRING}
-  ${w_question_response} =  Get Organizations Performance (settings) Data Raw String URI Response Code With ? And Parameters ${XRS_AWS_WEBSERVICE_ORGANIZATION_TEST_PARAMS_STRING}
-  Should Be Equal As Strings  ${w_slash_question_response}  200
-  Should Be Equal As Strings  ${w_question_response}  200
+  ${w_slash_question_response} =  Get Organizations Performance (settings) Data Raw String URI Response With /? And Parameters ${XRS_AWS_WEBSERVICE_ORGANIZATION_TEST_PARAMS_STRING}
+  ${w_question_response} =  Get Organizations Performance (settings) Data Raw String URI Response With ? And Parameters ${XRS_AWS_WEBSERVICE_ORGANIZATION_TEST_PARAMS_STRING}
+  Request Should Be Successful  ${w_slash_question_response}
+  Request Should Be Successful  ${w_question_response}
 
 *** Keywords ***
 Test Data Setup For XRS AWS Organization Web Service Test Suite
@@ -148,3 +138,14 @@ Create Organization Paramters From Post Organization Test
   ...  IsActive=${XRS_AWS_WEBSERVICE_ORGANIZATION_TEST_PARAMS.IsActive}
   ...  AsOfDateTime=${XRS_AWS_WEBSERVICE_ORGANIZATION_TEST_PARAMS.AsOfDateTime}
   Set Suite Variable  ${XRS_AWS_WEBSERVICE_ORGANIZATION_TEST_PARAMS_STRING}
+
+Parse ${reponse} And Verify ${key} With ${value} And Get Organization SID Test Data
+  [Documentation]  Takes a reponse and expects to find the expected key and value
+  ...  It also gets the value of the Organization SID and stores it for later tests
+  ${json_response} =  To Json  ${response.content}
+  FOR  ${r}  IN  @{json_response}
+    ${get_caption_value} =  Get From Dictionary  ${r}  ${key}
+    Should Be Equal As Strings  ${get_caption_value}  ${value}
+    ${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_SID} =  Get From Dictionary  ${r}  SID
+  END
+  Set Suite Variable  ${XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_SID}

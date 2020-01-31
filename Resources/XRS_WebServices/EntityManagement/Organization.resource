@@ -3,7 +3,7 @@ Documentation  Keyword library for interacting with the Entity > Organization We
 ...  Version 1.1
 Library  RequestsLibrary
 Resource  ../../XRS_WebServices/XRSCommonWebService.resource
-Resource  ../../XRS_WebServices/XRSCommonWebService.resource
+Resource  ../../XRS_WebServices/Toolbox/URIStringBuilderTool.resource
 Variables  ../../XRS_WebServices/XRSWebServicesBaseURI.yaml
 
 *** Variables ***
@@ -237,7 +237,11 @@ Get Organizations Raw String URI Response With ${character_string} And Parameter
   [Documentation]  Uses the given character string to create raw URI string Get request
   ...  ${character_string} is a set of 1+ characters
   ...  ${params_string} is a series of '&' delimited parameters 
-  ${uri_string} =  Create URI String With  ${XRS_Entity_Management_Base_URI.Organization}  ${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_ORGANIZATIONS}  ${character_string}  ${params_string}
+  ${uri_string} =  Create URI String With
+  ...  ${XRS_Entity_Management_Base_URI.Organization}
+  ...  ${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_ORGANIZATIONS}
+  ...  ${character_string}
+  ...  ${params_string}
   ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri_string}  headers=${XRS_WEBSERVICES_JSON_HEADER}
   [Return]  ${response}
 
@@ -257,6 +261,10 @@ Get Organizations Performance (settings) Data Raw String URI Response With ${cha
   [Documentation]  Uses the given character string to create raw URI string Get request
   ...  ${character_string} is a set of 1+ characters
   ...  ${params_string} is a series of '&' delimited parameters 
-  ${uri_string} =  Create URI String With  ${XRS_Entity_Management_Base_URI.Organization}  ${XRS_WEBSERVICE_ENTITY_MANAGEMENT_GET_PUT_ORGANIZATIONS_PERFORMANCE}  ${character_string}  ${params_string}
+  ${uri_string} =  Create URI String With
+  ...  ${XRS_Entity_Management_Base_URI.Organization}
+  ...  ${XRS_WEBSERVICE_ENTITY_MANAGEMENT_GET_PUT_ORGANIZATIONS_PERFORMANCE}
+  ...  ${character_string}
+  ...  ${params_string}
   ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri_string}  headers=${XRS_WEBSERVICES_JSON_HEADER}
   [Return]  ${response}
