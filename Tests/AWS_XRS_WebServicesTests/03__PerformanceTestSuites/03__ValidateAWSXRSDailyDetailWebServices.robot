@@ -18,15 +18,15 @@ Force Tags      awsxrsrestwebservicevalidation  awsxrsdailydetailrestwebservicev
 *** Test Cases ***
 Validate AWS XRS Get Daily Detail REST Web Services Returns 200 OK
   [Documentation]  Get Daily Detail Events with basic parameters
-  ${wo_slash_response} =  Get Daily Detail Response Code With Forward Slash  &{XRS_AWS_WEBSERVICE_DAILY_DETAIL_TEST_PARAMS}
-  ${w_slash_response} =  Get Daily Detail Response Code Without Forward Slash  &{XRS_AWS_WEBSERVICE_DAILY_DETAIL_TEST_PARAMS}
+  ${wo_slash_response} =  Get Daily Detail Response With Forward Slash  &{XRS_AWS_WEBSERVICE_DAILY_DETAIL_TEST_PARAMS}
+  ${w_slash_response} =  Get Daily Detail Response Without Forward Slash  &{XRS_AWS_WEBSERVICE_DAILY_DETAIL_TEST_PARAMS}
   Should Be Equal As Strings  ${wo_slash_response}  200
   Should Be Equal As Strings  ${w_slash_response}  200
 
 Validate AWS XRS Get Daily Detail REST Web Services Returns 200 OK With Raw String URI
   [Documentation]  Get Daily Detail Events with basic parameters using a raw URI string
-  ${w_slash_question_response} =  Get Daily Detail Raw String URI Response Code With /? And Parameters ${XRS_AWS_WEBSERVICE_DAILY_DETAIL_TEST_PARAMS_STRING}
-  ${w_question_response} =  Get Daily Detail Raw String URI Response Code With ? And Parameters ${XRS_AWS_WEBSERVICE_DAILY_DETAIL_TEST_PARAMS_STRING}
+  ${w_slash_question_response} =  Get Daily Detail Raw String URI Response With /? And Parameters ${XRS_AWS_WEBSERVICE_DAILY_DETAIL_TEST_PARAMS_STRING}
+  ${w_question_response} =  Get Daily Detail Raw String URI Response With ? And Parameters ${XRS_AWS_WEBSERVICE_DAILY_DETAIL_TEST_PARAMS_STRING}
   Should Be Equal As Strings  ${w_slash_question_response}  200
   Should Be Equal As Strings  ${w_question_response}  200
 
@@ -39,16 +39,16 @@ Validate AWS XRS Get Daily Detail REST Web Services For All Daily Details Return
 # Validate Get Daily Details By Driver ID
 Validate AWS XRS Get Daily Details By Driver ID REST Web Services Returns 200 OK
   [Documentation]  Get Daily Detail Events By Driver IDwith basic parameters
-  ${wo_slash_response} =  Get Daily Detail By Driver ID Response Code With Forward Slash  ${SAMPLE_DRIVER_ID_FOR_DAILY_DETAIL_TEST}  &{XRS_AWS_WEBSERVICE_DAILY_DETAIL_TEST_PARAMS}
-  ${w_slash_response} =  Get Daily Detail By Driver ID Response Code Without Forward Slash  ${SAMPLE_DRIVER_ID_FOR_DAILY_DETAIL_TEST}  &{XRS_AWS_WEBSERVICE_DAILY_DETAIL_TEST_PARAMS}
+  ${wo_slash_response} =  Get Daily Detail By Driver ID Response With Forward Slash  ${SAMPLE_DRIVER_ID_FOR_DAILY_DETAIL_TEST}  &{XRS_AWS_WEBSERVICE_DAILY_DETAIL_TEST_PARAMS}
+  ${w_slash_response} =  Get Daily Detail By Driver ID Response Without Forward Slash  ${SAMPLE_DRIVER_ID_FOR_DAILY_DETAIL_TEST}  &{XRS_AWS_WEBSERVICE_DAILY_DETAIL_TEST_PARAMS}
   Should Be Equal As Strings  ${wo_slash_response}  200
   Should Be Equal As Strings  ${w_slash_response}  200
 
 Validate AWS XRS Get Daily Detail By Driver ID REST Web Services Returns 200 OK With Raw String URI
   [Documentation]  Get Daily Detail Events By Driver IDwith basic parameters using a raw URI string
   &{test_data} =  Create Dictionary  driver_id=${SAMPLE_DRIVER_ID_FOR_DAILY_DETAIL_TEST}  params_string=${XRS_AWS_WEBSERVICE_DAILY_DETAIL_TEST_PARAMS_STRING}
-  ${w_slash_question_response} =  Get Daily Detail By Driver ID ${test_data.driver_id} Raw String URI Response Code With /? And Parameters ${test_data.params_string}
-  ${w_question_response} =  Get Daily Detail By Driver ID ${test_data.driver_id} Raw String URI Response Code With ? And Parameters ${test_data.params_string}
+  ${w_slash_question_response} =  Get Daily Detail By Driver ID ${test_data.driver_id} Raw String URI Response With /? And Parameters ${test_data.params_string}
+  ${w_question_response} =  Get Daily Detail By Driver ID ${test_data.driver_id} Raw String URI Response With ? And Parameters ${test_data.params_string}
   Should Be Equal As Strings  ${w_slash_question_response}  200
   Should Be Equal As Strings  ${w_question_response}  200
 
@@ -61,16 +61,16 @@ Validate AWS XRS Get Daily Detail By Driver ID REST Web Services For All Daily D
 # Validate Get Daily Details By Vehicle ID
 Validate AWS XRS Get Daily Details By Vehicle ID REST Web Services Returns 200 OK
   [Documentation]  Get Daily Detail Events By Vehicle ID with basic parameters
-  ${wo_slash_response} =  Get Daily Detail By Vehicle ID Response Code With Forward Slash  ${SAMPLE_VEHICLE_ID_FOR_DAILY_DETAIL_TEST}  &{XRS_AWS_WEBSERVICE_DAILY_DETAIL_TEST_PARAMS}
-  ${w_slash_response} =  Get Daily Detail By Vehicle ID Response Code Without Forward Slash  ${SAMPLE_VEHICLE_ID_FOR_DAILY_DETAIL_TEST}  &{XRS_AWS_WEBSERVICE_DAILY_DETAIL_TEST_PARAMS}
+  ${wo_slash_response} =  Get Daily Detail By Vehicle ID Response With Forward Slash  ${SAMPLE_VEHICLE_ID_FOR_DAILY_DETAIL_TEST}  &{XRS_AWS_WEBSERVICE_DAILY_DETAIL_TEST_PARAMS}
+  ${w_slash_response} =  Get Daily Detail By Vehicle ID Response Without Forward Slash  ${SAMPLE_VEHICLE_ID_FOR_DAILY_DETAIL_TEST}  &{XRS_AWS_WEBSERVICE_DAILY_DETAIL_TEST_PARAMS}
   Should Be Equal As Strings  ${wo_slash_response}  200
   Should Be Equal As Strings  ${w_slash_response}  200
 
 Validate AWS XRS Get Daily Detail By Vehicle ID REST Web Services Returns 200 OK With Raw String URI
   [Documentation]  Get Daily Detail Events By Vehicle ID with basic parameters using a raw URI string
   &{test_data} =  Create Dictionary  driver_id=${SAMPLE_DRIVER_ID_FOR_DAILY_DETAIL_TEST}  params_string=${XRS_AWS_WEBSERVICE_DAILY_DETAIL_TEST_PARAMS_STRING}
-  ${w_slash_question_response} =  Get Daily Detail By Vehicle ID ${test_data.vehicle_id} Raw String URI Response Code With /? And Parameters ${test_data.params_string}
-  ${w_question_response} =  Get Daily Detail By Vehicle ID ${test_data.vehicle_id} Raw String URI Response Code With ? And Parameters ${test_data.params_string}
+  ${w_slash_question_response} =  Get Daily Detail By Vehicle ID ${test_data.vehicle_id} Raw String URI Response With /? And Parameters ${test_data.params_string}
+  ${w_question_response} =  Get Daily Detail By Vehicle ID ${test_data.vehicle_id} Raw String URI Response With ? And Parameters ${test_data.params_string}
   Should Be Equal As Strings  ${w_slash_question_response}  200
   Should Be Equal As Strings  ${w_question_response}  200
 

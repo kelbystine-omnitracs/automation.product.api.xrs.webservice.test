@@ -130,19 +130,19 @@ Get Black Box Summary By Vehicle ID ${vehicle_id} With URI Ending With ${ending_
   [Return]  ${response}
 
 # Helper Keywords
-Get Black Box Summary Response Code Without Forward Slash
+Get Black Box Summary Response Without Forward Slash
   [Arguments]  &{params}
   [Documentation]  Returns the response code with '?' before the parameters.
   ${response} =  Get Black Box Summary  &{params}
   [Return]  ${response.status_code}
 
-Get Black Box Summary Response Code With Forward Slash
+Get Black Box Summary Response With Forward Slash
   [Arguments]  &{params}
   [Documentation]  Returns the response code when the character '/' is placed before '?'.
   ${response} =  Get Black Box Summary With URI Ending With / And Parameters &{params}
   [Return]  ${response.status_code}
 
-Get Black Box Summary Raw String URI Response Code With ${character_string} And Parameters ${params_string}
+Get Black Box Summary Raw String URI Response With ${character_string} And Parameters ${params_string}
   [Documentation]  Uses the given character string to create raw URI string Get request
   ...  ${character_string} is a set of 1+ characters
   ...  ${params_string} is a series of '&' delimited parameters 
@@ -152,19 +152,19 @@ Get Black Box Summary Raw String URI Response Code With ${character_string} And 
   [Return]  ${response.status_code}
 
 # Helper Keywords For Get Black Box Summaries By Driver ID
-Get Black Box Summary By Driver ID Response Code Without Forward Slash
+Get Black Box Summary By Driver ID Response Without Forward Slash
   [Arguments]  ${driver_id}  &{params}
   [Documentation]  Returns the response code with '?' before the parameters.
   ${response} =  Get Black Box Summary By Driver ID And Parameters  ${driver_id}  ${params}
   [Return]  ${response.status_code}
 
-Get Black Box Summary By Driver ID Response Code With Forward Slash
+Get Black Box Summary By Driver ID Response With Forward Slash
   [Arguments]  ${driver_id}  &{params}
   [Documentation]  Returns the response code when the character '/' is placed before '?'.
   ${response} =  Get Black Box Summary By Driver ID ${driver_id} With URI Ending With / And Parameters ${params}
   [Return]  ${response.status_code}
 
-Get Black Box Summary By Driver ID ${driver_id} Raw String URI Response Code With ${character_string} And Parameters ${params_string}
+Get Black Box Summary By Driver ID ${driver_id} Raw String URI Response With ${character_string} And Parameters ${params_string}
   [Documentation]  Uses the given character string to create raw URI string Get request
   ...  ${character_string} is a set of 1+ characters
   ...  ${params_string} is a series of '&' delimited parameters 
@@ -174,19 +174,19 @@ Get Black Box Summary By Driver ID ${driver_id} Raw String URI Response Code Wit
   [Return]  ${response.status_code}
 
 # Helper Keywords For Get Black Box Summaries By Vehicle ID
-Get Black Box Summary By Vehicle ID Response Code Without Forward Slash
+Get Black Box Summary By Vehicle ID Response Without Forward Slash
   [Arguments]  ${vehicle_id}  &{params}
   [Documentation]  Returns the response code with '?' before the parameters.
   ${response} =  Get Black Box Summary By Vehicle ID And Parameters  ${vehicle_id}  ${params}
   [Return]  ${response.status_code}
 
-Get Black Box Summary By Vehicle ID Response Code With Forward Slash
+Get Black Box Summary By Vehicle ID Response With Forward Slash
   [Arguments]  ${vehicle_id}  &{params}
   [Documentation]  Returns the response code when the character '/' is placed before '?'.
   ${response} =  Get Black Box Summary By Vehicle ID ${vehicle_id} With URI Ending With / And Parameters ${params}
   [Return]  ${response.status_code}
 
-Get Black Box Summary By Vehicle ID ${vehicle_id} Raw String URI Response Code With ${character_string} And Parameters ${params_string}
+Get Black Box Summary By Vehicle ID ${vehicle_id} Raw String URI Response With ${character_string} And Parameters ${params_string}
   [Documentation]  Uses the given character string to create raw URI string Get request
   ...  ${character_string} is a set of 1+ characters
   ...  ${params_string} is a series of '&' delimited parameters 

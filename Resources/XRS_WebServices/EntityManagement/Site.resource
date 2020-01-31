@@ -173,19 +173,19 @@ Delete Sites By Site Id
   [Return]  ${response}
 
 # Helper Keywords
-Get Sites Response Code Without Forward Slash
+Get Sites Response Without Forward Slash
   [Arguments]  &{params}
   [Documentation]  Returns the response code with '?' before the parameters.
   ${response} =  Get Sites  &{params}
   [Return]  ${response.status_code}
 
-Get Sites Response Code With Forward Slash
+Get Sites Response With Forward Slash
   [Arguments]  &{params}
   [Documentation]  Returns the response code when the character '/' is placed before '?'.
   ${response} =  Get Sites With URI Ending With / And Parameters &{params}
   [Return]  ${response.status_code}
 
-Get Sites Raw String URI Response Code With ${character_string} And Parameters ${params_string}
+Get Sites Raw String URI Response With ${character_string} And Parameters ${params_string}
   [Documentation]  Uses the given character string to create raw URI string Get request
   ...  ${character_string} is a set of 1+ characters
   ...  ${params_string} is a series of '&' delimited parameters 

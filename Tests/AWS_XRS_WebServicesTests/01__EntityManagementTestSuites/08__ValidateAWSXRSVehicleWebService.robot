@@ -51,15 +51,15 @@ Validate AWS XRS Put Vehicle REST Web Services Modifies Vehicle Successfully
 
 Validate AWS XRS Get Vehicles REST Web Services Returns 200 OK
   [Documentation]  Get Vehicles with basic parameters
-  ${wo_slash_response} =  Get Vehicles Response Code With Forward Slash  &{XRS_AWS_WEBSERVICE_VEHICLE_TEST_PARAMS}
-  ${w_slash_response} =  Get Vehicles Response Code Without Forward Slash  &{XRS_AWS_WEBSERVICE_VEHICLE_TEST_PARAMS}
+  ${wo_slash_response} =  Get Vehicles Response With Forward Slash  &{XRS_AWS_WEBSERVICE_VEHICLE_TEST_PARAMS}
+  ${w_slash_response} =  Get Vehicles Response Without Forward Slash  &{XRS_AWS_WEBSERVICE_VEHICLE_TEST_PARAMS}
   Should Be Equal As Strings  ${wo_slash_response}  200
   Should Be Equal As Strings  ${w_slash_response}  200
 
 Validate AWS XRS Get Vehicles REST Web Services Returns 200 OK With Raw String URI
   [Documentation]  Get Vehicles with basic parameters using a raw URI string
-  ${w_slash_question_response} =  Get Vehicles Raw String URI Response Code With /? And Parameters ${XRS_AWS_WEBSERVICE_VEHICLE_TEST_PARAMS_STRING}
-  ${w_question_response} =  Get Vehicles Raw String URI Response Code With ? And Parameters ${XRS_AWS_WEBSERVICE_VEHICLE_TEST_PARAMS_STRING}
+  ${w_slash_question_response} =  Get Vehicles Raw String URI Response With /? And Parameters ${XRS_AWS_WEBSERVICE_VEHICLE_TEST_PARAMS_STRING}
+  ${w_question_response} =  Get Vehicles Raw String URI Response With ? And Parameters ${XRS_AWS_WEBSERVICE_VEHICLE_TEST_PARAMS_STRING}
   Should Be Equal As Strings  ${w_slash_question_response}  200
   Should Be Equal As Strings  ${w_question_response}  200
 

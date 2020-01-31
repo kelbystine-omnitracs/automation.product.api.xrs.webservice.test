@@ -18,15 +18,15 @@ Force Tags      awsxrsrestwebservicevalidation  awsxrsfaultcoderestwebserviceval
 *** Test Cases ***
 Validate AWS XRS Get Fault Code REST Web Services Returns 200 OK
   [Documentation]  Get Fault Code Events with basic parameters
-  ${wo_slash_response} =  Get Fault Codes Response Code With Forward Slash  &{XRS_AWS_WEBSERVICE_FAULT_CODE_TEST_PARAMS}
-  ${w_slash_response} =  Get Fault Codes Response Code Without Forward Slash  &{XRS_AWS_WEBSERVICE_FAULT_CODE_TEST_PARAMS}
+  ${wo_slash_response} =  Get Fault Codes Response With Forward Slash  &{XRS_AWS_WEBSERVICE_FAULT_CODE_TEST_PARAMS}
+  ${w_slash_response} =  Get Fault Codes Response Without Forward Slash  &{XRS_AWS_WEBSERVICE_FAULT_CODE_TEST_PARAMS}
   Should Be Equal As Strings  ${wo_slash_response}  200
   Should Be Equal As Strings  ${w_slash_response}  200
 
 Validate AWS XRS Get Fault Code REST Web Services Returns 200 OK With Raw String URI
   [Documentation]  Get Fault Code Events with basic parameters using a raw URI string
-  ${w_slash_question_response} =  Get Fault Codes Raw String URI Response Code With /? And Parameters ${XRS_AWS_WEBSERVICE_FAULT_CODE_TEST_PARAMS_STRING}
-  ${w_question_response} =  Get Fault Codes Raw String URI Response Code With ? And Parameters ${XRS_AWS_WEBSERVICE_FAULT_CODE_TEST_PARAMS_STRING}
+  ${w_slash_question_response} =  Get Fault Codes Raw String URI Response With /? And Parameters ${XRS_AWS_WEBSERVICE_FAULT_CODE_TEST_PARAMS_STRING}
+  ${w_question_response} =  Get Fault Codes Raw String URI Response With ? And Parameters ${XRS_AWS_WEBSERVICE_FAULT_CODE_TEST_PARAMS_STRING}
   Should Be Equal As Strings  ${w_slash_question_response}  200
   Should Be Equal As Strings  ${w_question_response}  200
 
@@ -39,16 +39,16 @@ Validate AWS XRS Get Fault Code REST Web Services For All Fault Codes Returns 20
 # Validate Get Fault Codes By Vehicle ID
 Validate AWS XRS Get Fault Codes By Vehicle ID REST Web Services Returns 200 OK
   [Documentation]  Get Fault Code Events By Vehicle ID with basic parameters
-  ${wo_slash_response} =  Get Fault Codes By Vehicle ID Response Code With Forward Slash  ${SAMPLE_VEHICLE_ID_FOR_FAULT_CODE_TEST}  &{XRS_AWS_WEBSERVICE_FAULT_CODE_TEST_PARAMS}
-  ${w_slash_response} =  Get Fault Codes By Vehicle ID Response Code Without Forward Slash  ${SAMPLE_VEHICLE_ID_FOR_FAULT_CODE_TEST}  &{XRS_AWS_WEBSERVICE_FAULT_CODE_TEST_PARAMS}
+  ${wo_slash_response} =  Get Fault Codes By Vehicle ID Response With Forward Slash  ${SAMPLE_VEHICLE_ID_FOR_FAULT_CODE_TEST}  &{XRS_AWS_WEBSERVICE_FAULT_CODE_TEST_PARAMS}
+  ${w_slash_response} =  Get Fault Codes By Vehicle ID Response Without Forward Slash  ${SAMPLE_VEHICLE_ID_FOR_FAULT_CODE_TEST}  &{XRS_AWS_WEBSERVICE_FAULT_CODE_TEST_PARAMS}
   Should Be Equal As Strings  ${wo_slash_response}  200
   Should Be Equal As Strings  ${w_slash_response}  200
 
 Validate AWS XRS Get Fault Code By Vehicle ID REST Web Services Returns 200 OK With Raw String URI
   [Documentation]  Get Fault Code Events By Vehicle ID with basic parameters using a raw URI string
   &{test_data} =  Create Dictionary  vehicle_id=${SAMPLE_VEHICLE_ID_FOR_FAULT_CODE_TEST}  params_string=${XRS_AWS_WEBSERVICE_FAULT_CODE_TEST_PARAMS_STRING}
-  ${w_slash_question_response} =  Get Fault Codes By Vehicle ID ${test_data.vehicle_id} Raw String URI Response Code With /? And Parameters ${test_data.params_string}
-  ${w_question_response} =  Get Fault Codes By Vehicle ID ${test_data.vehicle_id} Raw String URI Response Code With ? And Parameters ${test_data.params_string}
+  ${w_slash_question_response} =  Get Fault Codes By Vehicle ID ${test_data.vehicle_id} Raw String URI Response With /? And Parameters ${test_data.params_string}
+  ${w_question_response} =  Get Fault Codes By Vehicle ID ${test_data.vehicle_id} Raw String URI Response With ? And Parameters ${test_data.params_string}
   Should Be Equal As Strings  ${w_slash_question_response}  200
   Should Be Equal As Strings  ${w_question_response}  200
 

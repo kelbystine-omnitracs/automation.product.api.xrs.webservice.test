@@ -17,15 +17,15 @@ Force Tags      awsxrsrestwebservicevalidation  awsxrsresourcegrouprestwebservic
 *** Test Cases ***
 Validate AWS XRS Get Resource Groups REST Web Services Returns 200 OK
   [Documentation]  Get Resource Groups with basic parameters
-  ${wo_slash_response} =  Get Resource Groups Response Code With Forward Slash  &{XRS_AWS_WEBSERVICE_RESOURCE_GROUP_TEST_PARAMS}
-  ${w_slash_response} =  Get Resource Groups Response Code Without Forward Slash  &{XRS_AWS_WEBSERVICE_RESOURCE_GROUP_TEST_PARAMS}
+  ${wo_slash_response} =  Get Resource Groups Response With Forward Slash  &{XRS_AWS_WEBSERVICE_RESOURCE_GROUP_TEST_PARAMS}
+  ${w_slash_response} =  Get Resource Groups Response Without Forward Slash  &{XRS_AWS_WEBSERVICE_RESOURCE_GROUP_TEST_PARAMS}
   Should Be Equal As Strings  ${wo_slash_response}  200
   Should Be Equal As Strings  ${w_slash_response}  200
 
 Validate AWS XRS Get Resource Groups REST Web Services Returns 200 OK With Raw String URI
   [Documentation]  Get Resource Groups with basic parameters using a raw URI string
-  ${w_slash_question_response} =  Get Resource Groups Raw String URI Response Code With /? And Parameters ${XRS_AWS_WEBSERVICE_RESOURCE_GROUP_TEST_PARAMS_STRING}
-  ${w_question_response} =  Get Resource Groups Raw String URI Response Code With ? And Parameters ${XRS_AWS_WEBSERVICE_RESOURCE_GROUP_TEST_PARAMS_STRING}
+  ${w_slash_question_response} =  Get Resource Groups Raw String URI Response With /? And Parameters ${XRS_AWS_WEBSERVICE_RESOURCE_GROUP_TEST_PARAMS_STRING}
+  ${w_question_response} =  Get Resource Groups Raw String URI Response With ? And Parameters ${XRS_AWS_WEBSERVICE_RESOURCE_GROUP_TEST_PARAMS_STRING}
   Should Be Equal As Strings  ${w_slash_question_response}  200
   Should Be Equal As Strings  ${w_question_response}  200
 

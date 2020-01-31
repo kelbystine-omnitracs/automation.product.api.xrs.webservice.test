@@ -269,19 +269,19 @@ Get The nth Active Vehicle ID
     [Return]  ${get_first_active_vehicle.VehicleName}
 
 # Helper Keywords
-Get Vehicles Response Code Without Forward Slash
+Get Vehicles Response Without Forward Slash
   [Arguments]  &{params}
   [Documentation]  Returns the response code with '?' before the parameters.
   ${response} =  Get Vehicles  &{params}
   [Return]  ${response.status_code}
 
-Get vehicles Response Code With Forward Slash
+Get vehicles Response With Forward Slash
   [Arguments]  &{params}
   [Documentation]  Returns the response code when the character '/' is placed before '?'.
   ${response} =  Get Vehicles With URI Ending With / And Parameters &{params}
   [Return]  ${response.status_code}
 
-Get Vehicles Raw String URI Response Code With ${character_string} And Parameters ${params_string}
+Get Vehicles Raw String URI Response With ${character_string} And Parameters ${params_string}
   [Documentation]  Uses the given character string to create raw URI string Get request
   ...  ${character_string} is a set of 1+ characters
   ...  ${params_string} is a series of '&' delimited parameters 

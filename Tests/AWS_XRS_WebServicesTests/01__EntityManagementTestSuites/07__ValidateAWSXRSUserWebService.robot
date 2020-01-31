@@ -45,15 +45,15 @@ Validate AWS XRS Put User REST Web Services Modifies User Successfully
 
 Validate AWS XRS Get Users REST Web Services Returns 200 OK
   [Documentation]  Get Users with basic parameters
-  ${wo_slash_response} =  Get Users Response Code With Forward Slash  &{XRS_AWS_WEBSERVICE_USER_TEST_PARAMS}
-  ${w_slash_response} =  Get Users Response Code Without Forward Slash  &{XRS_AWS_WEBSERVICE_USER_TEST_PARAMS}
+  ${wo_slash_response} =  Get Users Response With Forward Slash  &{XRS_AWS_WEBSERVICE_USER_TEST_PARAMS}
+  ${w_slash_response} =  Get Users Response Without Forward Slash  &{XRS_AWS_WEBSERVICE_USER_TEST_PARAMS}
   Should Be Equal As Strings  ${wo_slash_response}  200
   Should Be Equal As Strings  ${w_slash_response}  200
 
 Validate AWS XRS Get Users REST Web Services Returns 200 OK With Raw String URI
   [Documentation]  Get Users with basic parameters using a raw URI string
-  ${w_slash_question_response} =  Get Users Raw String URI Response Code With /? And Parameters ${XRS_AWS_WEBSERVICE_USER_TEST_PARAMS_STRING}
-  ${w_question_response} =  Get Users Raw String URI Response Code With ? And Parameters ${XRS_AWS_WEBSERVICE_USER_TEST_PARAMS_STRING}
+  ${w_slash_question_response} =  Get Users Raw String URI Response With /? And Parameters ${XRS_AWS_WEBSERVICE_USER_TEST_PARAMS_STRING}
+  ${w_question_response} =  Get Users Raw String URI Response With ? And Parameters ${XRS_AWS_WEBSERVICE_USER_TEST_PARAMS_STRING}
   Should Be Equal As Strings  ${w_slash_question_response}  200
   Should Be Equal As Strings  ${w_question_response}  200
 

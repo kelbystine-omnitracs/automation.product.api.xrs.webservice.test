@@ -18,15 +18,15 @@ Force Tags      awsxrsrestwebservicevalidation  awsxrscriticaleventsrestwebservi
 *** Test Cases ***
 Validate AWS XRS Get Critical Events Summary REST Web Services Returns 200 OK
   [Documentation]  Get Critical Events Events with basic parameters
-  ${wo_slash_response} =  Get Critical Events Summary Response Code With Forward Slash  &{XRS_AWS_WEBSERVICE_CRITICAL_EVENTS_TEST_PARAMS}
-  ${w_slash_response} =  Get Critical Events Summary Response Code Without Forward Slash  &{XRS_AWS_WEBSERVICE_CRITICAL_EVENTS_TEST_PARAMS}
+  ${wo_slash_response} =  Get Critical Events Summary Response With Forward Slash  &{XRS_AWS_WEBSERVICE_CRITICAL_EVENTS_TEST_PARAMS}
+  ${w_slash_response} =  Get Critical Events Summary Response Without Forward Slash  &{XRS_AWS_WEBSERVICE_CRITICAL_EVENTS_TEST_PARAMS}
   Should Be Equal As Strings  ${wo_slash_response}  200
   Should Be Equal As Strings  ${w_slash_response}  200
 
 Validate AWS XRS Get Critical Events Summary REST Web Services Returns 200 OK With Raw String URI
   [Documentation]  Get Critical Events Events with basic parameters using a raw URI string
-  ${w_slash_question_response} =  Get Critical Events Summary Raw String URI Response Code With /? And Parameters ${XRS_AWS_WEBSERVICE_CRITICAL_EVENTS_TEST_PARAMS_STRING}
-  ${w_question_response} =  Get Critical Events Summary Raw String URI Response Code With ? And Parameters ${XRS_AWS_WEBSERVICE_CRITICAL_EVENTS_TEST_PARAMS_STRING}
+  ${w_slash_question_response} =  Get Critical Events Summary Raw String URI Response With /? And Parameters ${XRS_AWS_WEBSERVICE_CRITICAL_EVENTS_TEST_PARAMS_STRING}
+  ${w_question_response} =  Get Critical Events Summary Raw String URI Response With ? And Parameters ${XRS_AWS_WEBSERVICE_CRITICAL_EVENTS_TEST_PARAMS_STRING}
   Should Be Equal As Strings  ${w_slash_question_response}  200
   Should Be Equal As Strings  ${w_question_response}  200
 
@@ -39,16 +39,16 @@ Validate AWS XRS Get Critical Events Summary REST Web Services For All Critical 
 # Validate Get Critical Events Summaries By Driver ID
 Validate AWS XRS Get Critical Events Summaries By Driver ID REST Web Services Returns 200 OK
   [Documentation]  Get Critical Events Events By Driver IDwith basic parameters
-  ${wo_slash_response} =  Get Critical Events Summary By Driver ID Response Code With Forward Slash  ${SAMPLE_DRIVER_ID_FOR_CRITICAL_EVENTS_TEST}  &{XRS_AWS_WEBSERVICE_CRITICAL_EVENTS_TEST_PARAMS}
-  ${w_slash_response} =  Get Critical Events Summary By Driver ID Response Code Without Forward Slash  ${SAMPLE_DRIVER_ID_FOR_CRITICAL_EVENTS_TEST}  &{XRS_AWS_WEBSERVICE_CRITICAL_EVENTS_TEST_PARAMS}
+  ${wo_slash_response} =  Get Critical Events Summary By Driver ID Response With Forward Slash  ${SAMPLE_DRIVER_ID_FOR_CRITICAL_EVENTS_TEST}  &{XRS_AWS_WEBSERVICE_CRITICAL_EVENTS_TEST_PARAMS}
+  ${w_slash_response} =  Get Critical Events Summary By Driver ID Response Without Forward Slash  ${SAMPLE_DRIVER_ID_FOR_CRITICAL_EVENTS_TEST}  &{XRS_AWS_WEBSERVICE_CRITICAL_EVENTS_TEST_PARAMS}
   Should Be Equal As Strings  ${wo_slash_response}  200
   Should Be Equal As Strings  ${w_slash_response}  200
 
 Validate AWS XRS Get Critical Events Summary By Driver ID REST Web Services Returns 200 OK With Raw String URI
   [Documentation]  Get Critical Events Events By Driver IDwith basic parameters using a raw URI string
   &{test_data} =  Create Dictionary  driver_id=${SAMPLE_DRIVER_ID_FOR_CRITICAL_EVENTS_TEST}  params_string=${XRS_AWS_WEBSERVICE_CRITICAL_EVENTS_TEST_PARAMS_STRING}
-  ${w_slash_question_response} =  Get Critical Events Summary By Driver ID ${test_data.driver_id} Raw String URI Response Code With /? And Parameters ${test_data.params_string}
-  ${w_question_response} =  Get Critical Events Summary By Driver ID ${test_data.driver_id} Raw String URI Response Code With ? And Parameters ${test_data.params_string}
+  ${w_slash_question_response} =  Get Critical Events Summary By Driver ID ${test_data.driver_id} Raw String URI Response With /? And Parameters ${test_data.params_string}
+  ${w_question_response} =  Get Critical Events Summary By Driver ID ${test_data.driver_id} Raw String URI Response With ? And Parameters ${test_data.params_string}
   Should Be Equal As Strings  ${w_slash_question_response}  200
   Should Be Equal As Strings  ${w_question_response}  200
 
@@ -61,16 +61,16 @@ Validate AWS XRS Get Critical Events Summary By Driver ID REST Web Services For 
 # Validate Get Critical Events Summaries By Vehicle ID
 Validate AWS XRS Get Critical Events Summaries By Vehicle ID REST Web Services Returns 200 OK
   [Documentation]  Get Critical Events Events By Vehicle ID with basic parameters
-  ${wo_slash_response} =  Get Critical Events Summary By Vehicle ID Response Code With Forward Slash  ${SAMPLE_VEHICLE_ID_FOR_CRITICAL_EVENTS_TEST}  &{XRS_AWS_WEBSERVICE_CRITICAL_EVENTS_TEST_PARAMS}
-  ${w_slash_response} =  Get Critical Events Summary By Vehicle ID Response Code Without Forward Slash  ${SAMPLE_VEHICLE_ID_FOR_CRITICAL_EVENTS_TEST}  &{XRS_AWS_WEBSERVICE_CRITICAL_EVENTS_TEST_PARAMS}
+  ${wo_slash_response} =  Get Critical Events Summary By Vehicle ID Response With Forward Slash  ${SAMPLE_VEHICLE_ID_FOR_CRITICAL_EVENTS_TEST}  &{XRS_AWS_WEBSERVICE_CRITICAL_EVENTS_TEST_PARAMS}
+  ${w_slash_response} =  Get Critical Events Summary By Vehicle ID Response Without Forward Slash  ${SAMPLE_VEHICLE_ID_FOR_CRITICAL_EVENTS_TEST}  &{XRS_AWS_WEBSERVICE_CRITICAL_EVENTS_TEST_PARAMS}
   Should Be Equal As Strings  ${wo_slash_response}  200
   Should Be Equal As Strings  ${w_slash_response}  200
 
 Validate AWS XRS Get Critical Events Summary By Vehicle ID REST Web Services Returns 200 OK With Raw String URI
   [Documentation]  Get Critical Events Events By Vehicle ID with basic parameters using a raw URI string
   &{test_data} =  Create Dictionary  vehicle_id=${SAMPLE_VEHICLE_ID_FOR_CRITICAL_EVENTS_TEST}  params_string=${XRS_AWS_WEBSERVICE_CRITICAL_EVENTS_TEST_PARAMS_STRING}
-  ${w_slash_question_response} =  Get Critical Events Summary By Vehicle ID ${test_data.vehicle_id} Raw String URI Response Code With /? And Parameters ${test_data.params_string}
-  ${w_question_response} =  Get Critical Events Summary By Vehicle ID ${test_data.vehicle_id} Raw String URI Response Code With ? And Parameters ${test_data.params_string}
+  ${w_slash_question_response} =  Get Critical Events Summary By Vehicle ID ${test_data.vehicle_id} Raw String URI Response With /? And Parameters ${test_data.params_string}
+  ${w_question_response} =  Get Critical Events Summary By Vehicle ID ${test_data.vehicle_id} Raw String URI Response With ? And Parameters ${test_data.params_string}
   Should Be Equal As Strings  ${w_slash_question_response}  200
   Should Be Equal As Strings  ${w_question_response}  200
 

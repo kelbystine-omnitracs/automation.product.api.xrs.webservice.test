@@ -178,19 +178,19 @@ Get All Users
   [Return]  ${response}
 
 # Helper Keywords
-Get Users Response Code Without Forward Slash
+Get Users Response Without Forward Slash
   [Arguments]  &{params}
   [Documentation]  Returns the response code with '?' before the parameters.
   ${response} =  Get Users  &{params}
   [Return]  ${response.status_code}
 
-Get Users Response Code With Forward Slash
+Get Users Response With Forward Slash
   [Arguments]  &{params}
   [Documentation]  Returns the response code when the character '/' is placed before '?'.
   ${response} =  Get Users With URI Ending With / And Parameters &{params}
   [Return]  ${response.status_code}
 
-Get Users Raw String URI Response Code With ${character_string} And Parameters ${params_string}
+Get Users Raw String URI Response With ${character_string} And Parameters ${params_string}
   [Documentation]  Uses the given character string to create raw URI string Get request
   ...  ${character_string} is a set of 1+ characters
   ...  ${params_string} is a series of '&' delimited parameters 
