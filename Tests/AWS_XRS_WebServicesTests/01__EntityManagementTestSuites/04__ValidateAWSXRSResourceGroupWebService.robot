@@ -15,30 +15,30 @@ Force Tags      awsxrsrestwebservicevalidation  awsxrsresourcegrouprestwebservic
 *** Variables ***
 
 *** Test Cases ***
-Validate AWS XRS Get Resource Groups REST Web Services Returns 200 OK
+Validate AWS XRS Get Resource Groups REST Web Services Response Returns 200 OK
   [Documentation]  Get Resource Groups with basic parameters
   ${wo_slash_response} =  Get Resource Groups Response With Forward Slash  &{XRS_AWS_WEBSERVICE_RESOURCE_GROUP_TEST_PARAMS}
   ${w_slash_response} =  Get Resource Groups Response Without Forward Slash  &{XRS_AWS_WEBSERVICE_RESOURCE_GROUP_TEST_PARAMS}
-  Should Be Equal As Strings  ${wo_slash_response}  200
-  Should Be Equal As Strings  ${w_slash_response}  200
+  Request Should Be Successful  ${wo_slash_response}  200
+  Request Should Be Successful  ${w_slash_response}  200
 
-Validate AWS XRS Get Resource Groups REST Web Services Returns 200 OK With Raw String URI
+Validate AWS XRS Get Resource Groups REST Web Services Response Returns 200 OK With Raw String URI
   [Documentation]  Get Resource Groups with basic parameters using a raw URI string
   ${w_slash_question_response} =  Get Resource Groups Raw String URI Response With /? And Parameters ${XRS_AWS_WEBSERVICE_RESOURCE_GROUP_TEST_PARAMS_STRING}
   ${w_question_response} =  Get Resource Groups Raw String URI Response With ? And Parameters ${XRS_AWS_WEBSERVICE_RESOURCE_GROUP_TEST_PARAMS_STRING}
-  Should Be Equal As Strings  ${w_slash_question_response}  200
-  Should Be Equal As Strings  ${w_question_response}  200
+  Request Should Be Successful  ${w_slash_question_response}
+  Request Should Be Successful  ${w_question_response}
 
-Validate AWS XRS Get Resource Groups REST Web Services For All Resource Groups Returns 200 OK
+Validate AWS XRS Get Resource Groups REST Web Services For All Resource Groups Response Returns 200 OK
   [Documentation]  Gets all the Organizations
   [Tags]  xrsawsperftest
   ${response} =  Get All Resource Groups
-  Should Be Equal As Strings  ${response.status_code}  200
+  Request Should Be Successful  ${response}
 
-Validate AWS XRS Get Resource Group REST Web Services Returns 200 OK
+Validate AWS XRS Get Resource Group REST Web Services Response Returns 200 OK
   [Documentation]  Verifies that a posted device now exists
   ${response} =  Get Resource Group By Resource Group Id  ${DEFAULT_RESOURCE_GROUP.RESOURCE_GROUP_NAME}
-  Should Be Equal As Strings  ${response.status_code}  200
+  Request Should Be Successful  ${response}
 
 *** Keywords ***
 Test Data Setup For XRS AWS Resource Group Web Service Test Suite

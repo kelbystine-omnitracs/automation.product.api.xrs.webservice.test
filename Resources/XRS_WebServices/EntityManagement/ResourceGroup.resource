@@ -74,19 +74,22 @@ Get Resource Groups Response Without Forward Slash
   [Arguments]  &{params}
   [Documentation]  Returns the response code with '?' before the parameters.
   ${response} =  Get Resource Groups  &{params}
-  [Return]  ${response.status_code}
+  [Return]  ${response}
 
 Get Resource Groups Response With Forward Slash
   [Arguments]  &{params}
   [Documentation]  Returns the response code when the character '/' is placed before '?'.
   ${response} =  Get Resource Groups With URI Ending With / And Parameters &{params}
-  [Return]  ${response.status_code}
+  [Return]  ${response}
 
 Get Resource Groups Raw String URI Response With ${character_string} And Parameters ${params_string}
   [Documentation]  Uses the given character string to create raw URI string Get request
   ...  ${character_string} is a set of 1+ characters
   ...  ${params_string} is a series of '&' delimited parameters 
-  ${uri_string} =  Create URI String With  ${XRS_Entity_Management_Base_URI.Resource_Group}  ${XRS_WEBSERVICE_ENTITY_MANAGEMENT_GET_RESOURCE_GROUPS}  ${character_string}
-  ${uri} =  Set Variable  ${uri_string}${params_string}
-  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
-  [Return]  ${response.status_code}
+  ${uri_string} =  Create URI String With
+  ...  ${XRS_Entity_Management_Base_URI.Resource_Group}
+  ...  ${XRS_WEBSERVICE_ENTITY_MANAGEMENT_GET_RESOURCE_GROUPS}
+  ...  ${character_string}
+  ...  ${params_string}
+  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri_string}  headers=${XRS_WEBSERVICES_JSON_HEADER}
+  [Return]  ${response}
