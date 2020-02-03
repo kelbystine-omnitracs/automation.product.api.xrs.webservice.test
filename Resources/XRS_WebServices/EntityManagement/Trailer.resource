@@ -252,40 +252,46 @@ Get Trailers Response Without Forward Slash
   [Arguments]  &{params}
   [Documentation]  Returns the response code with '?' before the parameters.
   ${response} =  Get Trailers  &{params}
-  [Return]  ${response.status_code}
+  [Return]  ${response}
 
 Get Trailers Response With Forward Slash
   [Arguments]  &{params}
   [Documentation]  Returns the response code when the character '/' is placed before '?'.
   ${response} =  Get Trailers With URI Ending With / And Parameters &{params}
-  [Return]  ${response.status_code}
+  [Return]  ${response}
 
 Get Trailers Raw String URI Response With ${character_string} And Parameters ${params_string}
   [Documentation]  Uses the given character string to create raw URI string Get request
   ...  ${character_string} is a set of 1+ characters
   ...  ${params_string} is a series of '&' delimited parameters 
-  ${uri_string} =  Create URI String With  ${XRS_Entity_Management_Base_URI.Trailer}  ${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_PUT_TRAILERS}  ${character_string}
-  ${uri} =  Set Variable  ${uri_string}${params_string}
-  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
-  [Return]  ${response.status_code}
+  ${uri_string} =  Create URI String With
+  ...  ${XRS_Entity_Management_Base_URI.Trailer}
+  ...  ${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_PUT_TRAILERS}
+  ...  ${character_string}
+  ...  ${params_string}
+  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri_string}  headers=${XRS_WEBSERVICES_JSON_HEADER}
+  [Return]  ${response}
 
 Get Trailers V2 Response Without Forward Slash
   [Arguments]  &{params}
   [Documentation]  Returns the response code with '?' before the parameters.
   ${response} =  Get Trailers V2  &{params}
-  [Return]  ${response.status_code}
+  [Return]  ${response}
 
 Get Trailers V2 Response With Forward Slash
   [Arguments]  &{params}
   [Documentation]  Returns the response code when the character '/' is placed before '?'.
   ${response} =  Get Trailers V2 With URI Ending With / And Parameters &{params}
-  [Return]  ${response.status_code}
+  [Return]  ${response}
 
 Get Trailers V2 Raw String URI Response With ${character_string} And Parameters ${params_string}
   [Documentation]  Uses the given character string to create raw URI string Get request
   ...  ${character_string} is a set of 1+ characters
   ...  ${params_string} is a series of '&' delimited parameters 
-  ${uri_string} =  Create URI String With  ${XRS_Entity_Management_Base_URI.Trailer}  ${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_PUT_TRAILERS_V2}  ${character_string}
-  ${uri} =  Set Variable  ${uri_string}${params_string}
-  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
-  [Return]  ${response.status_code}
+  ${uri_string} =  Create URI String With
+  ...  ${XRS_Entity_Management_Base_URI.Trailer}
+  ...  ${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_PUT_TRAILERS_V2}
+  ...  ${character_string}
+  ...  ${params_string}
+  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri_string}  headers=${XRS_WEBSERVICES_JSON_HEADER}
+  [Return]  ${response}
