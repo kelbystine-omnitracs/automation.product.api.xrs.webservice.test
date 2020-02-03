@@ -16,63 +16,63 @@ Force Tags      awsxrsrestwebservicevalidation  awsxrssiterestwebservicevalidati
 *** Variables ***
 
 *** Test Cases ***
-Validate AWS XRS Get Site REST Web Services Returns Geographic "Site identity does not exist." Error Message
+Validate AWS XRS Get Site REST Web Services Response Returns Error "Geographic Site identity does not exist."
   [Documentation]  Verifies that a Site with a specific number does not exist
   ${response} =  Get Sites By Site Id  ${XRS_WEB_SERVICES_TEST_SITE.SiteID}
-  ${json_response} =  To Json  ${response.content}
-  Should Be Equal As Strings  ${json_response}[ErrorMessage]  Geographic Site identity does not exist.
+  &{expected_value} =  Create Dictionary  key=ErrorMessage  value=Geographic Site identity does not exist.
+  Should Be Equal As Strings  ${actual_value}  ${expected_value.value}
+  Verify Response List ${response} Has Key ${expected_value.key} And Contains Value ${expected_value.value}
 
-Validate AWS XRS Post Site REST Web Services Returns Description "Geographic Site added successfully."
-  [Documentation]  Posts a Site and expects a Code value of 201
+Validate AWS XRS Post Site REST Web Services Response Returns Description "Geographic Site added successfully."
+  [Documentation]  Posts a Site and expects decription return value
   ${response} =  Post Sites  @{XRS_AWS_WEBSERVICE_POST_TEST_SITE_LIST}
-  &{expected_values} =  Create Dictionary  key=Description  value=Geographic Site added successfully.
-  Verify Response List ${response} Has Key ${expected_values.key} And Contains Value ${expected_values.value}
+  &{expected_value} =  Create Dictionary  key=Description  value=Geographic Site added successfully.
+  Verify Response List ${response} Has Key ${expected_value.key} And Contains Value ${expected_value.value}
 
-Validate AWS XRS Get Site REST Web Services Returns 200 OK
+Validate AWS XRS Get Site REST Web Services Response Returns 200 OK
   [Documentation]  Verifies that a posted Site now exists
   ${response} =  Get Sites By Site Id  ${XRS_WEB_SERVICES_TEST_SITE.SiteID}
-  Should Be Equal As Strings  ${response.status_code}  200
+  Request Should Be Successful  ${response}
   # Set a global veriable for delete site test
   ${XRS_WEB_SERVICES_TEST_SITE_SID} =  Get Value From Response With Key  ${response}  SiteID
-  Set Global Variable  ${XRS_WEB_SERVICES_TEST_SITE_SID}
+  Set Suite Variable  ${XRS_WEB_SERVICES_TEST_SITE_SID}
 
-Validate AWS XRS Put Site REST Web Services Modifies Site Successfully
+Validate AWS XRS Put Site REST Web Services Response Modifies Site Successfully
   [Documentation]  Posts a Site and expects a Code value of 201
   ${response} =  Put Sites  @{XRS_AWS_WEBSERVICE_PUT_TEST_SITE_LIST}
   &{expected_values} =  Create Dictionary  key=Description  value=Geographic Site edited successfully.
   Verify Response List ${response} Has Key ${expected_values.key} And Contains Value ${expected_values.value}
 
-Validate AWS XRS Get Sites REST Web Services Returns 200 OK
+Validate AWS XRS Get Sites REST Web Services Response Returns 200 OK
   [Documentation]  Get Sites with basic parameters
   ${wo_slash_response} =  Get Sites Response With Forward Slash  &{XRS_AWS_WEBSERVICE_SITE_TEST_PARAMS}
   ${w_slash_response} =  Get Sites Response Without Forward Slash  &{XRS_AWS_WEBSERVICE_SITE_TEST_PARAMS}
-  Should Be Equal As Strings  ${wo_slash_response}  200
-  Should Be Equal As Strings  ${w_slash_response}  200
+  Request Should Be Successful  ${wo_slash_response}
+  Request Should Be Successful  ${w_slash_response}
 
-Validate AWS XRS Get Sites REST Web Services Returns 200 OK With Raw String URI
+Validate AWS XRS Get Sites REST Web Services Response Returns 200 OK With Raw String URI
   [Documentation]  Get Sites with basic parameters using a raw URI string
   ${w_slash_question_response} =  Get Sites Raw String URI Response With /? And Parameters ${XRS_AWS_WEBSERVICE_SITE_TEST_PARAMS_STRING}
   ${w_question_response} =  Get Sites Raw String URI Response With ? And Parameters ${XRS_AWS_WEBSERVICE_SITE_TEST_PARAMS_STRING}
-  Should Be Equal As Strings  ${w_slash_question_response}  200
-  Should Be Equal As Strings  ${w_question_response}  200
+  Request Should Be Successful  ${w_slash_question_response}
+  Request Should Be Successful  ${w_question_response}
 
-Validate AWS XRS Delete Site REST Web Services Returns 200 OK
+Validate AWS XRS Delete Site REST Web Services Response Returns 200 OK
   [Documentation]  Verifies that created Site is deleted
   ${response} =  Delete Sites By Site ID  ${XRS_WEB_SERVICES_TEST_SITE.SiteID}
-  Should Be Equal As Strings  ${response.status_code}  200
+  Request Should Be Successful  ${response}
 
-Validate AWS XRS Get Sites REST Web Services For All Sites Returns 200 OK
+Validate AWS XRS Get Sites REST Web Services For All Sites Response Returns 200 OK
   [Documentation]  Gets all the Sites
   [Tags]  xrsawsperftest
   ${response} =  Get All Sites
-  Should Be Equal As Strings  ${response.status_code}  200
+  Request Should Be Successful  ${response}
 
-Validate AWS XRS Delete Sites REST Web Services Returns Code 401
+Validate AWS XRS Delete Sites REST Web Services Response Returns Code 401
   [Documentation]  Attempts to delete a previously deleted Site.
   ${response} =  Delete Sites By Site ID  ${XRS_WEB_SERVICES_TEST_SITE_SID}
-  ${expected_error_message} =  Set Variable  Site ${XRS_WEB_SERVICES_TEST_SITE_SID} doesn't exist.
-  ${json_response} =  To Json  ${response.content}
-  Should Be Equal As Strings  ${json_response}[Code]  401
+  &{expected_values} =  Create Dictionary  key=Code  value=401
+  Verify Response List ${response} Has Key ${expected_values.key} And Contains Value ${expected_values.value}
 
 *** Keywords ***
 Test Data Setup For XRS AWS Site Web Service Test Suite
