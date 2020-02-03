@@ -17,58 +17,58 @@ Force Tags      awsxrsrestwebservicevalidation  awsxrsuserrestwebservicevalidati
 *** Variables ***
 
 *** Test Cases ***
-Validate AWS XRS Get User REST Web Services Returns Geographic "User does not exist." Error Message
+Validate AWS XRS Get User REST Web Services Response ErrorMessage Returns "User '<username>' does not exist."
   [Documentation]  Verifies that a User with a specific number does not exist
   ${response} =  Get User By ID  ${XRS_WEB_SERVICES_TEST_USER.UserName}
-  ${json_response} =  To Json  ${response.content}
-  Should Be Equal As Strings  ${json_response}[ErrorMessage]  User '${XRS_WEB_SERVICES_TEST_USER.UserName}' does not exist.
+  &{expected_values} =  Create Dictionary  key=ErrorMessage  value=User '${XRS_WEB_SERVICES_TEST_USER.UserName}' does not exist.
+  Verify Response List ${response} Has Key ${expected_values.key} And Contains Value ${expected_values.value}
 
-Validate AWS XRS Post User REST Web Services Returns Code 201
+Validate AWS XRS Post User REST Web Services Response Returns Code 201
   [Documentation]  Posts a User and expects a Code value of 201
   ${response} =  Post Users  @{XRS_AWS_WEBSERVICE_POST_TEST_USER_LIST}
   &{expected_values} =  Create Dictionary  key=Code  value=201
   Verify Response List ${response} Has Key ${expected_values.key} And Contains Value ${expected_values.value}
 
-Validate AWS XRS Get User REST Web Services Returns 200 OK
+Validate AWS XRS Get User REST Web Services Response Returns 200 OK
   [Documentation]  Verifies that a posted User now exists
   ${response} =  Get User By ID  ${XRS_WEB_SERVICES_TEST_USER.UserName}
-  Should Be Equal As Strings  ${response.status_code}  200
+  Request Should Be Successful  ${response}
   # Set a global veriable for delete user test
   ${XRS_WEB_SERVICES_TEST_USER_SID} =  Get Value From Response With Key  UserName  ${response}
   Set Global Variable  ${XRS_WEB_SERVICES_TEST_USER_SID}
 
-Validate AWS XRS Put User REST Web Services Modifies User Successfully
+Validate AWS XRS Put User REST Web Services Response Returns "Geographic User edited successfully."
   [Documentation]  Posts a User and expects a Code value of 201
   ${response} =  Put Users  @{XRS_AWS_WEBSERVICE_PUT_TEST_USER_LIST}
   &{expected_values} =  Create Dictionary  key=Description  value=Geographic User edited successfully.
   Verify Response List ${response} Has Key ${expected_values.key} And Contains Value ${expected_values.value}
 
-Validate AWS XRS Get Users REST Web Services Returns 200 OK
+Validate AWS XRS Get Users REST Web Services Response Returns 200 OK
   [Documentation]  Get Users with basic parameters
   ${wo_slash_response} =  Get Users Response With Forward Slash  &{XRS_AWS_WEBSERVICE_USER_TEST_PARAMS}
   ${w_slash_response} =  Get Users Response Without Forward Slash  &{XRS_AWS_WEBSERVICE_USER_TEST_PARAMS}
-  Should Be Equal As Strings  ${wo_slash_response}  200
-  Should Be Equal As Strings  ${w_slash_response}  200
+  Request Should Be Successful  ${wo_slash_response}
+  Request Should Be Successful  ${w_slash_response}
 
-Validate AWS XRS Get Users REST Web Services Returns 200 OK With Raw String URI
+Validate AWS XRS Get Users REST Web Services Response Returns 200 OK With Raw String URI
   [Documentation]  Get Users with basic parameters using a raw URI string
   ${w_slash_question_response} =  Get Users Raw String URI Response With /? And Parameters ${XRS_AWS_WEBSERVICE_USER_TEST_PARAMS_STRING}
   ${w_question_response} =  Get Users Raw String URI Response With ? And Parameters ${XRS_AWS_WEBSERVICE_USER_TEST_PARAMS_STRING}
-  Should Be Equal As Strings  ${w_slash_question_response}  200
-  Should Be Equal As Strings  ${w_question_response}  200
+  Request Should Be Successful  ${w_slash_question_response}
+  Request Should Be Successful  ${w_question_response}
 
-Validate AWS XRS Delete User REST Web Services Returns 200 OK
+Validate AWS XRS Delete User REST Web Services Response Returns 200 OK
   [Documentation]  Verifies that created User is deleted
   ${response} =  Delete User By ID  ${XRS_WEB_SERVICES_TEST_USER.UserName}
-  Should Be Equal As Strings  ${response.status_code}  200
+  Request Should Be Successful  ${response}
 
-Validate AWS XRS Get Users REST Web Services For All Users Returns 200 OK
+Validate AWS XRS Get Users REST Web Services Response For All Users Returns 200 OK
   [Documentation]  Gets all the Users
   [Tags]  xrsawsperftest
   ${response} =  Get All Users
-  Should Be Equal As Strings  ${response.status_code}  200
+  Request Should Be Successful  ${response}
 
-Validate AWS XRS Delete User REST Web Services Returns Description "User ID does not exist."
+Validate AWS XRS Delete User REST Web Services Response Description Returns "User ID does not exist."
   [Documentation]  Attempts to delete a previously deleted User.
   ${response} =  Delete User By ID  ${XRS_WEB_SERVICES_TEST_USER_SID}
   &{expected_values} =  Create Dictionary  key=Description  value=User ID does not exist.

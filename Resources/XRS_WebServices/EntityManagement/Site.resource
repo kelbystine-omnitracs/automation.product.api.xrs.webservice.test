@@ -189,6 +189,10 @@ Get Sites Raw String URI Response With ${character_string} And Parameters ${para
   [Documentation]  Uses the given character string to create raw URI string Get request
   ...  ${character_string} is a set of 1+ characters
   ...  ${params_string} is a series of '&' delimited parameters 
-  ${uri_string} =  Create URI String With  ${XRS_Entity_Management_Base_URI.Site}  ${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_PUT_DELETE_SITE}  ${character_string}  ${params_string}
+  ${uri_string} =  Create URI String With
+  ...  ${XRS_Entity_Management_Base_URI.Site}
+  ...  ${XRS_WEBSERVICE_ENTITY_MANAGEMENT_POST_GET_PUT_DELETE_SITE}
+  ...  ${character_string}
+  ...  ${params_string}
   ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri_string}  headers=${XRS_WEBSERVICES_JSON_HEADER}
   [Return]  ${response}
