@@ -16,12 +16,12 @@ Force Tags      awsxrsrestwebservicevalidation  awsxrssiterestwebservicevalidati
 *** Variables ***
 
 *** Test Cases ***
-Validate AWS XRS Get Site REST Web Services Response Returns Error "Geographic Site identity does not exist."
+Validate AWS XRS Get Site REST Web Services Response ErrorMessage Returns "Geographic Site identity does not exist."
   [Documentation]  Verifies that a Site with a specific number does not exist
   ${response} =  Get Sites By Site Id  ${XRS_WEB_SERVICES_TEST_SITE.SiteID}
   &{expected_value} =  Create Dictionary  key=ErrorMessage  value=Geographic Site identity does not exist.
+  ${actual_value} =  Get Value From Response With Key  ${expected_value.key}  ${response}
   Should Be Equal As Strings  ${actual_value}  ${expected_value.value}
-  Verify Response List ${response} Has Key ${expected_value.key} And Contains Value ${expected_value.value}
 
 Validate AWS XRS Post Site REST Web Services Response Returns Description "Geographic Site added successfully."
   [Documentation]  Posts a Site and expects decription return value
@@ -34,10 +34,10 @@ Validate AWS XRS Get Site REST Web Services Response Returns 200 OK
   ${response} =  Get Sites By Site Id  ${XRS_WEB_SERVICES_TEST_SITE.SiteID}
   Request Should Be Successful  ${response}
   # Set a global veriable for delete site test
-  ${XRS_WEB_SERVICES_TEST_SITE_SID} =  Get Value From Response With Key  ${response}  SiteID
+  ${XRS_WEB_SERVICES_TEST_SITE_SID} =  Get Value From Response With Key  SiteID  ${response}
   Set Suite Variable  ${XRS_WEB_SERVICES_TEST_SITE_SID}
 
-Validate AWS XRS Put Site REST Web Services Response Modifies Site Successfully
+Validate AWS XRS Put Site REST Web Services Response Description Returns "Geographic Site edited successfully."
   [Documentation]  Posts a Site and expects a Code value of 201
   ${response} =  Put Sites  @{XRS_AWS_WEBSERVICE_PUT_TEST_SITE_LIST}
   &{expected_values} =  Create Dictionary  key=Description  value=Geographic Site edited successfully.
@@ -71,8 +71,9 @@ Validate AWS XRS Get Sites REST Web Services For All Sites Response Returns 200 
 Validate AWS XRS Delete Sites REST Web Services Response Returns Code 401
   [Documentation]  Attempts to delete a previously deleted Site.
   ${response} =  Delete Sites By Site ID  ${XRS_WEB_SERVICES_TEST_SITE_SID}
-  &{expected_values} =  Create Dictionary  key=Code  value=401
-  Verify Response List ${response} Has Key ${expected_values.key} And Contains Value ${expected_values.value}
+  &{expected_value} =  Create Dictionary  key=Code  value=401
+  ${actual_value} =  Get Value From Response With Key  ${expected_value.key}  ${response}
+  Should Be Equal As Strings  ${actual_value}  ${expected_value.value}
 
 *** Keywords ***
 Test Data Setup For XRS AWS Site Web Service Test Suite

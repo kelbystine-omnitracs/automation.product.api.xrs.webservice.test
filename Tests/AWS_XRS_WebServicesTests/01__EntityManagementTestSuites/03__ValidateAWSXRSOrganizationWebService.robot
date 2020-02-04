@@ -28,7 +28,7 @@ Validate AWS XRS Post Organization REST Web Services Response Returns Caption "R
   [Documentation]  Posts a Organization and expects a Caption value "Request succeeded."
   ${response} =  Post Organizations  @{XRS_AWS_WEBSERVICE_POST_TEST_ORGANIZATION_LIST}
   &{expected_values} =  Create Dictionary  key=Caption  value=Request succeeded.
-  Parse ${reponse} And Verify ${expected_values.key} With ${expected_values.value} And Get Organization SID Test Data
+  Parse ${response} And Verify ${expected_values.key} With ${expected_values.value} And Get Organization SID Test Data
   Create Organization Paramters From Post Organization Test
 
 Validate AWS XRS Get Organization By SID REST Web Services Returns 200 OK With New Organization
@@ -139,7 +139,7 @@ Create Organization Paramters From Post Organization Test
   ...  AsOfDateTime=${XRS_AWS_WEBSERVICE_ORGANIZATION_TEST_PARAMS.AsOfDateTime}
   Set Suite Variable  ${XRS_AWS_WEBSERVICE_ORGANIZATION_TEST_PARAMS_STRING}
 
-Parse ${reponse} And Verify ${key} With ${value} And Get Organization SID Test Data
+Parse ${response} And Verify ${key} With ${value} And Get Organization SID Test Data
   [Documentation]  Takes a reponse and expects to find the expected key and value
   ...  It also gets the value of the Organization SID and stores it for later tests
   ${json_response} =  To Json  ${response.content}

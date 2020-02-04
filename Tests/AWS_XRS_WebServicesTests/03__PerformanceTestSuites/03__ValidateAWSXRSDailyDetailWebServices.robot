@@ -68,7 +68,7 @@ Validate AWS XRS Get Daily Details By Vehicle ID REST Web Services Response Retu
 
 Validate AWS XRS Get Daily Detail By Vehicle ID REST Web Services Response Returns 200 OK With Raw String URI
   [Documentation]  Get Daily Detail Events By Vehicle ID with basic parameters using a raw URI string
-  &{test_data} =  Create Dictionary  driver_id=${SAMPLE_DRIVER_ID_FOR_DAILY_DETAIL_TEST}  params_string=${XRS_AWS_WEBSERVICE_DAILY_DETAIL_TEST_PARAMS_STRING}
+  &{test_data} =  Create Dictionary  vehicle_id=${SAMPLE_VEHICLE_ID_FOR_DAILY_DETAIL_TEST}  params_string=${XRS_AWS_WEBSERVICE_DAILY_DETAIL_TEST_PARAMS_STRING}
   ${w_slash_question_response} =  Get Daily Detail By Vehicle ID ${test_data.vehicle_id} Raw String URI Response With /? And Parameters ${test_data.params_string}
   ${w_question_response} =  Get Daily Detail By Vehicle ID ${test_data.vehicle_id} Raw String URI Response With ? And Parameters ${test_data.params_string}
   Request Should Be Successful  ${w_slash_question_response}
