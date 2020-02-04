@@ -1,0 +1,45 @@
+XRS_WEB_SERVICES_TEST_VEHICLE:
+  Auxiliary: None
+  CompanyName:
+  CompanySID:
+  Country: USA
+  EldVehicle: true
+  FuelDrawCapacity: 1000
+  GrossVehicleWeight: 10000
+  HP: 1000
+  HUT: true
+  HasBerth: true
+  HasElectronicEngine: true
+  HosExempt: false
+  IFTA: true
+  InstallDate: "\/Date(928174800000-0700)\/"
+  LicensePlate: AWSXRS123
+  ManualVIN: false
+  Manufacture: Ford
+  ManufactureDate: "\/Date(928174800000-0700)\/"
+  Model: Model
+  OBCType: None
+  Odometer: 123000
+  OdometerDate: "\/Date(928174800000-0700)\/"
+  OrganizationID:
+  OrganizationName:
+  OrganizationSID:
+  OwnerOperator: true
+  PowerAxles: 3
+  ResourceGroupIdList: []
+  SID:
+  StateProvince: Minnesota
+  Status: Active
+  StraightTruck: true
+  TGTNumber: 0
+  TransmissionMfg: Ford
+  TransmissionType: Automatic
+  Type: Tractor
+  UserDefinedField1:
+  UserDefinedField2:
+  UserDefinedField3:
+  UserDefinedField4:
+  UserDefinedField5:
+  VIN:
+  VehicleName: AWSXRSAutoHauler
+  Year: 2020

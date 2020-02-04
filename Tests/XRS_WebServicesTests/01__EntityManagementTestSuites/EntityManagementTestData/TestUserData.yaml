@@ -1,0 +1,14 @@
+XRS_WEB_SERVICES_TEST_USER:
+  AccountLocked: False
+  DashboardName: Fleet Performance Dashboard
+  Email: xrsqatest+awsxrswstestuser@gmail.com
+  EncryptedPassword: xrs123
+  FirstName: AWSXRS
+  Language: English
+  LastName: Testuser1
+  MiddleName: AWSXRSTest
+  OrganizationID: String content
+  PasswordNeverExpires: False
+  Status: Active
+  UserName: awsxrstestuser1
+  UserRole: Operations

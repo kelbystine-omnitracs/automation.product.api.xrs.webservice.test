@@ -42,7 +42,7 @@ Validate AWS XRS Get Resource Group REST Web Services Response Returns 200 OK
 
 *** Keywords ***
 Test Data Setup For XRS AWS Resource Group Web Service Test Suite
-  [Documentation]  Keyword for setting up suite variables for AWS Device Web Service Tests.
+  [Documentation]  Keyword for setting up suite variables for AWS Resource Group Web Service Tests.
   # Create test params
   ${yyyy}	${mm}	${dd} =	Get Time	year,month,day
   &{XRS_AWS_WEBSERVICE_RESOURCE_GROUP_TEST_PARAMS} =  Create Dictionary

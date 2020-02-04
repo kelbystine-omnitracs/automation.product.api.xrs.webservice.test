@@ -1,0 +1,24 @@
+XRS_WEB_SERVICES_TEST_SITE:
+  Address: 5959 Baker Rd Suite 320
+  ArrivalGeoCodeType: Circle
+  ArrivalPolygonPoints:
+  ArrivalRadius: 500.0000
+  City: Minnetonka
+  Country: USA
+  DeliveryWindows:
+  DepartureGeoCodeType: Circle
+  DeparturePolygonPoints:
+  DepartureRadius: 500.0000
+  DepartureSameAsArrival: true
+  Latitude: 44.895940
+  Longitude: -93.447140
+  Measure: Feet
+  Name: Test Site
+  OrganizationID: 46663
+  OrganizationName: Gnome Shipping D3
+  PostalCode:
+  ResourceGroupIDs:
+  SiteID: TestSite
+  SiteType: Commerce
+  StateName: Minnesota
+  TimeZone: Central
