@@ -40,16 +40,16 @@ Validate XRS Put Trailer REST Web Services Response Description Returns "Trailer
 
 Validate XRS Get Trailers REST Web Services Response Returns 200 OK
   [Documentation]  Get trailers with basic parameters
-  ${wo_slash_response} =  Get Trailers Response With Forward Slash  &{XRS_WEBSERVICE_TRAILER_TEST_PARAMS}
-  ${w_slash_response} =  Get Trailers Response Without Forward Slash  &{XRS_WEBSERVICE_TRAILER_TEST_PARAMS}
+  ${w_slash_response} =  Get Trailers Response With Forward Slash  &{XRS_WEBSERVICE_TRAILER_TEST_PARAMS}
+  ${wo_slash_response} =  Get Trailers Response Without Forward Slash  &{XRS_WEBSERVICE_TRAILER_TEST_PARAMS}
+  Should Be Equal As Strings  ${w_slash_response.status_code}  404
   Request Should Be Successful  ${wo_slash_response}
-  Request Should Be Successful  ${w_slash_response}
 
 Validate XRS Get Trailers REST Web Services Response Returns 200 OK With Raw String URI
   [Documentation]  Get trailers with basic parameters using a raw URI string
   ${w_slash_question_response} =  Get Trailers Raw String URI Response With /? And Parameters ${XRS_WEBSERVICE_TRAILER_TEST_PARAMS_STRING}
   ${w_question_response} =  Get Trailers Raw String URI Response With ? And Parameters ${XRS_WEBSERVICE_TRAILER_TEST_PARAMS_STRING}
-  Request Should Be Successful  ${w_slash_question_response}
+  Should Be Equal As Strings  ${w_slash_question_response.status_code}  404
   Request Should Be Successful  ${w_question_response}
 
 Validate XRS Delete Trailer REST Web Services Response Returns 200 OK
@@ -95,16 +95,16 @@ Validate XRS Put Trailer V2 REST Web Services Response Description Returns "Trai
 
 Validate XRS Get Trailers V2 REST Web Services Returns 200 OK
   [Documentation]  Get trailers v2 with basic parameters
-  ${wo_slash_response} =  Get Trailers V2 Response With Forward Slash  &{XRS_WEBSERVICE_TRAILER_TEST_PARAMS}
-  ${w_slash_response} =  Get Trailers V2 Response Without Forward Slash  &{XRS_WEBSERVICE_TRAILER_TEST_PARAMS}
+  ${w_slash_response} =  Get Trailers V2 Response With Forward Slash  &{XRS_WEBSERVICE_TRAILER_TEST_PARAMS}
+  ${wo_slash_response} =  Get Trailers V2 Response Without Forward Slash  &{XRS_WEBSERVICE_TRAILER_TEST_PARAMS}
+  Should Be Equal As Strings  ${w_slash_response.status_code}  404
   Request Should Be Successful  ${wo_slash_response}
-  Request Should Be Successful  ${w_slash_response}
 
 Validate XRS Get Trailers V2 REST Web Services Response Returns 200 OK With Raw String URI
   [Documentation]  Get trailers v2 with basic parameters using a raw URI string
   ${w_slash_question_response} =  Get Trailers V2 Raw String URI Response With /? And Parameters ${XRS_WEBSERVICE_TRAILER_TEST_PARAMS_STRING}
   ${w_question_response} =  Get Trailers V2 Raw String URI Response With ? And Parameters ${XRS_WEBSERVICE_TRAILER_TEST_PARAMS_STRING}
-  Request Should Be Successful  ${w_slash_question_response}
+  Should Be Equal As Strings  ${w_slash_question_response.status_code}  404
   Request Should Be Successful  ${w_question_response}
 
 Validate XRS Delete Trailer V2 REST Web Services Response Returns 200 OK

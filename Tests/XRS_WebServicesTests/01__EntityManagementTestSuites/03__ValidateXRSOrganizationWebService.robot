@@ -44,10 +44,10 @@ Validate XRS Put Organization REST Web Services Response Description Returns "Or
 
 Validate XRS Get Organizations By Parameters REST Web Services Response Returns 200 OK
   [Documentation]  Get Organizations with basic parameters
-  ${wo_slash_response} =  Get Organizations Response With Forward Slash  &{XRS_WEBSERVICE_ORGANIZATION_TEST_PARAMS}
-  ${w_slash_response} =  Get Organizations Response Without Forward Slash  &{XRS_WEBSERVICE_ORGANIZATION_TEST_PARAMS}
-  Request Should Be Successful  ${wo_slash_response}
+  ${w_slash_response} =  Get Organizations Response With Forward Slash  &{XRS_WEBSERVICE_ORGANIZATION_TEST_PARAMS}
+  ${wo_slash_response} =  Get Organizations Response Without Forward Slash  &{XRS_WEBSERVICE_ORGANIZATION_TEST_PARAMS}
   Request Should Be Successful  ${w_slash_response}
+  Request Should Be Successful  ${wo_slash_response}
 
 Validate XRS Get Organizations By Parameters REST Web Services Reponse Returns 200 OK With Raw String URI
   [Documentation]  Get Organizations with basic parameters using a raw URI string
@@ -81,10 +81,10 @@ Validate XRS Put Organization Performance (settings) Data By SID REST Web Servic
 
 Validate XRS Get Organizations Performance (settings) Data By Parameters REST Web Services Response Returns 200 OK
   [Documentation]  Get Organizations with basic parameters
-  ${wo_slash_response} =  Get Organizations Performance (settings) Data Response With Forward Slash  &{XRS_WEBSERVICE_ORGANIZATION_TEST_PARAMS}
+  ${w_slash_response} =  Get Organizations Performance (settings) Data Response With Forward Slash  &{XRS_WEBSERVICE_ORGANIZATION_TEST_PARAMS}
   ${w_slash_response} =  Get Organizations Performance (settings) Data Response Without Forward Slash  &{XRS_WEBSERVICE_ORGANIZATION_TEST_PARAMS}
-  Request Should Be Successful  ${wo_slash_response}
   Request Should Be Successful  ${w_slash_response}
+  Request Should Be Successful  ${wo_slash_response}
 
 Validate XRS Get Organizations Performance (settings) Data By Parameters REST Web Services Response Returns 200 OK With Raw String URI
   [Documentation]  Get Organizations with basic parameters using a raw URI string

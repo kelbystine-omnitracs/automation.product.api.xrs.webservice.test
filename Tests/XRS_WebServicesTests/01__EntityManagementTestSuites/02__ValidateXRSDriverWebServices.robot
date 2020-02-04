@@ -40,10 +40,10 @@ Validate XRS Put Driver REST Web Services Response Description Returns "Driver e
 
 Validate XRS Get Drivers REST Web Services Response Returns 200 OK
   [Documentation]  Get drivers with basic parameters
-  ${wo_slash_response} =  Get Drivers Response With Forward Slash  &{XRS_WEBSERVICE_DRIVER_TEST_PARAMS}
-  ${w_slash_response} =  Get Drivers Response Without Forward Slash  &{XRS_WEBSERVICE_DRIVER_TEST_PARAMS}
-  Request Should Be Successful  ${wo_slash_response}
+  ${w_slash_response} =  Get Drivers Response With Forward Slash  &{XRS_WEBSERVICE_DRIVER_TEST_PARAMS}
+  ${wo_slash_response} =  Get Drivers Response Without Forward Slash  &{XRS_WEBSERVICE_DRIVER_TEST_PARAMS}
   Request Should Be Successful  ${w_slash_response}
+  Request Should Be Successful  ${wo_slash_response}
 
 Validate XRS Get Drivers REST Web Services Response Returns 200 OK With Raw String URI
   [Documentation]  Get drivers with basic parameters using a raw URI string
@@ -67,12 +67,12 @@ Validate XRS Get Drivers REST Web Services For All Drivers Response Returns 200 
   ${response} =  Get All Drivers
   Request Should Be Successful  ${response}
 
-Validate XRS Delete Drivers REST Web Services Response Returns Error Message
+Validate XRS Delete Drivers REST Web Services Response ErrorMessage Returns "Driver <driver_sid> doesn't exist."
   [Documentation]  Attempts to delete a previously deleted driver.
   ${response} =  Delete Drivers By IDs  ${XRS_WEB_SERVICES_TEST_DRIVER_1_SID}
-  ${expected_error_message} =  Set Variable  Driver ${XRS_WEB_SERVICES_TEST_DRIVER_1_SID} doesn't exist.
-  ${json_response} =  To Json  ${response.content}
-  Should Be Equal As Strings  ${json_response}[ErrorMessage]  ${expected_error_message}
+  &{expected_value} =  Create Dictionary  key=ErrorMessage  value=Driver ${XRS_WEB_SERVICES_TEST_DRIVER_1_SID} doesn't exist.
+  ${actual_error_message} =  Get Value From Response With Key  ${expected_value.key}  ${response}
+  Should Be Equal As Strings  ${actual_error_message}  ${expected_value.value}
 
 *** Keywords ***
 Test Data Setup For XRS Driver Web Service Test Suite
