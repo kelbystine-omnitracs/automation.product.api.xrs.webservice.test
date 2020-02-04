@@ -142,63 +142,72 @@ Get Daily Detail Response Without Forward Slash
   [Arguments]  &{params}
   [Documentation]  Returns the response code with '?' before the parameters.
   ${response} =  Get Daily Detail  &{params}
-  [Return]  ${response.status_code}
+  [Return]  ${response}
 
 Get Daily Detail Response With Forward Slash
   [Arguments]  &{params}
   [Documentation]  Returns the response code when the character '/' is placed before '?'.
   ${response} =  Get Daily Detail With URI Ending With / And Parameters &{params}
-  [Return]  ${response.status_code}
+  [Return]  ${response}
 
 Get Daily Detail Raw String URI Response With ${character_string} And Parameters ${params_string}
   [Documentation]  Uses the given character string to create raw URI string Get request
   ...  ${character_string} is a set of 1+ characters
   ...  ${params_string} is a series of '&' delimited parameters 
-  ${uri_string} =  Create URI String With  ${XRS_Performance_Base_URI.Daily_Detail}  ${XRS_WEBSERVICE_PERFORMANCE_GET_DAILY_DETAIL}  ${character_string}
-  ${uri} =  Set Variable  ${uri_string}${params_string}
-  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
-  [Return]  ${response.status_code}
+  ${uri_string} =  Create URI String With
+  ...  ${XRS_Performance_Base_URI.Daily_Detail}
+  ...  ${XRS_WEBSERVICE_PERFORMANCE_GET_DAILY_DETAIL}
+  ...  ${character_string}
+  ...  ${params_string}
+  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri_string}  headers=${XRS_WEBSERVICES_JSON_HEADER}
+  [Return]  ${response}
 
 # Helper Keywords For Get Daily Detail Summaries By Driver ID
 Get Daily Detail By Driver ID Response Without Forward Slash
   [Arguments]  ${driver_id}  &{params}
   [Documentation]  Returns the response code with '?' before the parameters.
   ${response} =  Get Daily Detail By Driver ID And Parameters  ${driver_id}  ${params}
-  [Return]  ${response.status_code}
+  [Return]  ${response}
 
 Get Daily Detail By Driver ID Response With Forward Slash
   [Arguments]  ${driver_id}  &{params}
   [Documentation]  Returns the response code when the character '/' is placed before '?'.
   ${response} =  Get Daily Detail By Driver ID ${driver_id} With URI Ending With / And Parameters ${params}
-  [Return]  ${response.status_code}
+  [Return]  ${response}
 
 Get Daily Detail By Driver ID ${driver_id} Raw String URI Response With ${character_string} And Parameters ${params_string}
   [Documentation]  Uses the given character string to create raw URI string Get request
   ...  ${character_string} is a set of 1+ characters
   ...  ${params_string} is a series of '&' delimited parameters 
-  ${uri_string} =  Create URI String With  ${XRS_Performance_Base_URI.Daily_Detail}  ${XRS_WEBSERVICE_PERFORMANCE_GET_DAILY_DETAIL_BY_DRIVER_ID}/${driver_id}  ${character_string}
-  ${uri} =  Set Variable  ${uri_string}${params_string}
-  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
-  [Return]  ${response.status_code}
+  ${uri_string} =  Create URI String With
+  ...  ${XRS_Performance_Base_URI.Daily_Detail}
+  ...  ${XRS_WEBSERVICE_PERFORMANCE_GET_DAILY_DETAIL_BY_DRIVER_ID}/${driver_id}
+  ...  ${character_string}
+  ...  ${params_string}
+  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri_string}  headers=${XRS_WEBSERVICES_JSON_HEADER}
+  [Return]  ${response}
 
 # Helper Keywords For Get Daily Detail Summaries By Vehicle ID
 Get Daily Detail By Vehicle ID Response Without Forward Slash
   [Arguments]  ${vehicle_id}  &{params}
   [Documentation]  Returns the response code with '?' before the parameters.
   ${response} =  Get Daily Detail By Vehicle ID And Parameters  ${vehicle_id}  ${params}
-  [Return]  ${response.status_code}
+  [Return]  ${response}
 
 Get Daily Detail By Vehicle ID Response With Forward Slash
   [Arguments]  ${vehicle_id}  &{params}
   [Documentation]  Returns the response code when the character '/' is placed before '?'.
   ${response} =  Get Daily Detail By Vehicle ID ${vehicle_id} With URI Ending With / And Parameters ${params}
-  [Return]  ${response.status_code}
+  [Return]  ${response}
 
 Get Daily Detail By Vehicle ID ${vehicle_id} Raw String URI Response With ${character_string} And Parameters ${params_string}
   [Documentation]  Uses the given character string to create raw URI string Get request
   ...  ${character_string} is a set of 1+ characters
   ...  ${params_string} is a series of '&' delimited parameters 
-  ${uri_string} =  Create URI String With  ${XRS_Performance_Base_URI.Daily_Detail}  ${XRS_WEBSERVICE_PERFORMANCE_GET_DAILY_DETAIL_BY_VEHICLE_ID}/${vehicle_id}  ${character_string}
-  ${uri} =  Set Variable  ${uri_string}${params_string}
-  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
-  [Return]  ${response.status_code}
+  ${uri_string} =  Create URI String With
+  ...  ${XRS_Performance_Base_URI.Daily_Detail}
+  ...  ${XRS_WEBSERVICE_PERFORMANCE_GET_DAILY_DETAIL_BY_VEHICLE_ID}/${vehicle_id}
+  ...  ${character_string}
+  ...  ${params_string}
+  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri_string}  headers=${XRS_WEBSERVICES_JSON_HEADER}
+  [Return]  ${response}
