@@ -26,7 +26,7 @@ Validate AWS XRS Get Fault Code REST Web Services Response Returns 200 OK With R
   [Documentation]  Get Fault Code Events with basic parameters using a raw URI string
   ${w_slash_question_response} =  Get Fault Codes Raw String URI Response With /? And Parameters ${XRS_AWS_WEBSERVICE_FAULT_CODE_TEST_PARAMS_STRING}
   ${w_question_response} =  Get Fault Codes Raw String URI Response With ? And Parameters ${XRS_AWS_WEBSERVICE_FAULT_CODE_TEST_PARAMS_STRING}
-  Request Should Be Successful ${w_slash_question_response}
+  Request Should Be Successful  ${w_slash_question_response}
   Request Should Be Successful  ${w_question_response}
 
 Validate AWS XRS Get Fault Code REST Web Services For All Fault Codes Response Returns 200 OK
@@ -49,7 +49,7 @@ Validate AWS XRS Get Fault Code By Vehicle ID REST Web Services Response Returns
   ${w_slash_question_response} =  Get Fault Codes By Vehicle ID ${test_data.vehicle_id} Raw String URI Response With /? And Parameters ${test_data.params_string}
   ${w_question_response} =  Get Fault Codes By Vehicle ID ${test_data.vehicle_id} Raw String URI Response With ? And Parameters ${test_data.params_string}
   Request Should Be Successful  ${w_slash_question_response}
-  SRequest Should Be Successful  ${w_question_response}
+  Request Should Be Successful  ${w_question_response}
 
 Validate AWS XRS Get Fault Code By Vehicle ID REST Web Services For All Fault Codes Response Returns 200 OK
   [Documentation]  Gets all the Fault Code Events By Vehicle ID

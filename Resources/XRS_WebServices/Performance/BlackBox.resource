@@ -146,9 +146,12 @@ Get Black Box Summary Raw String URI Response With ${character_string} And Param
   [Documentation]  Uses the given character string to create raw URI string Get request
   ...  ${character_string} is a set of 1+ characters
   ...  ${params_string} is a series of '&' delimited parameters 
-  ${uri_string} =  Create URI String With  ${XRS_Performance_Base_URI.Black_Box}  ${XRS_WEBSERVICE_PERFORMANCE_GET_BLACK_BOX_SUMMARY}  ${character_string}
-  ${uri} =  Set Variable  ${uri_string}${params_string}
-  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri}  headers=${XRS_WEBSERVICES_JSON_HEADER}
+  ${uri_string} =  Create URI String With
+  ...  ${XRS_Performance_Base_URI.Black_Box}
+  ...  ${XRS_WEBSERVICE_PERFORMANCE_GET_BLACK_BOX_SUMMARY}
+  ...  ${character_string}
+  ...  ${params_string}
+  ${response} =  Get Request  ${XRS_WEB_SERVICE_SESSION_ALIAS}  ${uri_string}  headers=${XRS_WEBSERVICES_JSON_HEADER}
   [Return]  ${response}
 
 # Helper Keywords For Get Black Box Summaries By Driver ID

@@ -19,8 +19,8 @@ Validate AWS XRS Get Resource Groups REST Web Services Response Returns 200 OK
   [Documentation]  Get Resource Groups with basic parameters
   ${wo_slash_response} =  Get Resource Groups Response With Forward Slash  &{XRS_AWS_WEBSERVICE_RESOURCE_GROUP_TEST_PARAMS}
   ${w_slash_response} =  Get Resource Groups Response Without Forward Slash  &{XRS_AWS_WEBSERVICE_RESOURCE_GROUP_TEST_PARAMS}
-  Request Should Be Successful  ${wo_slash_response}  200
-  Request Should Be Successful  ${w_slash_response}  200
+  Request Should Be Successful  ${wo_slash_response}
+  Request Should Be Successful  ${w_slash_response}
 
 Validate AWS XRS Get Resource Groups REST Web Services Response Returns 200 OK With Raw String URI
   [Documentation]  Get Resource Groups with basic parameters using a raw URI string
