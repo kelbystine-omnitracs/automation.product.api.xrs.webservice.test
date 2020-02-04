@@ -85,7 +85,7 @@ Validate AWS XRS Post Trailer V2 REST Web Services Response Returns Code 201
 Validate AWS XRS Get Trailer V2 REST Web Services Returns 200 OK
   [Documentation]  Verifies that a posted trailer v2 now exists
   ${response} =  Get Trailer By ID  ${XRS_WEB_SERVICES_TEST_TRAILER_V2.TrailerIdentity}
-  Request Should Be Successful  ${response.status_code}
+  Request Should Be Successful  ${response}
 
 Validate AWS XRS Put Trailer V2 REST Web Services Response Description Returns "Trailer edited successfully."
   [Documentation]  Posts a trailer v2 and expects a Code value of 201

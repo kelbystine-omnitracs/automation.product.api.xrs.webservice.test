@@ -20,8 +20,9 @@ Force Tags      awsxrsrestwebservicevalidation  awsxrsuserrestwebservicevalidati
 Validate AWS XRS Get User REST Web Services Response ErrorMessage Returns "User '<username>' does not exist."
   [Documentation]  Verifies that a User with a specific number does not exist
   ${response} =  Get User By ID  ${XRS_WEB_SERVICES_TEST_USER.UserName}
-  &{expected_values} =  Create Dictionary  key=ErrorMessage  value=User '${XRS_WEB_SERVICES_TEST_USER.UserName}' does not exist.
-  Verify Response List ${response} Has Key ${expected_values.key} And Contains Value ${expected_values.value}
+  &{expected_value} =  Create Dictionary  key=ErrorMessage  value=User '${XRS_WEB_SERVICES_TEST_USER.UserName}' does not exist.
+  ${actual_value} =  Get Value From Response With Key  ${expected_value.key}  ${response}
+  Should Be Equal As Strings  ${actual_value}  ${expected_value.value}
 
 Validate AWS XRS Post User REST Web Services Response Returns Code 201
   [Documentation]  Posts a User and expects a Code value of 201
@@ -37,10 +38,10 @@ Validate AWS XRS Get User REST Web Services Response Returns 200 OK
   ${XRS_WEB_SERVICES_TEST_USER_SID} =  Get Value From Response With Key  UserName  ${response}
   Set Global Variable  ${XRS_WEB_SERVICES_TEST_USER_SID}
 
-Validate AWS XRS Put User REST Web Services Response Returns "Geographic User edited successfully."
+Validate AWS XRS Put User REST Web Services Response Description Returns "User Edited Successfully."
   [Documentation]  Posts a User and expects a Code value of 201
   ${response} =  Put Users  @{XRS_AWS_WEBSERVICE_PUT_TEST_USER_LIST}
-  &{expected_values} =  Create Dictionary  key=Description  value=Geographic User edited successfully.
+  &{expected_values} =  Create Dictionary  key=Description  value=User Edited Successfully.
   Verify Response List ${response} Has Key ${expected_values.key} And Contains Value ${expected_values.value}
 
 Validate AWS XRS Get Users REST Web Services Response Returns 200 OK
@@ -96,11 +97,12 @@ Test Data Setup For XRS AWS User Web Service Test Suite
   @{XRS_AWS_WEBSERVICE_POST_TEST_USER_LIST} =  Create List  ${XRS_AWS_WEBSERVICE_POST_TEST_USER_1_DICT}
   Set Suite Variable  @{XRS_AWS_WEBSERVICE_POST_TEST_USER_LIST}
   # Create put test User 1 data.
+  # Put data must include EncrytpedPassword, but must remain blank ""
   &{XRS_AWS_WEBSERVICE_PUT_TEST_USER_1_DICT} =  Create Dictionary
   ...  AccountLocked=${XRS_WEB_SERVICES_TEST_USER.AccountLocked}
   ...  DashboardName=${XRS_WEB_SERVICES_TEST_USER.DashboardName}
   ...  Email=${XRS_WEB_SERVICES_TEST_USER.Email}
-  ...  EncryptedPassword=${XRS_WEB_SERVICES_TEST_USER.EncryptedPassword}
+  ...  EncryptedPassword=
   ...  FirstName=${XRS_WEB_SERVICES_TEST_USER.FirstName}
   ...  Language=${XRS_WEB_SERVICES_TEST_USER.Language}
   ...  LastName=${XRS_WEB_SERVICES_TEST_USER.LastName}
