@@ -82,7 +82,7 @@ Validate XRS Put Organization Performance (settings) Data By SID REST Web Servic
 Validate XRS Get Organizations Performance (settings) Data By Parameters REST Web Services Response Returns 200 OK
   [Documentation]  Get Organizations with basic parameters
   ${w_slash_response} =  Get Organizations Performance (settings) Data Response With Forward Slash  &{XRS_WEBSERVICE_ORGANIZATION_TEST_PARAMS}
-  ${w_slash_response} =  Get Organizations Performance (settings) Data Response Without Forward Slash  &{XRS_WEBSERVICE_ORGANIZATION_TEST_PARAMS}
+  ${wo_slash_response} =  Get Organizations Performance (settings) Data Response Without Forward Slash  &{XRS_WEBSERVICE_ORGANIZATION_TEST_PARAMS}
   Request Should Be Successful  ${w_slash_response}
   Request Should Be Successful  ${wo_slash_response}
 
