@@ -41,10 +41,10 @@ Validate AWS XRS Put Driver REST Web Services Response Description Returns "Driv
 
 Validate AWS XRS Get Drivers REST Web Services Response Returns 200 OK
   [Documentation]  Get drivers with basic parameters
-  ${wo_slash_response} =  Get Drivers Response With Forward Slash  &{XRS_AWS_WEBSERVICE_DRIVER_TEST_PARAMS}
-  ${w_slash_response} =  Get Drivers Response Without Forward Slash  &{XRS_AWS_WEBSERVICE_DRIVER_TEST_PARAMS}
-  Request Should Be Successful  ${wo_slash_response}
+  ${w_slash_response} =  Get Drivers Response With Forward Slash  &{XRS_AWS_WEBSERVICE_DRIVER_TEST_PARAMS}
+  ${wo_slash_response} =  Get Drivers Response Without Forward Slash  &{XRS_AWS_WEBSERVICE_DRIVER_TEST_PARAMS}
   Request Should Be Successful  ${w_slash_response}
+  Request Should Be Successful  ${wo_slash_response}
 
 Validate AWS XRS Get Drivers REST Web Services Response Returns 200 OK With Raw String URI
   [Documentation]  Get drivers with basic parameters using a raw URI string

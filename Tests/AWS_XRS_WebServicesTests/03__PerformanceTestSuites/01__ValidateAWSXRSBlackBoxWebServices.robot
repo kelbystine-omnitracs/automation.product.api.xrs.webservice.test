@@ -39,10 +39,10 @@ Validate AWS XRS Get Black Box Summary REST Web Services For All Black Box Summa
 # Validate Get Black Box Summaries By Driver ID
 Validate AWS XRS Get Black Box Summaries By Driver ID REST Web Services Response Returns 200 OK
   [Documentation]  Get Black Box Events By Driver ID with basic parameters
-  ${wo_slash_response} =  Get Black Box Summary By Driver ID Response With Forward Slash  ${SAMPLE_DRIVER_ID_FOR_BLACKBOX_TEST}  &{XRS_AWS_WEBSERVICE_BLACKBOX_TEST_PARAMS}
-  ${w_slash_response} =  Get Black Box Summary By Driver ID Response Without Forward Slash  ${SAMPLE_DRIVER_ID_FOR_BLACKBOX_TEST}  &{XRS_AWS_WEBSERVICE_BLACKBOX_TEST_PARAMS}
-  Request Should Be Successful  ${wo_slash_response}
+  ${w_slash_response} =  Get Black Box Summary By Driver ID Response With Forward Slash  ${SAMPLE_DRIVER_ID_FOR_BLACKBOX_TEST}  &{XRS_AWS_WEBSERVICE_BLACKBOX_TEST_PARAMS}
+  ${wo_slash_response} =  Get Black Box Summary By Driver ID Response Without Forward Slash  ${SAMPLE_DRIVER_ID_FOR_BLACKBOX_TEST}  &{XRS_AWS_WEBSERVICE_BLACKBOX_TEST_PARAMS}
   Request Should Be Successful  ${w_slash_response}
+  Request Should Be Successful  ${wo_slash_response}
 
 Validate AWS XRS Get Black Box Summary By Driver ID REST Web Services Response Returns 200 OK With Raw String URI
   [Documentation]  Get Black Box Events By Driver ID with basic parameters using a raw URI string
@@ -61,10 +61,10 @@ Validate AWS XRS Get Black Box Summary By Driver ID REST Web Services For All Bl
 # Validate Get Black Box Summaries By Vehicle ID
 Validate AWS XRS Get Black Box Summaries By Vehicle ID REST Web Services Response Returns 200 OK
   [Documentation]  Get Black Box Events By Vehicle ID with basic parameters
-  ${wo_slash_response} =  Get Black Box Summary By Vehicle ID Response With Forward Slash  ${SAMPLE_VEHICLE_ID_FOR_BLACKBOX_TEST}  &{XRS_AWS_WEBSERVICE_BLACKBOX_TEST_PARAMS}
-  ${w_slash_response} =  Get Black Box Summary By Vehicle ID Response Without Forward Slash  ${SAMPLE_VEHICLE_ID_FOR_BLACKBOX_TEST}  &{XRS_AWS_WEBSERVICE_BLACKBOX_TEST_PARAMS}
-  Request Should Be Successful  ${wo_slash_response}
+  ${w_slash_response} =  Get Black Box Summary By Vehicle ID Response With Forward Slash  ${SAMPLE_VEHICLE_ID_FOR_BLACKBOX_TEST}  &{XRS_AWS_WEBSERVICE_BLACKBOX_TEST_PARAMS}
+  ${wo_slash_response} =  Get Black Box Summary By Vehicle ID Response Without Forward Slash  ${SAMPLE_VEHICLE_ID_FOR_BLACKBOX_TEST}  &{XRS_AWS_WEBSERVICE_BLACKBOX_TEST_PARAMS}
   Request Should Be Successful  ${w_slash_response}
+  Request Should Be Successful  ${wo_slash_response}
 
 Validate AWS XRS Get Black Box Summary By Vehicle ID REST Web Services Response Returns 200 OK With Raw String URI
   [Documentation]  Get Black Box Events By Vehicle ID with basic parameters using a raw URI string

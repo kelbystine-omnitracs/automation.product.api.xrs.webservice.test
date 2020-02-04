@@ -18,10 +18,10 @@ Force Tags      awsxrsrestwebservicevalidation  awsxrscriticaleventsrestwebservi
 *** Test Cases ***
 Validate AWS XRS Get Critical Events Summary REST Web Services Response Returns 200 OK
   [Documentation]  Get Critical Events Events with basic parameters
-  ${wo_slash_response} =  Get Critical Events Summary Response With Forward Slash  &{XRS_AWS_WEBSERVICE_CRITICAL_EVENTS_TEST_PARAMS}
-  ${w_slash_response} =  Get Critical Events Summary Response Without Forward Slash  &{XRS_AWS_WEBSERVICE_CRITICAL_EVENTS_TEST_PARAMS}
-  Request Should Be Successful  ${wo_slash_response}
+  ${w_slash_response} =  Get Critical Events Summary Response With Forward Slash  &{XRS_AWS_WEBSERVICE_CRITICAL_EVENTS_TEST_PARAMS}
+  ${wo_slash_response} =  Get Critical Events Summary Response Without Forward Slash  &{XRS_AWS_WEBSERVICE_CRITICAL_EVENTS_TEST_PARAMS}
   Request Should Be Successful  ${w_slash_response}
+  Request Should Be Successful  ${wo_slash_response}
 
 Validate AWS XRS Get Critical Events Summary REST Web Services Response Returns 200 OK With Raw String URI
   [Documentation]  Get Critical Events Events with basic parameters using a raw URI string
@@ -39,10 +39,10 @@ Validate AWS XRS Get Critical Events Summary REST Web Services For All Critical 
 # Validate Get Critical Events Summaries By Driver ID
 Validate AWS XRS Get Critical Events Summaries By Driver ID REST Web Services Response Returns 200 OK
   [Documentation]  Get Critical Events Events By Driver IDwith basic parameters
-  ${wo_slash_response} =  Get Critical Events Summary By Driver ID Response With Forward Slash  ${SAMPLE_DRIVER_ID_FOR_CRITICAL_EVENTS_TEST}  &{XRS_AWS_WEBSERVICE_CRITICAL_EVENTS_TEST_PARAMS}
-  ${w_slash_response} =  Get Critical Events Summary By Driver ID Response Without Forward Slash  ${SAMPLE_DRIVER_ID_FOR_CRITICAL_EVENTS_TEST}  &{XRS_AWS_WEBSERVICE_CRITICAL_EVENTS_TEST_PARAMS}
-  Request Should Be Successful  ${wo_slash_response}
+  ${w_slash_response} =  Get Critical Events Summary By Driver ID Response With Forward Slash  ${SAMPLE_DRIVER_ID_FOR_CRITICAL_EVENTS_TEST}  &{XRS_AWS_WEBSERVICE_CRITICAL_EVENTS_TEST_PARAMS}
+  ${wo_slash_response} =  Get Critical Events Summary By Driver ID Response Without Forward Slash  ${SAMPLE_DRIVER_ID_FOR_CRITICAL_EVENTS_TEST}  &{XRS_AWS_WEBSERVICE_CRITICAL_EVENTS_TEST_PARAMS}
   Request Should Be Successful  ${w_slash_response}
+  Request Should Be Successful  ${wo_slash_response}
 
 Validate AWS XRS Get Critical Events Summary By Driver ID REST Web Services Response Returns 200 OK With Raw String URI
   [Documentation]  Get Critical Events Events By Driver IDwith basic parameters using a raw URI string
@@ -61,10 +61,10 @@ Validate AWS XRS Get Critical Events Summary By Driver ID REST Web Services For 
 # Validate Get Critical Events Summaries By Vehicle ID
 Validate AWS XRS Get Critical Events Summaries By Vehicle ID REST Web Services Response Returns 200 OK
   [Documentation]  Get Critical Events Events By Vehicle ID with basic parameters
-  ${wo_slash_response} =  Get Critical Events Summary By Vehicle ID Response With Forward Slash  ${SAMPLE_VEHICLE_ID_FOR_CRITICAL_EVENTS_TEST}  &{XRS_AWS_WEBSERVICE_CRITICAL_EVENTS_TEST_PARAMS}
-  ${w_slash_response} =  Get Critical Events Summary By Vehicle ID Response Without Forward Slash  ${SAMPLE_VEHICLE_ID_FOR_CRITICAL_EVENTS_TEST}  &{XRS_AWS_WEBSERVICE_CRITICAL_EVENTS_TEST_PARAMS}
-  Request Should Be Successful  ${wo_slash_response}
+  ${w_slash_response} =  Get Critical Events Summary By Vehicle ID Response With Forward Slash  ${SAMPLE_VEHICLE_ID_FOR_CRITICAL_EVENTS_TEST}  &{XRS_AWS_WEBSERVICE_CRITICAL_EVENTS_TEST_PARAMS}
+  ${wo_slash_response} =  Get Critical Events Summary By Vehicle ID Response Without Forward Slash  ${SAMPLE_VEHICLE_ID_FOR_CRITICAL_EVENTS_TEST}  &{XRS_AWS_WEBSERVICE_CRITICAL_EVENTS_TEST_PARAMS}
   Request Should Be Successful  ${w_slash_response}
+  Request Should Be Successful  ${wo_slash_response}
 
 Validate AWS XRS Get Critical Events Summary By Vehicle ID REST Web Services Response Returns 200 OK With Raw String URI
   [Documentation]  Get Critical Events Events By Vehicle ID with basic parameters using a raw URI string

@@ -39,10 +39,10 @@ Validate AWS XRS Put Device REST Web Services Response Description Returns "Devi
 
 Validate AWS XRS Get Devices REST Web Services Response Returns 200 OK
   [Documentation]  Get devices with basic parameters
-  ${wo_slash_response} =  Get Devices Response With Forward Slash  &{XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS}
-  ${w_slash_response} =  Get Devices Response Without Forward Slash  &{XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS}
-  Request Should Be Successful  ${wo_slash_response}
+  ${w_slash_response} =  Get Devices Response With Forward Slash  &{XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS}
+  ${wo_slash_response} =  Get Devices Response Without Forward Slash  &{XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS}
   Request Should Be Successful  ${w_slash_response}
+  Request Should Be Successful  ${wo_slash_response}
 
 Validate AWS XRS Get Devices REST Web Services Response Returns 200 OK With Raw String URI
   [Documentation]  Get devices with basic parameters using a raw URI string

@@ -45,10 +45,10 @@ Validate AWS XRS Put Site REST Web Services Response Description Returns "Geogra
 
 Validate AWS XRS Get Sites REST Web Services Response Returns 200 OK
   [Documentation]  Get Sites with basic parameters
-  ${wo_slash_response} =  Get Sites Response With Forward Slash  &{XRS_AWS_WEBSERVICE_SITE_TEST_PARAMS}
-  ${w_slash_response} =  Get Sites Response Without Forward Slash  &{XRS_AWS_WEBSERVICE_SITE_TEST_PARAMS}
-  Request Should Be Successful  ${wo_slash_response}
+  ${w_slash_response} =  Get Sites Response With Forward Slash  &{XRS_AWS_WEBSERVICE_SITE_TEST_PARAMS}
+  ${wo_slash_response} =  Get Sites Response Without Forward Slash  &{XRS_AWS_WEBSERVICE_SITE_TEST_PARAMS}
   Request Should Be Successful  ${w_slash_response}
+  Request Should Be Successful  ${wo_slash_response}
 
 Validate AWS XRS Get Sites REST Web Services Response Returns 200 OK With Raw String URI
   [Documentation]  Get Sites with basic parameters using a raw URI string

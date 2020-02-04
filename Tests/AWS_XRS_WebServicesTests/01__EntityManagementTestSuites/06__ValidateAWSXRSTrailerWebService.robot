@@ -40,10 +40,10 @@ Validate AWS XRS Put Trailer REST Web Services Response Description Returns "Tra
 
 Validate AWS XRS Get Trailers REST Web Services Response Returns 200 OK
   [Documentation]  Get trailers with basic parameters
-  ${wo_slash_response} =  Get Trailers Response With Forward Slash  &{XRS_AWS_WEBSERVICE_TRAILER_TEST_PARAMS}
-  ${w_slash_response} =  Get Trailers Response Without Forward Slash  &{XRS_AWS_WEBSERVICE_TRAILER_TEST_PARAMS}
-  Request Should Be Successful  ${wo_slash_response}
+  ${w_slash_response} =  Get Trailers Response With Forward Slash  &{XRS_AWS_WEBSERVICE_TRAILER_TEST_PARAMS}
+  ${wo_slash_response} =  Get Trailers Response Without Forward Slash  &{XRS_AWS_WEBSERVICE_TRAILER_TEST_PARAMS}
   Request Should Be Successful  ${w_slash_response}
+  Request Should Be Successful  ${wo_slash_response}
 
 Validate AWS XRS Get Trailers REST Web Services Response Returns 200 OK With Raw String URI
   [Documentation]  Get trailers with basic parameters using a raw URI string
@@ -95,10 +95,10 @@ Validate AWS XRS Put Trailer V2 REST Web Services Response Description Returns "
 
 Validate AWS XRS Get Trailers V2 REST Web Services Returns 200 OK
   [Documentation]  Get trailers v2 with basic parameters
-  ${wo_slash_response} =  Get Trailers V2 Response With Forward Slash  &{XRS_AWS_WEBSERVICE_TRAILER_TEST_PARAMS}
-  ${w_slash_response} =  Get Trailers V2 Response Without Forward Slash  &{XRS_AWS_WEBSERVICE_TRAILER_TEST_PARAMS}
-  Request Should Be Successful  ${wo_slash_response}
+  ${w_slash_response} =  Get Trailers V2 Response With Forward Slash  &{XRS_AWS_WEBSERVICE_TRAILER_TEST_PARAMS}
+  ${wo_slash_response} =  Get Trailers V2 Response Without Forward Slash  &{XRS_AWS_WEBSERVICE_TRAILER_TEST_PARAMS}
   Request Should Be Successful  ${w_slash_response}
+  Request Should Be Successful  ${wo_slash_response}
 
 Validate AWS XRS Get Trailers V2 REST Web Services Response Returns 200 OK With Raw String URI
   [Documentation]  Get trailers v2 with basic parameters using a raw URI string
