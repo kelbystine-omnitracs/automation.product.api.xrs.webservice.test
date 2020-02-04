@@ -36,7 +36,7 @@ Validate AWS XRS Get User REST Web Services Response Returns 200 OK
   Request Should Be Successful  ${response}
   # Set a global veriable for delete user test
   ${XRS_WEB_SERVICES_TEST_USER_SID} =  Get Value From Response With Key  UserName  ${response}
-  Set Global Variable  ${XRS_WEB_SERVICES_TEST_USER_SID}
+  Set Suite Variable  ${XRS_WEB_SERVICES_TEST_USER_SID}
 
 Validate AWS XRS Put User REST Web Services Response Description Returns "User Edited Successfully."
   [Documentation]  Posts a User and expects a Code value of 201
