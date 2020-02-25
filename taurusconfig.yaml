@@ -13,63 +13,24 @@ execution:
   concurrency: 50
   hold-for: 2m
   ramp-up: 10s
-  scenario: bob
-
-- executor: robot
-  concurrency: 50
-  hold-for: 2m
-  ramp-up: 10s
-  scenario: bob
-
-- executor: robot
-  concurrency: 50
-  hold-for: 2m
-  ramp-up: 10s
-  scenario: bob
-
-- executor: robot
-  concurrency: 50
-  hold-for: 2m
-  ramp-up: 10s
-  scenario: bob
-
-- executor: robot
-  concurrency: 50
-  hold-for: 2m
-  ramp-up: 10s
-  scenario: bob
-
-- executor: robot
-  concurrency: 50
-  hold-for: 2m
-  ramp-up: 10s
-  scenario: bob
-
-- executor: robot
-  concurrency: 50
-  hold-for: 2m
-  ramp-up: 10s
-  scenario: bob
-
-- executor: robot
-  concurrency: 50
-  hold-for: 2m
-  ramp-up: 10s
-  scenario: bob
-
-- executor: robot
-  concurrency: 50
-  hold-for: 2m
-  ramp-up: 10s
-  scenario: bob
+  scenario: dave
 
 scenarios:
   bob:
+    variables:
+      XRS_HOST_ENVIRONMENT: d3
+      XRS_TEST_BENCH_FOLDER_NAME: KSTINE2_D3_TestBench
     tags: xrsawsperftest
-    script: /aws-api-gateway-tests/Tests/
+    script: /automation.product.api.xrs.webservice.test/Tests/AWS_XRS_WebServicesTests/01__EntityManagementTestSuites/01__ValidateAWSXRSDeviceWebServices.robot
+  dave:
+    variables:
+      XRS_HOST_ENVIRONMENT: d3
+      XRS_TEST_BENCH_FOLDER_NAME: KSTINE2_D3_TestBench
+    tags: xrsperftest
+    script: /automation.product.api.xrs.webservice.test/Tests/XRS_WebServicesTests/01__EntityManagementTestSuites/01__ValidateXRSDeviceWebServices.robot
 
 reporting:
   - module: blazemeter
-    report-name: XRS Performance Test 2
+    report-name: XRS Performance Test
     test: AWS XRS Web Services Get Tests
     project: XRS Web Services
