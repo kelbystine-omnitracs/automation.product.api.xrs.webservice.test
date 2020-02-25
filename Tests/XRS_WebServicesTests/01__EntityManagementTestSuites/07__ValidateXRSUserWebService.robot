@@ -65,7 +65,7 @@ Validate XRS Delete User REST Web Services Response Returns 200 OK
 
 Validate XRS Get Users REST Web Services Response For All Users Returns 200 OK
   [Documentation]  Gets all the Users
-  [Tags]  xrsawsperftest
+  [Tags]  xrsperftest
   ${response} =  Get All Users
   Request Should Be Successful  ${response}
 

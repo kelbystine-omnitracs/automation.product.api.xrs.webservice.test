@@ -64,7 +64,7 @@ Validate XRS Delete Site REST Web Services Response Returns 200 OK
 
 Validate XRS Get Sites REST Web Services For All Sites Response Returns 200 OK
   [Documentation]  Gets all the Sites
-  [Tags]  xrsawsperftest
+  [Tags]  xrsperftest
   ${response} =  Get All Sites
   Request Should Be Successful  ${response}
 

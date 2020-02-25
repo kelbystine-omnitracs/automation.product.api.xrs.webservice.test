@@ -70,7 +70,7 @@ Validate XRS Delete Vehicle REST Web Services Response Returns 200 OK
 
 Validate XRS Get Vehicles REST Web Services For All Vehicles Response Returns 200 OK
   [Documentation]  Gets all the Vehicles
-  [Tags]  xrsawsperftest
+  [Tags]  xrsperftest
   ${response} =  Get All Vehicles
   Request Should Be Successful  ${response}
 

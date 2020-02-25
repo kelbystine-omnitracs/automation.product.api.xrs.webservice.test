@@ -53,7 +53,7 @@ Validate XRS Get Devices REST Web Services Response Returns 200 OK With Raw Stri
 
 Validate XRS Get Devices REST Web Services For All Devices Response Returns 200 OK
   [Documentation]  Gets all the Devices
-  [Tags]  xrsawsperftest
+  [Tags]  xrsperftest
   ${response} =  Get All Devices
   Request Should Be Successful  ${response}
 

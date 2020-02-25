@@ -59,7 +59,7 @@ Validate XRS Delete Trailer REST Web Services Response Returns 200 OK
 
 Validate XRS Get Trailers REST Web Services For All Trailers Response Returns 200 OK
   [Documentation]  Gets all the trailers
-  [Tags]  xrsawsperftest
+  [Tags]  xrsperftest
   ${response} =  Get All Trailers
   Request Should Be Successful  ${response}
 

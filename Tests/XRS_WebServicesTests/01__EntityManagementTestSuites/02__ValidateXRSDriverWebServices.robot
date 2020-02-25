@@ -63,7 +63,7 @@ Validate XRS Delete Driver REST Web Services Response Returns 200 OK
 
 Validate XRS Get Drivers REST Web Services For All Drivers Response Returns 200 OK
   [Documentation]  Gets all the drivers
-  [Tags]  xrsawsperftest
+  [Tags]  xrsperftest
   ${response} =  Get All Drivers
   Request Should Be Successful  ${response}
 

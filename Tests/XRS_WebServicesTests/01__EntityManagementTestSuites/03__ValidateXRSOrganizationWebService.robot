@@ -63,7 +63,7 @@ Validate XRS Get Organizations By ID REST Web Services Reponse Returns 200 OK
 
 Validate XRS Get Organizations REST Web Services For All Organizations Response Returns 200 OK
   [Documentation]  Gets all the Organizations
-  [Tags]  xrsawsperftest
+  [Tags]  xrsperftest
   ${response} =  Get All Organizations
   Request Should Be Successful  ${response}
 
