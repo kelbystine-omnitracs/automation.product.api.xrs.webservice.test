@@ -39,6 +39,7 @@ Validate XRS Put Trailer REST Web Services Response Description Returns "Trailer
   Verify Response List ${response} Has Key ${expected_values.key} And Contains Value ${expected_values.value}
 
 Validate XRS Get Trailers With Forward Slash REST Web Services Response Returns 200 OK
+  [Tags]  aws_only
   [Documentation]  Get trailers with basic parameters
   ${w_slash_response} =  Get Trailers Response With Forward Slash  &{XRS_WEBSERVICE_TRAILER_TEST_PARAMS}
   Request Should Be Successful  ${w_slash_response}
@@ -49,6 +50,7 @@ Validate XRS Get Trailers Without Forward Slash REST Web Services Response Retur
   Request Should Be Successful  ${wo_slash_response}
 
 Validate XRS Get Trailers With Raw String URI And /? REST Web Services Response Returns 200 OK
+  [Tags]  aws_only
   [Documentation]  Get trailers with basic parameters using a raw URI string
   ${w_slash_question_response} =  Get Trailers Raw String URI Response With /? And Parameters ${XRS_WEBSERVICE_TRAILER_TEST_PARAMS_STRING}
   Request Should Be Successful  ${w_slash_question_response}
@@ -65,7 +67,7 @@ Validate XRS Delete Trailer REST Web Services Response Returns 200 OK
 
 Validate XRS Get Trailers REST Web Services For All Trailers Response Returns 200 OK
   [Documentation]  Gets all the trailers
-  [Tags]  xrsawsperftest
+  [Tags]  xrsperftest
   ${response} =  Get All Trailers
   Request Should Be Successful  ${response}
 
@@ -100,6 +102,7 @@ Validate XRS Put Trailer V2 REST Web Services Response Description Returns "Trai
   Verify Response List ${response} Has Key ${expected_values.key} And Contains Value ${expected_values.value}
 
 Validate XRS Get Trailers V2 With Forward Slash REST Web Services Returns 200 OK
+  [Tags]  aws_only
   [Documentation]  Get trailers v2 with basic parameters
   ${w_slash_response} =  Get Trailers V2 Response With Forward Slash  &{XRS_WEBSERVICE_TRAILER_TEST_PARAMS}
   Request Should Be Successful  ${w_slash_response}
@@ -110,6 +113,7 @@ Validate XRS Get Trailers V2 Without Forward Slash REST Web Services Returns 200
   Request Should Be Successful  ${wo_slash_response}
 
 Validate XRS Get Trailers V2 With Raw String URI And /? REST Web Services Response Returns 200 OK
+  [Tags]  aws_only
   [Documentation]  Get trailers v2 with basic parameters using a raw URI string
   ${w_slash_question_response} =  Get Trailers V2 Raw String URI Response With /? And Parameters ${XRS_WEBSERVICE_TRAILER_TEST_PARAMS_STRING}
   Request Should Be Successful  ${w_slash_question_response}
@@ -126,7 +130,7 @@ Validate XRS Delete Trailer V2 REST Web Services Response Returns 200 OK
 
 Validate XRS Get Trailers V2 REST Web Services For All Trailers Response Returns 200 OK
   [Documentation]  Gets all the trailers v2
-  [Tags]  xrsawsperftest
+  [Tags]  xrsperftest
   ${response} =  Get All Trailers V2
   Request Should Be Successful  ${response}
 

@@ -32,6 +32,7 @@ Validate XRS Put Driver REST Web Services Response Description Returns "Driver e
   Verify Put Driver ${XRS_WEBSERVICE_PUT_TEST_DRIVER_LIST} Description Returns "Driver edited successfully."
 
 Validate XRS Get Drivers With Forward Slash REST Web Services Response Returns 200 OK
+  [Tags]  aws_only
   [Documentation]  Get drivers with basic parameters
   Verify Get Drivers With Parameters ${XRS_WEBSERVICE_DRIVER_TEST_PARAMS} Method Is Successful With Forward Slash
 
@@ -40,6 +41,7 @@ Validate XRS Get Drivers Without Forward Slash REST Web Services Response Return
   Verify Get Drivers With Parameters ${XRS_WEBSERVICE_DRIVER_TEST_PARAMS} Method Is Successful Without Forward Slash
 
 Validate XRS Get Devices With Raw String URI And /? REST Web Services Response Returns 200 OK
+  [Tags]  aws_only
   [Documentation]  Get drivers with basic parameters using a raw URI string
   Verify Get Drivers Raw String ${GET_DRIVERS_PARAMS_STRING} With /? Is Successful
 
@@ -53,7 +55,7 @@ Validate XRS Delete Driver REST Web Services Response Returns 200 OK
 
 Validate XRS Get Drivers REST Web Services For All Drivers Response Returns 200 OK
   [Documentation]  Gets all the drivers
-  [Tags]  xrsawsperftest
+  [Tags]  xrsperftest
   Verify Get All Drivers Is Successful
 
 Validate XRS Delete Drivers REST Web Services Response ErrorMessage Returns "Driver <driver_sid> doesn't exist."

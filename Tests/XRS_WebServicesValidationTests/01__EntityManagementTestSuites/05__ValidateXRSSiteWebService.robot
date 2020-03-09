@@ -44,6 +44,7 @@ Validate XRS Put Site REST Web Services Response Description Returns "Geographic
   Verify Response List ${response} Has Key ${expected_values.key} And Contains Value ${expected_values.value}
 
 Validate XRS Get Sites With Forward Slash REST Web Services Response Returns 200 OK
+  [Tags]  aws_only
   [Documentation]  Get Sites with basic parameters
   ${w_slash_response} =  Get Sites Response With Forward Slash  &{XRS_WEBSERVICE_SITE_TEST_PARAMS}
   Request Should Be Successful  ${w_slash_response}
@@ -54,6 +55,7 @@ Validate XRS Get Sites Without Forward Slash REST Web Services Response Returns 
   Request Should Be Successful  ${wo_slash_response}
 
 Validate XRS Get Sites With Raw String URI And /? REST Web Services Response Returns 200 OK
+  [Tags]  aws_only
   [Documentation]  Get Sites with basic parameters using a raw URI string
   ${w_slash_question_response} =  Get Sites Raw String URI Response With /? And Parameters ${XRS_WEBSERVICE_SITE_TEST_PARAMS_STRING}
   Request Should Be Successful  ${w_slash_question_response}
@@ -70,7 +72,7 @@ Validate XRS Delete Site REST Web Services Response Returns 200 OK
 
 Validate XRS Get Sites REST Web Services For All Sites Response Returns 200 OK
   [Documentation]  Gets all the Sites
-  [Tags]  xrsawsperftest
+  [Tags]  xrsperftest
   ${response} =  Get All Sites
   Request Should Be Successful  ${response}
 

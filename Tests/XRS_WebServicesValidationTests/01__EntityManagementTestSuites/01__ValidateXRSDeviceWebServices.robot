@@ -28,6 +28,7 @@ Validate XRS Put Device REST Web Services Response Description Returns "Device e
   Verify Put Device @{XRS_WEBSERVICE_PUT_TEST_DEVICE_LIST} Description Returns "Device edited successfully."
 
 Validate XRS Get Devices With Forward Slash REST Web Services Response Returns 200 OK
+  [Tags]  aws_only
   [Documentation]  Get devices with basic parameters and URI ends with a forward slash before parameters
   Verify Get Devices With Parameters &{XRS_WEBSERVICE_DEVICE_TEST_PARAMS} Method Is Successful With Forward Slash
 
@@ -36,6 +37,7 @@ Validate XRS Get Devices Without Forward Slash REST Web Services Response Return
   Verify Get Devices With Parameters &{XRS_WEBSERVICE_DEVICE_TEST_PARAMS} Method Is Successful Without Forward Slash
 
 Validate XRS Get Devices With Raw String URI And /? REST Web Services Response Returns 200 OK
+  [Tags]  aws_only
   [Documentation]  Get devices with basic parameters using a raw URI string
   Verify Get Devices Raw String ${XRS_WEBSERVICE_DEVICE_TEST_PARAMS_STRING} With /? Is Successful
 
@@ -45,7 +47,7 @@ Validate XRS Get Devices With Raw String URI And ? REST Web Services Response Re
 
 Validate XRS Get Devices REST Web Services For All Devices Response Returns 200 OK
   [Documentation]  Gets all the Devices
-  [Tags]  xrsawsperftest
+  [Tags]  xrsperftest
   Verify Get All Devices is Successful
 
 Validate XRS Delete Device REST Web Services Response Returns 200 OK
