@@ -44,18 +44,24 @@ Validate XRS Put User REST Web Services Response Description Returns "User Edite
   &{expected_values} =  Create Dictionary  key=Description  value=User Edited Successfully.
   Verify Response List ${response} Has Key ${expected_values.key} And Contains Value ${expected_values.value}
 
-Validate XRS Get Users REST Web Services Response Returns 200 OK
+Validate XRS Get Users With Forward Slash REST Web Services Response Returns 200 OK
   [Documentation]  Get Users with basic parameters
   ${w_slash_response} =  Get Users Response With Forward Slash  &{XRS_WEBSERVICE_USER_TEST_PARAMS}
-  ${wo_slash_response} =  Get Users Response Without Forward Slash  &{XRS_WEBSERVICE_USER_TEST_PARAMS}
   Request Should Be Successful  ${w_slash_response}
+
+Validate XRS Get Users Without Forward Slash REST Web Services Response Returns 200 OK
+  [Documentation]  Get Users with basic parameters
+  ${wo_slash_response} =  Get Users Response Without Forward Slash  &{XRS_WEBSERVICE_USER_TEST_PARAMS}
   Request Should Be Successful  ${wo_slash_response}
 
-Validate XRS Get Users REST Web Services Response Returns 200 OK With Raw String URI
+Validate XRS Get Users With Raw String URI And /? REST Web Services Response Returns 200 OK
   [Documentation]  Get Users with basic parameters using a raw URI string
   ${w_slash_question_response} =  Get Users Raw String URI Response With /? And Parameters ${XRS_WEBSERVICE_USER_TEST_PARAMS_STRING}
-  ${w_question_response} =  Get Users Raw String URI Response With ? And Parameters ${XRS_WEBSERVICE_USER_TEST_PARAMS_STRING}
   Request Should Be Successful  ${w_slash_question_response}
+
+Validate XRS Get Users With Raw String URI And ? REST Web Services Response Returns 200 OK
+  [Documentation]  Get Users with basic parameters using a raw URI string
+  ${w_question_response} =  Get Users Raw String URI Response With ? And Parameters ${XRS_WEBSERVICE_USER_TEST_PARAMS_STRING}
   Request Should Be Successful  ${w_question_response}
 
 Validate XRS Delete User REST Web Services Response Returns 200 OK

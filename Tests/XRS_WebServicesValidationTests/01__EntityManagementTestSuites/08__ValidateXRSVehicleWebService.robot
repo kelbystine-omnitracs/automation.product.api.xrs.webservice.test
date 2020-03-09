@@ -49,18 +49,24 @@ Validate XRS Put Vehicle REST Web Services Response Description Returns "Vehicle
   &{expected_values} =  Create Dictionary  key=Description  value=Vehicle edited successfully.
   Verify Response List ${response} Has Key ${expected_values.key} And Contains Value ${expected_values.value}
 
-Validate XRS Get Vehicles REST Web Services Response Returns 200 OK
+Validate XRS Get Vehicles With Forward Slash REST Web Services Response Returns 200 OK
   [Documentation]  Get Vehicles with basic parameters
   ${w_slash_response} =  Get Vehicles Response With Forward Slash  &{XRS_WEBSERVICE_VEHICLE_TEST_PARAMS}
-  ${wo_slash_response} =  Get Vehicles Response Without Forward Slash  &{XRS_WEBSERVICE_VEHICLE_TEST_PARAMS}
   Request Should Be Successful  ${w_slash_response}
+
+Validate XRS Get Vehicles Without Forward Slash REST Web Services Response Returns 200 OK
+  [Documentation]  Get Vehicles with basic parameters
+  ${wo_slash_response} =  Get Vehicles Response Without Forward Slash  &{XRS_WEBSERVICE_VEHICLE_TEST_PARAMS}
   Request Should Be Successful  ${wo_slash_response}
 
-Validate XRS Get Vehicles REST Web Services Response Returns 200 OK With Raw String URI
+Validate XRS Get Vehicles With Raw String URI And /? REST Web Services Response Returns 200 OK
   [Documentation]  Get Vehicles with basic parameters using a raw URI string
   ${w_slash_question_response} =  Get Vehicles Raw String URI Response With /? And Parameters ${XRS_WEBSERVICE_VEHICLE_TEST_PARAMS_STRING}
-  ${w_question_response} =  Get Vehicles Raw String URI Response With ? And Parameters ${XRS_WEBSERVICE_VEHICLE_TEST_PARAMS_STRING}
   Request Should Be Successful  ${w_slash_question_response}
+
+Validate XRS Get Vehicles With Raw String URI And ? REST Web Services Response Returns 200 OK
+  [Documentation]  Get Vehicles with basic parameters using a raw URI string
+  ${w_question_response} =  Get Vehicles Raw String URI Response With ? And Parameters ${XRS_WEBSERVICE_VEHICLE_TEST_PARAMS_STRING}
   Request Should Be Successful  ${w_question_response}
 
 Validate XRS Delete Vehicle REST Web Services Response Returns 200 OK

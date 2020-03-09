@@ -42,18 +42,24 @@ Validate XRS Put Organization REST Web Services Response Description Returns "Or
   &{expected_values} =  Create Dictionary  key=Description  value=Organization Edited Successfully.
   Verify Response List ${response} Has Key ${expected_values.key} And Contains Value ${expected_values.value}
 
-Validate XRS Get Organizations By Parameters REST Web Services Response Returns 200 OK
+Validate XRS Get Organizations By Parameters With Forward Slash REST Web Services Response Returns 200 OK
   [Documentation]  Get Organizations with basic parameters
   ${w_slash_response} =  Get Organizations Response With Forward Slash  &{XRS_WEBSERVICE_ORGANIZATION_TEST_PARAMS}
-  ${wo_slash_response} =  Get Organizations Response Without Forward Slash  &{XRS_WEBSERVICE_ORGANIZATION_TEST_PARAMS}
   Request Should Be Successful  ${w_slash_response}
+
+Validate XRS Get Organizations By Parameters Without Forward Slash REST Web Services Response Returns 200 OK
+  [Documentation]  Get Organizations with basic parameters
+  ${wo_slash_response} =  Get Organizations Response Without Forward Slash  &{XRS_WEBSERVICE_ORGANIZATION_TEST_PARAMS}
   Request Should Be Successful  ${wo_slash_response}
 
-Validate XRS Get Organizations By Parameters REST Web Services Reponse Returns 200 OK With Raw String URI
+Validate XRS Get Organizations With Raw String URI And /? REST Web Services Response Returns 200 OK
   [Documentation]  Get Organizations with basic parameters using a raw URI string
   ${w_slash_question_response} =  Get Organizations Raw String URI Response With /? And Parameters ${XRS_WEBSERVICE_ORGANIZATION_TEST_PARAMS_STRING}
-  ${w_question_response} =  Get Organizations Raw String URI Response With ? And Parameters ${XRS_WEBSERVICE_ORGANIZATION_TEST_PARAMS_STRING}
   Request Should Be Successful  ${w_slash_question_response}
+
+Validate XRS Get Organizations With Raw String URI And ? REST Web Services Response Returns 200 OK
+  [Documentation]  Get Organizations with basic parameters using a raw URI string
+  ${w_question_response} =  Get Organizations Raw String URI Response With ? And Parameters ${XRS_WEBSERVICE_ORGANIZATION_TEST_PARAMS_STRING}
   Request Should Be Successful  ${w_question_response}
 
 Validate XRS Get Organizations By ID REST Web Services Reponse Returns 200 OK
@@ -79,18 +85,24 @@ Validate XRS Put Organization Performance (settings) Data By SID REST Web Servic
   ${response} =  Put Organizations Performance Data By ID  ${XRS_WEBSERVICE_POST_TEST_ORGANIZATION_1_DICT.OrganizationId}  ${json_data}
   Request Should Be Successful  ${response}
 
-Validate XRS Get Organizations Performance (settings) Data By Parameters REST Web Services Response Returns 200 OK
+Validate XRS Get Organizations Performance (settings) Data By Parameters With Forward Slash REST Web Services Response Returns 200 OK
   [Documentation]  Get Organizations with basic parameters
   ${w_slash_response} =  Get Organizations Performance (settings) Data Response With Forward Slash  &{XRS_WEBSERVICE_ORGANIZATION_TEST_PARAMS}
-  ${wo_slash_response} =  Get Organizations Performance (settings) Data Response Without Forward Slash  &{XRS_WEBSERVICE_ORGANIZATION_TEST_PARAMS}
   Request Should Be Successful  ${w_slash_response}
+
+Validate XRS Get Organizations Performance (settings) Data By Parameters Without Forward Slash REST Web Services Response Returns 200 OK
+  [Documentation]  Get Organizations with basic parameters
+  ${wo_slash_response} =  Get Organizations Performance (settings) Data Response Without Forward Slash  &{XRS_WEBSERVICE_ORGANIZATION_TEST_PARAMS}
   Request Should Be Successful  ${wo_slash_response}
 
-Validate XRS Get Organizations Performance (settings) Data By Parameters REST Web Services Response Returns 200 OK With Raw String URI
+Validate XRS Get Organizations Performance (settings) Data By Parameters With Raw String URI And /? REST Web Services Response Returns 200 OK
   [Documentation]  Get Organizations with basic parameters using a raw URI string
   ${w_slash_question_response} =  Get Organizations Performance (settings) Data Raw String URI Response With /? And Parameters ${XRS_WEBSERVICE_ORGANIZATION_TEST_PARAMS_STRING}
-  ${w_question_response} =  Get Organizations Performance (settings) Data Raw String URI Response With ? And Parameters ${XRS_WEBSERVICE_ORGANIZATION_TEST_PARAMS_STRING}
   Request Should Be Successful  ${w_slash_question_response}
+
+Validate XRS Get Organizations Performance (settings) Data By Parameters With Raw String URI And ? REST Web Services Response Returns 200 OK
+  [Documentation]  Get Organizations with basic parameters using a raw URI string
+  ${w_question_response} =  Get Organizations Performance (settings) Data Raw String URI Response With ? And Parameters ${XRS_WEBSERVICE_ORGANIZATION_TEST_PARAMS_STRING}
   Request Should Be Successful  ${w_question_response}
 
 *** Keywords ***

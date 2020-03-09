@@ -15,18 +15,24 @@ Force Tags      xrsrestwebservicevalidation  xrsresourcegrouprestwebservicevalid
 *** Variables ***
 
 *** Test Cases ***
-Validate XRS Get Resource Groups REST Web Services Response Returns 200 OK
+Validate XRS Get Resource Groups With Forward Slash REST Web Services Response Returns 200 OK
   [Documentation]  Get Resource Groups with basic parameters
   ${w_slash_response} =  Get Resource Groups Response With Forward Slash  &{XRS_WEBSERVICE_RESOURCE_GROUP_TEST_PARAMS}
-  ${wo_slash_response} =  Get Resource Groups Response Without Forward Slash  &{XRS_WEBSERVICE_RESOURCE_GROUP_TEST_PARAMS}
   Request Should Be Successful  ${w_slash_response}
+
+Validate XRS Get Resource Groups Without Forward Slash REST Web Services Response Returns 200 OK
+  [Documentation]  Get Resource Groups with basic parameters
+  ${wo_slash_response} =  Get Resource Groups Response Without Forward Slash  &{XRS_WEBSERVICE_RESOURCE_GROUP_TEST_PARAMS}
   Request Should Be Successful  ${wo_slash_response}
 
-Validate XRS Get Resource Groups REST Web Services Response Returns 200 OK With Raw String URI
+Validate XRS Get Resource Groups With Raw String URI And /? REST Web Services Response Returns 200 OK
   [Documentation]  Get Resource Groups with basic parameters using a raw URI string
   ${w_slash_question_response} =  Get Resource Groups Raw String URI Response With /? And Parameters ${XRS_WEBSERVICE_RESOURCE_GROUP_TEST_PARAMS_STRING}
-  ${w_question_response} =  Get Resource Groups Raw String URI Response With ? And Parameters ${XRS_WEBSERVICE_RESOURCE_GROUP_TEST_PARAMS_STRING}
   Request Should Be Successful  ${w_slash_question_response}
+
+Validate XRS Get Resource Groups With Raw String URI And ? REST Web Services Response Returns 200 OK
+  [Documentation]  Get Resource Groups with basic parameters using a raw URI string
+  ${w_question_response} =  Get Resource Groups Raw String URI Response With ? And Parameters ${XRS_WEBSERVICE_RESOURCE_GROUP_TEST_PARAMS_STRING}
   Request Should Be Successful  ${w_question_response}
 
 Validate XRS Get Resource Groups REST Web Services For All Resource Groups Response Returns 200 OK
