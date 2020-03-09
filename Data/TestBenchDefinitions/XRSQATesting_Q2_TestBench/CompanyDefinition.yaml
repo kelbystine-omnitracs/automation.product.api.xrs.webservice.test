@@ -1,0 +1,69 @@
+# Company settings
+XRS_GENERAL_INFORMATION:
+  ELD_IDS:
+    Android_ELD_ID: XRSAN1
+    WinMo_ELD_ID: XRSWIN
+  ELD_Provider:
+    Provider: Omnitracs LLC
+  FMCSA_REGISTRATION_IDS:
+    Android_Registration_ID: 7SG3
+    WinMo_Registration_ID: 1234
+  Company:
+    Company_ID: 466637
+    Company_Login_ID: GnomeShippingQ2
+    Company_Name: Gnome Shipping Q2
+    Status: Active
+    ParentOrganizationSid: 6460
+    Company_SID: 6460
+  Address:
+    Carrier_Name: Gnome Shipping Q2
+    DOT_Number: 123456
+    Canadian_Registration_Number:
+    Address_1: 12900 Whitewater Dr
+    Address_2: Suite 300
+    Country: USA
+    StateProvince: Minnesota
+    City: Minnetonka
+    ZipPostal_Code: 55343
+  Billing:
+    Test_Account: Yes
+    Base_Package: Premium Package
+    Billing_Code: test123
+    Subscription_Type: Driver Only
+    Driver_Quantity: 500
+    Relay_Quantity: 0
+    Device_Quantity: 0
+  Localization:
+    Units_Of_Measure: Standard (miles/gallons)
+    Language: English
+    Time_Zone: Central
+  FleetView:
+    FleetView_Refresh: 5 Minutes
+  Admin:
+    Admin_Username: admin
+    Admin_Password: 1AC41640A3A216BA585C739601A923D
+    Email_Address: xrsqatest+adminGnomeShippingQ1@gmail.com
+    Disable_Verification_Emails: false
+    Allow_Shared_Resources: true
+    Allow_Subscription_Changes: false
+    Display_Unauthorized_Organizations_in_Selectors: true
+  Dashboard:
+    Dashboard: None
+    Data_Expiration_Hours: 24
+    Failed_Cooldown_Minutes: 30
+  Mobile:
+    Mobile_Allow_Manual_DVIR: false
+    Mobile_Allow_Shared_Resource_Group_Equipment_Usage: false
+    Mobile_Automatically_Resume_Unfinished_Driver_Sessions: true
+    Mobile_Paper_Log_Mode_activation_time_(min): 5
+    Mobile_Disconnected View Warning Frequency_(sec): 30
+    Mobile_Allow_Manual_Odometer_on_Inspection: false
+    Mobile_Create_Shared_AVL_File: true
+    Disassociated_Relay_Connection_Interval_(min): 15
+    Mobile_Communication_Frequency_(sec): 30
+    Min_ECM_Speed_Regarded_As_Motion: 1.0
+    Relay_Operational_Snapshot_Frequency_(sec): 30 seconds
+    Mobile_Enable_SSL: false
+    Allow_Enable_BT_After_Turn_Off: Don't Try to Turn Back On
+    Do_not_Allow_Cached_Login_After: 192 Hours
+    Mobile_Black_Box_Event_Shutdown_Recording: false

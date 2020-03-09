@@ -1,0 +1,19 @@
+# It Is advisable to have one device per file.
+# And always start the file with 'DeviceDefinition'
+DEFAULT_DEVICE:
+  PHONE_NUMBER: 4049858401
+  BLUETOOTH_ADDRESS: 00:00:00:00:00
+  DEVICE_TYPE: Other - Android
+  CARRIER: Sprint
+  ORGANIZATION: Gnome Shipping Q2
+  STATUS: Active
+  DESCRIPTION: Nexus 5
+  SEND_INSTALL_LINK: false
+  FIXED_DISPLAY: No
+  PLATFORM_VERSION: 6.0.1
+  PLATFORM_NAME: Android
+  DEVICE_NAME: device
+  UDID: 049a5082251d03f0
+  UNLOCK_TYPE: pattern
+  UNLOCK_KEY: 2846
+XRS_MOBILE_VERSION: v05.40.0228

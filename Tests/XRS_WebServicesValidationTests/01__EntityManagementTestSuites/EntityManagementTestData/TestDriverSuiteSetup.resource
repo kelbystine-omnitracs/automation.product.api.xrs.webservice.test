@@ -72,7 +72,7 @@ Test Data Setup For XRS Driver Web Service Test Suite
   ...  AsOfDateTime=${XRS_WEBSERVICE_DRIVER_TEST_PARAMS.AsOfDateTime}
   Set Suite Variable  ${GET_DRIVERS_PARAMS_STRING}
 
-Get ${key} Value From ${response} And Set Test Suite Variable
+Get Driver ${key} Value From ${response} And Set Test Suite Variable
     [Documentation]  Set a Suite variable for the delete driver test
     ${XRS_WEB_SERVICES_TEST_DRIVER_1_SID} =  ParseResponse.Get Value From Response With Key  ${key}  ${response}
     Set Suite Variable  ${XRS_WEB_SERVICES_TEST_DRIVER_1_SID}

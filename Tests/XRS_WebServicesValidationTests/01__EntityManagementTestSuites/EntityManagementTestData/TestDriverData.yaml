@@ -1,11 +1,11 @@
 XRS_WEB_SERVICES_TEST_DRIVER_1:
   CDLExpiration:
-  CDLNumber: awsxrstestdriver1234
+  CDLNumber: xrstestdriver1234
   CellPhone:
   CompanyName:
   CompanySID:
   CreateDate:
-  DriverID: awsxrstestdriver1
+  DriverID: xrstestdriver1
   DefaultHOSRule: null # TODO: required
   ELDExempt: false
   ELDExemptExplanation:
@@ -17,7 +17,7 @@ XRS_WEB_SERVICES_TEST_DRIVER_1:
   EnableTimeClock: false
   EnableYardMove: false
   Endorsements:
-  FirstName: AWSXRS
+  FirstName: XRS
   HomeTelephone:
   Language: English
   LastLogin:
@@ -26,7 +26,7 @@ XRS_WEB_SERVICES_TEST_DRIVER_1:
   LicenseIssuingStateProvince: Minnesota
   MaxConveyanceDistance: 0
   MedicalExp:
-  MiddleName: AWSXRSTest
+  MiddleName: XRSTest
   ModifiedBy:
   ModifiedDate:
   OrganizationID:
@@ -46,4 +46,4 @@ XRS_WEB_SERVICES_TEST_DRIVER_1:
   UserDefinedField3:
   UserDefinedField4:
   UserDefinedField5:
-  UserName: awsxrstestdriver1
+  UserName: xrstestdriver1
