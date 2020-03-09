@@ -27,7 +27,7 @@ Verify Get Devices With Parameters ${parameter_dictionary} Method Is Successful 
     Request Should Be Successful  ${w_slash_response}
 
 Verify Get Devices With Parameters ${parameter_dictionary} Method Is Successful Without Forward Slash
-    ${wo_slash_response} =  Get Devices Response Without Forward Slash  &{XRS_AWS_WEBSERVICE_DEVICE_TEST_PARAMS}
+    ${wo_slash_response} =  Get Devices Response Without Forward Slash  &{XRS_WEBSERVICE_DEVICE_TEST_PARAMS}
     Request Should Be Successful  ${wo_slash_response}
 
 Verify Get Devices Raw String ${raw_uri_string} With ${char_string} Is Successful

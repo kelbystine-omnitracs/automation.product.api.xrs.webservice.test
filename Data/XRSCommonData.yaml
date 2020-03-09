@@ -1,4 +1,5 @@
 # This file is designed to contain common project variables.
 # These variables are set up to be changed in the command line if needed.
-XRS_HOST_ENVIRONMENT: q1  # This is the default environment
-XRS_TEST_BENCH_FOLDER_NAME: TestBenchExample
+XRS_HOST_ENVIRONMENT: d3  # This is the default environment
+XRS_TEST_BENCH_FOLDER_NAME: KSTINE2_D3_TestBench
+XRS_WEBSERVICE_SESSION_TYPE: xrs_webservices_aws
