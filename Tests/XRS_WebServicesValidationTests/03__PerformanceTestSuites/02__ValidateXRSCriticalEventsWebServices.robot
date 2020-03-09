@@ -31,7 +31,7 @@ Validate XRS Get Critical Events Summary With Raw String URI And /? REST Web Ser
   ${w_slash_question_response} =  Get Critical Events Summary Raw String URI Response With /? And Parameters ${XRS_WEBSERVICE_CRITICAL_EVENTS_TEST_PARAMS_STRING}
   Request Should Be Successful  ${w_slash_question_response}
 
-Validate XRS Get Critical Events Summary With Raw String URI And /? REST Web Services Response Returns 200 OK
+Validate XRS Get Critical Events Summary With Raw String URI And ? REST Web Services Response Returns 200 OK
   [Documentation]  Get Critical Events Events with basic parameters using a raw URI string
   ${w_question_response} =  Get Critical Events Summary Raw String URI Response With ? And Parameters ${XRS_WEBSERVICE_CRITICAL_EVENTS_TEST_PARAMS_STRING}
   Request Should Be Successful  ${w_question_response}
@@ -59,7 +59,7 @@ Validate XRS Get Critical Events Summary By Driver ID With Raw String URI And /?
   ${w_slash_question_response} =  Get Critical Events Summary By Driver ID ${test_data.driver_id} Raw String URI Response With /? And Parameters ${test_data.params_string}
   Request Should Be Successful  ${w_slash_question_response}
 
-Validate XRS Get Critical Events Summary By Driver ID With Raw String URI And /? REST Web Services Response Returns 200 OK
+Validate XRS Get Critical Events Summary By Driver ID With Raw String URI And ? REST Web Services Response Returns 200 OK
   [Documentation]  Get Critical Events Events By Driver IDwith basic parameters using a raw URI string
   &{test_data} =  Create Dictionary  driver_id=${SAMPLE_DRIVER_ID_FOR_CRITICAL_EVENTS_TEST}  params_string=${XRS_WEBSERVICE_CRITICAL_EVENTS_TEST_PARAMS_STRING}
   ${w_question_response} =  Get Critical Events Summary By Driver ID ${test_data.driver_id} Raw String URI Response With ? And Parameters ${test_data.params_string}
