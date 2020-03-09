@@ -44,7 +44,7 @@ Verify Get All Drivers Is Successful
   ${response} =  Get All Drivers
   Request Should Be Successful  ${response}
 
-Verify Delete Drivers By IDs ${driver_id} Is Response ErrorMessage Returns "Driver <driver_sid> doesn't exist."
+Verify Delete Drivers By IDs ${driver_id} Response ErrorMessage Returns "Driver <driver_sid> doesn't exist."
   ${response} =  Delete Drivers By IDs  ${driver_id}
   &{expected_value} =  Create Dictionary  key=ErrorMessage  value=Driver ${driver_id} doesn't exist.
   ${actual_error_message} =  Get Value From Response With Key  ${expected_value.key}  ${response}

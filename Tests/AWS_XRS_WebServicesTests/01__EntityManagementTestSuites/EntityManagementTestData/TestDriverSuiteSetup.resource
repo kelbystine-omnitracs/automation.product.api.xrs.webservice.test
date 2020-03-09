@@ -4,10 +4,10 @@ Variables       ./TestDriverData.yaml
 Variables       ../../../../Data/TestBenchDefinitions/${XRS_TEST_BENCH_FOLDER_NAME}/CompanyDefinition.yaml
 
 *** Keywords ***
-Test Data Setup For XRS AWS Driver Web Service Test Suite
-  [Documentation]  Keyword for setting up suite variables for AWS Driver Web Service Tests.
+Test Data Setup For XRS Driver Web Service Test Suite
+  [Documentation]  Keyword for setting up suite variables for Driver Web Service Tests.
   # Create post test driver 1 data.
-  &{XRS_AWS_WEBSERVICE_POST_TEST_DRIVER_1_DICT} =  Create Dictionary
+  &{XRS_WEBSERVICE_POST_TEST_DRIVER_1_DICT} =  Create Dictionary
   ...  CDLNumber=${XRS_WEB_SERVICES_TEST_DRIVER_1.CDLNumber}
   ...  DriverID=${XRS_WEB_SERVICES_TEST_DRIVER_1.DriverID}
   ...  DefaultHOSRule=${XRS_WEB_SERVICES_TEST_DRIVER_1.DefaultHOSRule}
@@ -32,10 +32,10 @@ Test Data Setup For XRS AWS Driver Web Service Test Suite
   ...  Status=${XRS_WEB_SERVICES_TEST_DRIVER_1.Status}
   ...  UseHOSOrganizationSettings=${XRS_WEB_SERVICES_TEST_DRIVER_1.UseHOSOrganizationSettings}
   ...  UserName=${XRS_WEB_SERVICES_TEST_DRIVER_1.UserName}
-  @{XRS_AWS_WEBSERVICE_POST_TEST_DRIVER_LIST} =  Create List  ${XRS_AWS_WEBSERVICE_POST_TEST_DRIVER_1_DICT}
-  Set Suite Variable  @{XRS_AWS_WEBSERVICE_POST_TEST_DRIVER_LIST}
+  @{XRS_WEBSERVICE_POST_TEST_DRIVER_LIST} =  Create List  ${XRS_WEBSERVICE_POST_TEST_DRIVER_1_DICT}
+  Set Suite Variable  @{XRS_WEBSERVICE_POST_TEST_DRIVER_LIST}
   # Create put test driver 1 data.
-  &{XRS_AWS_WEBSERVICE_PUT_TEST_DRIVER_1_DICT} =  Create Dictionary
+  &{XRS_WEBSERVICE_PUT_TEST_DRIVER_1_DICT} =  Create Dictionary
   ...  DriverID=${XRS_WEB_SERVICES_TEST_DRIVER_1.DriverID}
   ...  DefaultHOSRule=${XRS_WEB_SERVICES_TEST_DRIVER_1.DefaultHOSRule}
   ...  ELDExempt=${XRS_WEB_SERVICES_TEST_DRIVER_1.ELDExempt}
@@ -57,19 +57,19 @@ Test Data Setup For XRS AWS Driver Web Service Test Suite
   ...  Status=${XRS_WEB_SERVICES_TEST_DRIVER_1.Status}
   ...  UseHOSOrganizationSettings=${XRS_WEB_SERVICES_TEST_DRIVER_1.UseHOSOrganizationSettings}
   ...  UserName=${XRS_WEB_SERVICES_TEST_DRIVER_1.UserName}
-  @{XRS_AWS_WEBSERVICE_PUT_TEST_DRIVER_LIST} =  Create List  ${XRS_AWS_WEBSERVICE_PUT_TEST_DRIVER_1_DICT}
-  Set Suite Variable  @{XRS_AWS_WEBSERVICE_PUT_TEST_DRIVER_LIST}
+  @{XRS_WEBSERVICE_PUT_TEST_DRIVER_LIST} =  Create List  ${XRS_WEBSERVICE_PUT_TEST_DRIVER_1_DICT}
+  Set Suite Variable  @{XRS_WEBSERVICE_PUT_TEST_DRIVER_LIST}
   # Create test params
   ${yyyy}	${mm}	${dd} =	Get Time	year,month,day
-  &{XRS_AWS_WEBSERVICE_DRIVER_TEST_PARAMS} =  Create Dictionary
+  &{XRS_WEBSERVICE_DRIVER_TEST_PARAMS} =  Create Dictionary
   ...  OrganizationID=${XRS_GENERAL_INFORMATION.Company.Company_ID}
   ...  IsActive=True
   ...  AsOfDateTime=${mm}/${dd}/${yyyy}
-  Set Suite Variable  &{XRS_AWS_WEBSERVICE_DRIVER_TEST_PARAMS}
+  Set Suite Variable  &{XRS_WEBSERVICE_DRIVER_TEST_PARAMS}
   ${GET_DRIVERS_PARAMS_STRING} =  Catenate  SEPARATOR=&
-  ...  OrganizationID=${XRS_AWS_WEBSERVICE_DRIVER_TEST_PARAMS.OrganizationID}
-  ...  IsActive=${XRS_AWS_WEBSERVICE_DRIVER_TEST_PARAMS.IsActive}
-  ...  AsOfDateTime=${XRS_AWS_WEBSERVICE_DRIVER_TEST_PARAMS.AsOfDateTime}
+  ...  OrganizationID=${XRS_WEBSERVICE_DRIVER_TEST_PARAMS.OrganizationID}
+  ...  IsActive=${XRS_WEBSERVICE_DRIVER_TEST_PARAMS.IsActive}
+  ...  AsOfDateTime=${XRS_WEBSERVICE_DRIVER_TEST_PARAMS.AsOfDateTime}
   Set Suite Variable  ${GET_DRIVERS_PARAMS_STRING}
 
 Get ${key} Value From ${response} And Set Test Suite Variable
