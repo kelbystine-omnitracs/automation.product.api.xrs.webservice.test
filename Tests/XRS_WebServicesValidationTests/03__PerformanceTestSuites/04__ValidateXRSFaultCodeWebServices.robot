@@ -15,18 +15,24 @@ Force Tags      xrsrestwebservicevalidation  xrsfaultcoderestwebservicevalidatio
 *** Variables ***
 
 *** Test Cases ***
-Validate XRS Get Fault Code REST Web Services Response Returns 200 OK
+Validate XRS Get Fault Code With Forward Slash REST Web Services Response Returns 200 OK
   [Documentation]  Get Fault Code Events with basic parameters
   ${w_slash_response} =  Get Fault Codes Response With Forward Slash  &{XRS_WEBSERVICE_FAULT_CODE_TEST_PARAMS}
-  ${wo_slash_response} =  Get Fault Codes Response Without Forward Slash  &{XRS_WEBSERVICE_FAULT_CODE_TEST_PARAMS}
   Request Should Be Successful  ${w_slash_response}
+
+Validate XRS Get Fault Code Without Forward Slash REST Web Services Response Returns 200 OK
+  [Documentation]  Get Fault Code Events with basic parameters
+  ${wo_slash_response} =  Get Fault Codes Response Without Forward Slash  &{XRS_WEBSERVICE_FAULT_CODE_TEST_PARAMS}
   Request Should Be Successful  ${wo_slash_response}
 
-Validate XRS Get Fault Code REST Web Services Response Returns 200 OK With Raw String URI
+Validate XRS Get Fault Code With Raw String URI And /? REST Web Services Response Returns 200 OK
   [Documentation]  Get Fault Code Events with basic parameters using a raw URI string
   ${w_slash_question_response} =  Get Fault Codes Raw String URI Response With /? And Parameters ${XRS_WEBSERVICE_FAULT_CODE_TEST_PARAMS_STRING}
-  ${w_question_response} =  Get Fault Codes Raw String URI Response With ? And Parameters ${XRS_WEBSERVICE_FAULT_CODE_TEST_PARAMS_STRING}
   Request Should Be Successful  ${w_slash_question_response}
+
+Validate XRS Get Fault Code With Raw String URI And ? REST Web Services Response Returns 200 OK
+  [Documentation]  Get Fault Code Events with basic parameters using a raw URI string
+  ${w_question_response} =  Get Fault Codes Raw String URI Response With ? And Parameters ${XRS_WEBSERVICE_FAULT_CODE_TEST_PARAMS_STRING}
   Request Should Be Successful  ${w_question_response}
 
 Validate XRS Get Fault Code REST Web Services For All Fault Codes Response Returns 200 OK
@@ -36,19 +42,26 @@ Validate XRS Get Fault Code REST Web Services For All Fault Codes Response Retur
   Request Should Be Successful  ${response}
 
 # Validate Get Fault Codes By Vehicle ID
-Validate XRS Get Fault Codes By Vehicle ID REST Web Services Response Returns 200 OK
+Validate XRS Get Fault Codes By Vehicle ID With Forward Slash REST Web Services Response Returns 200 OK
   [Documentation]  Get Fault Code Events By Vehicle ID with basic parameters
   ${w_slash_response} =  Get Fault Codes By Vehicle ID Response With Forward Slash  ${SAMPLE_VEHICLE_ID_FOR_FAULT_CODE_TEST}  &{XRS_WEBSERVICE_FAULT_CODE_TEST_PARAMS}
-  ${wo_slash_response} =  Get Fault Codes By Vehicle ID Response Without Forward Slash  ${SAMPLE_VEHICLE_ID_FOR_FAULT_CODE_TEST}  &{XRS_WEBSERVICE_FAULT_CODE_TEST_PARAMS}
   Request Should Be Successful  ${w_slash_response}
+
+Validate XRS Get Fault Codes By Vehicle ID Without Forward Slash REST Web Services Response Returns 200 OK
+  [Documentation]  Get Fault Code Events By Vehicle ID with basic parameters
+  ${wo_slash_response} =  Get Fault Codes By Vehicle ID Response Without Forward Slash  ${SAMPLE_VEHICLE_ID_FOR_FAULT_CODE_TEST}  &{XRS_WEBSERVICE_FAULT_CODE_TEST_PARAMS}
   Request Should Be Successful  ${wo_slash_response}
 
-Validate XRS Get Fault Code By Vehicle ID REST Web Services Response Returns 200 OK With Raw String URI
+Validate XRS Get Fault Code By Vehicle ID With Raw String URI And /? REST Web Services Response Returns 200 O
   [Documentation]  Get Fault Code Events By Vehicle ID with basic parameters using a raw URI string
   &{test_data} =  Create Dictionary  vehicle_id=${SAMPLE_VEHICLE_ID_FOR_FAULT_CODE_TEST}  params_string=${XRS_WEBSERVICE_FAULT_CODE_TEST_PARAMS_STRING}
   ${w_slash_question_response} =  Get Fault Codes By Vehicle ID ${test_data.vehicle_id} Raw String URI Response With /? And Parameters ${test_data.params_string}
-  ${w_question_response} =  Get Fault Codes By Vehicle ID ${test_data.vehicle_id} Raw String URI Response With ? And Parameters ${test_data.params_string}
   Request Should Be Successful  ${w_slash_question_response}
+
+Validate XRS Get Fault Code By Vehicle ID With Raw String URI And ? REST Web Services Response Returns 200 O
+  [Documentation]  Get Fault Code Events By Vehicle ID with basic parameters using a raw URI string
+  &{test_data} =  Create Dictionary  vehicle_id=${SAMPLE_VEHICLE_ID_FOR_FAULT_CODE_TEST}  params_string=${XRS_WEBSERVICE_FAULT_CODE_TEST_PARAMS_STRING}
+  ${w_question_response} =  Get Fault Codes By Vehicle ID ${test_data.vehicle_id} Raw String URI Response With ? And Parameters ${test_data.params_string}
   Request Should Be Successful  ${w_question_response}
 
 Validate XRS Get Fault Code By Vehicle ID REST Web Services For All Fault Codes Response Returns 200 OK
