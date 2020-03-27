@@ -132,7 +132,9 @@ dmypy.json
 Results/*
 TaurusResults/*
 pabot_results/*
+WebServices_Postman/newman/*
 
 # exception to the rule
 !Results/.gitkeep
 !Results/README.md
+!WebServices_Postman/newman/README.md
