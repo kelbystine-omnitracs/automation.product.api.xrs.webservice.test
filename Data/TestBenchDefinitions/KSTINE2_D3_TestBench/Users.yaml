@@ -1,23 +1,23 @@
 # A list of expected users
 # Users may be added to this list if necessary
 DEFAULT_MASTER_ADMIN_USER:
-  USERNAME: masterAutomationD3
-  FIRST_NAME: MasterD3
+  USERNAME: masterAutomationQ1
+  FIRST_NAME: MasterQ1
   LAST_NAME: Automation
   ROLE: Super Admin
   STATUS: Active
-  EMAIL: xrsqatest+masterAutomationD3@gmail.com
+  EMAIL: xrsqatest+masterAutomationQ1@gmail.com
   PASSWORD: xrs123
-  TOKEN: 49d60a52-7265-4ed8-a287-8e7cfc73c6f4
+  TOKEN: e57623c0-c659-460f-acf4-5d1967d8f3bc
 DEFAULT_ADMIN_USER:
   USERNAME: admin
   FIRST_NAME: admin
   MIDDLE_NAME: Automation
   LAST_NAME: admin
-  EMAIL: xrsqatest+adminGnomeShippingD3@gmail.com
-  ORGANIZATION: Gnome Shipping D3
+  EMAIL: xrsqatest+adminGnomeShippingQ1@gmail.com
+  ORGANIZATION: Gnome Shipping Q1
   RESOURCE_GROUPS:
-    - Gnome Shipping D3
+    - Gnome Shipping
   USER_ROLE: Admin
   DASHBOARD: None
   STATUS: Active
@@ -30,12 +30,12 @@ DEFAULT_READ_ONLY_USER:
   FIRST_NAME: ReadOnly
   MIDDLE_NAME: Automation
   LAST_NAME: User
-  EMAIL: xrsqatest+readOnlyUserGnomeShippingD3@gmail.com
-  ORGANIZATION: Gnome Shipping D3
+  EMAIL: xrsqatest+readOnlyUserGnomeShippingQ1@gmail.com
+  ORGANIZATION: Gnome Shipping Q1
   RESOURCE_GROUPS:
-    - Gnome Shipping D3
+    - Gnome Shipping
   USER_ROLE: Read Only
-  DASHBOARD: Fleet Performance Dashboard
+  DASHBOARD: None
   STATUS: Active
   LANGUAGE: English
   PASSWORD: xrs123
@@ -46,12 +46,12 @@ DEFAULT_DISPATCH_USER:
   FIRST_NAME: Dispatch
   MIDDLE_NAME: Automation
   LAST_NAME: User
-  EMAIL: xrsqatest+dispatchUserGnomeShippingD3@gmail.com
-  ORGANIZATION: Gnome Shipping D3
+  EMAIL: xrsqatest+dispatchUserGnomeShippingQ1@gmail.com
+  ORGANIZATION: Gnome Shipping Q1
   RESOURCE_GROUPS:
-    - Gnome Shipping D3
+    - Gnome Shipping
   USER_ROLE: Dispatch
-  DASHBOARD: Fleet Performance Dashboard
+  DASHBOARD: None
   STATUS: Active
   LANGUAGE: English
   PASSWORD: xrs123
@@ -62,12 +62,12 @@ DEFAULT_OPERATIONS_USER:
   FIRST_NAME: Operations
   MIDDLE_NAME: Automation
   LAST_NAME: User
-  EMAIL: xrsqatest+operationsUserGnomeShippingD3@gmail.com
-  ORGANIZATION: Gnome Shipping D3
+  EMAIL: xrsqatest+operationsUserGnomeShippingQ1@gmail.com
+  ORGANIZATION: Gnome Shipping Q1
   RESOURCE_GROUPS:
-    - Gnome Shipping D3
+    - Gnome Shipping
   USER_ROLE: Operations
-  DASHBOARD: Fleet Performance Dashboard
+  DASHBOARD: None
   STATUS: Active
   LANGUAGE: English
   PASSWORD: xrs123
@@ -78,12 +78,12 @@ DEFAULT_MAINTENANCE_USER:
   FIRST_NAME: Maintenance
   MIDDLE_NAME: Automation
   LAST_NAME: User
-  EMAIL: xrsqatest+maintenanceUserGnomeShippingD3@gmail.com
-  ORGANIZATION: Gnome Shipping D3
+  EMAIL: xrsqatest+maintenanceUserGnomeShippingQ1@gmail.com
+  ORGANIZATION: Gnome Shipping Q1
   RESOURCE_GROUPS:
-    - Gnome Shipping D3
+    - Gnome Shipping
   USER_ROLE: Maintenance
-  DASHBOARD: Fleet Performance Dashboard
+  DASHBOARD: None
   STATUS: Active
   LANGUAGE: English
   PASSWORD: xrs123
@@ -94,12 +94,12 @@ DEFAULT_FLEETVIEW_USER:
   FIRST_NAME: Fleetview
   MIDDLE_NAME: Automation
   LAST_NAME: User
-  EMAIL: xrsqatest+fleetviewUserGnomeShippingD3@gmail.com
-  ORGANIZATION: Gnome Shipping D3
+  EMAIL: xrsqatest+fleetviewUserGnomeShippingQ1@gmail.com
+  ORGANIZATION: Gnome Shipping Q1
   RESOURCE_GROUPS:
-    - Gnome Shipping D3
+    - Gnome Shipping
   USER_ROLE: FleetView
-  DASHBOARD: None
+  DASHBOARD:
   STATUS: Active
   LANGUAGE: English
   PASSWORD: xrs123
@@ -110,12 +110,12 @@ DEFAULT_MOBILE_INSTALLER_USER:
   FIRST_NAME: MobileInstaller
   MIDDLE_NAME: Automation
   LAST_NAME: User
-  EMAIL: xrsqatest+mobileInstUserGnomeShippingD3@gmail.com
-  ORGANIZATION: Gnome Shipping D3
+  EMAIL: xrsqatest+mobileInstUserGnomeShippingQ1@gmail.com
+  ORGANIZATION: Gnome Shipping Q1
   RESOURCE_GROUPS:
-    - Gnome Shipping D3
+    - Gnome Shipping
   USER_ROLE: Mobile Installer
-  DASHBOARD: Fleet Performance Dashboard
+  DASHBOARD: None
   STATUS: Active
   LANGUAGE: English
   PASSWORD: xrs123

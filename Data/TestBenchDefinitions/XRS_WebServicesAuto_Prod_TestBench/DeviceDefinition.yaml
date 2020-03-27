@@ -1,0 +1,19 @@
+# It Is advisable to have one device per file.
+# And always start the file with 'DeviceDefinition'
+DEFAULT_DEVICE:
+  PHONE_NUMBER: 5203725433
+  BLUETOOTH_ADDRESS: 00:00:00:00:00
+  DEVICE_TYPE: Samsung Galaxy Tab E
+  CARRIER: Other
+  ORGANIZATION: Gnome Shipping Q1
+  STATUS: Active
+  DESCRIPTION: XRSQA
+  SEND_INSTALL_LINK: false
+  FIXED_DISPLAY: No
+  PLATFORM_VERSION: 6.0.1
+  PLATFORM_NAME: Android
+  DEVICE_NAME: device
+  UDID: 520372b149995433
+  UNLOCK_TYPE: pattern
+  UNLOCK_KEY: 12345
+XRS_MOBILE_VERSION: v05.40.0228
